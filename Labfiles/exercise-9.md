@@ -8,6 +8,8 @@ In this exercise, you will build an autonomous agent using Microsoft Copilot Stu
 
 You will create an autonomous agent for employee onboarding that automatically sends welcome messages, assigns training tasks, and schedules orientation meetings for new hires.
 
+>**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
+
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
@@ -22,12 +24,22 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will learn about autonomous agents and when to use them.
 
-1. Open Microsoft Copilot Studio at `https://copilotstudio.microsoft.com` and sign in with your credentials:
+1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+
+1. Navigate to Microsoft Copilot Studio:
+
+   ```
+   https://copilotstudio.microsoft.com
+   ```
+
+   ![](./media/ex9-copilot-studio.png)
+
+1. Sign in with your lab credentials if prompted:
 
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
    - Password: <inject key="AzureAdUserPassword"></inject>
 
-   ![](./media/ex9-copilot-studio.png)
+1. If you see a **Stay signed in?** prompt, select **Yes**.
 
 1. Before building, understand the difference between conversational and autonomous agents:
 
@@ -56,20 +68,17 @@ In this task, you will learn about autonomous agents and when to use them.
 
 In this task, you will create a new autonomous agent for employee onboarding.
 
-1. In Copilot Studio, navigate to **Copilots** or **Agents** section.
-
-   ![](./media/ex9-copilots-section.png)
-
-1. Click **+ Create** or **Create a copilot**.
+1. In Copilot Studio, click on **+ Create** from the left navigation panel.
 
    ![](./media/ex9-create-copilot.png)
 
-1. Look for the **Autonomous agent** option or template. Select it to create an autonomous agent.
+1. Look for the **Autonomous agent** option or select **New agent** and specify autonomous capabilities.
 
    ![](./media/ex9-autonomous-option.png)
 
-1. If using "Describe your copilot," enter the following description:
+1. In the **Describe your agent** field, enter the following description:
 
+   **Agent Description:**
    ```
    Create an autonomous onboarding agent that:
    - Triggers when a new employee is added to the HR system
@@ -83,21 +92,18 @@ In this task, you will create a new autonomous agent for employee onboarding.
 
    ![](./media/ex9-agent-description.png)
 
-1. Configure the basic settings:
+1. Click **Create** to generate the agent.
+
+1. Once created, navigate to **Settings** to configure the agent:
 
    | Field | Value |
    |-------|-------|
    | Name | `Onboarding Automation Agent-<inject key="DeploymentID" enableCopy="false"/>` |
    | Description | `Autonomous agent that automates the employee onboarding process` |
-   | Type | Autonomous |
 
    ![](./media/ex9-agent-settings.png)
 
-1. Click **Create** to generate the agent.
-
-   ![](./media/ex9-create-button.png)
-
-1. Wait for the agent to be created. The autonomous agent interface will load.
+1. Click **Save** to save your settings.
 
    ![](./media/ex9-agent-created.png)
 
@@ -105,7 +111,7 @@ In this task, you will create a new autonomous agent for employee onboarding.
 
 In this task, you will set up triggers that start the autonomous agent's workflow.
 
-1. In the agent editor, navigate to the **Triggers** section.
+1. In the agent editor, navigate to the **Triggers** section from the left panel.
 
    ![](./media/ex9-triggers-section.png)
 

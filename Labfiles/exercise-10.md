@@ -8,6 +8,8 @@ In this exercise, you will implement agent flows using Microsoft Copilot Studio 
 
 You will build an IT Support agent that can handle common IT issues, automatically create and route support tickets, and provide self-service solutions to employees.
 
+>**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
+
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
@@ -22,11 +24,24 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will plan the IT support workflow before building.
 
-1. Open Microsoft Copilot Studio at `https://copilotstudio.microsoft.com`.
+1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+
+1. Navigate to Microsoft Copilot Studio:
+
+   ```
+   https://copilotstudio.microsoft.com
+   ```
 
    ![](./media/ex10-copilot-studio.png)
 
-1. Before building, design the IT support workflow:
+1. Sign in with your lab credentials if prompted:
+
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
+
+1. If you see a **Stay signed in?** prompt, select **Yes**.
+
+1. Before building, understand the IT support workflow you will create:
 
    ```
    IT SUPPORT WORKFLOW DESIGN
@@ -57,7 +72,7 @@ In this task, you will plan the IT support workflow before building.
 
    ![](./media/ex10-workflow-design.png)
 
-1. Define the issue categories for routing:
+1. Review the issue categories for routing:
 
    | Category | Description | Routing |
    |----------|-------------|---------|
@@ -70,7 +85,7 @@ In this task, you will plan the IT support workflow before building.
 
    ![](./media/ex10-categories.png)
 
-1. Define priority levels:
+1. Review the priority levels:
 
    | Priority | Response Time | Criteria |
    |----------|---------------|----------|
@@ -85,12 +100,13 @@ In this task, you will plan the IT support workflow before building.
 
 In this task, you will create the IT Support agent with comprehensive capabilities.
 
-1. In Copilot Studio, click **+ Create** > **New copilot**.
+1. In Copilot Studio, click **+ Create** from the left navigation panel.
 
    ![](./media/ex10-create-copilot.png)
 
-1. Select **Create from description** and enter:
+1. Select **New agent** and in the **Describe your agent** field, enter:
 
+   **Agent Description:**
    ```
    Create an IT Support agent that helps employees with technology issues. The agent should:
    
@@ -106,7 +122,9 @@ In this task, you will create the IT Support agent with comprehensive capabiliti
 
    ![](./media/ex10-agent-description.png)
 
-1. Configure the agent settings:
+1. Click **Create** to generate the agent.
+
+1. Once created, configure the agent settings:
 
    | Field | Value |
    |-------|-------|

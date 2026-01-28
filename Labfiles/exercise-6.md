@@ -8,6 +8,8 @@ In this exercise, you will build a comprehensive HR Agent using Microsoft Copilo
 
 You will create an HR agent that can answer employee questions about policies, benefits, leave management, and direct complex queries to appropriate HR personnel.
 
+>**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
+
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
@@ -23,7 +25,13 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will navigate to Microsoft Copilot Studio and explore its interface.
 
-1. Open a new browser tab and navigate to Microsoft Copilot Studio: `https://copilotstudio.microsoft.com`
+1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+
+1. Navigate to Microsoft Copilot Studio:
+
+   ```
+   https://copilotstudio.microsoft.com
+   ```
 
    ![](./media/ex6-copilot-studio-url.png)
 
@@ -34,10 +42,12 @@ In this task, you will navigate to Microsoft Copilot Studio and explore its inte
 
    ![](./media/ex6-studio-signin.png)
 
+1. If you see a **Stay signed in?** prompt, select **Yes**.
+
 1. You will be redirected to the Microsoft Copilot Studio home page. Take a moment to explore the interface:
 
    - **Home** — Overview and quick actions
-   - **Copilots** — List of all your created agents/copilots
+   - **Agents** — List of all your created agents
    - **Environments** — Manage different environments
    - **Solutions** — Package and deploy solutions
 
@@ -53,23 +63,24 @@ In this task, you will navigate to Microsoft Copilot Studio and explore its inte
 
 In this task, you will create a new agent specifically designed for HR assistance.
 
-1. On the Copilot Studio home page, click **+ Create** or **Create a copilot**.
+1. On the Copilot Studio home page, click **+ Create** from the left navigation panel.
 
    ![](./media/ex6-create-copilot.png)
 
-1. You will see different options for creating a copilot:
+1. You will see different options for creating an agent:
    - **Start from template** — Use pre-built templates
    - **Start from blank** — Build from scratch
-   - **Create from description** — Use AI to generate initial setup
+   - **New agent** — Use AI to generate initial setup
 
    ![](./media/ex6-creation-options.png)
 
-1. Select **Create from description** or **Describe your copilot** for an AI-assisted setup.
+1. Select **New agent** for an AI-assisted setup.
 
-   ![](./media/ex6-describe-copilot.png)
+   ![](./media/ex6-new-agent.png)
 
-1. Enter the following description for your HR agent:
+1. In the **Describe your agent** field, enter the following description:
 
+   **Agent Description:**
    ```
    Create an HR assistant that helps employees with:
    - Company policies and procedures
@@ -84,20 +95,20 @@ In this task, you will create a new agent specifically designed for HR assistanc
 
    ![](./media/ex6-agent-description.png)
 
-1. Click **Create** or **Next** to proceed.
+1. Click **Create** to proceed.
 
-1. Configure the basic settings:
+1. Copilot Studio will generate a new agent based on your description. Wait for the agent to be created.
+
+1. Once created, update the agent settings by selecting **Settings** from the top menu:
 
    | Field | Value |
    |-------|-------|
    | Name | `HR Assistant-<inject key="DeploymentID" enableCopy="false"/>` |
    | Description | `An intelligent HR assistant that helps employees with policies, benefits, and HR-related questions.` |
-   | Language | English |
-   | Icon | Select an appropriate HR-themed icon |
 
    ![](./media/ex6-agent-settings.png)
 
-1. Click **Create** to generate your agent.
+1. Click **Save** to save your agent settings.
 
    ![](./media/ex6-agent-created.png)
 

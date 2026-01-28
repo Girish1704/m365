@@ -8,6 +8,8 @@ In this exercise, you will create a SharePoint-based agent that provides career 
 
 You will create a SharePoint site with career development resources and configure an agent that helps employees navigate their career paths within the organization.
 
+>**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
+
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
@@ -22,7 +24,36 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will create a dedicated SharePoint site for career development resources.
 
-1. Open a new browser tab and navigate to SharePoint: `https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com`
+1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+
+1. Navigate to the Microsoft 365 portal:
+
+   ```
+   https://www.microsoft365.com
+   ```
+
+1. Sign in with your lab credentials if prompted:
+
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
+
+1. If you see a **Stay signed in?** prompt, select **Yes**.
+
+1. On the Microsoft 365 home page, click on **Apps** from the left navigation panel.
+
+   ![](./media/ex8-apps-panel.png)
+
+1. Select **SharePoint** from the list of apps.
+
+   ![](./media/ex8-sharepoint-app.png)
+
+   >**Tip:** If you don't see SharePoint immediately, click **All apps** to view the complete list.
+
+1. Copy the SharePoint URL from the address bar and save it in **Notepad** for later reference. The URL should look like:
+
+   ```
+   https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com
+   ```
 
    ![](./media/ex8-sharepoint-home.png)
 
@@ -41,7 +72,6 @@ In this task, you will create a dedicated SharePoint site for career development
    | Site name | `Career Development Hub-<inject key="DeploymentID" enableCopy="false"/>` |
    | Site description | `Resources and guidance for employee career development and growth` |
    | Privacy settings | Private - only members can access |
-   | Language | English |
 
    ![](./media/ex8-site-settings.png)
 
@@ -53,18 +83,17 @@ In this task, you will create a dedicated SharePoint site for career development
 
    ![](./media/ex8-site-created.png)
 
-1. Customize the site by adding a logo and updating the home page:
+1. Copy the site URL from the address bar and paste it in **Notepad** for later use. The URL should look like:
 
-   - Click **Settings** (gear icon) > **Change the look** > **Header**
-   - Upload a career-themed logo or use default branding
-
-   ![](./media/ex8-customize-site.png)
+   ```
+   https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com/sites/CareerDevelopmentHub-<inject key="DeploymentID" enableCopy="false"/>
+   ```
 
 ### Task 2: Populate the Site with Career Resources
 
 In this task, you will create comprehensive career development content for the agent to use.
 
-1. Navigate to **Documents** library in your new site.
+1. Navigate to **Documents** library in your new site by clicking **Documents** in the left navigation.
 
    ![](./media/ex8-documents-library.png)
 
@@ -77,11 +106,19 @@ In this task, you will create comprehensive career development content for the a
 
    ![](./media/ex8-create-folders.png)
 
-1. In the **Career Paths** folder, create a new Word document by clicking **+ New** > **Word document**.
+1. Click on the **Career Paths** folder to open it.
+
+1. Create a new Word document by clicking **+ New** > **Word document**.
 
    ![](./media/ex8-new-document.png)
 
-1. Name the document `Engineering-Career-Path.docx` and add the following content:
+1. Click on the default title **Document** and rename it to:
+
+   ```
+   Engineering-Career-Path
+   ```
+
+1. Add the following content to the document:
 
    ```
    ENGINEERING CAREER PATH GUIDE

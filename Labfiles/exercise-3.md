@@ -8,6 +8,8 @@ In this exercise, you will explore and utilize pre-built agents available in Mic
 
 You will discover various pre-built agents, learn how to access and use them, and understand how they can be customized or serve as templates for your own agents.
 
+>**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
+
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
@@ -22,11 +24,24 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will navigate to the pre-built agents gallery and explore available options.
 
-1. In the Microsoft 365 Copilot Chat interface, click on the **Copilot agents** or **Agents** icon in the navigation.
+1. In the VM desktop, click on the **Search** bar in the taskbar.
+
+1. Type **Copilot** and select **Microsoft 365 Copilot** from the search results.
+
+   ![](./media/ex3-open-copilot.png)
+
+1. Sign in with your lab credentials if prompted:
+
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
+
+1. If you see a **Stay signed in?** prompt, select **Yes**.
+
+1. In the Microsoft 365 Copilot interface, click on the **Agents** button on the right side panel (or look for the **@** symbol to access agents).
 
    ![](./media/ex3-agents-navigation.png)
 
-1. In the agents panel, look for the **Gallery**, **Browse**, or **Discover** section that contains pre-built agents.
+1. In the agents panel, browse the **Gallery** section that contains pre-built agents.
 
    ![](./media/ex3-agents-gallery.png)
 
@@ -53,7 +68,7 @@ In this task, you will navigate to the pre-built agents gallery and explore avai
 
 In this task, you will use a writing-focused pre-built agent to improve your professional communication.
 
-1. From the agents gallery, select the **Writing Coach** or similar writing-assistance agent.
+1. From the agents gallery, select the **Writing Coach** (or similar writing-assistance agent).
 
    ![](./media/ex3-writing-coach.png)
 
@@ -61,8 +76,9 @@ In this task, you will use a writing-focused pre-built agent to improve your pro
 
    ![](./media/ex3-start-writing-coach.png)
 
-1. Test the Writing Coach with the following prompt to improve an email:
+1. Type the following prompt to improve an email:
 
+   **Prompt:**
    ```
    Please help me improve this email:
 
@@ -75,29 +91,39 @@ In this task, you will use a writing-focused pre-built agent to improve your pro
 
    ![](./media/ex3-writing-coach-prompt.png)
 
-1. Review the improved version provided by the Writing Coach. It should offer a more professional tone while maintaining the original message.
+   **Expected Output:**
 
    ![](./media/ex3-writing-coach-response.png)
 
-1. Ask for alternative versions:
+   The Writing Coach provides a more professional version while maintaining the original message.
 
+1. Ask for alternative versions. Type:
+
+   **Prompt:**
    ```
    Can you provide a more formal version suitable for sending to senior leadership?
    ```
 
+   ![](./media/ex3-formal-version-prompt.png)
+
+   **Expected Output:**
+
    ![](./media/ex3-formal-version.png)
+
+   The Writing Coach provides a formal executive-level communication.
 
 1. Request specific improvements:
 
+   **Prompt:**
    ```
    Now help me write a compelling subject line for this rescheduling email.
    ```
 
+   ![](./media/ex3-subject-line-prompt.png)
+
+   **Expected Output:**
+
    ![](./media/ex3-subject-line.png)
-
-1. Test the Writing Coach for different content types:
-
-   ```
    I need to write a LinkedIn post announcing our team's achievement of exceeding Q4 targets by 25%. It should be professional but celebratory, around 150 words.
    ```
 

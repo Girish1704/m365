@@ -8,6 +8,8 @@ In this exercise, you will explore how Microsoft 365 Copilot can empower sales p
 
 You will work through realistic sales scenarios using Copilot across Microsoft 365 applications including Outlook, Word, and Excel.
 
+>**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
+
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
@@ -22,12 +24,32 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will use Copilot to research a prospect and prepare for an upcoming sales meeting.
 
-1. Open Microsoft 365 Copilot Chat and ensure you're in **Work** mode.
+1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+
+1. Navigate to the Microsoft 365 portal:
+
+   ```
+   https://www.microsoft365.com
+   ```
+
+1. Sign in with your lab credentials if prompted:
+
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
+
+1. If you see a **Stay signed in?** prompt, select **Yes**.
+
+1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
+
+   ![](./media/ex4-copilot-icon.png)
+
+1. Ensure the toggle in the left panel is set to **Work** mode.
 
    ![](./media/ex4-copilot-work-mode.png)
 
-1. Use Copilot to research a prospect company. Type the following prompt:
+1. Type the following prompt to research a prospect company:
 
+   **Prompt:**
    ```
    I have a sales meeting with Contoso Ltd next week. They are a mid-sized manufacturing company. Help me prepare by:
    1. Suggesting key questions to ask during the discovery meeting
@@ -37,27 +59,50 @@ In this task, you will use Copilot to research a prospect and prepare for an upc
 
    ![](./media/ex4-research-prompt.png)
 
-1. Review the research summary and prepare additional questions:
+   **Expected Output:**
 
+   ![](./media/ex4-research-response.png)
+
+   Copilot provides a comprehensive meeting preparation guide with discovery questions and talking points.
+
+1. Follow up with an objections prompt:
+
+   **Prompt:**
    ```
    Based on typical manufacturing industry challenges, what objections might I face and how should I handle them?
    ```
 
+   ![](./media/ex4-objections-prompt.png)
+
+   **Expected Output:**
+
    ![](./media/ex4-objections.png)
+
+   Copilot provides common sales objections with recommended responses.
 
 1. Create a meeting preparation checklist:
 
+   **Prompt:**
    ```
    Create a pre-meeting checklist I should complete before the Contoso meeting, including research tasks, materials to prepare, and logistics to confirm.
    ```
+
+   ![](./media/ex4-prep-checklist-prompt.png)
+
+   **Expected Output:**
 
    ![](./media/ex4-prep-checklist.png)
 
 1. Generate an agenda for the meeting:
 
+   **Prompt:**
    ```
    Draft a 30-minute discovery meeting agenda for my first meeting with Contoso Ltd. Include time allocations for introductions, discovery questions, solution overview, and next steps.
    ```
+
+   ![](./media/ex4-meeting-agenda-prompt.png)
+
+   **Expected Output:**
 
    ![](./media/ex4-meeting-agenda.png)
 
@@ -65,7 +110,11 @@ In this task, you will use Copilot to research a prospect and prepare for an upc
 
 In this task, you will use Copilot in Outlook to create personalized sales emails.
 
-1. Open **Outlook** from the Microsoft 365 app launcher or navigate to `https://outlook.office.com`.
+1. Open a new browser tab and navigate to Outlook:
+
+   ```
+   https://outlook.office.com
+   ```
 
    ![](./media/ex4-open-outlook.png)
 
@@ -73,30 +122,35 @@ In this task, you will use Copilot in Outlook to create personalized sales email
 
    ![](./media/ex4-new-email.png)
 
-1. In the email compose window, look for the **Copilot** icon or button.
+1. In the email compose window, click on the **Copilot** icon in the toolbar.
 
    ![](./media/ex4-outlook-copilot.png)
 
-1. Click on Copilot and select **Draft with Copilot** or similar option.
+1. Select **Draft with Copilot** from the menu.
 
    ![](./media/ex4-draft-with-copilot.png)
 
 1. Enter the following prompt to generate a cold outreach email:
 
+   **Prompt:**
    ```
    Write a cold outreach email to a VP of Operations at a manufacturing company. Introduce our company's process automation solutions. Keep it concise (under 150 words), personalized, and include a clear call-to-action for a 15-minute discovery call.
    ```
 
    ![](./media/ex4-outreach-prompt.png)
 
-1. Review the generated email. You can:
-   - Click **Keep it** to use the draft
-   - Click **Regenerate** for a different version
-   - Click **Adjust** to modify tone, length, or style
+   **Expected Output:**
 
    ![](./media/ex4-outreach-email.png)
 
-1. Try adjusting the tone:
+1. Review the generated email. You have options to:
+   - **Keep it** — Use the draft as-is
+   - **Regenerate** — Get a different version
+   - **Adjust** — Modify tone, length, or style
+
+   ![](./media/ex4-email-options.png)
+
+1. Try adjusting the tone by selecting **Adjust** and choosing a different tone:
 
    - Click **Adjust** or the settings icon
    - Select a different tone (e.g., more formal, more casual)

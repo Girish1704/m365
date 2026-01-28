@@ -72,11 +72,17 @@ Feel free to start, stop, or restart your virtual machine as needed from the **R
 
 ## Login to Microsoft 365 Portal
 
-1. In the JumpVM, click on the **Microsoft Edge** shortcut on the desktop.
+>**Important:** This lab uses **Microsoft 365 Business Basic** licenses, which provide browser-based access to Microsoft 365 applications. All M365 apps (Copilot, Outlook, Word, Excel, SharePoint, etc.) will be accessed through the web browser at `https://www.microsoft365.com`.
+
+1. In the JumpVM, open **Microsoft Edge** browser from the desktop shortcut or taskbar.
 
    ![](./media/gs-edge.png)
 
-1. Open a new browser tab and navigate to the Microsoft 365 portal: `https://www.microsoft365.com`
+1. Navigate to the Microsoft 365 portal:
+
+   ```
+   https://www.microsoft365.com
+   ```
 
    >**Note:** Since you are working within a VM, please copy the above link and open it in the browser inside the VM.
 
@@ -94,7 +100,7 @@ Feel free to start, stop, or restart your virtual machine as needed from the **R
 
    >**Note:** If you see the **Action Required** dialog box, select **Ask Later** option.
 
-1. If you see the pop-up **Stay Signed in?**, click **No**.
+1. If you see the pop-up **Stay Signed in?**, select **Yes** to stay signed in.
 
    ![](./media/gs-stay-signed-in.png)
 

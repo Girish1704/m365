@@ -8,6 +8,8 @@ In this exercise, you will implement a prompt action in Microsoft Copilot Studio
 
 You will build a Quiz Generator agent that can create multiple-choice questions, true/false questions, and open-ended questions for training, education, or assessment purposes.
 
+>**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
+
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
@@ -22,9 +24,22 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will learn about prompt actions and how they can enhance your agents.
 
-1. Open Microsoft Copilot Studio at `https://copilotstudio.microsoft.com`.
+1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+
+1. Navigate to Microsoft Copilot Studio:
+
+   ```
+   https://copilotstudio.microsoft.com
+   ```
 
    ![](./media/ex11-copilot-studio.png)
+
+1. Sign in with your lab credentials if prompted:
+
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
+
+1. If you see a **Stay signed in?** prompt, select **Yes**.
 
 1. Understand what prompt actions are:
 
@@ -62,12 +77,13 @@ In this task, you will learn about prompt actions and how they can enhance your 
 
 In this task, you will create an agent specifically designed to generate quizzes.
 
-1. In Copilot Studio, click **+ Create** > **New copilot**.
+1. In Copilot Studio, click **+ Create** from the left navigation panel.
 
    ![](./media/ex11-create-copilot.png)
 
-1. Select **Create from description** and enter:
+1. Select **New agent** and in the **Describe your agent** field, enter:
 
+   **Agent Description:**
    ```
    Create a Quiz Generator assistant that helps users create quizzes on any topic. The agent should:
    
@@ -82,7 +98,9 @@ In this task, you will create an agent specifically designed to generate quizzes
 
    ![](./media/ex11-agent-description.png)
 
-1. Configure the agent settings:
+1. Click **Create** to generate the agent.
+
+1. Once created, navigate to **Settings** to configure the agent:
 
    | Field | Value |
    |-------|-------|
@@ -91,11 +109,9 @@ In this task, you will create an agent specifically designed to generate quizzes
 
    ![](./media/ex11-agent-settings.png)
 
-1. Click **Create** to generate the agent.
+1. Click **Save** to save your settings.
 
-   ![](./media/ex11-create-button.png)
-
-1. Customize the greeting message:
+1. Navigate to **Topics** and select the **Greeting** topic. Customize the greeting message:
 
    ```
    Welcome to the Quiz Generator! 🎯📝

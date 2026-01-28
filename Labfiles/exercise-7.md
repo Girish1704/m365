@@ -8,6 +8,8 @@ In this exercise, you will build a declarative agent using the Microsoft 365 Age
 
 You will create a fun and creative "Poetic Agent" that responds to user queries in poetic form, demonstrating how declarative agents can be customized for unique use cases.
 
+>**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
+
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
@@ -22,7 +24,9 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will set up Visual Studio Code with the Microsoft 365 Agents Toolkit extension.
 
-1. Open **Visual Studio Code** from the desktop or Start menu.
+1. In the VM, open **Visual Studio Code** from the desktop shortcut or Start menu.
+
+   >**Note:** Visual Studio Code is a desktop application that should be pre-installed on the VM.
 
    ![](./media/ex7-open-vscode.png)
 
@@ -30,7 +34,11 @@ In this task, you will set up Visual Studio Code with the Microsoft 365 Agents T
 
    ![](./media/ex7-extensions-icon.png)
 
-1. In the search box, type `Teams Toolkit` or `Microsoft 365 Agents Toolkit`.
+1. In the search box, type:
+
+   ```
+   Teams Toolkit
+   ```
 
    ![](./media/ex7-search-toolkit.png)
 
@@ -53,6 +61,8 @@ In this task, you will set up Visual Studio Code with the Microsoft 365 Agents T
 
    ![](./media/ex7-signin-m365.png)
 
+1. If you see a **Stay signed in?** prompt, select **Yes**.
+
 1. Verify that you see a green checkmark next to your account, indicating successful authentication.
 
    ![](./media/ex7-signin-success.png)
@@ -63,15 +73,15 @@ In this task, you will set up Visual Studio Code with the Microsoft 365 Agents T
 
 In this task, you will create a new declarative agent project using the toolkit.
 
-1. In the Teams Toolkit panel, click **Create a New App** or look for the option to create a new project.
+1. In the Teams Toolkit panel, click **Create a New App**.
 
    ![](./media/ex7-create-new-app.png)
 
-1. From the available options, select **Copilot Agent** or **Declarative Agent**.
+1. From the available options, select **Copilot Agent**.
 
    ![](./media/ex7-select-agent-type.png)
 
-1. Choose **Declarative Agent** as the agent type.
+1. Select **Declarative Agent** as the agent type.
 
    ![](./media/ex7-declarative-agent.png)
 
@@ -79,15 +89,21 @@ In this task, you will create a new declarative agent project using the toolkit.
 
    ![](./media/ex7-no-plugin.png)
 
-1. Choose a folder location to save your project. Create a new folder:
+1. When prompted for a folder location, select **Browse** and navigate to:
 
    ```
-   C:\LabFiles\PoeticAgent-<inject key="DeploymentID" enableCopy="false"/>
+   C:\LabFiles
    ```
 
    ![](./media/ex7-folder-location.png)
 
-1. Enter the application name:
+1. Create a new folder named:
+
+   ```
+   PoeticAgent-<inject key="DeploymentID" enableCopy="false"/>
+   ```
+
+1. Enter the application name when prompted:
 
    ```
    PoeticAgent
@@ -114,6 +130,8 @@ In this task, you will create a new declarative agent project using the toolkit.
    ```
 
    ![](./media/ex7-folder-structure.png)
+
+   >**Note:** The **appPackage** folder contains the agent manifest files. The **declarativeAgent.json** file is where you define the agent's behavior, instructions, and capabilities.
 
 ### Task 3: Configure the Agent Manifest and Instructions
 

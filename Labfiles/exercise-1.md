@@ -8,6 +8,14 @@ In this exercise, you will explore Microsoft 365 Copilot Chat to plan and organi
 
 Microsoft 365 Copilot Chat combines the power of large language models (LLMs) with your organizational data through Microsoft Graph, enabling contextual and intelligent responses that understand your business context.
 
+**Copilot Chat vs. Microsoft 365 Copilot:**
+
+At the start of this lab, it's important to understand the distinction between:
+- **Copilot Chat (Free, Web-Based)** → A publicly accessible AI-powered chat tool that allows users to upload documents, ask questions, and receive general guidance. It operates using publicly available information.
+- **Microsoft 365 Copilot (Work, Enterprise-Level)** → An AI-powered assistant deeply integrated with Microsoft 365 tools (Word, PowerPoint, Outlook, Excel, and Teams). It can access internal files, emails, calendars, and chats to provide organization-specific insights based on a company's existing data.
+
+>**Note:** Copilot may generate outputs that differ slightly from the screenshots provided—please proceed with the workflow as expected.
+
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
@@ -22,7 +30,24 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will navigate to Microsoft 365 Copilot Chat and familiarize yourself with its interface.
 
-1. In the Microsoft 365 portal (`https://www.microsoft365.com`), click on the **Copilot** icon in the left navigation pane.
+1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+
+1. Navigate to the Microsoft 365 portal:
+
+   ```
+   https://www.microsoft365.com
+   ```
+
+1. Sign in with your lab credentials if prompted:
+
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
+
+   ![](./media/ex1-signin.png)
+
+1. If you see a **Stay signed in?** prompt, select **Yes**.
+
+1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
 
    ![](./media/ex1-copilot-icon.png)
 
@@ -35,7 +60,7 @@ In this task, you will navigate to Microsoft 365 Copilot Chat and familiarize yo
 
    ![](./media/ex1-copilot-interface.png)
 
-1. Ensure the toggle is set to **Work** mode to access your organizational data and context.
+1. From the left panel, select **Chat (1)**, and ensure the toggle is set to **Work (2)** mode to access your organizational data and context.
 
    ![](./media/ex1-work-mode.png)
 
@@ -45,20 +70,29 @@ In this task, you will navigate to Microsoft 365 Copilot Chat and familiarize yo
 
 In this task, you will use Copilot Chat to brainstorm ideas for a corporate team-building event.
 
-1. In the Copilot Chat input area, type the following prompt and press **Enter**:
+1. In the Copilot Chat input area, type the following prompt and press **Enter** or click **Send**:
 
+   **Prompt:**
    ```
    I need to plan a corporate team-building event for 50 employees. The event should be held next month, promote collaboration, and be suitable for both in-office and remote participants. Can you suggest 5 creative event themes with brief descriptions?
    ```
 
    ![](./media/ex1-event-prompt.png)
 
-1. Review the response from Copilot. It will provide creative event themes tailored to your requirements.
+   **Expected Output:**
 
    ![](./media/ex1-event-themes.png)
 
+   Copilot will provide creative event themes tailored to your requirements, such as:
+   - Hybrid Hackathon
+   - Virtual Escape Room Challenge
+   - Cross-Team Innovation Day
+   - Wellness & Team Bonding Retreat
+   - Cultural Exchange Fair
+
 1. To get more details on a specific theme, follow up with a prompt like:
 
+   **Prompt:**
    ```
    I like the hybrid hackathon idea. Can you expand on this theme and suggest specific activities that would work for both in-person and remote participants?
    ```
@@ -75,31 +109,44 @@ In this task, you will use Copilot to generate a comprehensive event agenda.
 
 1. Continue the conversation by typing:
 
+   **Prompt:**
    ```
    Create a detailed agenda for a 4-hour hybrid hackathon event. Include time slots, activities, breaks, and specify which activities are for in-person vs remote participants.
    ```
 
    ![](./media/ex1-agenda-prompt.png)
 
-1. Review the generated agenda. Copilot will create a structured timeline with activities.
+   **Expected Output:**
 
    ![](./media/ex1-agenda-response.png)
 
-1. If you need to modify the agenda, provide feedback:
+   Copilot creates a structured timeline with activities for both in-person and remote participants.
 
+1. To modify the agenda, type:
+
+   **Prompt:**
    ```
    This looks great! Can you add a 15-minute networking session at the beginning and include suggested tools for remote collaboration during the hackathon?
    ```
 
+   ![](./media/ex1-agenda-modified-prompt.png)
+
+   **Expected Output:**
+
    ![](./media/ex1-agenda-modified.png)
 
-1. To export this agenda, you can ask Copilot to format it:
+1. To export this agenda in a shareable format, type:
 
+   **Prompt:**
    ```
    Format this agenda as a table that I can copy to a Word document or email.
    ```
 
+   **Expected Output:**
+
    ![](./media/ex1-agenda-table.png)
+
+   Copilot formats the agenda as a professional table.
 
 ### Task 4: Draft Event Invitation Emails
 
@@ -107,6 +154,7 @@ In this task, you will use Copilot to create professional event invitation email
 
 1. Type the following prompt to generate an invitation email:
 
+   **Prompt:**
    ```
    Draft a professional and engaging email invitation for the hybrid hackathon event. The email should:
    - Have an exciting subject line
@@ -118,23 +166,35 @@ In this task, you will use Copilot to create professional event invitation email
 
    ![](./media/ex1-email-prompt.png)
 
-1. Review the generated email. Copilot will create a well-structured invitation.
+   **Expected Output:**
 
    ![](./media/ex1-email-response.png)
 
-1. Request variations for different audiences:
+   Copilot creates a well-structured email invitation with all the requested elements.
 
+1. Request a reminder version:
+
+   **Prompt:**
    ```
    Create a shorter version of this email for a reminder to be sent one week before the event.
    ```
 
+   ![](./media/ex1-email-reminder-prompt.png)
+
+   **Expected Output:**
+
    ![](./media/ex1-email-reminder.png)
 
-1. You can also ask Copilot to create a version for leadership:
+1. Create a version for leadership:
 
+   **Prompt:**
    ```
    Create a version of this invitation specifically for senior leadership, emphasizing the strategic value of the event for team collaboration and innovation.
    ```
+
+   ![](./media/ex1-email-leadership-prompt.png)
+
+   **Expected Output:**
 
    ![](./media/ex1-email-leadership.png)
 
@@ -144,6 +204,7 @@ In this task, you will create a comprehensive logistics checklist for event prep
 
 1. Type the following prompt:
 
+   **Prompt:**
    ```
    Create a comprehensive logistics checklist for organizing the hybrid hackathon event. Include categories for:
    - Venue and setup (for in-person)
@@ -158,17 +219,26 @@ In this task, you will create a comprehensive logistics checklist for event prep
 
    ![](./media/ex1-checklist-prompt.png)
 
-1. Review the comprehensive checklist generated by Copilot.
+   **Expected Output:**
 
    ![](./media/ex1-checklist-response.png)
 
-1. To make this actionable, ask Copilot to create tasks:
+   Copilot generates a comprehensive checklist organized by category.
 
+1. To make this actionable, ask Copilot to prioritize tasks:
+
+   **Prompt:**
    ```
    Convert the top 10 most critical items from this checklist into a task list format with suggested deadlines, assuming the event is 4 weeks away.
    ```
 
+   ![](./media/ex1-task-list-prompt.png)
+
+   **Expected Output:**
+
    ![](./media/ex1-task-list.png)
+
+   Copilot creates a prioritized task list with deadlines.
 
 1. Finally, ask Copilot to summarize the entire event plan:
 

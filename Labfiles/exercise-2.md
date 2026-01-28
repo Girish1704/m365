@@ -8,6 +8,8 @@ In this exercise, you will learn how to create and configure a custom agent with
 
 You will create an agent that helps with HR-related queries, demonstrating how to define agent instructions, configure knowledge sources, and test the agent's capabilities.
 
+>**Note:** Copilot may generate outputs that differ slightly from the screenshots provided—please proceed with the workflow as expected.
+
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
@@ -22,7 +24,26 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will access the agent creation interface within Microsoft 365 Copilot.
 
-1. In the Microsoft 365 Copilot Chat interface, click on the **Copilot agents** icon or navigate to the agents section.
+1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+
+1. Navigate to the Microsoft 365 portal:
+
+   ```
+   https://www.microsoft365.com
+   ```
+
+1. Sign in with your lab credentials if prompted:
+
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
+
+1. If you see a **Stay signed in?** prompt, select **Yes**.
+
+1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
+
+   ![](./media/ex2-copilot-icon.png)
+
+1. In the Microsoft 365 Copilot interface, click on the **Agents** button on the right side panel.
 
    ![](./media/ex2-agents-icon.png)
 
@@ -70,6 +91,7 @@ In this task, you will define how the agent should behave and respond to users.
 
 1. In the **Instructions** section, enter the following prompt to define the agent's persona and behavior:
 
+   **Agent Instructions:**
    ```
    You are a helpful HR Assistant for our organization. Your role is to:
 
@@ -112,26 +134,23 @@ In this task, you will define how the agent should behave and respond to users.
 
 ### Task 4: Add Knowledge Sources to the Agent
 
-In this task, you will connect the agent to relevant data sources so it can provide informed responses.
+In this task, you will connect the agent to relevant data sources so it can provide informed responses. First, you will create a SharePoint site with HR documents.
 
-1. In the **Knowledge** or **Data sources** section, you can add various sources:
+1. Follow these steps to create a SharePoint site for HR documents:
 
-   - SharePoint sites
-   - Specific documents
-   - Web links
-   - Microsoft Graph connectors
+   - Navigate to the **Microsoft 365 Copilot** desktop app, select **Apps (1)** from the left navigation pane, and then choose **SharePoint (2)**.
 
-   ![](./media/ex2-knowledge-sources.png)
+     ![](./media/ex2-apps-sharepoint.png)
 
-1. For this exercise, we'll create a SharePoint site with HR documents. First, open a new browser tab and navigate to SharePoint: `https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com`
-
-   ![](./media/ex2-sharepoint-home.png)
+   - If prompted, sign in with the credentials:
+     - Email/Username: <inject key="AzureAdUserEmail"></inject>
+     - Password: <inject key="AzureAdUserPassword"></inject>
 
 1. Click on **+ Create site** to create a new SharePoint site for HR documents.
 
    ![](./media/ex2-create-site.png)
 
-1. Select **Team site** and configure:
+1. Select **Team site** and configure the following:
 
    | Field | Value |
    |-------|-------|
@@ -145,6 +164,10 @@ In this task, you will connect the agent to relevant data sources so it can prov
 
    ![](./media/ex2-site-created.png)
 
+1. Copy and paste the **SharePoint site URL** into Notepad; you will be using it in the upcoming steps.
+
+   ![](./media/ex2-copy-url.png)
+
 1. Once the site is created, navigate to **Documents** library and click **+ New** > **Folder** to create the following folders:
    - `Policies`
    - `Benefits`
@@ -153,7 +176,7 @@ In this task, you will connect the agent to relevant data sources so it can prov
 
    ![](./media/ex2-create-folders.png)
 
-1. Let's create sample policy documents. Click on **+ New** > **Word document** in the Policies folder.
+1. Let's create sample policy documents. In the **Policies** folder, click on **+ New** > **Word document**.
 
    ![](./media/ex2-new-document.png)
 
@@ -189,7 +212,9 @@ In this task, you will connect the agent to relevant data sources so it can prov
 
    ![](./media/ex2-leave-policy.png)
 
-1. Save and close the document. Create another document named `Benefits-Overview.docx` in the Benefits folder:
+1. Press **Ctrl + S** to save the document, then click **Save**.
+
+1. Create another document named `Benefits-Overview.docx` in the **Benefits** folder with the following content:
 
    ```
    EMPLOYEE BENEFITS OVERVIEW
@@ -222,16 +247,22 @@ In this task, you will connect the agent to relevant data sources so it can prov
 
    ![](./media/ex2-benefits-doc.png)
 
-1. Now return to the agent configuration tab and add the SharePoint site as a knowledge source:
+1. Now return to the agent configuration and add the SharePoint site as a knowledge source:
 
    - Click **+ Add knowledge source**
    - Select **SharePoint**
-   - Browse and select your `HR Policies-<inject key="DeploymentID" enableCopy="false"/>` site
+   - Enter your SharePoint site URL: `https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com/sites/HRPolicies-<inject key="DeploymentID" enableCopy="false"/>`
    - Click **Add**
 
    ![](./media/ex2-add-sharepoint.png)
 
+   >**Note:** If the site link shows **This item was not found in your SharePoint or OneDrive files**, this may occur due to temporary indexing delays. Select **Add anyway** to continue.
+
    >**Note:** It may take a few minutes for the SharePoint content to be indexed and available to the agent.
+
+1. Verify the knowledge sources are added and indexed.
+
+   ![](./media/ex2-knowledge-added.png)
 
 1. Click **Next** or **Create** to finalize the agent.
 
@@ -245,41 +276,74 @@ In this task, you will test your agent and make refinements based on its respons
 
 1. Start a conversation with your agent by typing:
 
+   **Prompt:**
    ```
    Hello! What can you help me with?
    ```
 
    ![](./media/ex2-test-greeting.png)
 
-1. The agent should respond with an introduction based on its configured instructions.
+   **Expected Output:**
 
-1. Test the agent with HR-related questions:
+   ![](./media/ex2-test-greeting-response.png)
 
-   **Test 1 - Leave Policy:**
+   The agent should respond with an introduction based on its configured instructions.
+
+1. Test the agent with an HR-related question about leave:
+
+   **Prompt:**
    ```
    How many days of annual leave am I entitled to?
    ```
 
+   ![](./media/ex2-test-leave-prompt.png)
+
+   **Expected Output:**
+
    ![](./media/ex2-test-leave.png)
 
-1. **Test 2 - Benefits:**
+   The agent should provide information based on the leave policy document you added.
+
+1. Test the agent with a benefits question:
+
+   **Prompt:**
    ```
    What health insurance benefits does the company provide?
    ```
 
+   ![](./media/ex2-test-benefits-prompt.png)
+
+   **Expected Output:**
+
    ![](./media/ex2-test-benefits.png)
 
-1. **Test 3 - Process guidance:**
+   The agent should provide details from the benefits policy document.
+
+1. Test process guidance:
+
+   **Prompt:**
    ```
    How do I request time off?
    ```
 
+   ![](./media/ex2-test-process-prompt.png)
+
+   **Expected Output:**
+
    ![](./media/ex2-test-process.png)
 
-1. **Test 4 - Edge case handling:**
+   The agent should guide the user through the leave request process.
+
+1. Test edge case handling:
+
+   **Prompt:**
    ```
    Can you approve my leave request for next week?
    ```
+
+   ![](./media/ex2-test-edge-case-prompt.png)
+
+   **Expected Output:**
 
    ![](./media/ex2-test-edge-case.png)
 

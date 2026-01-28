@@ -48,8 +48,13 @@ In this task, you will learn about Copilot Pages and its capabilities.
 
 In this task, you will generate content using Copilot and convert it into a Page for further development.
 
-1. Start a new conversation in Copilot Chat. Type the following prompt:
+1. In the **Microsoft 365 Copilot** app, select **Start a new chat** from the top-right corner if needed.
 
+   ![](./media/ex5-new-chat.png)
+
+1. Type the following prompt and press **Enter**:
+
+   **Prompt:**
    ```
    Help me create a comprehensive onboarding guide for new employees joining our marketing department. Include sections for:
    
@@ -63,17 +68,25 @@ In this task, you will generate content using Copilot and convert it into a Page
 
    ![](./media/ex5-onboarding-prompt.png)
 
-1. Review the generated content. Copilot will create a structured onboarding guide.
+   **Expected Output:**
 
    ![](./media/ex5-onboarding-content.png)
 
-1. To convert this response into a Page, look for the **Edit in Pages**, **Create Page**, or similar option below the Copilot response.
+   Copilot will create a structured onboarding guide with all the requested sections.
 
-   ![](./media/ex5-create-page-button.png)
+1. To convert this response into a Page, select the **More options (...)** button below the Copilot response and choose **Edit in Pages**.
 
-1. Click the option to create a Page. The content will open in a new Page editing interface.
+   ![](./media/ex5-edit-in-pages.png)
 
-   ![](./media/ex5-page-created.png)
+   >**Note:** This step demonstrates the **Edit in Pages** capability in Microsoft 365 Copilot. It allows you to open the generated response in **Copilot Pages** to refine, edit, or remove content as needed.
+
+1. The content will open in a new Page editing interface. Click on **Untitled** at the top and provide the name:
+
+   ```
+   Marketing Department Onboarding Guide
+   ```
+
+   ![](./media/ex5-page-title.png)
 
 1. Notice the Page interface includes:
    - **Title area** — Name your Page
@@ -84,31 +97,42 @@ In this task, you will generate content using Copilot and convert it into a Page
 
    ![](./media/ex5-page-interface.png)
 
-1. Give your Page a descriptive title:
-
-   ```
-   Marketing Department Onboarding Guide
-   ```
-
-   ![](./media/ex5-page-title.png)
-
 ### Task 3: Collaborate and Edit Content in Real-time
 
-In this task, you will refine the Page content using Copilot and manual editing.
+In this task, you will refine the Page content using Copilot and manual editing capabilities.
 
-1. In the Page, select the "First week checklist" section and use Copilot to enhance it:
+1. With the Page open, position your cursor at the end of the **First week checklist** section.
 
+1. Select the **Copilot icon** from the toolbar (or type **/**) to invoke Copilot assistance.
+
+   ![](./media/ex5-copilot-invoke.png)
+
+1. Type the following prompt:
+
+   **Prompt:**
    ```
-   Expand this section with a detailed day-by-day breakdown for the first week, including specific meetings, training sessions, and milestones.
+   Expand this section with a detailed day-by-day breakdown for the first week, including specific meetings, training sessions, and milestones for new marketing team members.
    ```
 
-   ![](./media/ex5-expand-section.png)
+   ![](./media/ex5-expand-prompt.png)
 
-1. Review and apply the enhanced content.
+   **Expected Output:**
 
    ![](./media/ex5-enhanced-content.png)
 
-1. Manually edit content by clicking directly in the Page and making changes:
+   Copilot adds a day-by-day breakdown with specific activities.
+
+1. Review the suggested content. You have options to:
+   - **Keep it** — Accept the content as-is
+   - **Discard** — Remove the suggestion
+   - **Regenerate** — Get a different version
+   - **Make it shorter/longer** — Adjust the length
+
+   ![](./media/ex5-content-options.png)
+
+1. Click **Keep it** to add the content to your Page.
+
+1. Now let's use manual editing. Click directly in the Page content and make these changes:
    - Add your company-specific details
    - Update contact names and roles
    - Customize the tools list for your organization
@@ -123,15 +147,22 @@ In this task, you will refine the Page content using Copilot and manual editing.
 
    ![](./media/ex5-formatting.png)
 
-1. Ask Copilot to add a new section:
+1. Ask Copilot to add a new section. Click the **Copilot icon** and enter:
 
+   **Prompt:**
    ```
    Add a section called "Common Questions and Answers" with 5 FAQs that new marketing employees typically ask, along with helpful answers.
    ```
 
    ![](./media/ex5-add-faq.png)
 
-1. Request Copilot to create a visual element:
+   **Expected Output:**
+
+   ![](./media/ex5-faq-result.png)
+
+   Copilot generates a list of common FAQs with detailed answers.
+
+1. Click **Keep it** to add the FAQ section to your Page.
 
    ```
    Create a table showing the 30-60-90 day plan with columns for Timeframe, Goals, Key Activities, and Success Metrics.

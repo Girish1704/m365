@@ -24,11 +24,13 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will navigate to the pre-built agents gallery and explore available options.
 
-1. In the VM desktop, click on the **Search** bar in the taskbar.
+1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
 
-1. Type **Copilot** and select **Microsoft 365 Copilot** from the search results.
+1. Navigate to the Microsoft 365 portal:
 
-   ![](./media/ex3-open-copilot.png)
+   ```
+   https://www.microsoft365.com
+   ```
 
 1. Sign in with your lab credentials if prompted:
 
@@ -36,6 +38,10 @@ In this task, you will navigate to the pre-built agents gallery and explore avai
    - Password: <inject key="AzureAdUserPassword"></inject>
 
 1. If you see a **Stay signed in?** prompt, select **Yes**.
+
+1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
+
+   ![](./media/ex3-copilot-icon.png)
 
 1. In the Microsoft 365 Copilot interface, click on the **Agents** button on the right side panel (or look for the **@** symbol to access agents).
 

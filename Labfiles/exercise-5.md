@@ -22,7 +22,22 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will learn about Copilot Pages and its capabilities.
 
-1. Navigate to Microsoft 365 Copilot Chat at `https://www.microsoft365.com/copilot` or click the Copilot icon.
+1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+
+1. Navigate to the Microsoft 365 portal:
+
+   ```
+   https://www.microsoft365.com
+   ```
+
+1. Sign in with your lab credentials if prompted:
+
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
+
+1. If you see a **Stay signed in?** prompt, select **Yes**.
+
+1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
 
    ![](./media/ex5-copilot-home.png)
 

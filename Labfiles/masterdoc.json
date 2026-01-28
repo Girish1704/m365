@@ -1,0 +1,68 @@
+[
+    {
+        "Name": "Deploy-and-Adopt-Microsoft-365-Copilot-Agents",
+        "Language": "English",
+        "Files": [
+            {
+                "RawFilePath": "getting-started.md",
+                "Order": 1
+            },
+            {
+                "RawFilePath": "day1-overview.md",
+                "Order": 2
+            },
+            {
+                "RawFilePath": "exercise-1.md",
+                "Order": 3
+            },
+            {
+                "RawFilePath": "exercise-2.md",
+                "Order": 4
+            },
+            {
+                "RawFilePath": "exercise-3.md",
+                "Order": 5
+            },
+            {
+                "RawFilePath": "exercise-4.md",
+                "Order": 6
+            },
+            {
+                "RawFilePath": "exercise-5.md",
+                "Order": 7
+            },
+            {
+                "RawFilePath": "day2-overview.md",
+                "Order": 8
+            },
+            {
+                "RawFilePath": "exercise-6.md",
+                "Order": 9
+            },
+            {
+                "RawFilePath": "exercise-7.md",
+                "Order": 10
+            },
+            {
+                "RawFilePath": "exercise-8.md",
+                "Order": 11
+            },
+            {
+                "RawFilePath": "day3-overview.md",
+                "Order": 12
+            },
+            {
+                "RawFilePath": "exercise-9.md",
+                "Order": 13
+            },
+            {
+                "RawFilePath": "exercise-10.md",
+                "Order": 14
+            },
+            {
+                "RawFilePath": "exercise-11.md",
+                "Order": 15
+            }
+        ]
+    }
+]

@@ -51,25 +51,36 @@ In this task, you will navigate to Microsoft 365 Copilot and access the Research
 
    ![](./media/ex2-researcher-agent.png)
 
-1. Review the Researcher Agent capabilities:
+1. Click on the **Researcher** agent to open it. You will see the Researcher interface with a prompt box asking **"What do you want to research today?"**
 
-   - Research and gather information on any topic
-   - Synthesize content from multiple sources
-   - Organize information logically
-   - Create professional-quality documents
-   - Provide citations and references
+   ![](./media/ex2-researcher-interface.png)
 
-   ![](./media/ex2-researcher-details.png)
+1. Notice the quick action cards available on the Researcher home page:
 
-1. Click **Start chat** or **Use this agent** to begin working with the Researcher Agent.
+   | Quick Action | Description |
+   |--------------|-------------|
+   | **Project update** | Executive status report on a project |
+   | **Topic report** | Get updates on any topic |
+   | **Customer brief** | Prepare for a meeting with a customer |
+   | **Market analysis** | Analyze the market position of a company |
+   | **Meeting prep** | Prepare for upcoming meetings |
+   | **Daily briefing** | Show today's updates, tasks, and meetings |
 
-   ![](./media/ex2-start-researcher.png)
+   ![](./media/ex2-quick-actions.png)
+
+1. Also notice the input options:
+   - **+** button to add attachments
+   - **Computer use** option for advanced scenarios
+   - **Sources** to specify research sources
+   - **Microphone** icon for voice input
+
+   >**Note:** The Researcher agent can access web sources, your Microsoft 365 data (emails, files, calendar), and any sources you explicitly add.
 
 ### Task 2: Research a Business Topic
 
 In this task, you will use the Researcher Agent to research a business topic.
 
-1. With the Researcher Agent active, start by defining your research topic:
+1. You can either click on one of the quick action cards or type directly in the prompt box. Let's start with a custom research topic. In the **"What do you want to research today?"** box, type:
 
    **Prompt:**
    ```
@@ -84,9 +95,16 @@ In this task, you will use the Researcher Agent to research a business topic.
 
    **Expected Output:**
 
+   The Researcher Agent will search for information and provide a comprehensive report including:
+
+   - **Current Trends:** Growth statistics, adoption rates, and emerging patterns
+   - **Key Benefits:** Productivity gains, cost savings, improved decision-making
+   - **Challenges:** Data quality, talent gaps, change management, ethical concerns
+   - **Best Practices:** Start small, focus on data quality, build cross-functional teams
+
    ![](./media/ex2-research-response.png)
 
-   The Researcher Agent provides comprehensive research on the topic.
+   >**Note:** The Researcher may display "Searching" or "Gathering information" status while compiling the research.
 
 1. Dig deeper into specific areas:
 
@@ -99,7 +117,25 @@ In this task, you will use the Researcher Agent to research a business topic.
 
    **Expected Output:**
 
+   The Researcher will provide detailed analysis of common failure points such as:
+
+   - **Unclear business objectives** - Starting with technology instead of business problems
+   - **Poor data quality** - Insufficient or unreliable data for training models
+   - **Lack of executive sponsorship** - Missing leadership commitment and resources
+   - **Talent gaps** - Shortage of skilled AI/ML professionals
+   - **Change resistance** - Organizational culture not ready for AI-driven processes
+
    ![](./media/ex2-challenges-response.png)
+
+1. Now try using one of the quick action cards. Click on **Market analysis** and enter a company name like **Microsoft** to see how the Researcher analyzes market positioning.
+
+   ![](./media/ex2-market-analysis.png)
+
+   **Expected Output:**
+
+   The Researcher will provide market analysis covering competitive landscape, market share, strategic positioning, and recent developments.
+
+   ![](./media/ex2-market-response.png)
 
 1. Request industry-specific insights:
 

@@ -66,36 +66,39 @@ In this task, you will navigate to Microsoft 365 Copilot and access the Analyst 
 
 ### Task 2: Upload and Analyze Sales Data
 
-In this task, you will upload sales data and have the Analyst Agent analyze it.
+In this task, you will upload a sales data file and have the Analyst Agent analyze it.
 
 1. With the Analyst Agent active, you will see a chat interface ready for your prompts.
 
    ![](./media/ex1-analyst-chat.png)
 
-1. First, let us create sample sales data. Type the following prompt:
+1. A sales data file has been provided for you in the VM. Navigate to the following location to verify the file exists:
 
-   **Prompt:**
    ```
-   Create a sample sales dataset for a retail company with the following columns: Month, Region (North, South, East, West), Product Category (Electronics, Clothing, Home & Garden), Sales Amount, and Units Sold. Include data for the last 12 months.
+   C:\datasets\sales_data_sample.csv
    ```
 
-   ![](./media/ex1-create-data-prompt.png)
+   >**Note:** This CSV file contains real-world sales data including order numbers, quantities, prices, product lines, customer information, and regional data across multiple years.
 
-   **Expected Output:**
+   ![](./media/ex1-sales-data-file.png)
 
-   ![](./media/ex1-create-data-response.png)
+1. In the Copilot chat, click the **Attach file** or **Upload** icon to upload a file.
 
-   The Analyst Agent generates a comprehensive sales dataset.
+   ![](./media/ex1-attach-icon.png)
 
-1. Now ask the Analyst to analyze this data:
+1. Navigate to `C:\datasets\` and select the **sales_data_sample.csv** file, then click **Open**.
+
+   ![](./media/ex1-select-csv.png)
+
+1. Once the file is attached, type the following prompt to analyze the data:
 
    **Prompt:**
    ```
    Analyze this sales data and provide:
-   1. Total sales by region
-   2. Top performing product category
-   3. Month-over-month growth trends
-   4. Any notable patterns or anomalies
+   1. Total sales by territory (NA, EMEA, APAC, Japan)
+   2. Top performing product line
+   3. Year-over-year sales trends
+   4. Any notable patterns or anomalies in deal sizes
    ```
 
    ![](./media/ex1-analyze-prompt.png)
@@ -104,13 +107,13 @@ In this task, you will upload sales data and have the Analyst Agent analyze it.
 
    ![](./media/ex1-analyze-response.png)
 
-   The Analyst Agent provides a detailed breakdown of the sales data.
+   The Analyst Agent provides a detailed breakdown of the sales data including territory performance, product line analysis, and trends.
 
 1. Ask for deeper insights:
 
    **Prompt:**
    ```
-   Which region and product category combination has the highest growth potential based on this data? Explain your reasoning.
+   Which territory and product line combination has the highest sales performance? Also identify the top 5 customers by total sales amount.
    ```
 
    ![](./media/ex1-insights-prompt.png)
@@ -127,7 +130,7 @@ In this task, you will use the Analyst Agent to identify trends and generate act
 
    **Prompt:**
    ```
-   Identify the top 3 trends in this sales data and explain what business factors might be driving these trends.
+   Identify the top 3 trends in this sales data across the years 2003-2005 and explain what business factors might be driving these trends.
    ```
 
    ![](./media/ex1-trends-prompt.png)
@@ -142,7 +145,7 @@ In this task, you will use the Analyst Agent to identify trends and generate act
 
    **Prompt:**
    ```
-   Based on the current trends, what would you predict for next quarter's sales? Which regions and categories should we focus on?
+   Based on the sales trends across 2003-2005, which territories and product lines should the company focus on for growth? Which customer segments show the most potential?
    ```
 
    ![](./media/ex1-predict-prompt.png)
@@ -155,7 +158,7 @@ In this task, you will use the Analyst Agent to identify trends and generate act
 
    **Prompt:**
    ```
-   Compare the performance of Electronics vs Clothing categories across all regions. Which category is more consistent and which has more variability?
+   Compare the performance of Classic Cars vs Motorcycles product lines across all territories. Which product line is more consistent and which has more variability in deal sizes?
    ```
 
    ![](./media/ex1-compare-prompt.png)
@@ -172,7 +175,7 @@ In this task, you will ask the Analyst Agent to suggest and describe data visual
 
    **Prompt:**
    ```
-   What are the best types of charts to visualize this sales data for an executive presentation? Describe each chart and what insights it would highlight.
+   What are the best types of charts to visualize this sales data for an executive presentation? Consider the territories, product lines, and time-based trends. Describe each chart and what insights it would highlight.
    ```
 
    ![](./media/ex1-viz-prompt.png)
@@ -187,7 +190,7 @@ In this task, you will ask the Analyst Agent to suggest and describe data visual
 
    **Prompt:**
    ```
-   Describe a dashboard layout that would effectively present this sales data to senior leadership. Include 4-5 key visualizations and explain the story each tells.
+   Describe a dashboard layout that would effectively present this sales data to senior leadership. Include 4-5 key visualizations covering territory performance, product line analysis, customer distribution, and deal size patterns.
    ```
 
    ![](./media/ex1-dashboard-prompt.png)
@@ -200,7 +203,7 @@ In this task, you will ask the Analyst Agent to suggest and describe data visual
 
    **Prompt:**
    ```
-   Format the regional sales summary as a table that I can copy into a PowerPoint presentation, with clear headers and totals.
+   Format the territory sales summary as a table that I can copy into a PowerPoint presentation, with clear headers showing territory, total sales, number of orders, and average deal size.
    ```
 
    ![](./media/ex1-table-prompt.png)
@@ -217,7 +220,7 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
 
    **Prompt:**
    ```
-   Write an executive summary (3-4 paragraphs) of our sales performance based on this data. Include key achievements, areas of concern, and recommended actions.
+   Write an executive summary (3-4 paragraphs) of our sales performance based on this data from 2003-2005. Include key achievements across territories, top-performing product lines, and recommended actions for future growth.
    ```
 
    ![](./media/ex1-summary-prompt.png)
@@ -232,7 +235,7 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
 
    **Prompt:**
    ```
-   Create 5 key talking points for presenting this sales data to the board of directors. Each point should include the data insight and its business implication.
+   Create 5 key talking points for presenting this sales data to the board of directors. Each point should include the data insight from territories, product lines, or customer segments and its business implication.
    ```
 
    ![](./media/ex1-talking-points-prompt.png)
@@ -245,7 +248,7 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
 
    **Prompt:**
    ```
-   Tell the story of our sales performance this year in a narrative format that would engage a non-technical audience. Start with where we were, what happened, and where we are now.
+   Tell the story of our sales performance across 2003-2005 in a narrative format that would engage a non-technical audience. Highlight the growth in different territories, successful product lines, and key customer relationships.
    ```
 
    ![](./media/ex1-story-prompt.png)
@@ -259,10 +262,10 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
 In this exercise, you explored the Analyst Agent in Microsoft 365 Copilot. You learned how to:
 
 - Access and activate the Analyst Agent
-- Upload and analyze sales data
-- Generate insights and identify trends
+- Upload and analyze real sales data from a CSV file
+- Generate insights and identify trends across territories and product lines
 - Create data visualization recommendations
-- Build compelling data-driven narratives
+- Build compelling data-driven narratives for executive presentations
 
 The Analyst Agent is a powerful tool for transforming raw data into actionable insights and professional presentations.
 

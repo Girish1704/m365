@@ -105,96 +105,118 @@ In this task, you will create a new agent specifically designed for HR assistanc
 
 ### Task 3: Configure Agent Topics and Conversations
 
-In this task, you will configure topics that define how the agent handles different types of conversations.
+In this task, you will configure topics that define how the agent handles different types of conversations. You will use the **Add from description with Copilot** feature to quickly generate topic flows.
 
 1. In the agent editor, click on **Topics** in the left navigation.
 
    ![](./media/ex6-topics-section.png)
 
-1. You will see some default topics already created. Click **+ New topic** > **From blank** to create a custom topic.
+1. You will see some default topics already created. Click **+ Add a topic** to expand the dropdown menu.
 
-   ![](./media/ex6-new-topic.png)
+   ![](./media/ex6-add-topic-dropdown.png)
 
-1. Name the topic `Leave Request Information` and add trigger phrases:
+1. Select **Add from description with Copilot** option.
 
+   ![](./media/ex6-add-from-description.png)
+
+   >**Note:** This feature uses AI to automatically generate a complete topic flow based on your description, saving significant time compared to building topics manually.
+
+#### Topic 1: General HR Help
+
+1. In the **Add from description with Copilot** dialog, enter the following:
+
+   | Field | Value |
+   |-------|-------|
+   | **Name your topic** | `General HR Help` |
+   | **Create a topic to...** | See description below |
+
+   **Topic Description:**
    ```
-   How do I request leave
-   I want to take time off
-   Vacation request
-   How to apply for leave
-   Leave application process
-   PTO request
-   ```
-
-   ![](./media/ex6-topic-triggers.png)
-
-1. In the topic canvas, build the conversation flow:
-
-   - Add a **Message** node with the text:
-   ```
-   I can help you understand how to request leave. What type of leave are you interested in?
-   ```
-
-   ![](./media/ex6-message-node.png)
-
-1. Add a **Question** node to capture the leave type:
-
-   - Question text: `Please select the type of leave:`
-   - Identify: Multiple choice options
-   - Options:
-     - Annual Leave / Vacation
-     - Sick Leave
-     - Parental Leave
-     - Bereavement Leave
-     - Other
-
-   ![](./media/ex6-question-node.png)
-
-1. Add **Condition** branches based on the response:
-
-   - For **Annual Leave**: Add message explaining vacation request process
-   - For **Sick Leave**: Add message about sick leave policy
-   - For **Parental Leave**: Add message about parental leave entitlements
-
-   ![](./media/ex6-condition-branches.png)
-
-1. For the **Annual Leave** branch, add this message:
-
-   ```
-   To request annual leave:
-
-   1. Log in to the HR Portal at hrportal.contoso.com
-   2. Navigate to "My Leave" section
-   3. Click "New Request"
-   4. Select your leave dates
-   5. Add any notes for your manager
-   6. Submit for approval
-
-   Please provide at least 2 weeks notice for planned leave. Your manager will review and approve your request.
-
-   Is there anything else you would like to know about leave requests?
+   Help employees with general HR questions. First greet them warmly and ask what they need help with. Collect their HR query as a text input. If they ask about "benefits", respond with information about health insurance, retirement plans, wellness programs, and direct them to the HR portal. If they ask about "company policies" or "company rules", tell them to check the employee handbook on SharePoint. If they ask about "onboarding" or "new hire", explain the onboarding process includes orientation, training, and resources. If they ask about "performance review" or "appraisal", explain reviews are conducted annually. For any other query, ask them to clarify. If still unclear, offer to escalate to the HR team by asking if they want to escalate (yes/no). If yes, confirm their query will be forwarded. End by asking if there's anything else to help with.
    ```
 
-   ![](./media/ex6-annual-leave-message.png)
+   ![](./media/ex6-general-hr-description.png)
+
+1. Click **Create** to generate the topic.
+
+1. Copilot Studio will automatically generate the conversation flow with:
+   - Welcome message
+   - Question node to collect the HR query
+   - Condition branches for benefits, policies, onboarding, and performance reviews
+   - Clarification flow for unrecognized queries
+   - Escalation option
+   - Closing message
+
+   ![](./media/ex6-general-hr-flow.png)
+
+1. Review the generated flow and click **Save** to save the topic.
+
+#### Topic 2: Leave and Time Off
+
+1. Click **+ Add a topic** > **Add from description with Copilot** again.
+
+1. Enter the following details:
+
+   | Field | Value |
+   |-------|-------|
+   | **Name your topic** | `Leave and Time Off` |
+   | **Create a topic to...** | See description below |
+
+   **Topic Description:**
+   ```
+   Help employees with leave and time off questions. Greet them and ask how you can assist with leave. Present a multiple choice question asking which type of leave they want information about with options: Annual/Vacation, Sick, Personal, or All leave types. For Annual/Vacation, explain it accrues monthly and is for vacations or personal time, direct them to HR portal for balance. For Sick leave, explain it's for health-related absences and accrues per policy. For Personal leave, explain it's for important personal matters with eligibility requirements. For All leave types, provide a summary of all three types. Then explain that leave accrues based on employment status and tenure, and unused leave may carry over. Direct them to the HR portal for exact balances. Ask if they have questions about special leave cases like medical, parental, or emergency leave (yes/no). If yes, explain these require additional documentation and they should contact HR. End by asking if there's anything else about leave.
+   ```
+
+   ![](./media/ex6-leave-description.png)
+
+1. Click **Create** to generate the topic.
+
+1. Review the generated flow which should include:
+   - Welcome message for leave inquiries
+   - Multiple choice question for leave type selection
+   - Conditional responses for each leave type
+   - Information about leave accrual and HR portal
+   - Special cases handling
+   - Closing message
+
+   ![](./media/ex6-leave-flow.png)
 
 1. Click **Save** to save the topic.
 
-1. Create another topic for **Benefits Information**:
+#### Topic 3: Escalation to HR
 
-   - Name: `Benefits Inquiry`
-   - Trigger phrases:
-     ```
-     What benefits do I have
-     Health insurance information
-     401k questions
-     Retirement benefits
-     Benefits enrollment
-     Medical coverage
-     ```
+1. Click **+ Add a topic** > **Add from description with Copilot** one more time.
 
-   ![](./media/ex6-benefits-topic.png)
+1. Enter the following details:
 
-1. Build a similar conversation flow for benefits inquiries and save.
+   | Field | Value |
+   |-------|-------|
+   | **Name your topic** | `Escalation to HR` |
+   | **Create a topic to...** | See description below |
+
+   **Topic Description:**
+   ```
+   Handle escalation requests when employees need to contact HR directly. Start by acknowledging their concern is important and will be handled confidentially. Collect three pieces of information: 1) Ask them to briefly describe their issue or concern as text, 2) Ask for their name or the employee's name if reporting for someone else, 3) Ask for a contact email so HR can reach out. After collecting all information, confirm you will send this to the HR team. Inform them that HR will review their request and contact them at the provided email, and urgent issues will be prioritized. Provide next steps: HR will reach out soon, monitor email for response, and they can contact HR directly by phone for immediate assistance. Emphasize privacy and confidentiality are priorities. End by offering further assistance.
+   ```
+
+   ![](./media/ex6-escalation-description.png)
+
+1. Click **Create** to generate the topic.
+
+1. Review the generated flow which should include:
+   - Acknowledgment message
+   - Question to collect issue description
+   - Question to collect employee name
+   - Question to collect contact email
+   - Confirmation message
+   - Next steps information
+   - Privacy statement
+
+   ![](./media/ex6-escalation-flow.png)
+
+1. Click **Save** to save the topic.
+
+   >**Note:** The AI-generated topics may vary slightly. You can edit the generated nodes to customize the messages or add additional logic as needed.
 
 ### Task 4: Add Knowledge Sources to the Agent
 

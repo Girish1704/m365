@@ -132,7 +132,22 @@ In this task, you will configure topics that define how the agent handles differ
 
    **Topic Description:**
    ```
-   Help employees with general HR questions. First greet them warmly and ask what they need help with. Collect their HR query as a text input. If they ask about "benefits", respond with information about health insurance, retirement plans, wellness programs, and direct them to the HR portal. If they ask about "company policies" or "company rules", tell them to check the employee handbook on SharePoint. If they ask about "onboarding" or "new hire", explain the onboarding process includes orientation, training, and resources. If they ask about "performance review" or "appraisal", explain reviews are conducted annually. For any other query, ask them to clarify. If still unclear, offer to escalate to the HR team by asking if they want to escalate (yes/no). If yes, confirm their query will be forwarded. End by asking if there's anything else to help with.
+   Create a topic that helps users with general HR questions.
+   Start by greeting the user and asking what HR topic they need help with.
+   Let the user explain their question in their own words.
+   Identify whether the question is related to:
+   - Benefits
+   - Company policies or rules
+   - Onboarding or new hire process
+   - Performance reviews or appraisals
+   If the question is about benefits, provide basic information and guide the user to the HR portal.
+   If the question is about company policies, explain where official documents can be found.
+   If the question is about onboarding, guide new employees through the process.
+   If the question is about performance reviews, explain timelines and procedures.
+   If the question is unclear, ask the user to clarify.
+   If the assistant cannot answer, offer to escalate to HR.
+   If the user agrees, confirm that the request will be sent.
+   End by asking if the user needs any more help.
    ```
 
    ![](./media/ex6-general-hr-description.png)
@@ -164,7 +179,23 @@ In this task, you will configure topics that define how the agent handles differ
 
    **Topic Description:**
    ```
-   Help employees with leave and time off questions. Greet them and ask how you can assist with leave. Present a multiple choice question asking which type of leave they want information about with options: Annual/Vacation, Sick, Personal, or All leave types. For Annual/Vacation, explain it accrues monthly and is for vacations or personal time, direct them to HR portal for balance. For Sick leave, explain it's for health-related absences and accrues per policy. For Personal leave, explain it's for important personal matters with eligibility requirements. For All leave types, provide a summary of all three types. Then explain that leave accrues based on employment status and tenure, and unused leave may carry over. Direct them to the HR portal for exact balances. Ask if they have questions about special leave cases like medical, parental, or emergency leave (yes/no). If yes, explain these require additional documentation and they should contact HR. End by asking if there's anything else about leave.
+   Create a topic that helps users with leave and time off questions.
+   Start by greeting the user and asking what kind of leave they need help with.
+   Let the user choose or explain their leave type.
+   Support questions related to:
+   - Annual or vacation leave
+   - Sick leave
+   - Personal leave
+   - General leave information
+   Provide clear information based on the selected leave type.
+   Explain how leave is earned, used, and managed.
+   Guide users to the HR portal to check their leave balance.
+   Ask if the user has questions about special leave cases such as:
+   - Medical leave
+   - Parental leave
+   - Emergency leave
+   If needed, recommend contacting HR for special cases.
+   End by asking if the user needs further assistance.
    ```
 
    ![](./media/ex6-leave-description.png)
@@ -196,7 +227,18 @@ In this task, you will configure topics that define how the agent handles differ
 
    **Topic Description:**
    ```
-   Handle escalation requests when employees need to contact HR directly. Start by acknowledging their concern is important and will be handled confidentially. Collect three pieces of information: 1) Ask them to briefly describe their issue or concern as text, 2) Ask for their name or the employee's name if reporting for someone else, 3) Ask for a contact email so HR can reach out. After collecting all information, confirm you will send this to the HR team. Inform them that HR will review their request and contact them at the provided email, and urgent issues will be prioritized. Provide next steps: HR will reach out soon, monitor email for response, and they can contact HR directly by phone for immediate assistance. Emphasize privacy and confidentiality are priorities. End by offering further assistance.
+   Create a topic that helps users contact or escalate issues to HR.
+   Start with a polite and supportive message.
+   Ask the user to describe their issue or concern.
+   Collect the following details:
+   - Issue summary
+   - Employee name
+   - Contact email address
+   Confirm that the information has been received.
+   Inform the user that the request will be shared with HR.
+   Explain that HR will follow up through email.
+   Reassure the user about privacy and confidentiality.
+   End by asking if they need any more help.
    ```
 
    ![](./media/ex6-escalation-description.png)
@@ -220,7 +262,72 @@ In this task, you will configure topics that define how the agent handles differ
 
 ### Task 4: Add Knowledge Sources to the Agent
 
-In this task, you will connect the agent to knowledge sources for grounded responses.
+In this task, you will upload HR policy documents to SharePoint and connect the agent to use them as knowledge sources for grounded responses.
+
+#### Step 1: Upload Policy Documents to SharePoint
+
+1. First, open **File Explorer** on your lab VM.
+
+1. Navigate to the HR policy documents folder:
+
+   ```
+   C:\datasets\policies
+   ```
+
+   ![](./media/ex6-policies-folder.png)
+
+1. You will find the following HR policy documents:
+
+   | Document | Description |
+   |----------|-------------|
+   | 01-Leave-Policy.md | Annual, sick, personal, parental leave entitlements |
+   | 02-Holiday-Calendar-2025.md | Official holidays and floating holidays |
+   | 03-Employee-Benefits-Guide.md | Medical, dental, 401k, wellness programs |
+   | 04-Code-of-Conduct.md | Ethics, values, conflicts of interest |
+   | 05-Performance-Review-Policy.md | Ratings, goals, merit increases |
+   | 06-Onboarding-Guide.md | First day through 90-day milestones |
+   | 07-Remote-Work-Policy.md | Hybrid/remote work guidelines |
+   | 08-Health-and-Safety-Policy.md | Emergency procedures, hazard reporting |
+   | 09-Travel-and-Expense-Policy.md | Booking, per diem, reimbursement |
+   | 10-Anti-Harassment-Policy.md | Discrimination prevention, reporting |
+   | 11-IT-Security-Policy.md | Passwords, devices, data handling |
+   | 12-Training-and-Development-Policy.md | Tuition, certifications, mentoring |
+
+1. Select all the policy files (Ctrl+A) and copy them (Ctrl+C).
+
+1. Open a new browser tab and navigate to your SharePoint site:
+
+   ```
+   https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com/sites/HRPoliciesHub-<inject key="DeploymentID" enableCopy="false"/>
+   ```
+
+1. Click on **Documents** in the left navigation.
+
+   ![](./media/ex6-sharepoint-documents.png)
+
+1. Click **+ New** > **Folder** to create a new folder.
+
+1. Name the folder `HR Policies` and click **Create**.
+
+   ![](./media/ex6-create-folder.png)
+
+1. Open the **HR Policies** folder and click **Upload** > **Files**.
+
+   ![](./media/ex6-upload-files.png)
+
+1. Navigate to `C:\datasets\policies`, select all the policy documents, and click **Open**.
+
+   ![](./media/ex6-select-policies.png)
+
+1. Wait for all files to upload successfully. You should see all 12 policy documents in the folder.
+
+   ![](./media/ex6-policies-uploaded.png)
+
+   >**Note:** These policy documents contain comprehensive Contoso HR information that the agent will use to answer employee questions accurately.
+
+#### Step 2: Connect SharePoint as Knowledge Source
+
+1. Return to **Microsoft Copilot Studio** and your HR Assistant agent.
 
 1. In the agent editor, click on **Knowledge** in the left navigation.
 
@@ -234,15 +341,15 @@ In this task, you will connect the agent to knowledge sources for grounded respo
 
    ![](./media/ex6-sharepoint-source.png)
 
-1. Enter the URL of the HR Policies SharePoint site you created in Exercise 5:
+1. Enter the URL of the HR Policies SharePoint site with the Documents library:
 
    ```
-   https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com/sites/HRPoliciesHub-<inject key="DeploymentID" enableCopy="false"/>
+   https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com/sites/HRPoliciesHub-<inject key="DeploymentID" enableCopy="false"/>/Shared%20Documents/HR%20Policies
    ```
 
    ![](./media/ex6-enter-sharepoint.png)
 
-   >**Note:** If you did not complete Exercise 5, you can skip this step or create a new SharePoint site with HR documents.
+   >**Note:** This points directly to the HR Policies folder containing all the policy documents you uploaded.
 
 1. Click **Add** to add the knowledge source.
 
@@ -256,6 +363,42 @@ In this task, you will connect the agent to knowledge sources for grounded respo
    ![](./media/ex6-knowledge-config.png)
 
 1. Click **Save** to save the knowledge configuration.
+
+#### Step 3: Update Agent Instructions
+
+1. Click on **Overview** in the left navigation to return to the agent overview.
+
+1. Locate the **Instructions** section and click **Edit**.
+
+   ![](./media/ex6-edit-instructions.png)
+
+1. Update the agent instructions to reference the policy documents:
+
+   ```
+   You are an HR Assistant for Contoso Corporation. Your role is to help employees with HR-related questions.
+
+   When answering questions:
+   - Always refer to the official HR policy documents in the knowledge base
+   - For leave questions, reference the Leave Policy and Holiday Calendar
+   - For benefits questions, reference the Employee Benefits Guide
+   - For conduct or ethics questions, reference the Code of Conduct
+   - For performance questions, reference the Performance Review Policy
+   - For new employee questions, reference the Onboarding Guide
+   - For remote work questions, reference the Remote Work Policy
+   - For safety concerns, reference the Health and Safety Policy
+   - For travel questions, reference the Travel and Expense Policy
+   - For harassment or discrimination concerns, reference the Anti-Harassment Policy
+   - For IT or security questions, reference the IT Security Policy
+   - For training questions, reference the Training and Development Policy
+
+   Be professional, empathetic, and helpful. Provide accurate information from the policy documents.
+   If you cannot find the answer in the policies, offer to escalate to the HR team.
+   Always maintain confidentiality and privacy.
+   ```
+
+   ![](./media/ex6-updated-instructions.png)
+
+1. Click **Save** to save the updated instructions.
 
 ### Task 5: Configure Agent Actions and Integrations
 

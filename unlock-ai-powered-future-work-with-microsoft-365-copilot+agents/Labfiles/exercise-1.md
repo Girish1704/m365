@@ -36,7 +36,11 @@ In this task, you will navigate to Microsoft 365 Copilot and access the Analyst 
    https://www.microsoft365.com
    ```
 
-1. Sign in with your lab credentials if prompted:
+1. Click **Sign in**, enter your lab credentials, and select **Yes** to stay signed in.
+
+   ![](./media/m36-copg-ex1-g1.png)
+
+1. Sign in with your lab credentials:
 
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
    - Password: <inject key="AzureAdUserPassword"></inject>
@@ -45,7 +49,7 @@ In this task, you will navigate to Microsoft 365 Copilot and access the Analyst 
 
 1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
 
-   ![](./media/ex1-copilot-icon.png)
+   ![](./media/m36-copg-ex1-g1.png)
 
 1. In the Copilot interface, click on the **Agents** button on the right side panel.
 

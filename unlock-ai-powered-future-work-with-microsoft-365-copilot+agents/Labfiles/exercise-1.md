@@ -38,26 +38,24 @@ In this task, you will navigate to Microsoft 365 Copilot and access the Analyst 
 
 1. Click **Sign in**, enter your lab credentials, and select **Yes** to stay signed in.
 
-   ![](./media/m36-copg-ex1-g1.png)
-
 1. Sign in with your lab credentials:
 
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
    - Password: <inject key="AzureAdUserPassword"></inject>
 
-1. If you see a **Stay signed in?** prompt, select **Yes**.
+1. If you see a **Stay signed in?** prompt, select **No**.
+
+1. Click the **X (Close)** button at the top-right corner of the popup to cancel it.
+
+   ![](../media/m365-cop-ex1-g1-1.png)
 
 1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
 
-   ![](./media/m36-copg-ex1-g1.png)
-
-1. In the Copilot interface, click on the **Agents** button on the right side panel.
-
-   ![](./media/ex1-agents-button.png)
+   ![](../media/m365-cop-ex1-g2.png)
 
 1. In the agents panel, browse or search for the **Analyst** agent.
 
-   ![](./media/ex1-analyst-agent.png)
+   ![](../media/m36-copg-ex2-a-g14.png)
 
 1. Click on the **Analyst** agent to view its details and capabilities:
 
@@ -66,19 +64,13 @@ In this task, you will navigate to Microsoft 365 Copilot and access the Analyst 
    - Create charts and visualizations
    - Provide data-driven recommendations
 
-   ![](./media/ex1-analyst-details.png)
-
-1. Click **Start chat** or **Use this agent** to begin working with the Analyst Agent.
-
-   ![](./media/ex1-start-analyst.png)
+      ![](../media/m36-copg-ex2-a-g15.png)
 
 ### Task 2: Upload and Analyze Sales Data
 
 In this task, you will upload a sales data file and have the Analyst Agent analyze it.
 
 1. With the Analyst Agent active, you will see a chat interface ready for your prompts.
-
-   ![](./media/ex1-analyst-chat.png)
 
 1. A sales data file has been provided for you in the VM. Navigate to the following location to verify the file exists:
 
@@ -88,19 +80,16 @@ In this task, you will upload a sales data file and have the Analyst Agent analy
 
    >**Note:** This CSV file contains 376 rows of real sales data with columns including ORDERNUMBER, QUANTITYORDERED, PRICEEACH, SALES, ORDERDATE, STATUS, YEAR_ID (2003-2005), PRODUCTLINE, CUSTOMERNAME, TERRITORY, COUNTRY, and DEALSIZE.
 
-   ![](./media/ex1-sales-data-file.png)
+1. Click the **+ (Add) (1)** icon, then select **Upload images and files (2)** to upload your data.
 
-1. In the Copilot chat, click the **Attach file** or **Upload** icon to upload a file.
-
-   ![](./media/ex1-attach-icon.png)
+   ![](../media/m36-copg-ex1-g2.png)
 
 1. Navigate to `C:\datasets\` and select the **sales_data_sample.csv** file, then click **Open**.
 
-   ![](./media/ex1-select-csv.png)
+   ![](../media/ex1-select-csv.png)
 
-1. Once the file is attached, type the following prompt to analyze the data:
+1. Enter the analysis prompt in the **message box (1)**, then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Analyze this sales data and provide:
    1. Total sales by territory (NA, EMEA, APAC, Japan)
@@ -109,7 +98,7 @@ In this task, you will upload a sales data file and have the Analyst Agent analy
    4. Any notable patterns or anomalies in deal sizes
    ```
 
-   ![](./media/ex1-analyze-prompt.png)
+   ![](../media/m36-copg-ex1-g3.png)
 
    **Expected Output:**
 
@@ -120,23 +109,19 @@ In this task, you will upload a sales data file and have the Analyst Agent analy
    - **Year-over-Year Trends:** Growth of +17% from 2003 to 2004, followed by a decline in 2005 (likely due to partial year data)
    - **Deal Size Patterns:** Medium deals dominate both volume (230 orders) and revenue, with Large deals showing higher average order values
 
-   ![](./media/ex1-analyze-response.png)
+      >**Note:** The Analyst Agent performs real-time data analysis and may display "Reasoning" or "Coding and executing" status while processing your request.
 
-   >**Note:** The Analyst Agent performs real-time data analysis and may display "Reasoning" or "Coding and executing" status while processing your request.
+1. Enter the deeper insight question in the **message box (1)**, then click the **Send (2)** button to submit it.
 
-1. Ask for deeper insights:
-
-   **Prompt:**
    ```
    Which territory and product line combination has the highest sales performance? Also identify the top 5 customers by total sales amount.
    ```
 
-   ![](./media/ex1-insights-prompt.png)
+   ![](../media/m36-copg-ex1-g4.png)
 
    **Expected Output:**
 
    The Analyst Agent will identify:
-
    - **Highest Performing Combination:** EMEA x Classic Cars with approximately $588K (the strongest territory/product-line pair)
    - **Top 5 Customers by Total Sales:**
      1. Mini Gifts Distributors Ltd. - ~$116K
@@ -144,8 +129,6 @@ In this task, you will upload a sales data file and have the Analyst Agent analy
      3. Dragon Souveniers, Ltd. - ~$62K
      4. Corporate Gift Ideas Co. - ~$52K
      5. Land of Toys Inc. - ~$46K
-
-   ![](./media/ex1-insights-response.png)
 
 ### Task 3: Generate Data Insights and Trends
 
@@ -158,7 +141,7 @@ In this task, you will use the Analyst Agent to identify trends and generate act
    Identify the top 3 trends in this sales data across the years 2003-2005 and explain what business factors might be driving these trends.
    ```
 
-   ![](./media/ex1-trends-prompt.png)
+   ![](../media/m36-copg-ex1-g5.png)
 
    **Expected Output:**
 
@@ -168,8 +151,6 @@ In this task, you will use the Analyst Agent to identify trends and generate act
    - **Trend 2:** Strong and consistent outperformance by Classic Cars across all years - driven by premium product positioning and distributor affinity
    - **Trend 3:** Territory imbalance with EMEA and NA dominating while APAC and Japan show "high-value but low-volume" profiles
 
-   ![](./media/ex1-trends-response.png)
-
 1. Ask for predictive insights:
 
    **Prompt:**
@@ -177,7 +158,7 @@ In this task, you will use the Analyst Agent to identify trends and generate act
    Based on the sales trends across 2003-2005, which territories and product lines should the company focus on for growth? Which customer segments show the most potential?
    ```
 
-   ![](./media/ex1-predict-prompt.png)
+   ![](../media/m36-copg-ex1-g6.png)
 
    **Expected Output:**
 
@@ -188,8 +169,6 @@ In this task, you will use the Analyst Agent to identify trends and generate act
    - **Product Focus:** Continue investing in Classic Cars while expanding Motorcycles as a secondary growth driver
    - **Customer Segments:** Major wholesalers (Mini Gifts, Euro Shopping Channel) and premium collectors in Japan/APAC
 
-   ![](./media/ex1-predict-response.png)
-
 1. Request comparative analysis:
 
    **Prompt:**
@@ -197,7 +176,7 @@ In this task, you will use the Analyst Agent to identify trends and generate act
    Compare the performance of Classic Cars vs Motorcycles product lines across all territories. Which product line is more consistent and which has more variability in deal sizes?
    ```
 
-   ![](./media/ex1-compare-prompt.png)
+   ![](../media/ex1-compare-prompt.png)
 
    **Expected Output:**
 
@@ -207,7 +186,7 @@ In this task, you will use the Analyst Agent to identify trends and generate act
    - **Motorcycles:** More balanced across territories, concentrated in Medium deals, more predictable and consistent
    - **Verdict:** Motorcycles is more consistent (lower variability), while Classic Cars has more variability but higher revenue potential
 
-   ![](./media/ex1-compare-response.png)
+   ![](../media/ex1-compare-response.png)
 
 ### Task 4: Create Data Visualizations
 
@@ -220,7 +199,7 @@ In this task, you will ask the Analyst Agent to suggest and describe data visual
    What are the best types of charts to visualize this sales data for an executive presentation? Consider the territories, product lines, and time-based trends. Describe each chart and what insights it would highlight.
    ```
 
-   ![](./media/ex1-viz-prompt.png)
+   ![](../media/ex1-viz-prompt.png)
 
    **Expected Output:**
 
@@ -233,7 +212,7 @@ In this task, you will ask the Analyst Agent to suggest and describe data visual
    - **Top Customers Pareto Chart:** Bars with cumulative % line showing customer concentration
    - **Deal Size Boxplots:** Distribution of order values by deal size and product line
 
-   ![](./media/ex1-viz-response.png)
+   ![](../media/ex1-viz-response.png)
 
 1. Ask for a specific visualization description:
 
@@ -242,7 +221,7 @@ In this task, you will ask the Analyst Agent to suggest and describe data visual
    Describe a dashboard layout that would effectively present this sales data to senior leadership. Include 4-5 key visualizations covering territory performance, product line analysis, customer distribution, and deal size patterns.
    ```
 
-   ![](./media/ex1-dashboard-prompt.png)
+   ![](../media/ex1-dashboard-prompt.png)
 
    **Expected Output:**
 
@@ -255,7 +234,7 @@ In this task, you will ask the Analyst Agent to suggest and describe data visual
    - **Tile 4:** Deal Size Mix by Product Line (100% stacked bars)
    - **Tile 5:** Per-Order Sales Distribution Boxplots
 
-   ![](./media/ex1-dashboard-response.png)
+   ![](../media/ex1-dashboard-response.png)
 
 1. Request data formatting for export:
 
@@ -264,7 +243,7 @@ In this task, you will ask the Analyst Agent to suggest and describe data visual
    Format the territory sales summary as a table that I can copy into a PowerPoint presentation, with clear headers showing territory, total sales, number of orders, and average deal size.
    ```
 
-   ![](./media/ex1-table-prompt.png)
+   ![](../media/ex1-table-prompt.png)
 
    **Expected Output:**
 
@@ -279,7 +258,7 @@ In this task, you will ask the Analyst Agent to suggest and describe data visual
 
    >**Note:** Some records may have blank territory values. The Analyst can map these using country data if requested.
 
-   ![](./media/ex1-table-response.png)
+   ![](../media/ex1-table-response.png)
 
 ### Task 5: Build a Data-Driven Narrative
 
@@ -292,7 +271,7 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
    Write an executive summary (3-4 paragraphs) of our sales performance based on this data from 2003-2005. Include key achievements across territories, top-performing product lines, and recommended actions for future growth.
    ```
 
-   ![](./media/ex1-summary-prompt.png)
+   ![](../media/ex1-summary-prompt.png)
 
    **Expected Output:**
 
@@ -303,7 +282,7 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
    - **Product Line Success:** Classic Cars as the flagship driver with $1.16M, Motorcycles as a stable secondary line
    - **Recommended Actions:** Focus on EMEA growth, deepen key account relationships, explore premium offerings in Japan/APAC, strengthen discount governance
 
-   ![](./media/ex1-summary-response.png)
+   ![](../media/ex1-summary-response.png)
 
 1. Ask for presentation talking points:
 
@@ -312,7 +291,7 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
    Create 5 key talking points for presenting this sales data to the board of directors. Each point should include the data insight from territories, product lines, or customer segments and its business implication.
    ```
 
-   ![](./media/ex1-talking-points-prompt.png)
+   ![](../media/ex1-talking-points-prompt.png)
 
    **Expected Output:**
 
@@ -324,7 +303,7 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
    4. **Customer Concentration Risk:** Top 5 customers drive significant share - diversify mid-tier accounts
    5. **Deal Size Variability:** Classic Cars has higher Large-deal dependence - adjust forecasting
 
-   ![](./media/ex1-talking-points-response.png)
+   ![](../media/ex1-talking-points-response.png)
 
 1. Request a data story:
 
@@ -333,7 +312,7 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
    Tell the story of our sales performance across 2003-2005 in a narrative format that would engage a non-technical audience. Highlight the growth in different territories, successful product lines, and key customer relationships.
    ```
 
-   ![](./media/ex1-story-prompt.png)
+   ![](../media/ex1-story-prompt.png)
 
    **Expected Output:**
 
@@ -345,7 +324,7 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
    - Key relationships with Mini Gifts Distributors, Euro Shopping Channel, and other top accounts
    - Opportunities in premium markets like Japan and APAC
 
-   ![](./media/ex1-story-response.png)
+   ![](../media/ex1-story-response.png)
 
 ## Summary
 

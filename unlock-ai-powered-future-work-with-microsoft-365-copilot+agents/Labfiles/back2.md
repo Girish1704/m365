@@ -16,6 +16,7 @@ In this exercise, you will complete the following tasks:
 - Task 2: Research a business topic
 - Task 3: Organize and synthesize information
 - Task 4: Create structured content
+- Task 5: Produce a professional report
 
 ### Task 1: Access the Researcher Agent
 
@@ -240,6 +241,87 @@ In this task, you will use the Researcher Agent to create different types of str
    ```
 
    ![](../media/m36-copg-ex2-a-g13.png)
+
+### Task 5: Produce a Professional Report
+
+In this task, you will have the Researcher Agent produce a professional report.
+
+>**Important Note:** The Researcher agent works best through iteration. Don't expect perfect output on the first try. You may need to:
+>- Request clarifications or expansions
+>- Ask for specific formatting (tables, lists, sections)
+>- Refine the tone or length
+>- Request visual formats when needed
+>
+>This back-and-forth is normal and helps produce better results.
+
+1. Request an executive summary:
+
+   **Prompt:**
+   ```
+   Write a professional executive summary (400-500 words) for the AI adoption whitepaper. It should capture the key findings, recommendations, and call to action for business leaders.
+   ```
+
+   ![](../media/ex2-execsummary-prompt.png)
+
+   **Expected Output:**
+
+   The Researcher Agent creates a polished executive summary covering:
+   - Overview of AI's transformative potential
+   - Key findings on adoption trends
+   - Strategic imperatives for business leaders
+   - Clear call to action
+
+   ![](../media/ex2-execsummary-response.png)
+
+   >**Tip:** If the summary is too long or too short, you can say "Make this more concise" or "Expand on the recommendations section."
+
+1. Create an introduction section:
+
+   **Prompt:**
+   ```
+   Write the introduction section for the whitepaper. Set the context for why AI adoption is critical now, the opportunity it presents, and what readers will learn from this document.
+   ```
+
+   ![](../media/ex2-intro-prompt.png)
+
+   **Expected Output:**
+
+   ![](../media/ex2-intro-response.png)
+
+1. Create a conclusion with recommendations:
+
+   **Prompt:**
+   ```
+   Write the conclusion section with 5 specific recommendations for organizations looking to accelerate their AI adoption. Each recommendation should be actionable and prioritized.
+   ```
+
+   ![](../media/ex2-conclusion-prompt.png)
+
+   **Expected Output:**
+
+   ![](../media/ex2-conclusion-response.png)
+
+1. Request the complete document structure:
+
+   **Prompt:**
+   ```
+   Compile all the sections we have created into a complete document outline with the executive summary, introduction, main content sections, and conclusion. Show how they flow together.
+   ```
+
+   ![](../media/ex2-compile-prompt.png)
+
+   **Expected Output:**
+
+   The Researcher will provide a complete document structure showing how all sections flow together, from executive summary through to conclusion.
+
+   ![](../media/ex2-compile-response.png)
+
+   >**Pro Tip:** At this point, you could ask the Researcher:
+   >- "Can you export this as a Word document?" (Note: You may need to copy/paste the content)
+   >- "Can you create a PowerPoint presentation version?"
+   >- "Can you add visual elements or charts?"
+   >
+   >The Researcher will guide you on available options for output formats.
 
 ## Summary
 

@@ -22,32 +22,13 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will navigate to Microsoft 365 and access the Document Analyzer Agent in Word.
 
-1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+1. On the Microsoft 365 home page, click on **Apps (1)** in the left navigation pane, then select **Word (2)** to open Word Online.
 
-1. Navigate to the Microsoft 365 portal:
-
-   ```
-   https://www.microsoft365.com
-   ```
-
-1. Sign in with your lab credentials if prompted:
-
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
-
-1. If you see a **Stay signed in?** prompt, select **Yes**.
-
-1. On the Microsoft 365 home page, click on **Apps** from the left navigation panel.
-
-   ![](./media/ex3-apps-panel.png)
-
-1. Select **Word** from the list of apps to open Word Online.
-
-   ![](./media/ex3-word-app.png)
+   ![](../media/m36-copg-ex3-b-g1.png)
 
 1. Click **New blank document** to create a new document.
 
-   ![](./media/ex3-new-document.png)
+   ![](../media/m36-copg-ex3-b-g2.png)
 
 1. First, let us create a sample business document to analyze. Copy and paste the following content into the document:
 
@@ -101,26 +82,17 @@ In this task, you will navigate to Microsoft 365 and access the Document Analyze
    The board recommends a 10% increase in dividend payments to shareholders, reflecting our strong financial position and confidence in future growth.
    ```
 
-   ![](./media/ex3-document-content.png)
-
-1. Save the document by clicking **File** > **Save As** > **Save to OneDrive**. Name it:
+1. Save the document and name it:
 
    ```
    Contoso-Annual-Review-2024
    ```
 
-   ![](./media/ex3-save-document.png)
+   ![](../media/m36-copg-ex3-b-g3.png)
 
 1. With the document open, click on the **Copilot** icon in the toolbar to access Copilot in Word.
 
-   ![](./media/ex3-copilot-word.png)
-
-   >**Important:** Ensure the document contains readable text content before attempting analysis. If Copilot indicates "no readable content" or "empty document," verify that:
-   >- The document has actual text (not just images)
-   >- The content was properly pasted or typed
-   >- The file was saved successfully
-   >
-   >If you encounter issues, try refreshing the page or re-opening the document.
+   ![](../media/m36-copg-ex3-b-g4.png)
 
 ### Task 2: Analyze Document Content
 
@@ -138,7 +110,7 @@ In this task, you will use Copilot to analyze the document content.
    3. The overall tone and purpose
    ```
 
-   ![](./media/ex3-analyze-prompt.png)
+   ![](../media/m36-copg-ex3-b-g6.png)
 
    **Expected Output:**
 
@@ -147,7 +119,7 @@ In this task, you will use Copilot to analyze the document content.
    - **Main Sections:** Executive Summary, Key Financial Highlights, Strategic Initiatives, Challenges and Risks, Outlook for 2025
    - **Tone and Purpose:** Professional, optimistic yet balanced; designed for stakeholder communication
 
-   ![](./media/ex3-analyze-response.png)
+   ![](../media/ex3-analyze-response.png)
 
    >**Troubleshooting:** If Copilot responds that it cannot find content or the document appears empty:
    >- Check that you're in the correct document (Contoso-Annual-Review-2024)
@@ -162,7 +134,7 @@ In this task, you will use Copilot to analyze the document content.
    What are the key performance indicators (KPIs) mentioned in this document? List them with their values and year-over-year changes.
    ```
 
-   ![](./media/ex3-kpi-prompt.png)
+   ![](../media/ex3-kpi-prompt.png)
 
    **Expected Output:**
 
@@ -173,7 +145,7 @@ In this task, you will use Copilot to analyze the document content.
    - Net Income: $756M (↑24% YoY)
    - Employee Count: 12,500 (↑15.7% from 10,800)
 
-   ![](./media/ex3-kpi-response.png)
+   ![](../media/ex3-kpi-response.png)
 
    >**Tip:** If you want the data in a specific format, you can ask: "Can you format this as a table?" or "Can you show this as a comparison chart?"
 
@@ -184,7 +156,7 @@ In this task, you will use Copilot to analyze the document content.
    What is the overall sentiment of this report? Is it optimistic, cautious, or neutral? Provide evidence from the text to support your assessment.
    ```
 
-   ![](./media/ex3-sentiment-prompt.png)
+   ![](../media/ex3-sentiment-prompt.png)
 
    **Expected Output:**
 
@@ -196,7 +168,7 @@ In this task, you will use Copilot to analyze the document content.
    
    However, it will note balanced reporting with acknowledgment of challenges (competition, talent acquisition, supply chain).
 
-   ![](./media/ex3-sentiment-response.png)
+   ![](../media/ex3-sentiment-response.png)
 
    >**Note:** If Copilot cannot assess sentiment, it means it couldn't access the document text. Verify the document is open and has content.
 
@@ -215,7 +187,7 @@ In this task, you will ask specific questions about the document content.
    Which business division had the highest growth rate, and what contributed to this growth?
    ```
 
-   ![](./media/ex3-growth-prompt.png)
+   ![](../media/ex3-growth-prompt.png)
 
    **Expected Output:**
 
@@ -227,7 +199,7 @@ In this task, you will ask specific questions about the document content.
      - Market shift toward cloud-based solutions
      - AI integration making cloud offerings more competitive
 
-   ![](./media/ex3-growth-response.png)
+   ![](../media/ex3-growth-response.png)
 
    >**Pro Tip:** If you want more detail, follow up with: "What about the other divisions? How did they perform?"
 
@@ -238,7 +210,7 @@ In this task, you will ask specific questions about the document content.
    What challenges did Contoso face in 2024, and how might these impact their 2025 goals?
    ```
 
-   ![](./media/ex3-challenges-prompt.png)
+   ![](../media/ex3-challenges-prompt.png)
 
    **Expected Output:**
 
@@ -256,7 +228,7 @@ In this task, you will ask specific questions about the document content.
    - **International expansion (5 new markets):** Currency risks could affect revenue projections
    - **$4.8-5.0B revenue target:** Supply chain and competition risks could pressure this target
 
-   ![](./media/ex3-challenges-response.png)
+   ![](../media/ex3-challenges-response.png)
 
    >**Note:** Copilot makes logical connections between stated challenges and stated goals. The quality of this analysis depends on how explicitly these connections are stated in the source document.
 
@@ -267,7 +239,7 @@ In this task, you will ask specific questions about the document content.
    Did Contoso meet their strategic targets? Compare the targets mentioned with the actual achievements.
    ```
 
-   ![](./media/ex3-targets-prompt.png)
+   ![](../media/ex3-targets-prompt.png)
 
    **Expected Output:**
 
@@ -282,7 +254,7 @@ In this task, you will ask specific questions about the document content.
    - Sustainability: Achieved carbon neutrality, 35% footprint reduction
    - Customer Satisfaction: 4.6/5 for cloud services
 
-   ![](./media/ex3-targets-response.png)
+   ![](../media/ex3-targets-response.png)
 
    >**Important:** Copilot can only confirm "met target" when both target and actual are explicitly stated in the document. For other items, it will note strong performance but cannot quantify as "met/missed" without baseline targets.
 
@@ -293,7 +265,7 @@ In this task, you will ask specific questions about the document content.
    How does the revenue from new international markets compare to the overall revenue growth?
    ```
 
-   ![](./media/ex3-compare-prompt.png)
+   ![](../media/ex3-compare-prompt.png)
 
    **Expected Output:**
 
@@ -314,7 +286,7 @@ In this task, you will ask specific questions about the document content.
    
    **Key Insight:** While new markets are a small portion of total revenue, they contributed nearly one-third of the company's growth.
 
-   ![](./media/ex3-compare-response.png)
+   ![](../media/ex3-compare-response.png)
 
    >**Note:** Copilot can perform mathematical reasoning and calculations based on document data. If calculations seem incorrect, you can ask it to "show your work" or "verify the calculation."
 
@@ -329,7 +301,7 @@ In this task, you will extract specific information from the document.
    Create a table summarizing all financial figures mentioned in this document, including revenue, margins, and growth percentages.
    ```
 
-   ![](./media/ex4-financials-prompt.png)
+   ![](../media/ex4-financials-prompt.png)
 
    **Expected Output:**
 
@@ -345,7 +317,7 @@ In this task, you will extract specific information from the document.
    | Net Income | $756M | $610M | +24% |
    | Employees | 12,500 | 10,800 | +15.7% |
 
-   ![](./media/ex3-financials-response.png)
+   ![](../media/ex3-financials-response.png)
 
    >**Tip:** If the table isn't formatted exactly as you need, you can refine with:
    >- "Can you add a column for dollar change (not just percentage)?"
@@ -359,7 +331,7 @@ In this task, you will extract specific information from the document.
    What are all the future plans and commitments mentioned in this document? List them as action items with specific targets.
    ```
 
-   ![](./media/ex3-actions-prompt.png)
+   ![](../media/ex3-actions-prompt.png)
 
    **Expected Output:**
 
@@ -373,7 +345,7 @@ In this task, you will extract specific information from the document.
    5. ☐ Expand AI capabilities across all products
    6. ☐ Implement 10% dividend increase to shareholders
 
-   ![](./media/ex3-actions-response.png)
+   ![](../media/ex3-actions-response.png)
 
    >**Pro Tip:** You can ask Copilot to: "Organize these by priority" or "Add responsible parties and deadlines based on industry best practices"
 
@@ -384,11 +356,11 @@ In this task, you will extract specific information from the document.
    List all time-related references in this document, including years, quarters, and future projections.
    ```
 
-   ![](./media/ex3-timeline-prompt.png)
+   ![](../media/ex3-timeline-prompt.png)
 
    **Expected Output:**
 
-   ![](./media/ex3-timeline-response.png)
+   ![](../media/ex3-timeline-response.png)
 
 ### Task 5: Transform Document Content
 
@@ -401,7 +373,7 @@ In this task, you will transform the document content into different formats.
    Create a 3-paragraph executive summary of this document that could be shared with investors.
    ```
 
-   ![](./media/ex3-summary-prompt.png)
+   ![](../media/ex3-summary-prompt.png)
 
    **Expected Output:**
 
@@ -410,7 +382,7 @@ In this task, you will transform the document content into different formats.
    - **Paragraph 2:** Strategic success (85% cloud migration, successful AI integration, international expansion)
    - **Paragraph 3:** Forward outlook (confident 2025 projections, $500M R&D investment, 10% dividend increase)
 
-   ![](./media/ex3-summary-response.png)
+   ![](../media/ex3-summary-response.png)
 
    >**Iteration Tip:** If the summary doesn't match your needs:
    >- "Make this more concise (2 paragraphs instead of 3)"
@@ -425,11 +397,11 @@ In this task, you will transform the document content into different formats.
    Convert the key findings of this report into a bulleted list format suitable for a presentation slide. Maximum 10 bullets.
    ```
 
-   ![](./media/ex3-bullets-prompt.png)
+   ![](../media/ex3-bullets-prompt.png)
 
    **Expected Output:**
 
-   ![](./media/ex3-bullets-response.png)
+   ![](../media/ex3-bullets-response.png)
 
 1. Create a different perspective:
 
@@ -438,7 +410,7 @@ In this task, you will transform the document content into different formats.
    Rewrite the challenges section from a risk management perspective, categorizing each challenge by risk level (high, medium, low) and suggesting mitigation strategies.
    ```
 
-   ![](./media/ex3-risk-prompt.png)
+   ![](../media/ex3-risk-prompt.png)
 
    **Expected Output:**
 
@@ -463,7 +435,7 @@ In this task, you will transform the document content into different formats.
      - *Impact:* Limited hardware delivery delays
      - *Mitigation:* Diversify supplier base, increase inventory buffers
 
-   ![](./media/ex3-risk-response.png)
+   ![](../media/ex3-risk-response.png)
 
    >**Note:** Risk categorization may vary based on Copilot's interpretation. You can refine by asking: "Can you justify why each risk is rated at that level?"
 
@@ -474,7 +446,7 @@ In this task, you will transform the document content into different formats.
    Draft a brief email to the board of directors highlighting the top 3 achievements and top 3 focus areas for 2025 based on this report.
    ```
 
-   ![](./media/ex3-email-prompt.png)
+   ![](../media/ex3-email-prompt.png)
 
    **Expected Output:**
 
@@ -503,7 +475,7 @@ In this task, you will transform the document content into different formats.
    [Name]
    ```
 
-   ![](./media/ex3-email-response.png)
+   ![](../media/ex3-email-response.png)
 
    >**Customization Options:** You can refine the email by asking:
    >- "Make this more formal/casual"
@@ -515,7 +487,7 @@ In this task, you will transform the document content into different formats.
 
    >**Important:** When you click **Insert**, Copilot will add the content at your current cursor position in the document. Make sure your cursor is in the right location before inserting.
 
-   ![](./media/ex3-insert-content.png)
+   ![](../media/ex3-insert-content.png)
 
 ## Summary
 

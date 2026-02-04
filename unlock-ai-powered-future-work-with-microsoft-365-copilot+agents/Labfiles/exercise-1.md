@@ -14,8 +14,6 @@ You will use the Analyst Agent to analyze a real sales dataset containing order 
 - **Customer Information:** Company names, contacts, and locations
 - **Order Details:** Order numbers, quantities, prices, sales amounts, and dates
 
->**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors. The Analyst Agent performs actual data analysis and may take 10-30 seconds to process complex queries.
-
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:

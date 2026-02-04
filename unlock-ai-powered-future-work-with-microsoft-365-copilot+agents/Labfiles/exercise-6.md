@@ -73,9 +73,9 @@ In this task, you will create a new agent specifically designed for HR assistanc
 
 1. In the **Describe your agent** field, enter the following description:
 
-   **Agent Description:**
+   **Agent Instructions:**
    ```
-   Create an HR assistant that helps employees with:
+   HR assistant that helps employees with:
    - Company policies and procedures
    - Leave management (vacation, sick leave, parental leave)
    - Benefits information (health insurance, retirement, wellness)

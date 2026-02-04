@@ -246,8 +246,8 @@ In this task, you will ask specific questions about the document content.
    Copilot will compare targets with achievements:
 
    **Explicitly Met/Exceeded Targets:**
-   - **Cloud Migration:** Target 75% → Achieved 85% ✅ **Exceeded**
-   - **AI Adoption:** "Exceeded expectations" with 40% customer adoption in Q1 ✅
+   - **Cloud Migration:** Target 75% → Achieved 85% **Exceeded**
+   - **AI Adoption:** "Exceeded expectations" with 40% customer adoption in Q1
    
    **Achievements Reported (No Explicit Target Stated):**
    - Market Expansion: Entered 3 new markets, contributed $180M revenue

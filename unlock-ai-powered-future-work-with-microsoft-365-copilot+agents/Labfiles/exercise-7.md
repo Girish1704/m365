@@ -92,27 +92,23 @@ In this task, you will create a new declarative agent project using the toolkit.
 
    ![](./media/ex7-no-plugin.png)
 
-1. Select a folder location to save your project. Create a new folder named:
-
-   ```
-   PoeticAssistant
-   ```
+1. Select **Default folder** when prompted for the project location.
 
    ![](./media/ex7-folder-name.png)
 
 1. Enter the application name when prompted:
 
    ```
-   Poetic Assistant
+   PoeticAssistant
    ```
 
    ![](./media/ex7-app-name.png)
 
-1. Click **Create** to generate the project.
-
-1. Wait for the project scaffolding to complete. VS Code will open the new project.
+1. Wait for the project scaffolding to complete. VS Code will open the new project in a new window.
 
    ![](./media/ex7-project-created.png)
+
+1. If a prompt appears regarding the trustworthiness of the source, click on **Yes, I trust the authors**.
 
 1. Explore the project structure:
 
@@ -128,6 +124,23 @@ In this task, you will create a new declarative agent project using the toolkit.
    ```
 
    ![](./media/ex7-project-structure.png)
+
+1. Now select the **Microsoft 365 Agents Toolkit** icon on the left sidebar. Under **Accounts**, click **Sign in to Microsoft 365** and log in with your lab credentials.
+
+   ![](./media/ex7-signin-button.png)
+
+1. A browser window will pop up and offer to log into Microsoft 365. Sign in with your lab credentials:
+
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
+
+1. Once the sign-in is complete, a confirmation message stating "You are signed in now and close this page." will be displayed. After that, return to Visual Studio Code.
+
+1. Verify that the **Copilot Access** checker has a green checkmark in the Agents Toolkit panel.
+
+   ![](./media/ex7-signin-success.png)
+
+   >**Note:** Ensure you are signed in before proceeding to the next tasks.
 
 ### Task 3: Configure the Agent Manifest
 
@@ -222,12 +235,6 @@ In this task, you will configure the declarative agent's personality and capabil
          "title": "Review My Work",
          "text": "I wrote a poem and would like your feedback"
        }
-     ],
-     "capabilities": [
-       {
-         "name": "WebSearch",
-         "available_modes": ["off"]
-       }
      ]
    }
    ```
@@ -238,6 +245,8 @@ In this task, you will configure the declarative agent's personality and capabil
 
    >**Note:** The `instructions` field defines the agent's personality, expertise, and behavior. This is similar to a detailed system prompt that shapes how the agent responds.
 
+1. You can delete the `instruction.txt` file from the `appPackage` folder as we have included the instructions directly in the JSON file.
+
 1. Optionally, update the agent icons in the `appPackage` folder:
 
    - `color.png` - 192x192 pixel color icon
@@ -245,32 +254,40 @@ In this task, you will configure the declarative agent's personality and capabil
 
    For this exercise, you can keep the default icons.
 
-### Task 5: Test the Declarative Agent Locally
+### Task 5: Provision and Test the Declarative Agent
 
-In this task, you will test the agent locally before deployment.
+In this task, you will provision the agent and test it in Microsoft 365 Copilot.
 
-1. In VS Code, open the **Command Palette** (`Ctrl+Shift+P`).
+1. In VS Code, click on the **Microsoft 365 Agents Toolkit** icon in the left sidebar.
 
-   ![](./media/ex7-command-palette.png)
+   ![](./media/ex7-toolkit-sidebar.png)
 
-1. Type `Teams: Preview Your App` and select the command.
+1. Under **LIFECYCLE**, click on **Provision**.
 
-   ![](./media/ex7-preview-command.png)
+   ![](./media/ex7-provision-button.png)
 
-   >**Note:** Alternatively, click the **Run and Debug** icon in the sidebar and select **Preview in Copilot (Edge)** or **Preview in Copilot (Chrome)**.
+1. Wait for the provisioning to complete. You should see a success message in the output panel:
 
-   ![](./media/ex7-run-debug.png)
+   ```
+   (√) Done: Lifecycle stage provision was executed successfully.
+   ```
 
-1. Select **Preview in Copilot (Edge)** from the options.
+   ![](./media/ex7-provisioning.png)
 
-   ![](./media/ex7-preview-edge.png)
+   >**Note:** The provisioning process packages your app files, validates them, and installs the declarative agent to your Microsoft 365 tenant.
+
+1. Once provisioning is complete, open a browser and navigate to:
+
+   ```
+   https://m365.cloud.microsoft/chat
+   ```
 
 1. If prompted, sign in with your lab credentials:
 
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
    - Password: <inject key="AzureAdUserPassword"></inject>
 
-1. The browser will open Microsoft 365 Copilot with your agent loaded for testing.
+1. In the Copilot chat, look for your **Poetic Assistant** in the right pane or agents panel and select it.
 
    ![](./media/ex7-agent-preview.png)
 
@@ -356,59 +373,32 @@ In this task, you will test the agent locally before deployment.
 
    ![](./media/ex7-alliteration-response.png)
 
-### Task 6: Deploy and Validate the Agent
+### Task 6: Validate the Agent in Microsoft Teams
 
-In this task, you will deploy the declarative agent to your Microsoft 365 tenant.
+In this task, you will validate the declarative agent in Microsoft Teams.
 
-1. Return to VS Code.
-
-1. In the Microsoft 365 Agents Toolkit panel, click **Provision**.
-
-   ![](./media/ex7-provision-button.png)
-
-1. Select your target environment (usually **Development**).
-
-   ![](./media/ex7-select-environment.png)
-
-1. Confirm the provisioning when prompted.
-
-   ![](./media/ex7-confirm-provision.png)
-
-1. Wait for the provisioning to complete. This creates the necessary resources in your tenant.
-
-   ![](./media/ex7-provisioning.png)
-
-1. Once provisioning is complete, click **Publish** in the toolkit panel.
-
-   ![](./media/ex7-publish-button.png)
-
-1. Select **Publish to your org** to make the agent available.
-
-   ![](./media/ex7-publish-org.png)
-
-1. Wait for the publishing process to complete.
-
-   ![](./media/ex7-publishing.png)
-
-   >**Note:** After publishing, the agent needs to be approved by an admin before it appears in Microsoft 365 Copilot for all users. In this lab environment, it may be auto-approved or you may need admin approval.
-
-1. To verify the deployment, navigate to:
+1. Open a new browser tab and navigate to:
 
    ```
-   https://www.microsoft365.com
+   https://teams.microsoft.com
    ```
 
-   ![](./media/ex7-m365-portal.png)
+1. If prompted, sign in with your lab credentials:
 
-1. Click on **Copilot** to open Copilot Chat.
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
 
-   ![](./media/ex7-open-copilot.png)
+   >**Note:** If you see a "Get to know Teams" pop-up, click **Get Started** to proceed. On the "One last thing..." page, simply close the pane to dismiss it.
 
-1. In Copilot, look for your **Poetic Assistant** in the agents panel or search for it.
+1. In Microsoft Teams, click on **Copilot** from the left navigation panel.
+
+   ![](./media/ex7-teams-copilot.png)
+
+1. In the Copilot pane, look for your **Poetic Assistant** agent and select it.
 
    ![](./media/ex7-find-agent.png)
 
-1. Select the Poetic Assistant and test it with a final prompt:
+1. You should see the conversation starters that you configured earlier. Select one of them or test the agent with a custom prompt:
 
    **Prompt:**
    ```

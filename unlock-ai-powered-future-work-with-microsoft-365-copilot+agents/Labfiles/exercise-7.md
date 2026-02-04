@@ -23,7 +23,6 @@ In this exercise, you will complete the following tasks:
 - Task 3: Configure the agent manifest
 - Task 4: Define agent instructions and capabilities
 - Task 5: Test the declarative agent locally
-- Task 6: Deploy and validate the agent
 
 ### Task 1: Install and Configure Microsoft 365 Agents Toolkit
 
@@ -300,13 +299,9 @@ In this task, you will provision the agent and test it in Microsoft 365 Copilot.
    Write a haiku about the morning sun
    ```
 
-   ![](./media/ex7-test-haiku.png)
+   **Expected Response:**
 
-   **Expected Output:**
-
-   The agent should create a haiku following the 5-7-5 syllable pattern:
-
-   ![](./media/ex7-haiku-response.png)
+   The agent should create a haiku following the 5-7-5 syllable pattern with gentle morning imagery.
 
 1. **Test 2 - Explain a Poetry Form:**
 
@@ -315,13 +310,9 @@ In this task, you will provision the agent and test it in Microsoft 365 Copilot.
    What is a sonnet and how do I write one?
    ```
 
-   ![](./media/ex7-test-sonnet.png)
+   **Expected Response:**
 
-   **Expected Output:**
-
-   The agent should explain the sonnet form with its structure, rhyme scheme, and provide guidance:
-
-   ![](./media/ex7-sonnet-response.png)
+   The agent should explain the sonnet structure (14 lines, rhyme schemes like ABAB CDCD EFEF GG), iambic pentameter, and provide step-by-step guidance on writing one.
 
 1. **Test 3 - Creative Expression:**
 
@@ -330,13 +321,9 @@ In this task, you will provision the agent and test it in Microsoft 365 Copilot.
    Help me write a poem about the feeling of accomplishment after completing a difficult task
    ```
 
-   ![](./media/ex7-test-accomplishment.png)
+   **Expected Response:**
 
-   **Expected Output:**
-
-   The agent should offer a thoughtful poem with emotion and imagery:
-
-   ![](./media/ex7-accomplishment-response.png)
+   The agent should offer multiple poem styles (free verse, rhyming, dramatic) celebrating the feeling of triumph and achievement.
 
 1. **Test 4 - Review Poetry:**
 
@@ -350,13 +337,9 @@ In this task, you will provision the agent and test it in Microsoft 365 Copilot.
    As night's soft curtain slowly drifts by
    ```
 
-   ![](./media/ex7-test-review.png)
+   **Expected Response:**
 
-   **Expected Output:**
-
-   The agent should provide encouraging, constructive feedback:
-
-   ![](./media/ex7-review-response.png)
+   The agent should provide warm, constructive feedback highlighting what works well (imagery, rhythm, mood) and offer gentle suggestions for improvement.
 
 1. **Test 5 - Learn Techniques:**
 
@@ -365,62 +348,22 @@ In this task, you will provision the agent and test it in Microsoft 365 Copilot.
    Teach me about alliteration and give me examples
    ```
 
-   ![](./media/ex7-test-alliteration.png)
+   **Expected Response:**
 
-   **Expected Output:**
+   The agent should explain alliteration (repeating consonant sounds at the beginning of words) with examples like "silent stars shimmer" and "soft shadows slip silently."
 
-   The agent should explain alliteration with clear examples:
-
-   ![](./media/ex7-alliteration-response.png)
-
-### Task 6: Validate the Agent in Microsoft Teams
-
-In this task, you will validate the declarative agent in Microsoft Teams.
-
-1. Open a new browser tab and navigate to:
-
-   ```
-   https://teams.microsoft.com
-   ```
-
-1. If prompted, sign in with your lab credentials:
-
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
-
-   >**Note:** If you see a "Get to know Teams" pop-up, click **Get Started** to proceed. On the "One last thing..." page, simply close the pane to dismiss it.
-
-1. In Microsoft Teams, click on **Copilot** from the left navigation panel.
-
-   ![](./media/ex7-teams-copilot.png)
-
-1. In the Copilot pane, look for your **Poetic Assistant** agent and select it.
-
-   ![](./media/ex7-find-agent.png)
-
-1. You should see the conversation starters that you configured earlier. Select one of them or test the agent with a custom prompt:
-
-   **Prompt:**
-   ```
-   Write a short poem about the joy of learning something new
-   ```
-
-   ![](./media/ex7-final-test.png)
-
-   **Expected Output:**
-
-   ![](./media/ex7-final-response.png)
+   >**Note:** Feel free to explore other conversation starters or ask your own creative questions to test the agent's capabilities.
 
 ## Summary
 
 In this exercise, you built a declarative agent using the Microsoft 365 Agents Toolkit. You learned how to:
 
 - Install and configure the Microsoft 365 Agents Toolkit in VS Code
+- Sign in to Microsoft 365 and verify Copilot access
 - Create a new declarative agent project
 - Configure the app manifest with agent metadata
 - Define detailed agent instructions and conversation starters
-- Test the agent locally in Microsoft 365 Copilot
-- Deploy and publish the agent to your organization
+- Provision and test the agent in Microsoft 365 Copilot
 
 Declarative agents provide a powerful way to create specialized Copilot experiences without extensive coding, using configuration and natural language instructions.
 

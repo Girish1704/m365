@@ -8,8 +8,6 @@ In this exercise, you will create and configure a custom Copilot Agent within Mi
 
 You will create an IT Help Desk agent that can answer common IT questions, provide troubleshooting guidance, and direct users to appropriate resources.
 
->**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
-
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:

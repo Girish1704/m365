@@ -8,8 +8,6 @@ In this exercise, you will explore the Researcher Agent in Microsoft 365 Copilot
 
 You will use the Researcher Agent to research a business topic, organize findings, and produce a professional report.
 
->**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
-
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
@@ -24,36 +22,21 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will navigate to Microsoft 365 Copilot and access the Researcher Agent.
 
-1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
-
-1. Navigate to the Microsoft 365 portal:
-
-   ```
-   https://www.microsoft365.com
-   ```
-
-1. Sign in with your lab credentials if prompted:
-
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
-
-1. If you see a **Stay signed in?** prompt, select **Yes**.
-
 1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
 
-   ![](./media/ex2-copilot-icon.png)
+   ![](../media/m365-cop-ex1-g2.png)
 
 1. In the Copilot interface, click on the **Agents** button on the right side panel.
 
-   ![](./media/ex2-agents-button.png)
+   ![](../media/ex2-agents-button.png)
 
 1. In the agents panel, browse or search for the **Researcher** agent.
 
-   ![](./media/ex2-researcher-agent.png)
+   ![](../media/ex2-researcher-agent.png)
 
 1. Click on the **Researcher** agent to open it. You will see the Researcher interface with a prompt box asking **"What do you want to research today?"**
 
-   ![](./media/ex2-researcher-interface.png)
+   ![](../media/ex2-researcher-interface.png)
 
 1. Notice the quick action cards available on the Researcher home page:
 
@@ -66,7 +49,7 @@ In this task, you will navigate to Microsoft 365 Copilot and access the Research
    | **Meeting prep** | Prepare for upcoming meetings |
    | **Daily briefing** | Show today's updates, tasks, and meetings |
 
-   ![](./media/ex2-quick-actions.png)
+   ![](../media/ex2-quick-actions.png)
 
 1. Also notice the input options:
    - **+** button to add attachments
@@ -91,7 +74,7 @@ In this task, you will use the Researcher Agent to research a business topic.
    4. Best practices for successful implementation
    ```
 
-   ![](./media/ex2-research-prompt.png)
+   ![](../media/ex2-research-prompt.png)
 
    >**Note:** The Researcher agent may ask clarifying questions before proceeding, such as:
    >- Are you looking for global trends or specific region/industry?
@@ -116,7 +99,7 @@ In this task, you will use the Researcher Agent to research a business topic.
    - **Challenges:** Data quality, talent gaps, change management, ethical concerns
    - **Best Practices:** Start small, focus on data quality, build cross-functional teams
 
-   ![](./media/ex2-research-response.png)
+   ![](../media/ex2-research-response.png)
 
    >**Note:** The actual content and depth may vary based on the Researcher's sources and the report length you selected.
 
@@ -127,7 +110,7 @@ In this task, you will use the Researcher Agent to research a business topic.
    Expand on the implementation challenges. What are the top 5 reasons AI projects fail in enterprises, and what can organizations do to avoid these pitfalls?
    ```
 
-   ![](./media/ex2-challenges-prompt.png)
+   ![](../media/ex2-challenges-prompt.png)
 
    The Researcher may again ask for report length preference. Select your preferred option.
 
@@ -141,19 +124,19 @@ In this task, you will use the Researcher Agent to research a business topic.
    - **Talent gaps** - Shortage of skilled AI/ML professionals
    - **Change resistance** - Organizational culture not ready for AI-driven processes
 
-   ![](./media/ex2-challenges-response.png)
+   ![](../media/ex2-challenges-response.png)
 
    >**Tip:** If the response doesn't include specific details you need, you can ask follow-up questions like "Can you provide specific examples?" or "What are the top 3 mitigation strategies?"
 
 1. Now try using one of the quick action cards. Click on **Market analysis** and enter a company name like **Microsoft** to see how the Researcher analyzes market positioning.
 
-   ![](./media/ex2-market-analysis.png)
+   ![](../media/ex2-market-analysis.png)
 
    **Expected Output:**
 
    The Researcher will provide market analysis covering competitive landscape, market share, strategic positioning, and recent developments.
 
-   ![](./media/ex2-market-response.png)
+   ![](../media/ex2-market-response.png)
 
 1. Request industry-specific insights:
 
@@ -162,13 +145,13 @@ In this task, you will use the Researcher Agent to research a business topic.
    How does AI adoption differ across industries? Compare AI adoption patterns in financial services, healthcare, and manufacturing sectors.
    ```
 
-   ![](./media/ex2-industry-prompt.png)
+   ![](../media/ex2-industry-prompt.png)
 
    **Expected Output:**
 
    The Researcher will provide a comparative analysis across the three sectors, highlighting differences in adoption rates, use cases, and challenges.
 
-   ![](./media/ex2-industry-response.png)
+   ![](../media/ex2-industry-response.png)
 
    >**Note:** If you need more detail on a specific industry, ask a follow-up question like "Can you expand on healthcare AI adoption challenges?"
 
@@ -183,7 +166,7 @@ In this task, you will have the Researcher Agent organize and synthesize the gat
    Based on the research we have gathered, create a detailed outline for a whitepaper titled "Enterprise AI Adoption: A Strategic Guide for Business Leaders". Include main sections and subsections.
    ```
 
-   ![](./media/ex2-outline-prompt.png)
+   ![](../media/ex2-outline-prompt.png)
 
    **Expected Output:**
 
@@ -199,7 +182,7 @@ In this task, you will have the Researcher Agent organize and synthesize the gat
    - Recommendations for Business Leaders
    - Conclusion
 
-   ![](./media/ex2-outline-response.png)
+   ![](../media/ex2-outline-response.png)
 
    >**Note:** The outline structure may vary. If you need more detail in specific sections, you can ask "Can you expand section 3 with more subsections?"
 
@@ -210,11 +193,11 @@ In this task, you will have the Researcher Agent organize and synthesize the gat
    Synthesize all the information we have discussed into 10 key takeaways that a C-level executive should know about AI adoption.
    ```
 
-   ![](./media/ex2-takeaways-prompt.png)
+   ![](../media/ex2-takeaways-prompt.png)
 
    **Expected Output:**
 
-   ![](./media/ex2-takeaways-response.png)
+   ![](../media/ex2-takeaways-response.png)
 
 1. Request a comparison framework:
 
@@ -223,13 +206,13 @@ In this task, you will have the Researcher Agent organize and synthesize the gat
    Create a comparison table that organizations can use to evaluate their AI readiness. Include categories like data infrastructure, talent, culture, and governance, with maturity levels from beginner to advanced.
    ```
 
-   ![](./media/ex2-framework-prompt.png)
+   ![](../media/ex2-framework-prompt.png)
 
    **Expected Output:**
 
    The Researcher will provide a maturity assessment table with categories and levels. If the initial response doesn't include a visual table, you can ask: **"Can you format this as a table?"** or **"Can you turn this into a presentation slide?"**
 
-   ![](./media/ex2-framework-response.png)
+   ![](../media/ex2-framework-response.png)
 
    >**Important:** The Researcher may ask if you want this formatted as a presentation or printable assessment tool. Choose the format that best suits your needs.
 
@@ -244,7 +227,7 @@ In this task, you will use the Researcher Agent to create different types of str
    Describe an infographic that visualizes the AI adoption journey for enterprises. Include 5-6 stages with key activities and milestones for each stage.
    ```
 
-   ![](./media/ex2-infographic-prompt.png)
+   ![](../media/ex2-infographic-prompt.png)
 
    **Expected Output:**
 
@@ -257,7 +240,7 @@ In this task, you will use the Researcher Agent to create different types of str
    - **Stage 5: Scaling & Integration** - Expand across business units
    - **Stage 6: Optimization & Innovation** - AI drives strategic decision-making
 
-   ![](./media/ex2-infographic-response.png)
+   ![](../media/ex2-infographic-response.png)
 
    >**Note:** The Researcher describes the infographic concept but doesn't create actual visuals. If you need the visual created, you would need to use design tools or ask: "Can you turn this into a visual presentation format?"
 
@@ -268,11 +251,11 @@ In this task, you will use the Researcher Agent to create different types of str
    Create a comprehensive AI readiness checklist that organizations can use before starting their AI journey. Organize it by category with specific actionable items.
    ```
 
-   ![](./media/ex2-checklist-prompt.png)
+   ![](../media/ex2-checklist-prompt.png)
 
    **Expected Output:**
 
-   ![](./media/ex2-checklist-response.png)
+   ![](../media/ex2-checklist-response.png)
 
 1. Create FAQ content:
 
@@ -281,11 +264,11 @@ In this task, you will use the Researcher Agent to create different types of str
    Generate a FAQ section with 8-10 common questions that business leaders ask about AI adoption, along with clear and concise answers.
    ```
 
-   ![](./media/ex2-faq-prompt.png)
+   ![](../media/ex2-faq-prompt.png)
 
    **Expected Output:**
 
-   ![](./media/ex2-faq-response.png)
+   ![](../media/ex2-faq-response.png)
 
 ### Task 5: Produce a Professional Report
 
@@ -306,7 +289,7 @@ In this task, you will have the Researcher Agent produce a professional report.
    Write a professional executive summary (400-500 words) for the AI adoption whitepaper. It should capture the key findings, recommendations, and call to action for business leaders.
    ```
 
-   ![](./media/ex2-execsummary-prompt.png)
+   ![](../media/ex2-execsummary-prompt.png)
 
    **Expected Output:**
 
@@ -316,7 +299,7 @@ In this task, you will have the Researcher Agent produce a professional report.
    - Strategic imperatives for business leaders
    - Clear call to action
 
-   ![](./media/ex2-execsummary-response.png)
+   ![](../media/ex2-execsummary-response.png)
 
    >**Tip:** If the summary is too long or too short, you can say "Make this more concise" or "Expand on the recommendations section."
 
@@ -327,11 +310,11 @@ In this task, you will have the Researcher Agent produce a professional report.
    Write the introduction section for the whitepaper. Set the context for why AI adoption is critical now, the opportunity it presents, and what readers will learn from this document.
    ```
 
-   ![](./media/ex2-intro-prompt.png)
+   ![](../media/ex2-intro-prompt.png)
 
    **Expected Output:**
 
-   ![](./media/ex2-intro-response.png)
+   ![](../media/ex2-intro-response.png)
 
 1. Create a conclusion with recommendations:
 
@@ -340,11 +323,11 @@ In this task, you will have the Researcher Agent produce a professional report.
    Write the conclusion section with 5 specific recommendations for organizations looking to accelerate their AI adoption. Each recommendation should be actionable and prioritized.
    ```
 
-   ![](./media/ex2-conclusion-prompt.png)
+   ![](../media/ex2-conclusion-prompt.png)
 
    **Expected Output:**
 
-   ![](./media/ex2-conclusion-response.png)
+   ![](../media/ex2-conclusion-response.png)
 
 1. Request the complete document structure:
 
@@ -353,13 +336,13 @@ In this task, you will have the Researcher Agent produce a professional report.
    Compile all the sections we have created into a complete document outline with the executive summary, introduction, main content sections, and conclusion. Show how they flow together.
    ```
 
-   ![](./media/ex2-compile-prompt.png)
+   ![](../media/ex2-compile-prompt.png)
 
    **Expected Output:**
 
    The Researcher will provide a complete document structure showing how all sections flow together, from executive summary through to conclusion.
 
-   ![](./media/ex2-compile-response.png)
+   ![](../media/ex2-compile-response.png)
 
    >**Pro Tip:** At this point, you could ask the Researcher:
    >- "Can you export this as a Word document?" (Note: You may need to copy/paste the content)

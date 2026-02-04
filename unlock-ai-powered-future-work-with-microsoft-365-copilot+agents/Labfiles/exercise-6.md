@@ -8,8 +8,6 @@ In this exercise, you will build a comprehensive HR Agent using Microsoft Copilo
 
 You will create an HR agent that can answer employee questions about policies, benefits, leave management, and direct complex queries to appropriate HR personnel.
 
->**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
-
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:

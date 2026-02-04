@@ -8,8 +8,6 @@ In this exercise, you will implement a prompt action in Microsoft Copilot Studio
 
 This is useful for educational scenarios, training content creation, and knowledge assessment automation.
 
->**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
-
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:

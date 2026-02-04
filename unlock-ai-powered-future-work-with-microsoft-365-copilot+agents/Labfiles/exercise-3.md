@@ -8,8 +8,6 @@ In this exercise, you will explore the Document Analyzer Agent in Microsoft 365 
 
 You will use the Document Analyzer Agent to analyze a business document, extract insights, and transform the content for different purposes.
 
->**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
-
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:

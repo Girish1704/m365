@@ -8,8 +8,6 @@ In this exercise, you will create a SharePoint Agent that provides contextual an
 
 You will create a SharePoint site with HR policy documents and configure an agent that helps employees find answers to HR-related questions.
 
->**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
-
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:

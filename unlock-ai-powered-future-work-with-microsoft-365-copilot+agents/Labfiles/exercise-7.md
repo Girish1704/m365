@@ -8,8 +8,6 @@ In this exercise, you will use the Microsoft 365 Agents Toolkit extension for Vi
 
 You will create a "Poetic Assistant" - a creative agent that helps users express ideas through poetry, generate creative writing, and explore different poetic styles.
 
->**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
-
 ## Prerequisites
 
 - Visual Studio Code installed on your VM

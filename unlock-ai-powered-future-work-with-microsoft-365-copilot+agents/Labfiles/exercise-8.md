@@ -8,8 +8,6 @@ In this exercise, you will build an autonomous agent using Microsoft Copilot Stu
 
 Autonomous agents can proactively take actions, trigger workflows, and complete tasks without constant human intervention, making them ideal for IT support scenarios like ticket triage, automated responses, and escalation management.
 
->**Note:** The AI-generated content may vary from the screenshots shown in this exercise. Copilot responses are dynamic and can differ based on various factors.
-
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:

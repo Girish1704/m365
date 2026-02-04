@@ -31,14 +31,14 @@ In this task, you will navigate to Microsoft Copilot Studio and explore its inte
    https://copilotstudio.microsoft.com
    ```
 
-   ![](./media/ex6-copilot-studio-url.png)
+   ![](../media/ex6-copilot-studio-url.png)
 
 1. Sign in with your lab credentials if prompted:
 
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
    - Password: <inject key="AzureAdUserPassword"></inject>
 
-   ![](./media/ex6-studio-signin.png)
+   ![](../media/ex6-studio-signin.png)
 
 1. If you see a **Stay signed in?** prompt, select **Yes**.
 
@@ -49,11 +49,11 @@ In this task, you will navigate to Microsoft Copilot Studio and explore its inte
    - **Environments** - Manage different environments
    - **Solutions** - Package and deploy solutions
 
-   ![](./media/ex6-studio-home.png)
+   ![](../media/ex6-studio-home.png)
 
 1. If prompted to select an environment, choose the default environment or your organization's environment.
 
-   ![](./media/ex6-select-environment.png)
+   ![](../media/ex6-select-environment.png)
 
    >**Note:** Microsoft Copilot Studio uses the Power Platform environment infrastructure. Different environments allow you to separate development, testing, and production workloads.
 
@@ -63,11 +63,11 @@ In this task, you will create a new agent specifically designed for HR assistanc
 
 1. On the Copilot Studio home page, click **+ Create** from the left navigation panel.
 
-   ![](./media/ex6-create-copilot.png)
+   ![](../media/ex6-create-copilot.png)
 
 1. Select **New agent** for an AI-assisted setup.
 
-   ![](./media/ex6-new-agent.png)
+   ![](../media/ex6-new-agent.png)
 
 1. In the **Describe your agent** field, enter the following description:
 
@@ -84,7 +84,7 @@ In this task, you will create a new agent specifically designed for HR assistanc
    The agent should be professional, empathetic, and helpful. It should escalate complex issues to human HR representatives.
    ```
 
-   ![](./media/ex6-agent-description.png)
+   ![](../media/ex6-agent-description.png)
 
 1. Click **Create** to proceed.
 
@@ -97,7 +97,7 @@ In this task, you will create a new agent specifically designed for HR assistanc
    | Name | `HR Assistant-<inject key="DeploymentID" enableCopy="false"/>` |
    | Description | `An intelligent HR assistant that helps employees with policies, benefits, and HR-related questions.` |
 
-   ![](./media/ex6-agent-settings.png)
+   ![](../media/ex6-agent-settings.png)
 
 1. Click **Save** to save your agent settings.
 
@@ -107,15 +107,15 @@ In this task, you will configure topics that define how the agent handles differ
 
 1. In the agent editor, click on **Topics** in the left navigation.
 
-   ![](./media/ex6-topics-section.png)
+   ![](../media/ex6-topics-section.png)
 
 1. You will see some default topics already created. Click **+ Add a topic** to expand the dropdown menu.
 
-   ![](./media/ex6-add-topic-dropdown.png)
+   ![](../media/ex6-add-topic-dropdown.png)
 
 1. Select **Add from description with Copilot** option.
 
-   ![](./media/ex6-add-from-description.png)
+   ![](../media/ex6-add-from-description.png)
 
    >**Note:** This feature uses AI to automatically generate a complete topic flow based on your description, saving significant time compared to building topics manually.
 
@@ -148,7 +148,7 @@ In this task, you will configure topics that define how the agent handles differ
    End by asking if the user needs any more help.
    ```
 
-   ![](./media/ex6-general-hr-description.png)
+   ![](../media/ex6-general-hr-description.png)
 
 1. Click **Create** to generate the topic.
 
@@ -160,7 +160,7 @@ In this task, you will configure topics that define how the agent handles differ
    - Escalation option
    - Closing message
 
-   ![](./media/ex6-general-hr-flow.png)
+   ![](../media/ex6-general-hr-flow.png)
 
 1. Review the generated flow and click **Save** to save the topic.
 
@@ -196,7 +196,7 @@ In this task, you will configure topics that define how the agent handles differ
    End by asking if the user needs further assistance.
    ```
 
-   ![](./media/ex6-leave-description.png)
+   ![](../media/ex6-leave-description.png)
 
 1. Click **Create** to generate the topic.
 
@@ -208,7 +208,7 @@ In this task, you will configure topics that define how the agent handles differ
    - Special cases handling
    - Closing message
 
-   ![](./media/ex6-leave-flow.png)
+   ![](../media/ex6-leave-flow.png)
 
 1. Click **Save** to save the topic.
 
@@ -239,7 +239,7 @@ In this task, you will configure topics that define how the agent handles differ
    End by asking if they need any more help.
    ```
 
-   ![](./media/ex6-escalation-description.png)
+   ![](../media/ex6-escalation-description.png)
 
 1. Click **Create** to generate the topic.
 
@@ -252,7 +252,7 @@ In this task, you will configure topics that define how the agent handles differ
    - Next steps information
    - Privacy statement
 
-   ![](./media/ex6-escalation-flow.png)
+   ![](../media/ex6-escalation-flow.png)
 
 1. Click **Save** to save the topic.
 
@@ -272,7 +272,7 @@ In this task, you will upload HR policy documents to SharePoint and connect the 
    C:\datasets\policies
    ```
 
-   ![](./media/ex6-policies-folder.png)
+   ![](../media/ex6-policies-folder.png)
 
 1. You will find the following HR policy documents:
 
@@ -301,25 +301,25 @@ In this task, you will upload HR policy documents to SharePoint and connect the 
 
 1. Click on **Documents** in the left navigation.
 
-   ![](./media/ex6-sharepoint-documents.png)
+   ![](../media/ex6-sharepoint-documents.png)
 
 1. Click **+ New** > **Folder** to create a new folder.
 
 1. Name the folder `HR Policies` and click **Create**.
 
-   ![](./media/ex6-create-folder.png)
+   ![](../media/ex6-create-folder.png)
 
 1. Open the **HR Policies** folder and click **Upload** > **Files**.
 
-   ![](./media/ex6-upload-files.png)
+   ![](../media/ex6-upload-files.png)
 
 1. Navigate to `C:\datasets\policies`, select all the policy documents, and click **Open**.
 
-   ![](./media/ex6-select-policies.png)
+   ![](../media/ex6-select-policies.png)
 
 1. Wait for all files to upload successfully. You should see all 12 policy documents in the folder.
 
-   ![](./media/ex6-policies-uploaded.png)
+   ![](../media/ex6-policies-uploaded.png)
 
    >**Note:** These policy documents contain comprehensive Contoso HR information that the agent will use to answer employee questions accurately.
 
@@ -329,15 +329,15 @@ In this task, you will upload HR policy documents to SharePoint and connect the 
 
 1. In the agent editor, click on **Knowledge** in the left navigation.
 
-   ![](./media/ex6-knowledge-section.png)
+   ![](../media/ex6-knowledge-section.png)
 
 1. Click **+ Add knowledge**.
 
-   ![](./media/ex6-add-knowledge.png)
+   ![](../media/ex6-add-knowledge.png)
 
 1. Select **SharePoint** as the knowledge source type.
 
-   ![](./media/ex6-sharepoint-source.png)
+   ![](../media/ex6-sharepoint-source.png)
 
 1. Enter the URL of the HR Policies SharePoint site with the Documents library:
 
@@ -345,20 +345,20 @@ In this task, you will upload HR policy documents to SharePoint and connect the 
    https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com/sites/HRPoliciesHub-<inject key="DeploymentID" enableCopy="false"/>/Shared%20Documents/HR%20Policies
    ```
 
-   ![](./media/ex6-enter-sharepoint.png)
+   ![](../media/ex6-enter-sharepoint.png)
 
    >**Note:** This points directly to the HR Policies folder containing all the policy documents you uploaded.
 
 1. Click **Add** to add the knowledge source.
 
-   ![](./media/ex6-knowledge-added.png)
+   ![](../media/ex6-knowledge-added.png)
 
 1. Configure how the agent uses knowledge:
 
    - Enable **Use knowledge to answer questions**
    - Set response style to **Professional and helpful**
 
-   ![](./media/ex6-knowledge-config.png)
+   ![](../media/ex6-knowledge-config.png)
 
 1. Click **Save** to save the knowledge configuration.
 
@@ -368,7 +368,7 @@ In this task, you will upload HR policy documents to SharePoint and connect the 
 
 1. Locate the **Instructions** section and click **Edit**.
 
-   ![](./media/ex6-edit-instructions.png)
+   ![](../media/ex6-edit-instructions.png)
 
 1. Update the agent instructions to reference the policy documents:
 
@@ -394,7 +394,7 @@ In this task, you will upload HR policy documents to SharePoint and connect the 
    Always maintain confidentiality and privacy.
    ```
 
-   ![](./media/ex6-updated-instructions.png)
+   ![](../media/ex6-updated-instructions.png)
 
 1. Click **Save** to save the updated instructions.
 
@@ -404,11 +404,11 @@ In this task, you will configure actions that the agent can perform.
 
 1. In the agent editor, click on **Actions** in the left navigation.
 
-   ![](./media/ex6-actions-section.png)
+   ![](../media/ex6-actions-section.png)
 
 1. Click **+ Add an action**.
 
-   ![](./media/ex6-add-action.png)
+   ![](../media/ex6-add-action.png)
 
 1. Browse the available action types:
 
@@ -416,11 +416,11 @@ In this task, you will configure actions that the agent can perform.
    - **Power Automate flows** - Trigger automated workflows
    - **Custom connectors** - Connect to custom APIs
 
-   ![](./media/ex6-action-types.png)
+   ![](../media/ex6-action-types.png)
 
 1. For this exercise, we will create a simple escalation flow. Select **Power Automate** > **Create a new flow**.
 
-   ![](./media/ex6-create-flow.png)
+   ![](../media/ex6-create-flow.png)
 
 1. If Power Automate opens, create a simple flow:
 
@@ -446,7 +446,7 @@ In this task, you will configure actions that the agent can perform.
    How can I assist you today?
    ```
 
-   ![](./media/ex6-greeting.png)
+   ![](../media/ex6-greeting.png)
 
 1. Click **Save**.
 
@@ -456,7 +456,7 @@ In this task, you will test the agent and prepare it for publishing.
 
 1. Click the **Test** button in the bottom left corner to open the test panel.
 
-   ![](./media/ex6-test-button.png)
+   ![](../media/ex6-test-button.png)
 
 1. Test the agent with various queries:
 
@@ -465,11 +465,11 @@ In this task, you will test the agent and prepare it for publishing.
    Hello
    ```
 
-   ![](./media/ex6-test-greeting.png)
+   ![](../media/ex6-test-greeting.png)
 
    **Expected Output:**
 
-   ![](./media/ex6-greeting-response.png)
+   ![](../media/ex6-greeting-response.png)
 
 1. **Test 2 - Leave Request:**
 
@@ -478,11 +478,11 @@ In this task, you will test the agent and prepare it for publishing.
    How do I request vacation time?
    ```
 
-   ![](./media/ex6-test-leave.png)
+   ![](../media/ex6-test-leave.png)
 
    **Expected Output:**
 
-   ![](./media/ex6-leave-response.png)
+   ![](../media/ex6-leave-response.png)
 
 1. **Test 3 - Benefits:**
 
@@ -491,11 +491,11 @@ In this task, you will test the agent and prepare it for publishing.
    What health insurance options are available?
    ```
 
-   ![](./media/ex6-test-benefits.png)
+   ![](../media/ex6-test-benefits.png)
 
    **Expected Output:**
 
-   ![](./media/ex6-benefits-response.png)
+   ![](../media/ex6-benefits-response.png)
 
 1. **Test 4 - Knowledge-based question:**
 
@@ -504,27 +504,27 @@ In this task, you will test the agent and prepare it for publishing.
    How many sick days can I take without a medical certificate?
    ```
 
-   ![](./media/ex6-test-knowledge.png)
+   ![](../media/ex6-test-knowledge.png)
 
    **Expected Output:**
 
-   ![](./media/ex6-knowledge-response.png)
+   ![](../media/ex6-knowledge-response.png)
 
 1. Once testing is complete, click **Publish** in the top right corner.
 
-   ![](./media/ex6-publish-button.png)
+   ![](../media/ex6-publish-button.png)
 
 1. In the publish dialog, select **Microsoft 365 Copilot** as the channel.
 
-   ![](./media/ex6-publish-m365.png)
+   ![](../media/ex6-publish-m365.png)
 
 1. Review the publishing settings and click **Publish**.
 
-   ![](./media/ex6-publish-confirm.png)
+   ![](../media/ex6-publish-confirm.png)
 
 1. Wait for the publishing process to complete.
 
-   ![](./media/ex6-publishing.png)
+   ![](../media/ex6-publishing.png)
 
    >**Note:** The agent may take a few minutes to appear in Microsoft 365 Copilot after publishing.
 
@@ -534,7 +534,7 @@ In this task, you will test the agent and prepare it for publishing.
    - Click on **Copilot**
    - Look for your HR Assistant agent in the agents panel
 
-   ![](./media/ex6-agent-in-copilot.png)
+   ![](../media/ex6-agent-in-copilot.png)
 
 ## Summary
 

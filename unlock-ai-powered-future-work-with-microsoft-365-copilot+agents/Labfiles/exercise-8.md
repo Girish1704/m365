@@ -23,32 +23,33 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will create an autonomous agent designed for IT support operations.
 
-1. In the VM, open **Microsoft Edge** browser and navigate to:
-
-   ```
-   https://copilotstudio.microsoft.com
-   ```
-
-   ![](./media/ex8-studio-url.png)
-
-1. Sign in with your lab credentials if prompted:
-
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
-
-   ![](./media/ex8-signin.png)
-
 1. On the Copilot Studio home page, click **+ Create** from the left navigation.
 
-   ![](./media/ex8-create.png)
+   ![](../media/m36-copg-ex6-c-g1.png)
 
-1. Select **New agent**.
+1. Click **+ Create blank agent** to start creating a new agent.
 
-   ![](./media/ex8-new-agent.png)
+   ![](../media/m36-copg-ex6-c-g2.png)
 
-1. In the **Describe your agent** field, enter a detailed description:
+1. Click **Edit** to update the agent details.
 
-   **Agent Description:**
+   ![](../media/m36-copg-ex6-c-g3.png)
+
+1. Enter the agent name in the **Name (1)** field, add the description in the **Description (2)** box, then click **Save (3)** to apply the changes.
+
+   | Field | Value |
+   |-------|-------|
+   | Name | `IT Support Automator-<inject key="DeploymentID" enableCopy="false"/>` |
+   | Description | `An autonomous agent that handles IT support tickets, automates responses, and streamlines support operations` |
+
+   ![](../media/m36-copg-ex6-c-g4.png)
+
+1. Click **Edit** to update the agent instructions.
+
+   ![](../media/m36-copg-ex6-c-g5.png)
+
+1. Enter the agent instructions in the **Instructions (1)** box, then click **Save (2)** to apply the changes.
+
    ```
    Create an autonomous IT support agent that can:
    - Automatically categorize incoming IT support requests
@@ -62,33 +63,44 @@ In this task, you will create an autonomous agent designed for IT support operat
    The agent should be efficient, accurate, and capable of handling high volumes of requests with minimal human intervention.
    ```
 
-   ![](./media/ex8-agent-description.png)
+   ![](../media/m36-copg-ex6-c-g6.png)
 
-1. Click **Create** to generate the agent.
+1. Click **+ Add knowledge** to add data and resources to the agent.
 
-1. Once created, configure the agent settings:
+   ![](../media/m36-copg-ex6-c-g8.png)
 
-   - Click **Settings** from the top menu
-   - Update the following:
+1. Click **SharePoint** to add knowledge from SharePoint sources.
 
-   | Field | Value |
-   |-------|-------|
-   | Name | `IT Support Automator-<inject key="DeploymentID" enableCopy="false"/>` |
-   | Description | `An autonomous agent that handles IT support tickets, automates responses, and streamlines support operations` |
+   ![](../media/m36-copg-ex6-c-g9.png)
 
-   ![](./media/ex8-agent-settings.png)
+1. Enter the SharePoint site URL in the **URL field (1)**, then click **Add (2)** to connect the source.
 
-1. Click **Save** to save the settings.
+   ![](../media/m36-copg-ex6-c-g10.png)
+
+1. Click **Add to agent** to attach the SharePoint knowledge source.
+
+   ![](../media/m36-copg-ex6-c-g11.png)
+
+1. Verify that the knowledge source shows **Ready** to confirm it is successfully added.
+
+   ![](../media/m36-copg-ex6-c-g12.png)
 
 ### Task 2: Configure Autonomous Agent Capabilities
 
 In this task, you will configure the agent's autonomous capabilities and behaviors.
 
-1. In the agent editor, click on **Topics** in the left navigation.
+1. Click **Topics (1)**, then select **+ Add a topic (2)** and choose **From blank (3)** to create a new topic.
 
-   ![](./media/ex8-topics.png)
+   ![](../media/m36-copg-ex6-c-g13.png)
 
-1. Click **+ New topic** > **From blank** to create the main ticket intake topic.
+1. Enter the topic description in the **Describe what the topic does** box.
+
+   ```
+   This tool can handle queries like these:
+   contact HR, escalate to HR, report issue to HR, I need help from HR, talk to human resources
+   ```
+
+   ![](../media/m36-copg-ex6-c-g14.png)
 
 1. Name the topic `New Ticket Intake` and add trigger phrases:
 
@@ -103,7 +115,7 @@ In this task, you will configure the agent's autonomous capabilities and behavio
    Report an issue
    ```
 
-   ![](./media/ex8-intake-triggers.png)
+   ![](../media/ex8-intake-triggers.png)
 
 1. Build the conversation flow to collect ticket information:
 
@@ -114,7 +126,7 @@ In this task, you will configure the agent's autonomous capabilities and behavio
    Welcome to IT Support! I'm an automated assistant that can help resolve your technical issues quickly. Let me collect some information about your problem.
    ```
 
-   ![](./media/ex8-greeting-message.png)
+   ![](../media/ex8-greeting-message.png)
 
 1. **Step 2 - Collect Issue Category:**
 
@@ -131,7 +143,7 @@ In this task, you will configure the agent's autonomous capabilities and behavio
 
    - Save response as: `IssueCategory`
 
-   ![](./media/ex8-category-question.png)
+   ![](../media/ex8-category-question.png)
 
 1. **Step 3 - Collect Issue Description:**
 
@@ -140,7 +152,7 @@ In this task, you will configure the agent's autonomous capabilities and behavio
    - Identify: User's entire response
    - Save response as: `IssueDescription`
 
-   ![](./media/ex8-description-question.png)
+   ![](../media/ex8-description-question.png)
 
 1. **Step 4 - Collect Urgency Level:**
 
@@ -155,7 +167,7 @@ In this task, you will configure the agent's autonomous capabilities and behavio
 
    - Save response as: `UrgencyLevel`
 
-   ![](./media/ex8-urgency-question.png)
+   ![](../media/ex8-urgency-question.png)
 
 1. **Step 5 - Collect Contact Information:**
 
@@ -164,7 +176,7 @@ In this task, you will configure the agent's autonomous capabilities and behavio
    - Identify: Phone number
    - Save response as: `ContactPhone`
 
-   ![](./media/ex8-phone-question.png)
+   ![](../media/ex8-phone-question.png)
 
 1. Click **Save** to save the topic.
 
@@ -174,15 +186,15 @@ In this task, you will create a Power Automate flow that automatically categoriz
 
 1. In the agent editor, click on **Actions** in the left navigation.
 
-   ![](./media/ex8-actions.png)
+   ![](../media/ex8-actions.png)
 
 1. Click **+ Add an action**.
 
-   ![](./media/ex8-add-action.png)
+   ![](../media/ex8-add-action.png)
 
 1. Select **Create a new flow**.
 
-   ![](./media/ex8-create-flow.png)
+   ![](../media/ex8-create-flow.png)
 
 1. Power Automate will open. Name the flow:
 
@@ -190,7 +202,7 @@ In this task, you will create a Power Automate flow that automatically categoriz
    IT Ticket Categorization Flow
    ```
 
-   ![](./media/ex8-flow-name.png)
+   ![](../media/ex8-flow-name.png)
 
 1. The flow should have a trigger **Run a flow from Copilot**. Configure the input parameters:
 
@@ -204,7 +216,7 @@ In this task, you will create a Power Automate flow that automatically categoriz
    | UrgencyLevel | Text |
    | ContactPhone | Text |
 
-   ![](./media/ex8-flow-inputs.png)
+   ![](../media/ex8-flow-inputs.png)
 
 1. Add a **Compose** action to create the ticket object:
 
@@ -225,7 +237,7 @@ In this task, you will create a Power Automate flow that automatically categoriz
    }
    ```
 
-   ![](./media/ex8-compose-ticket.png)
+   ![](../media/ex8-compose-ticket.png)
 
 1. Add a **Condition** to check urgency level:
 
@@ -236,7 +248,7 @@ In this task, you will create a Power Automate flow that automatically categoriz
      - Operator: `is equal to`
      - Right value: `Critical - Work completely stopped`
 
-   ![](./media/ex8-urgency-condition.png)
+   ![](../media/ex8-urgency-condition.png)
 
 1. In the **If yes** branch, add actions for critical tickets:
 
@@ -258,7 +270,7 @@ In this task, you will create a Power Automate flow that automatically categoriz
      Please respond immediately.
      ```
 
-   ![](./media/ex8-urgent-email.png)
+   ![](../media/ex8-urgent-email.png)
 
 1. In the **If no** branch, add actions for non-critical tickets:
 
@@ -281,7 +293,7 @@ In this task, you will create a Power Automate flow that automatically categoriz
      The ticket has been added to the queue.
      ```
 
-   ![](./media/ex8-standard-email.png)
+   ![](../media/ex8-standard-email.png)
 
 1. Add a **Respond to Copilot** action after the condition:
 
@@ -291,15 +303,15 @@ In this task, you will create a Power Automate flow that automatically categoriz
      - Name: `TicketConfirmation`
      - Value: `Your ticket has been created and categorized. Ticket reference number is provided in the confirmation email.`
 
-   ![](./media/ex8-respond-copilot.png)
+   ![](../media/ex8-respond-copilot.png)
 
 1. Click **Save** to save the flow.
 
-   ![](./media/ex8-save-flow.png)
+   ![](../media/ex8-save-flow.png)
 
 1. Return to Copilot Studio and refresh the actions list.
 
-   ![](./media/ex8-refresh-actions.png)
+   ![](../media/ex8-refresh-actions.png)
 
 ### Task 4: Create an Escalation Flow for Critical Issues
 
@@ -313,7 +325,7 @@ In this task, you will create a separate flow for handling escalations.
    IT Escalation Flow
    ```
 
-   ![](./media/ex8-escalation-flow-name.png)
+   ![](../media/ex8-escalation-flow-name.png)
 
 1. Configure the trigger with inputs:
 
@@ -323,7 +335,7 @@ In this task, you will create a separate flow for handling escalations.
    | EscalationReason | Text |
    | OriginalCategory | Text |
 
-   ![](./media/ex8-escalation-inputs.png)
+   ![](../media/ex8-escalation-inputs.png)
 
 1. Add actions for the escalation:
 
@@ -349,7 +361,7 @@ In this task, you will create a separate flow for handling escalations.
 
    >**Note:** If Teams posting is not available, use email notification instead.
 
-   ![](./media/ex8-teams-notification.png)
+   ![](../media/ex8-teams-notification.png)
 
 1. **Action 2 - Send escalation email:**
    
@@ -368,14 +380,14 @@ In this task, you will create a separate flow for handling escalations.
      This ticket requires immediate attention from a senior technician.
      ```
 
-   ![](./media/ex8-escalation-email.png)
+   ![](../media/ex8-escalation-email.png)
 
 1. Add **Respond to Copilot** action:
 
    - Name: `EscalationConfirmation`
    - Value: `Your issue has been escalated to a senior technician. You will be contacted within 15 minutes.`
 
-   ![](./media/ex8-escalation-respond.png)
+   ![](../media/ex8-escalation-respond.png)
 
 1. Click **Save** to save the flow.
 
@@ -385,14 +397,14 @@ In this task, you will configure the agent to use the flows and provide automate
 
 1. Return to Copilot Studio and open the **New Ticket Intake** topic.
 
-   ![](./media/ex8-open-intake.png)
+   ![](../media/ex8-open-intake.png)
 
 1. After collecting all information, add a **Call an action** node:
 
    - Click **+ Add node** > **Call an action**
    - Select the **IT Ticket Categorization Flow**
 
-   ![](./media/ex8-call-action.png)
+   ![](../media/ex8-call-action.png)
 
 1. Map the flow inputs to the variables collected:
 
@@ -401,7 +413,7 @@ In this task, you will configure the agent to use the flows and provide automate
    - UrgencyLevel: `UrgencyLevel`
    - ContactPhone: `ContactPhone`
 
-   ![](./media/ex8-map-inputs.png)
+   ![](../media/ex8-map-inputs.png)
 
 1. Add a **Message** node after the flow call to confirm the ticket:
 
@@ -414,7 +426,7 @@ In this task, you will configure the agent to use the flows and provide automate
    Based on your issue, here are some immediate troubleshooting steps you can try while we process your ticket:
    ```
 
-   ![](./media/ex8-confirmation-message.png)
+   ![](../media/ex8-confirmation-message.png)
 
 1. Add **Condition** nodes to provide category-specific troubleshooting:
 
@@ -432,7 +444,7 @@ In this task, you will configure the agent to use the flows and provide automate
    If the problem persists, a technician will contact you.
    ```
 
-   ![](./media/ex8-hardware-condition.png)
+   ![](../media/ex8-hardware-condition.png)
 
    **Condition 2 - Network Issues:**
    
@@ -448,7 +460,7 @@ In this task, you will configure the agent to use the flows and provide automate
    If the problem persists, our network team will investigate.
    ```
 
-   ![](./media/ex8-network-condition.png)
+   ![](../media/ex8-network-condition.png)
 
    **Condition 3 - Account Access:**
    
@@ -463,7 +475,7 @@ In this task, you will configure the agent to use the flows and provide automate
    For permission issues, your request has been forwarded to the access management team.
    ```
 
-   ![](./media/ex8-account-condition.png)
+   ![](../media/ex8-account-condition.png)
 
 1. Create a new topic for **Escalation Request**:
 
@@ -478,7 +490,7 @@ In this task, you will configure the agent to use the flows and provide automate
      Escalate my ticket
      ```
 
-   ![](./media/ex8-escalation-topic.png)
+   ![](../media/ex8-escalation-topic.png)
 
 1. Build the escalation conversation:
 
@@ -487,7 +499,7 @@ In this task, you will configure the agent to use the flows and provide automate
    - Call the **IT Escalation Flow**
    - Provide confirmation message
 
-   ![](./media/ex8-escalation-flow-call.png)
+   ![](../media/ex8-escalation-flow-call.png)
 
 1. Click **Save** to save all changes.
 
@@ -497,7 +509,7 @@ In this task, you will test the complete autonomous agent with its integrated fl
 
 1. Click the **Test** button to open the test panel.
 
-   ![](./media/ex8-test-button.png)
+   ![](../media/ex8-test-button.png)
 
 1. **Test 1 - Standard Ticket Creation:**
 
@@ -506,13 +518,13 @@ In this task, you will test the complete autonomous agent with its integrated fl
    I need IT help
    ```
 
-   ![](./media/ex8-test-start.png)
+   ![](../media/ex8-test-start.png)
 
    **Expected Flow:**
 
    The agent should ask for category, description, urgency, and contact:
 
-   ![](./media/ex8-test-category.png)
+   ![](../media/ex8-test-category.png)
 
 1. Continue the conversation:
 
@@ -521,7 +533,7 @@ In this task, you will test the complete autonomous agent with its integrated fl
    - Urgency: `High - Major impact on work`
    - Phone: `555-123-4567`
 
-   ![](./media/ex8-test-complete.png)
+   ![](../media/ex8-test-complete.png)
 
    **Expected Output:**
 
@@ -530,7 +542,7 @@ In this task, you will test the complete autonomous agent with its integrated fl
    - Provide network troubleshooting steps
    - Trigger the categorization flow (check your email)
 
-   ![](./media/ex8-test-result.png)
+   ![](../media/ex8-test-result.png)
 
 1. **Test 2 - Critical Issue:**
 
@@ -547,7 +559,7 @@ In this task, you will test the complete autonomous agent with its integrated fl
    - Urgency: `Critical - Work completely stopped`
    - Phone: `555-999-1111`
 
-   ![](./media/ex8-test-critical.png)
+   ![](../media/ex8-test-critical.png)
 
    **Expected Output:**
 
@@ -556,7 +568,7 @@ In this task, you will test the complete autonomous agent with its integrated fl
    - Trigger immediate escalation
    - Send urgent notification email
 
-   ![](./media/ex8-critical-result.png)
+   ![](../media/ex8-critical-result.png)
 
 1. **Test 3 - Escalation Request:**
 
@@ -565,13 +577,13 @@ In this task, you will test the complete autonomous agent with its integrated fl
    I need to escalate my issue
    ```
 
-   ![](./media/ex8-test-escalate.png)
+   ![](../media/ex8-test-escalate.png)
 
    **Expected Output:**
 
    The agent should collect escalation details and trigger the escalation flow:
 
-   ![](./media/ex8-escalate-result.png)
+   ![](../media/ex8-escalate-result.png)
 
 1. **Test 4 - Check Email Notifications:**
 
@@ -581,21 +593,21 @@ In this task, you will test the complete autonomous agent with its integrated fl
    https://outlook.office.com
    ```
 
-   ![](./media/ex8-check-email.png)
+   ![](../media/ex8-check-email.png)
 
    Verify that you received:
    - Ticket creation notifications
    - Escalation notifications (if triggered)
 
-   ![](./media/ex8-email-received.png)
+   ![](../media/ex8-email-received.png)
 
 1. Once all tests pass, click **Publish** to publish the agent.
 
-   ![](./media/ex8-publish.png)
+   ![](../media/ex8-publish.png)
 
 1. Select the channels for publishing and confirm.
 
-   ![](./media/ex8-publish-confirm.png)
+   ![](../media/ex8-publish-confirm.png)
 
 ## Summary
 

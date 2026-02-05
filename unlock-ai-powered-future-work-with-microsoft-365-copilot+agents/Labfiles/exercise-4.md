@@ -116,39 +116,13 @@ In this task, you will define how the agent should behave and respond to users.
 
 ### Task 4: Add Knowledge Sources
 
-In this task, you will create a knowledge base document and add it as a source for the agent.
+In this task, you will create a knowledge base document locally and upload it directly to the agent as a knowledge source.
 
-1. First, create a company knowledge base document. Open a new browser tab and navigate to SharePoint:
+1. First, create a company knowledge base document. Open **Notepad** on your VM.
 
-   - On the Microsoft 365 home page, click **Apps** > **SharePoint**
-   - Or navigate to: `https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com`
+   ![](./media/ex4-open-notepad.png)
 
-   ![](./media/ex4-sharepoint.png)
-
-1. Click on **+ Create site** in the top navigation.
-
-   ![](./media/ex4-create-site.png)
-
-1. Select **Team site** and configure:
-
-   | Field | Value |
-   |-------|-------|
-   | Site name | `Help Desk Knowledge Base-<inject key="DeploymentID" enableCopy="false"/>` |
-   | Site description | `Company resources and employee assistance guides` |
-
-   ![](./media/ex4-site-settings.png)
-
-1. Click **Create** and wait for the site to be provisioned.
-
-1. Navigate to **Documents** in the new site.
-
-   ![](./media/ex4-documents.png)
-
-1. Click **+ New** > **Word document** to create a new document.
-
-   ![](./media/ex4-new-document.png)
-
-1. Name the document `Employee-Help-Guide` and add the following content:
+1. Copy and paste the following content into Notepad:
 
    ```
    EMPLOYEE HELP GUIDE
@@ -216,25 +190,36 @@ In this task, you will create a knowledge base document and add it as a source f
    Hours: Monday-Friday, 8 AM - 6 PM
    ```
 
-   ![](./media/ex4-kb-content.png)
+   ![](./media/ex4-notepad-content.png)
 
-1. Save and close the document.
+1. Save the file:
+   - Click **File** > **Save As**
+   - Navigate to **Desktop**
+   - Set **Save as type** to **All Files (*.*)**
+   - Name the file `Employee-Help-Guide.docx`
+   - Click **Save**
 
-1. Copy the SharePoint site URL and save it in **Notepad** for later use.
+   ![](./media/ex4-save-file.png)
 
-   ![](./media/ex4-copy-url.png)
+   >**Tip:** Alternatively, you can open Microsoft Word, paste the content, and save it as a proper Word document for better formatting.
 
-1. Return to the agent configuration. In the **Knowledge** section, click **+ Add knowledge source**.
+1. Return to the agent configuration in your browser. In the **Knowledge** section, click **+ Add knowledge source**.
 
    ![](./media/ex4-add-knowledge.png)
 
-1. Select **SharePoint** and enter your SharePoint site URL.
+1. Select **Upload files** from the available options.
 
-   ![](./media/ex4-sharepoint-source.png)
+   ![](./media/ex4-upload-option.png)
 
-   >**Note:** If the site link shows **This item was not found**, this may be due to indexing delays. Select **Add anyway** to continue.
+1. Click **Browse** or drag and drop the `Employee-Help-Guide.docx` file from your Desktop.
 
-1. Click **Add** to add the knowledge source.
+   ![](./media/ex4-browse-file.png)
+
+1. Wait for the file to upload. You should see the file listed in the knowledge sources.
+
+   ![](./media/ex4-file-uploaded.png)
+
+   >**Note:** The agent will process and index the uploaded file. This may take a few moments.
 
 1. Click **Create** to finalize the agent.
 
@@ -329,7 +314,7 @@ In this exercise, you created and configured a custom Copilot Agent for general 
 - Access the Copilot Agent Builder
 - Create and name a custom agent
 - Configure detailed agent instructions and behavior
-- Add SharePoint as a knowledge source
+- Upload a file directly as a knowledge source
 - Test the agent with various employee assistance queries
 
 Custom agents enable you to automate knowledge assistance for specific business functions, improving efficiency and employee satisfaction.

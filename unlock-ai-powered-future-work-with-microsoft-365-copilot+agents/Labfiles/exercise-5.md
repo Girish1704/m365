@@ -4,23 +4,35 @@
 
 ## Overview
 
-In this exercise, you will create a SharePoint Agent that provides contextual answers based on content stored in a SharePoint site. SharePoint Agents are designed to help users find information within organizational content, making it easier to access knowledge stored in documents, pages, and lists.
+In this exercise, you will create a **SharePoint Agent** - an AI-powered assistant that is embedded directly within a SharePoint site. Unlike the M365 Copilot agent you created in Exercise 4, SharePoint Agents are designed to help users discover documents, extract insights, and find specific information within site content.
 
-You will create a SharePoint site with HR policy documents and configure an agent that helps employees find answers to HR-related questions.
+You will set up a SharePoint site for a law firm (Morrison & Associates) and upload various document types including Word documents and CSV files. The agent will help legal staff:
+- Find specific case documents and client information
+- Get insights from billing and case tracking data
+- Navigate the document library and locate files efficiently
+
+**Key Difference from Exercise 4:**
+
+| Exercise 4 | Exercise 5 |
+|------------|------------|
+| M365 Copilot Agent | SharePoint Agent |
+| Single file upload | Multiple file types (Word + CSV) |
+| General assistance focus | Document discovery & data insights |
+| Accessed via Copilot Chat | Embedded in SharePoint site |
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Create an HR Policies SharePoint site
-- Task 2: Populate the site with HR documents
-- Task 3: Create a SharePoint Agent
-- Task 4: Configure the agent settings
-- Task 5: Test the SharePoint Agent
+- Task 1: Create a Law Firm SharePoint site
+- Task 2: Upload law firm documents to the site
+- Task 3: Create a SharePoint Agent from the site
+- Task 4: Configure the agent for document discovery and insights
+- Task 5: Test the agent for document search and data analysis
 
-### Task 1: Create an HR Policies SharePoint Site
+### Task 1: Create a Law Firm SharePoint Site
 
-In this task, you will create a SharePoint site to store HR policy documents.
+In this task, you will create a SharePoint site to store law firm documents including case files, client information, and billing data.
 
 1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
 
@@ -53,8 +65,8 @@ In this task, you will create a SharePoint site to store HR policy documents.
 
    | Field | Value |
    |-------|-------|
-   | Site name | `HR Policies Hub-<inject key="DeploymentID" enableCopy="false"/>` |
-   | Site description | `Central repository for HR policies and employee resources` |
+   | Site name | `Morrison Law Firm-<inject key="DeploymentID" enableCopy="false"/>` |
+   | Site description | `Document repository for Morrison & Associates Law Firm - case files, client data, and billing information` |
    | Privacy settings | Private |
 
    ![](./media/ex5-site-settings.png)
@@ -63,450 +75,370 @@ In this task, you will create a SharePoint site to store HR policy documents.
 
    ![](./media/ex5-site-creating.png)
 
-1. Once created, copy the site URL and save it in **Notepad** for later reference.
+1. Once created, you will be redirected to your new SharePoint site.
 
    ![](./media/ex5-site-created.png)
 
-### Task 2: Populate the Site with HR Documents
+### Task 2: Upload Law Firm Documents to the Site
 
-In this task, you will create HR policy documents that the agent will use as its knowledge base.
+In this task, you will download law firm documents from GitHub and upload them to your SharePoint site. These documents include Word documents (contracts, case summaries, policies) and CSV files (client roster, case tracking, billing data).
 
-1. In your new SharePoint site, click on **Documents** in the left navigation.
+1. In your SharePoint site, click on **Documents** in the left navigation.
 
    ![](./media/ex5-documents.png)
 
-1. Click **+ New** > **Folder** to create a folder structure:
+1. Click **+ New** > **Folder** to create an organized structure. Create the following folders:
 
-   - Create folder: `Policies`
-   - Create folder: `Benefits`
-   - Create folder: `Procedures`
+   | Folder Name | Purpose |
+   |-------------|---------|
+   | `Templates` | Contract templates and standard forms |
+   | `Case Files` | Active case documents and summaries |
+   | `Data` | Client rosters, case tracking, and billing data |
 
    ![](./media/ex5-create-folders.png)
 
-1. Navigate to the **Policies** folder and click **+ New** > **Word document**.
-
-   ![](./media/ex5-new-document.png)
-
-1. Name the document `Leave-Policy` and add the following content:
+1. Open a new browser tab and navigate to the GitHub repository containing the law firm documents:
 
    ```
-   EMPLOYEE LEAVE POLICY
-   Contoso Corporation
-   Effective Date: January 1, 2024
-
-   1. ANNUAL LEAVE
-
-   1.1 Entitlement
-   - Full-time employees: 20 days per calendar year
-   - Part-time employees: Pro-rated based on working hours
-   - New employees: Pro-rated from start date
-
-   1.2 Carryover
-   - Maximum 5 days can be carried over to next year
-   - Carried over days must be used by March 31
-   - Unused days beyond limit will be forfeited
-
-   1.3 Request Process
-   - Submit leave request through HR Portal
-   - Minimum 2 weeks notice for planned leave
-   - Manager approval required before confirmation
-   - Emergency leave: Notify manager as soon as possible
-
-   2. SICK LEAVE
-
-   2.1 Entitlement
-   - All employees: 10 days per calendar year
-   - Does not carry over to next year
-
-   2.2 Documentation
-   - 1-2 days: Self-certification accepted
-   - 3+ days: Medical certificate required
-   - Extended illness: Weekly medical updates required
-
-   3. PARENTAL LEAVE
-
-   3.1 Maternity Leave
-   - Primary caregiver: 16 weeks paid leave
-   - Can be taken up to 4 weeks before expected due date
-   - Additional 8 weeks unpaid leave available
-
-   3.2 Paternity Leave
-   - Secondary caregiver: 4 weeks paid leave
-   - Must be taken within 3 months of birth/adoption
-
-   4. OTHER LEAVE TYPES
-
-   4.1 Bereavement Leave
-   - Immediate family: 5 days paid
-   - Extended family: 3 days paid
-
-   4.2 Jury Duty
-   - Full pay for duration of service
-   - Provide court documentation
-
-   4.3 Personal Days
-   - 3 personal days per year
-   - 24-hour notice required when possible
-
-   CONTACT
-   HR Department: hr@contoso.com
-   HR Portal: hrportal.contoso.com
+   https://github.com/CloudLabsAI-Azure/m365/tree/main/unlock-ai-powered-future-work-with-microsoft-365-copilot%2Bagents/Labfiles/ex5-dataset
    ```
 
-   ![](./media/ex5-leave-policy.png)
+   ![](./media/ex5-github-lawfirm.png)
 
-1. Save and close the document.
+1. Download all 7 documents (click on each file, then click the **Download raw file** button):
 
-1. Create another document in the **Benefits** folder named `Benefits-Guide`:
+   **Word Documents (4 files):**
+   | Document | Description | Upload To |
+   |----------|-------------|-----------|
+   | `01-Client-Contract-Template.docx.md` | Standard client engagement agreement | Templates |
+   | `02-Case-Summary-Johnson-v-Apex.docx.md` | Active employment discrimination case | Case Files |
+   | `03-Legal-Fee-Schedule-2024.docx.md` | Hourly rates and flat fees | Templates |
+   | `04-Firm-Policies-Handbook.docx.md` | Employee policies and procedures | Templates |
 
-   ```
-   EMPLOYEE BENEFITS GUIDE
-   Contoso Corporation
-   2024 Benefits Overview
+   **CSV Files (3 files):**
+   | Document | Description | Upload To |
+   |----------|-------------|-----------|
+   | `05-client-roster.csv` | Complete client list with contact info and billing | Data |
+   | `06-case-tracking.csv` | Active cases with status and deadlines | Data |
+   | `07-billing-summary-2024.csv` | Monthly billing by attorney | Data |
 
-   1. HEALTH INSURANCE
+   ![](./media/ex5-download-files.png)
 
-   1.1 Medical Coverage
-   - PPO Plan: Comprehensive coverage with network flexibility
-   - HMO Plan: Lower premiums with network restrictions
-   - Company pays 80% of premium costs
-   - Coverage begins first day of employment
+   >**Tip:** Save all files to your **Downloads** folder for easy access.
 
-   1.2 Dental Coverage
-   - Preventive care: 100% covered
-   - Basic procedures: 80% covered
-   - Major procedures: 50% covered
-   - Annual maximum: $2,000 per person
+1. Return to your SharePoint site. Navigate to the **Templates** folder.
 
-   1.3 Vision Coverage
-   - Annual eye exam: Fully covered
-   - Glasses/contacts allowance: $200/year
-   - Frame allowance: $150/year
+1. Click **Upload** > **Files** and upload:
+   - `01-Client-Contract-Template.docx.md`
+   - `03-Legal-Fee-Schedule-2024.docx.md`
+   - `04-Firm-Policies-Handbook.docx.md`
 
-   2. RETIREMENT BENEFITS
+   ![](./media/ex5-upload-templates.png)
 
-   2.1 401(k) Plan
-   - Company match: 100% up to 4% of salary
-   - Additional 50% match on next 2%
-   - Vesting: Immediate for employee contributions
-   - Company match vesting: 3-year graded schedule
+1. Navigate to the **Case Files** folder and upload:
+   - `02-Case-Summary-Johnson-v-Apex.docx.md`
 
-   2.2 Pension Plan
-   - Available for employees with 5+ years service
-   - Defined benefit based on years of service and salary
+   ![](./media/ex5-upload-casefiles.png)
 
-   3. WELLNESS BENEFITS
+1. Navigate to the **Data** folder and upload:
+   - `05-client-roster.csv`
+   - `06-case-tracking.csv`
+   - `07-billing-summary-2024.csv`
 
-   3.1 Gym Membership
-   - $50/month reimbursement toward gym membership
-   - Submit receipts through expense portal
+   ![](./media/ex5-upload-data.png)
 
-   3.2 Mental Health Support
-   - Employee Assistance Program (EAP)
-   - 6 free counseling sessions per year
-   - 24/7 crisis hotline available
+1. Verify all 7 documents are uploaded across the three folders.
 
-   3.3 Wellness Stipend
-   - $500 annual wellness stipend
-   - Use for fitness equipment, wellness apps, classes
+   ![](./media/ex5-all-uploaded.png)
 
-   4. ADDITIONAL BENEFITS
+1. Click on one of the CSV files to preview and verify the data is accessible.
 
-   4.1 Life Insurance
-   - Basic: 2x annual salary (company paid)
-   - Supplemental: Up to 5x salary (employee paid)
+   ![](./media/ex5-preview-csv.png)
 
-   4.2 Disability Insurance
-   - Short-term: 60% of salary for up to 12 weeks
-   - Long-term: 60% of salary after 12 weeks
+### Task 3: Create a SharePoint Agent from the Site
 
-   4.3 Education Assistance
-   - Tuition reimbursement: Up to $5,250/year
-   - Must maintain B average
-   - Must be job-related coursework
+In this task, you will create a SharePoint Agent directly from within the SharePoint site. This agent will help legal staff discover documents and extract insights from both Word documents and CSV data.
 
-   ENROLLMENT
-   - Open enrollment: November 1-30 annually
-   - New hires: 30 days from start date
-   - Life events: 30 days from qualifying event
+1. In your SharePoint site, ensure you are on the site home page by clicking on **Home** in the left navigation.
 
-   CONTACT
-   Benefits Team: benefits@contoso.com
-   Benefits Portal: benefits.contoso.com
-   ```
+   ![](./media/ex5-site-home.png)
 
-   ![](./media/ex5-benefits-guide.png)
+1. Look for the **Copilot** icon in the top command bar or right side panel.
 
-1. Save and close the document.
+   ![](./media/ex5-copilot-icon.png)
 
-1. Create a document in the **Procedures** folder named `Onboarding-Checklist`:
+1. Click on the **Copilot** icon to open the Copilot panel within SharePoint.
 
-   ```
-   NEW EMPLOYEE ONBOARDING CHECKLIST
-   Contoso Corporation
+   ![](./media/ex5-copilot-panel.png)
 
-   BEFORE YOUR FIRST DAY
+1. In the Copilot panel, click on **Create an agent** or look for the **Agents** tab.
 
-   HR will send:
-   - Welcome email with start date and time
-   - New hire paperwork (complete online)
-   - IT equipment request form
-   - Building access request
+   ![](./media/ex5-create-agent-button.png)
 
-   You should:
-   - Complete all online paperwork
-   - Provide required documents (ID, tax forms)
-   - Set up direct deposit
-   - Review employee handbook
+   >**Note:** The SharePoint Copilot panel allows you to create agents that are scoped to the current site's content.
 
-   FIRST DAY
-
-   Morning:
-   - Report to reception at 9:00 AM
-   - Meet with HR for orientation
-   - Receive employee badge
-   - Collect IT equipment
-   - Complete security training
-
-   Afternoon:
-   - Meet your manager and team
-   - Tour of office facilities
-   - Set up workstation
-   - Access system accounts
-
-   FIRST WEEK
-
-   Complete required training:
-   - Information Security Awareness
-   - Code of Conduct
-   - Anti-Harassment Training
-   - Safety and Emergency Procedures
-
-   Meet with:
-   - Direct manager (goals and expectations)
-   - HR (benefits enrollment)
-   - IT (system access and tools)
-   - Mentor (if assigned)
-
-   FIRST 30 DAYS
-
-   - Complete all required training modules
-   - Enroll in benefits (within 30 days)
-   - Set up 401(k) contributions
-   - Schedule 30-day check-in with manager
-   - Join relevant Teams channels
-   - Update profile in company directory
-
-   FIRST 90 DAYS
-
-   - Complete probation period review
-   - Finalize performance goals
-   - Complete any role-specific certifications
-   - Participate in team meetings
-   - Schedule 90-day review with manager
-
-   RESOURCES
-
-   - HR Portal: hrportal.contoso.com
-   - IT Help Desk: helpdesk.contoso.com
-   - Employee Directory: directory.contoso.com
-   - Learning Platform: learn.contoso.com
-
-   CONTACTS
-
-   HR Onboarding Team: onboarding@contoso.com
-   Your HR Business Partner: [Assigned in welcome email]
-   IT Support: itsupport@contoso.com
-   ```
-
-   ![](./media/ex5-onboarding-checklist.png)
-
-1. Save and close the document.
-
-### Task 3: Create a SharePoint Agent
-
-In this task, you will create a SharePoint Agent for the HR Policies site.
-
-1. In the SharePoint site, click on the **Settings** gear icon in the top right corner.
-
-   ![](./media/ex5-settings.png)
-
-1. Look for **Copilot** or **Create agent** option in the settings menu.
-
-   ![](./media/ex5-copilot-option.png)
-
-   >**Note:** If this option is not available, you can create the agent through Microsoft 365 Copilot and add the SharePoint site as a knowledge source.
-
-1. Alternatively, navigate to Microsoft 365 Copilot:
-   - Go to `https://www.microsoft365.com`
-   - Click on **Copilot** in the left navigation
-   - Click on **Agents** > **Create agent**
-
-   ![](./media/ex5-create-agent-copilot.png)
-
-1. Configure the agent:
+1. In the agent creation interface, configure the following:
 
    | Field | Value |
    |-------|-------|
-   | Agent name | `HR Policy Assistant-<inject key="DeploymentID" enableCopy="false"/>` |
-   | Description | `Helps employees find information about HR policies, benefits, leave, and onboarding procedures.` |
+   | Agent name | `Legal Document Assistant` |
+   | Description | `Helps legal staff find case documents, client information, billing data, and provides insights from firm records.` |
 
-   ![](./media/ex5-agent-config.png)
+   ![](./media/ex5-agent-name.png)
 
-### Task 4: Configure the Agent Settings
+1. For the agent icon, select a legal or document-related icon, or let Copilot generate one.
 
-In this task, you will configure the agent instructions and knowledge sources.
+   ![](./media/ex5-agent-icon.png)
 
-1. In the **Instructions** section, enter:
+1. Click **Next** to proceed to instructions configuration.
+
+### Task 4: Configure the Agent for Document Discovery and Insights
+
+In this task, you will configure the agent with instructions focused on legal document discovery and data analysis.
+
+1. In the **Instructions** section, enter the following to define the agent's behavior:
 
    **Agent Instructions:**
    ```
-   You are an HR Policy Assistant that helps employees find information about company policies and procedures. Your role is to:
+   You are a Legal Document Assistant for Morrison & Associates Law Firm. Your role is to help legal staff find documents, extract information, and provide insights from firm records.
 
-   1. Answer questions about leave policies (annual, sick, parental, bereavement)
-   2. Explain employee benefits (health insurance, retirement, wellness)
-   3. Guide new employees through the onboarding process
-   4. Provide information about HR procedures and contacts
+   1. DOCUMENT DISCOVERY
+   - Help users locate specific documents (contracts, case files, policies)
+   - Identify which folder contains the requested document
+   - Provide document names and their locations
 
-   Guidelines:
-   - Provide accurate information based on official HR documents
-   - Quote specific policy details when relevant
-   - Direct employees to HR for personal situations requiring judgment
-   - Remind employees to check the HR portal for the most current information
-   - Be helpful and professional in all interactions
+   2. CASE INFORMATION
+   - Provide details about active cases from case summaries
+   - Look up case status, deadlines, and assigned attorneys
+   - Extract key dates and milestones from case documents
 
-   You should NOT:
-   - Make decisions about individual employee cases
-   - Provide legal or financial advice
-   - Share confidential employee information
-   - Approve or deny leave requests
+   3. CLIENT DATA
+   - Find client contact information from the client roster
+   - Look up client engagement dates and assigned attorneys
+   - Provide billing status and outstanding balances
+
+   4. BILLING & FINANCIAL INSIGHTS
+   - Analyze billing data by attorney or time period
+   - Calculate totals and identify trends
+   - Provide fee schedule information for different services
+
+   5. FIRM POLICIES
+   - Answer questions about firm policies and procedures
+   - Explain billable hour requirements and compensation
+   - Provide information about office locations and contacts
+
+   Available Documents:
+   TEMPLATES FOLDER:
+   - Client Contract Template: Standard engagement agreement
+   - Legal Fee Schedule 2024: Hourly rates, flat fees, retainers
+   - Firm Policies Handbook: Employee policies, procedures, contacts
+
+   CASE FILES FOLDER:
+   - Johnson v. Apex Manufacturing: Employment discrimination case summary
+
+   DATA FOLDER:
+   - Client Roster (CSV): 12 clients with contact info, attorneys, billing
+   - Case Tracking (CSV): 10 active cases with status and deadlines
+   - Billing Summary 2024 (CSV): Monthly billing by attorney (Jan-Apr)
+
+   Response Guidelines:
+   - Always cite the document and folder where information was found
+   - For CSV data, provide specific values and calculations when asked
+   - Summarize key points before providing details
+   - For confidential matters, remind users about attorney-client privilege
+   - Direct complex legal questions to the appropriate attorney
    ```
 
-   ![](./media/ex5-instructions.png)
+   ![](./media/ex5-agent-instructions.png)
 
-1. In the **Knowledge** section, click **+ Add knowledge source**.
+1. Click **Next** to proceed to knowledge source configuration.
 
-   ![](./media/ex5-add-knowledge.png)
+1. In the **Knowledge** section, verify that the **Morrison Law Firm** site is listed as a knowledge source.
 
-1. Select **SharePoint** and enter your HR Policies site URL.
+   ![](./media/ex5-knowledge-auto.png)
 
-   ![](./media/ex5-sharepoint-knowledge.png)
+1. Ensure all three folders (Templates, Case Files, Data) are included in the scope.
 
-   >**Note:** If the site shows as not found, this may be due to indexing delays. Select **Add anyway** to continue.
+   ![](./media/ex5-folder-scope.png)
 
-1. Click **Add** to include the SharePoint site.
+1. Click **Create** to finalize the SharePoint Agent.
 
-1. Click **Create** to finalize the agent.
+   ![](./media/ex5-create-final.png)
 
-   ![](./media/ex5-create-agent.png)
+1. Wait for the agent to be created and indexed. This may take a few moments.
 
-### Task 5: Test the SharePoint Agent
+   ![](./media/ex5-agent-created.png)
 
-In this task, you will test the agent with HR-related queries.
+### Task 5: Test the Agent for Document Search and Data Analysis
 
-1. In the agent chat interface, start with a general question:
+In this task, you will test the SharePoint Agent's ability to find documents, locate specific information, and provide insights from the law firm data.
+
+1. Once the agent is created, you will see the chat interface within SharePoint. Start with a document location question:
 
    **Prompt:**
    ```
-   How many days of annual leave do I get?
+   Where can I find the client contract template?
    ```
 
-   ![](./media/ex5-test-leave.png)
+   ![](./media/ex5-test-location.png)
 
    **Expected Output:**
 
-   ![](./media/ex5-leave-response.png)
+   The agent should identify that the **Client Contract Template** is located in the **Templates** folder and provide a brief description of its contents.
 
-   The agent should provide information about annual leave entitlement from the Leave Policy document.
+   ![](./media/ex5-location-response.png)
 
-1. Test benefits questions:
+1. Test case information lookup:
 
    **Prompt:**
    ```
-   What is the company match for the 401(k) plan?
+   What is the status of the Johnson v. Apex case? Who is the lead attorney and what are the next steps?
    ```
 
-   ![](./media/ex5-test-401k.png)
+   ![](./media/ex5-test-case.png)
 
    **Expected Output:**
 
-   ![](./media/ex5-401k-response.png)
+   The agent should provide details from the case summary including:
+   - Case status: Discovery Phase
+   - Lead Attorney: Sarah Morrison
+   - Next deadline: Deposition scheduled
+   - Estimated damages: $1,180,000+
 
-1. Test onboarding questions:
+   ![](./media/ex5-case-response.png)
+
+1. Test client data lookup:
 
    **Prompt:**
    ```
-   I am a new employee starting next week. What should I do on my first day?
+   Look up the client TechStart Solutions. Who is their attorney and what is their outstanding balance?
    ```
 
-   ![](./media/ex5-test-onboarding.png)
+   ![](./media/ex5-test-client.png)
 
    **Expected Output:**
 
-   ![](./media/ex5-onboarding-response.png)
+   The agent should find information from the **client-roster.csv**:
+   - Client: TechStart Solutions LLC
+   - Lead Attorney: David Chen
+   - Total Billed: $67,200
+   - Outstanding Balance: $12,000
 
-1. Test health insurance questions:
+   ![](./media/ex5-client-response.png)
+
+1. Test billing data analysis:
 
    **Prompt:**
    ```
-   What health insurance options are available and how much does the company pay?
+   How many billable hours did Sarah Morrison have in March 2024? What was her total billed amount?
    ```
 
-   ![](./media/ex5-test-health.png)
+   ![](./media/ex5-test-billing.png)
 
    **Expected Output:**
 
-   ![](./media/ex5-health-response.png)
+   The agent should extract from **billing-summary-2024.csv**:
+   - Billable Hours: 182
+   - Billed Amount: $81,900
+   - Collections: $73,700
 
-1. Test parental leave:
+   ![](./media/ex5-billing-response.png)
+
+1. Test fee schedule lookup:
 
    **Prompt:**
    ```
-   I am expecting a baby. What parental leave am I entitled to?
+   What is the hourly rate for a Senior Associate? What about flat fees for an LLC formation?
    ```
 
-   ![](./media/ex5-test-parental.png)
+   ![](./media/ex5-test-fees.png)
 
    **Expected Output:**
 
-   ![](./media/ex5-parental-response.png)
+   The agent should provide from the **Fee Schedule**:
+   - Senior Associate hourly rate: $375
+   - LLC Formation flat fee: $800
 
-1. Test document requirements:
+   ![](./media/ex5-fees-response.png)
+
+1. Test case deadline lookup:
 
    **Prompt:**
    ```
-   How many sick days require a medical certificate?
+   What cases have deadlines coming up in June 2024? List them with their deadline descriptions.
    ```
 
-   ![](./media/ex5-test-medical.png)
+   ![](./media/ex5-test-deadlines.png)
 
    **Expected Output:**
 
-   ![](./media/ex5-medical-response.png)
+   The agent should identify from **case-tracking.csv**:
+   - Johnson v. Apex: June 12 - Deposition - Robert Lee
+   - Metro Construction v. Supplier: June 5 - Discovery Responses Due
+   - Sunrise Healthcare Restructuring: June 15 - Restructuring Plan Review
 
-1. Test contact information:
+   ![](./media/ex5-deadlines-response.png)
+
+1. Test firm policy questions:
 
    **Prompt:**
    ```
-   How do I contact HR about my benefits enrollment?
+   What are the billable hour requirements for Associates? What about the bonus threshold?
    ```
 
-   ![](./media/ex5-test-contact.png)
+   ![](./media/ex5-test-policy.png)
 
    **Expected Output:**
 
-   ![](./media/ex5-contact-response.png)
+   The agent should find in the **Firm Policies Handbook**:
+   - Associate annual target: 1,800 hours
+   - Bonus threshold: 2,000 hours
+
+   ![](./media/ex5-policy-response.png)
+
+1. Test multi-source query:
+
+   **Prompt:**
+   ```
+   Give me a summary of all clients with outstanding balances over $10,000. Include the client name, attorney, and amount owed.
+   ```
+
+   ![](./media/ex5-test-multi.png)
+
+   **Expected Output:**
+
+   The agent should analyze the **client-roster.csv** and identify:
+   - TechStart Solutions LLC - David Chen - $12,000
+   - Metro Construction Co - David Chen - $15,000
+   - Wilson Estate - Patricia Williams - $18,200
+   - Sunrise Healthcare LLC - Sarah Morrison - $22,000
+
+   ![](./media/ex5-multi-response.png)
 
 ## Summary
 
-In this exercise, you created a SharePoint Agent that delivers contextual answers based on HR policy documents. You learned how to:
+In this exercise, you created a **SharePoint Agent** for a law firm that helps legal staff discover documents and extract insights from various file types including Word documents and CSV data files. You learned how to:
 
-- Create a SharePoint site for organizational content
-- Populate the site with policy documents
-- Create and configure a SharePoint Agent
-- Define agent instructions for specific use cases
-- Test the agent with various HR-related queries
+- Create a SharePoint site with an organized folder structure
+- Upload multiple document types (Word and CSV) to serve as the knowledge base
+- Create a SharePoint Agent from within the SharePoint site interface
+- Configure agent instructions for document discovery and data analysis
+- Test the agent with document location, case lookup, client data, and billing queries
 
-SharePoint Agents help employees quickly find information within organizational content, reducing the need for manual searches and HR inquiries.
+**Key Takeaways:**
+
+| Feature | SharePoint Agent |
+|---------|------------------|
+| **Access Point** | Embedded in SharePoint site |
+| **File Types Supported** | Word documents, CSV files, and more |
+| **Primary Use Case** | Document discovery & data insights |
+| **Knowledge Scope** | Site-specific content with folder organization |
+| **Best For** | Finding documents, analyzing data, extracting specific information |
+
+SharePoint Agents enhance productivity by providing intelligent document and data assistance directly within the context where files are stored, enabling users to quickly find information across multiple document types and data sources.
+
+### You have successfully completed this exercise. Click on Next to proceed to the Day 2 Overview.
+
+SharePoint Agents enhance the user experience by providing intelligent document assistance directly within the context where documents are stored, reducing search time and improving information discovery.
 
 ### You have successfully completed this exercise. Click on Next to proceed to the Day 2 Overview.

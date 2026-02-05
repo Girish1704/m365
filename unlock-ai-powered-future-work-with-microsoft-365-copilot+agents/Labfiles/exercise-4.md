@@ -6,7 +6,7 @@
 
 In this exercise, you will create and configure a custom Copilot Agent within Microsoft 365 Copilot Chat to automate knowledge assistance. Custom agents allow you to define specific behaviors, instructions, and knowledge sources to provide focused assistance for particular business scenarios.
 
-You will create an IT Help Desk agent that can answer common IT questions, provide troubleshooting guidance, and direct users to appropriate resources.
+You will create a general Help Desk agent that can answer common employee questions about company resources, facilities, general inquiries, and direct users to appropriate departments.
 
 ## Exercise Objectives
 
@@ -49,16 +49,16 @@ In this task, you will access the agent creation interface within Microsoft 365 
 
    ![](./media/ex4-create-agent.png)
 
-### Task 2: Create an IT Help Desk Agent
+### Task 2: Create a Help Desk Agent
 
-In this task, you will create a new agent for IT help desk assistance.
+In this task, you will create a new agent for general help desk assistance.
 
 1. In the agent creation wizard, provide the following details:
 
    | Field | Value |
    |-------|-------|
-   | Agent name | `IT Help Desk-<inject key="DeploymentID" enableCopy="false"/>` |
-   | Description | `An AI assistant that helps employees with common IT questions, troubleshooting, and technology guidance.` |
+   | Agent name | `Help Desk` |
+   | Description | `An AI assistant that helps employees with common questions about company resources, facilities, HR policies, and general workplace inquiries.` |
 
    ![](./media/ex4-agent-details.png)
 
@@ -78,35 +78,36 @@ In this task, you will define how the agent should behave and respond to users.
 
    **Agent Instructions:**
    ```
-   You are a helpful IT Help Desk assistant for our organization. Your role is to:
+   You are a helpful Help Desk assistant for our organization. Your role is to:
 
-   1. Answer common IT questions about software, hardware, and systems
-   2. Provide step-by-step troubleshooting guidance for technical issues
-   3. Help users with password resets and account access issues
-   4. Guide users on how to use company applications and tools
-   5. Explain IT policies and security best practices
-   6. Direct users to submit tickets for complex issues that require IT intervention
+   1. Answer common employee questions about company resources and services
+   2. Provide information about office locations, facilities, and amenities
+   3. Guide employees on HR policies, benefits, and leave procedures
+   4. Help with general workplace inquiries and directions
+   5. Provide information about company events and announcements
+   6. Direct users to appropriate departments for specialized requests
 
    Guidelines for your responses:
-   - Be patient and use clear, non-technical language when possible
-   - Provide step-by-step instructions for troubleshooting
-   - Always prioritize security - never ask for or accept passwords
-   - For hardware issues, gather relevant information before suggesting solutions
-   - If you cannot resolve an issue, guide users to submit an IT ticket
-   - Include relevant links to documentation when available
+   - Be friendly, patient, and professional
+   - Use clear, simple language that everyone can understand
+   - Provide step-by-step guidance when needed
+   - For questions outside your knowledge, direct users to the right department
+   - Always respect confidentiality and privacy
+   - Include relevant links to resources when available
 
-   Common IT Systems in our organization:
-   - Email: Microsoft Outlook (web and desktop)
-   - Collaboration: Microsoft Teams
-   - File Storage: OneDrive and SharePoint
-   - VPN: GlobalProtect for remote access
-   - Password Reset: Self-service portal at password.contoso.com
+   Common topics you can help with:
+   - Office locations, parking, and building access
+   - Conference room booking and facilities
+   - HR policies (leave, benefits, onboarding)
+   - Company directory and contact information
+   - General company policies and procedures
+   - Cafeteria hours and amenities
 
    You should NOT:
-   - Attempt to access or modify user accounts directly
-   - Provide workarounds that bypass security policies
-   - Share confidential IT infrastructure information
-   - Make promises about ticket resolution times
+   - Share confidential employee information
+   - Make decisions on behalf of HR or management
+   - Provide medical or legal advice
+   - Make promises about service timelines
    ```
 
    ![](./media/ex4-agent-instructions.png)
@@ -117,7 +118,7 @@ In this task, you will define how the agent should behave and respond to users.
 
 In this task, you will create a knowledge base document and add it as a source for the agent.
 
-1. First, create an IT knowledge base document. Open a new browser tab and navigate to SharePoint:
+1. First, create a company knowledge base document. Open a new browser tab and navigate to SharePoint:
 
    - On the Microsoft 365 home page, click **Apps** > **SharePoint**
    - Or navigate to: `https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com`
@@ -132,8 +133,8 @@ In this task, you will create a knowledge base document and add it as a source f
 
    | Field | Value |
    |-------|-------|
-   | Site name | `IT Knowledge Base-<inject key="DeploymentID" enableCopy="false"/>` |
-   | Site description | `IT documentation and troubleshooting guides` |
+   | Site name | `Help Desk Knowledge Base-<inject key="DeploymentID" enableCopy="false"/>` |
+   | Site description | `Company resources and employee assistance guides` |
 
    ![](./media/ex4-site-settings.png)
 
@@ -147,73 +148,72 @@ In this task, you will create a knowledge base document and add it as a source f
 
    ![](./media/ex4-new-document.png)
 
-1. Name the document `IT-Troubleshooting-Guide` and add the following content:
+1. Name the document `Employee-Help-Guide` and add the following content:
 
    ```
-   IT TROUBLESHOOTING GUIDE
-   Contoso IT Department
+   EMPLOYEE HELP GUIDE
+   Contoso Corporation
 
-   COMMON ISSUES AND SOLUTIONS
+   FREQUENTLY ASKED QUESTIONS
 
-   1. PASSWORD RESET
+   1. OFFICE LOCATIONS & PARKING
    
-   If you have forgotten your password:
-   - Go to password.contoso.com
-   - Click "Forgot Password"
-   - Enter your email address
-   - Follow the verification steps
-   - Create a new password meeting these requirements:
-     * Minimum 12 characters
-     * At least one uppercase letter
-     * At least one number
-     * At least one special character
+   Main Office:
+   - Address: 123 Business Park Drive, Seattle, WA 98101
+   - Parking: Available in Garage A and B (employee badge required)
+   - Building hours: 6 AM - 10 PM weekdays
+   - Security desk: Ground floor, available 24/7
    
-   If self-service is not working, contact IT Help Desk.
+   Branch Office:
+   - Address: 456 Tech Center, Bellevue, WA 98004
+   - Visitor parking: Street level
+   - Building hours: 7 AM - 7 PM weekdays
 
-   2. VPN CONNECTION ISSUES
+   2. CONFERENCE ROOM BOOKING
    
-   If you cannot connect to VPN:
-   - Ensure you have GlobalProtect installed
-   - Check your internet connection
-   - Try disconnecting and reconnecting
-   - Clear VPN cache: Settings > Clear Cache
-   - If issues persist, try restarting your computer
-   - Contact IT if problems continue
+   To book a conference room:
+   - Go to Outlook Calendar
+   - Click "New Meeting"
+   - Click "Room Finder" to see availability
+   - Select room and send meeting invite
+   - Rooms available: CR-101 through CR-210
+   - Maximum capacity ranges from 4 to 20 people
 
-   3. EMAIL NOT SYNCING
+   3. HR POLICIES & BENEFITS
    
-   For Outlook sync issues:
-   - Check internet connection
-   - Try Outlook web at outlook.office.com
-   - Clear Outlook cache
-   - Remove and re-add your account
-   - Check if you have exceeded mailbox quota (50GB limit)
+   Leave Policy:
+   - Annual leave: 15 days per year
+   - Sick leave: 10 days per year
+   - Submit requests via HR portal at hr.contoso.com
+   
+   Benefits:
+   - Health insurance enrollment during onboarding
+   - 401(k) with 5% company match
+   - Wellness program with gym membership
+   - Contact HR at hr@contoso.com for details
 
-   4. TEAMS AUDIO/VIDEO ISSUES
+   4. CAFETERIA & AMENITIES
    
-   For Microsoft Teams problems:
-   - Test audio in Settings > Devices
-   - Ensure correct microphone/speaker selected
-   - Check if camera is blocked by other apps
-   - Update Teams to latest version
-   - Try Teams web version as alternative
+   Main Cafeteria:
+   - Breakfast: 7:30 AM - 9:30 AM
+   - Lunch: 11:30 AM - 2:00 PM
+   - Snacks & beverages: All day
+   - Payment: Badge tap or credit card
+   
+   Amenities:
+   - Gym: Basement level, 6 AM - 9 PM
+   - Quiet rooms: 2nd and 4th floors
+   - Lactation rooms: Available on all floors
 
-   5. SLOW COMPUTER PERFORMANCE
+   5. GENERAL CONTACT INFORMATION
    
-   To improve performance:
-   - Restart your computer
-   - Close unused applications
-   - Check for Windows updates
-   - Run disk cleanup
-   - Contact IT if RAM upgrade needed
-
-   IT SUPPORT CONTACT INFORMATION
+   - Help Desk: helpdesk@contoso.com or Ext. 4357
+   - IT Support: itsupport@contoso.com or Ext. 4832
+   - HR Department: hr@contoso.com or Ext. 4100
+   - Facilities: facilities@contoso.com or Ext. 4200
+   - Reception: reception@contoso.com or Ext. 4000
    
-   - Self-service portal: helpdesk.contoso.com
-   - Email: itsupport@contoso.com
-   - Phone: Extension 4357 (HELP)
-   - Hours: Monday-Friday, 8 AM - 6 PM
-   - Emergency after-hours: +1-800-555-HELP
+   Hours: Monday-Friday, 8 AM - 6 PM
    ```
 
    ![](./media/ex4-kb-content.png)
@@ -242,13 +242,13 @@ In this task, you will create a knowledge base document and add it as a source f
 
 ### Task 5: Test the Agent
 
-In this task, you will test your IT Help Desk agent with various queries.
+In this task, you will test your Help Desk agent with various queries.
 
 1. Once the agent is created, you will see a chat interface. Start testing with a greeting:
 
    **Prompt:**
    ```
-   Hello, I need help with an IT issue.
+   Hello, I need help finding information about the office.
    ```
 
    ![](./media/ex4-test-greeting.png)
@@ -257,13 +257,13 @@ In this task, you will test your IT Help Desk agent with various queries.
 
    ![](./media/ex4-greeting-response.png)
 
-   The agent should respond with a helpful greeting and ask about your issue.
+   The agent should respond with a helpful greeting and ask what information you need.
 
-1. Test password reset guidance:
+1. Test office location and parking:
 
    **Prompt:**
    ```
-   I forgot my password and cannot log in. What should I do?
+   Where is the main office located and where can I park?
    ```
 
    ![](./media/ex4-test-password.png)
@@ -272,13 +272,13 @@ In this task, you will test your IT Help Desk agent with various queries.
 
    ![](./media/ex4-password-response.png)
 
-   The agent should provide step-by-step password reset instructions.
+   The agent should provide office address and parking information.
 
-1. Test VPN troubleshooting:
+1. Test conference room booking:
 
    **Prompt:**
    ```
-   I am working from home and cannot connect to the VPN. It keeps timing out.
+   How do I book a conference room for a meeting tomorrow?
    ```
 
    ![](./media/ex4-test-vpn.png)
@@ -287,11 +287,13 @@ In this task, you will test your IT Help Desk agent with various queries.
 
    ![](./media/ex4-vpn-response.png)
 
-1. Test email issues:
+   The agent should explain the conference room booking process.
+
+1. Test HR policy questions:
 
    **Prompt:**
    ```
-   My Outlook is not syncing emails. I can see them on my phone but not on my laptop.
+   How many days of annual leave do I get, and how do I request time off?
    ```
 
    ![](./media/ex4-test-email.png)
@@ -300,11 +302,13 @@ In this task, you will test your IT Help Desk agent with various queries.
 
    ![](./media/ex4-email-response.png)
 
-1. Test escalation handling:
+   The agent should provide leave policy information and guidance on submitting requests.
+
+1. Test facilities information:
 
    **Prompt:**
    ```
-   My laptop screen is cracked and I need a replacement.
+   What are the cafeteria hours and what amenities are available in the building?
    ```
 
    ![](./media/ex4-test-hardware.png)
@@ -313,13 +317,13 @@ In this task, you will test your IT Help Desk agent with various queries.
 
    ![](./media/ex4-hardware-response.png)
 
-   The agent should recognize this requires IT intervention and guide the user to submit a ticket.
+   The agent should provide cafeteria hours and information about building amenities.
 
-1. Test security awareness:
+1. Test department referral:
 
    **Prompt:**
    ```
-   Can you reset my password for me? My email is john@contoso.com and I can tell you my old password.
+   I need to update my emergency contact information and change my direct deposit.
    ```
 
    ![](./media/ex4-test-security.png)
@@ -328,18 +332,18 @@ In this task, you will test your IT Help Desk agent with various queries.
 
    ![](./media/ex4-security-response.png)
 
-   The agent should refuse to handle passwords directly and redirect to proper channels.
+   The agent should recognize this requires HR assistance and direct the user to the HR department.
 
 ## Summary
 
-In this exercise, you created and configured a custom Copilot Agent for IT Help Desk assistance. You learned how to:
+In this exercise, you created and configured a custom Copilot Agent for general Help Desk assistance. You learned how to:
 
 - Access the Copilot Agent Builder
 - Create and name a custom agent
 - Configure detailed agent instructions and behavior
 - Add SharePoint as a knowledge source
-- Test the agent with various IT-related queries
+- Test the agent with various employee assistance queries
 
-Custom agents enable you to automate knowledge assistance for specific business functions, improving efficiency and user satisfaction.
+Custom agents enable you to automate knowledge assistance for specific business functions, improving efficiency and employee satisfaction.
 
 ### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

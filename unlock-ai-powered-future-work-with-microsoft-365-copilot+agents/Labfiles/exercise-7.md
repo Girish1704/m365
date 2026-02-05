@@ -28,84 +28,61 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will install the Microsoft 365 Agents Toolkit extension in Visual Studio Code.
 
+1. Open **File Explorer**, click **This PC > Windows (C:) (1)**, then select **New (2)** and click **Folder (3)** to create a new folder.
+
+   ![](../media/m36-copg-ex7-d-g7.png)
+
+1. Right-click the new folder, select **Rename**, type **Codespace**, and press **Enter**.
+
+   ![](../media/m36-copg-ex7-d-g8.png)
+
 1. In the VM, open **Visual Studio Code** from the desktop or Start menu.
 
-   ![](./media/ex7-open-vscode.png)
+1. Click **File (1)**, then select **Open Folder… (2)** to open a folder in Visual Studio Code.
 
-1. Click on the **Extensions** icon in the left sidebar (or press `Ctrl+Shift+X`).
+   ![](../media/m36-copg-ex7-d-g9.png)
 
-   ![](./media/ex7-extensions-icon.png)
+1. Select the folder path **C:\Codespace (1)**, then click **Select folder (2)** to open it in Visual Studio Code.
 
-1. In the search box, type `Microsoft 365 Agents Toolkit`.
+   ![](../media/m36-copg-ex7-d-g10.png)
 
-   ![](./media/ex7-search-toolkit.png)
+1. Click **Yes, I trust the authors** to enable all features for this folder.
 
-1. Click **Install** on the **Microsoft 365 Agents Toolkit** extension.
+   ![](../media/m36-copg-ex7-d-g0.png)
 
-   ![](./media/ex7-install-toolkit.png)
+1. Click **Extensions (1)** (or press `Ctrl+Shift+X`), enter **Microsoft 365 Agents Toolkit (2)** in the search box, then click **Install (3)** to install the extension.
 
-1. Wait for the installation to complete. Once installed, you will see the Microsoft 365 Agents Toolkit icon in the left sidebar.
+   ![](../media/m36-copg-ex7-d-g1.png)
 
-   ![](./media/ex7-toolkit-icon.png)
+1. Click **Install** to install the Microsoft 365 Agents Toolkit extension.
 
-1. Click on the **Microsoft 365 Agents Toolkit** icon in the sidebar.
+   ![](../media/m36-copg-ex7-d-g2.png)
 
-   ![](./media/ex7-toolkit-sidebar.png)
-
-1. In the toolkit panel, click **Sign in to Microsoft 365** to authenticate.
-
-   ![](./media/ex7-signin-button.png)
-
-1. When the browser opens for authentication, sign in with your lab credentials:
-
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
-
-   ![](./media/ex7-browser-signin.png)
-
-1. If you see a **Stay signed in?** prompt, select **Yes**.
-
-1. After successful authentication, close the browser tab and return to VS Code.
-
-   ![](./media/ex7-signin-success.png)
-
-   >**Note:** You should see your account information in the Agents Toolkit panel confirming successful sign-in.
+1. Wait for the installation to complete. Once installed, you will see the **Microsoft 365 Agents Toolkit** icon in the left sidebar.
 
 ### Task 2: Create a New Declarative Agent Project
 
 In this task, you will create a new declarative agent project using the toolkit.
 
-1. In the Microsoft 365 Agents Toolkit panel, click **Create a New App**.
+1. Click the **Microsoft 365 Agents Toolkit (1)** icon, then select **Create a New Agent/App (2)** to start a new project.
 
-   ![](./media/ex7-create-new-app.png)
+   ![](../media/m36-copg-ex7-d-g4.png)
 
-1. Select **Agent** from the project type options.
+1. Select **Declarative Agent** to create a new agent for Microsoft 365 Copilot.
 
-   ![](./media/ex7-select-agent.png)
+   ![](../media/m36-copg-ex7-d-g5.png)
 
-1. Select **Declarative Agent** as the agent type.
+1. Select **No Action** to create the declarative agent without adding any actions.
 
-   ![](./media/ex7-declarative-agent.png)
+   ![](../media/m36-copg-ex7-d-g6.png)
 
-1. Choose **No plugin** for this exercise (we'll focus on the agent's conversational abilities).
+1. Select **Default folder C:\Codespace** to use the default project location.
 
-   ![](./media/ex7-no-plugin.png)
+1. Enter **PoeticAssistant** as the application name, then press **Enter** to confirm.
 
-1. Select **Default folder** when prompted for the project location.
-
-   ![](./media/ex7-folder-name.png)
-
-1. Enter the application name when prompted:
-
-   ```
-   PoeticAssistant
-   ```
-
-   ![](./media/ex7-app-name.png)
+   ![](../media/m36-copg-ex7-d-g12.png)
 
 1. Wait for the project scaffolding to complete. VS Code will open the new project in a new window.
-
-   ![](./media/ex7-project-created.png)
 
 1. If a prompt appears regarding the trustworthiness of the source, click on **Yes, I trust the authors**.
 
@@ -122,32 +99,48 @@ In this task, you will create a new declarative agent project using the toolkit.
    └── README.md
    ```
 
-   ![](./media/ex7-project-structure.png)
+1. Click the **Microsoft 365 Agents Toolkit (1)** icon, then select **Sign in to Microsoft 365 (2)** to sign in with your account.
 
-1. Now select the **Microsoft 365 Agents Toolkit** icon on the left sidebar. Under **Accounts**, click **Sign in to Microsoft 365** and log in with your lab credentials.
+   ![](../media/m36-copg-ex7-d-g20.png)
 
-   ![](./media/ex7-signin-button.png)
+1. Click **Sign in** to continue with your Microsoft 365 account.
 
-1. A browser window will pop up and offer to log into Microsoft 365. Sign in with your lab credentials:
+   ![](../media/m36-copg-ex7-d-g21.png)
+
+1. When the browser opens for authentication, sign in with your lab credentials:
 
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
    - Password: <inject key="AzureAdUserPassword"></inject>
 
-1. Once the sign-in is complete, a confirmation message stating "You are signed in now and close this page." will be displayed. After that, return to Visual Studio Code.
+1. After successful authentication, close the browser tab and return to VS Code.
 
-1. Verify that the **Copilot Access** checker has a green checkmark in the Agents Toolkit panel.
+1. Verify that **Copilot Access Enabled** is displayed under Accounts.
 
-   ![](./media/ex7-signin-success.png)
+   ![](../media/m36-copg-ex7-d-g22.png)
 
-   >**Note:** Ensure you are signed in before proceeding to the next tasks.
+1. Click **Sign in to Azure** to connect your Azure account.
+
+   ![](../media/m36-copg-ex7-d-g23.png)
+
+1. Click **Sign in** to authenticate your Azure account.
+
+   ![](../media/m36-copg-ex7-d-g24.png)
+
+1. Click **Allow** to grant permission for the extension to sign in.
+
+   ![](../media/m36-copg-ex7-d-g25.png)
+
+1. Click **No, this app only** to continue signing in without registering the device.
+
+   ![](../media/m36-copg-ex7-d-g26.png)
 
 ### Task 3: Configure the Agent Manifest
 
 In this task, you will configure the declarative agent manifest to define the Poetic Assistant.
 
-1. In VS Code, open the `appPackage/manifest.json` file.
+1. Expand **appPackage (1)**, then open **manifest.json (2)** to edit the file.
 
-   ![](./media/ex7-open-manifest.png)
+   ![](../media/m36-copg-ex7-d-g13.png)
 
 1. Update the manifest with the following information:
 
@@ -192,7 +185,7 @@ In this task, you will configure the declarative agent manifest to define the Po
    }
    ```
 
-   ![](./media/ex7-manifest-updated.png)
+   ![](../media/m36-copg-ex7-d-g14.png)
 
 1. Save the file (`Ctrl+S`).
 
@@ -200,9 +193,9 @@ In this task, you will configure the declarative agent manifest to define the Po
 
 In this task, you will configure the declarative agent's personality and capabilities.
 
-1. Open the `appPackage/declarativeAgent.json` file.
+1. Expand **appPackage (1)**, then open **declarativeAgent.json (2)** to edit the file.
 
-   ![](./media/ex7-open-declarative.png)
+   ![](../media/m36-copg-ex7-d-g16.png)
 
 1. Replace the content with the following configuration:
 
@@ -238,13 +231,21 @@ In this task, you will configure the declarative agent's personality and capabil
    }
    ```
 
-   ![](./media/ex7-declarative-updated.png)
+   ![](../media/m36-copg-ex7-d-g17.png)
 
 1. Save the file (`Ctrl+S`).
 
    >**Note:** The `instructions` field defines the agent's personality, expertise, and behavior. This is similar to a detailed system prompt that shapes how the agent responds.
 
-1. You can delete the `instruction.txt` file from the `appPackage` folder as we have included the instructions directly in the JSON file.
+1. Expand **appPackage (1)**, right-click **instruction.txt (2)**, then select **Delete (3)** to remove the file.
+
+   ![](../media/m36-copg-ex7-d-g18.png)
+
+   > **Note:** The instructions are already included in **declarativeAgent.json**, so this file is no longer required.
+
+1. Click **Move to Recycle Bin** to confirm deleting the file.
+
+   ![](../media/m36-copg-ex7-d-g19.png)
 
 1. Optionally, update the agent icons in the `appPackage` folder:
 
@@ -257,21 +258,15 @@ In this task, you will configure the declarative agent's personality and capabil
 
 In this task, you will provision the agent and test it in Microsoft 365 Copilot.
 
-1. In VS Code, click on the **Microsoft 365 Agents Toolkit** icon in the left sidebar.
+1. Click the **Microsoft 365 Agents Toolkit (1)** icon, then select **Provision (2)** to provision the agent.
 
-   ![](./media/ex7-toolkit-sidebar.png)
-
-1. Under **LIFECYCLE**, click on **Provision**.
-
-   ![](./media/ex7-provision-button.png)
+   ![](../media/m36-copg-ex7-d-g27.png)
 
 1. Wait for the provisioning to complete. You should see a success message in the output panel:
 
    ```
    (√) Done: Lifecycle stage provision was executed successfully.
    ```
-
-   ![](./media/ex7-provisioning.png)
 
    >**Note:** The provisioning process packages your app files, validates them, and installs the declarative agent to your Microsoft 365 tenant.
 
@@ -281,14 +276,9 @@ In this task, you will provision the agent and test it in Microsoft 365 Copilot.
    https://m365.cloud.microsoft/chat
    ```
 
-1. If prompted, sign in with your lab credentials:
-
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
-
 1. In the Copilot chat, look for your **Poetic Assistant** in the right pane or agents panel and select it.
 
-   ![](./media/ex7-agent-preview.png)
+   ![](../media/m36-copg-ex7-d-g28.png)
 
 1. Test the Poetic Assistant with various prompts:
 
@@ -298,6 +288,8 @@ In this task, you will provision the agent and test it in Microsoft 365 Copilot.
    ```
    Write a haiku about the morning sun
    ```
+
+   ![](../media/m36-copg-ex7-d-g30.png)
 
    **Expected Response:**
 
@@ -310,6 +302,8 @@ In this task, you will provision the agent and test it in Microsoft 365 Copilot.
    What is a sonnet and how do I write one?
    ```
 
+   ![](../media/m36-copg-ex7-d-g31.png)
+
    **Expected Response:**
 
    The agent should explain the sonnet structure (14 lines, rhyme schemes like ABAB CDCD EFEF GG), iambic pentameter, and provide step-by-step guidance on writing one.
@@ -320,6 +314,8 @@ In this task, you will provision the agent and test it in Microsoft 365 Copilot.
    ```
    Help me write a poem about the feeling of accomplishment after completing a difficult task
    ```
+
+   ![](../media/m36-copg-ex7-d-g32.png)
 
    **Expected Response:**
 
@@ -337,6 +333,8 @@ In this task, you will provision the agent and test it in Microsoft 365 Copilot.
    As night's soft curtain slowly drifts by
    ```
 
+   ![](../media/m36-copg-ex7-d-g33.png)
+
    **Expected Response:**
 
    The agent should provide warm, constructive feedback highlighting what works well (imagery, rhythm, mood) and offer gentle suggestions for improvement.
@@ -347,6 +345,8 @@ In this task, you will provision the agent and test it in Microsoft 365 Copilot.
    ```
    Teach me about alliteration and give me examples
    ```
+
+   ![](../media/m36-copg-ex7-d-g34.png)
 
    **Expected Response:**
 

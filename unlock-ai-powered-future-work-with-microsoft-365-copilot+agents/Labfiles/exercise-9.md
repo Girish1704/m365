@@ -1,30 +1,249 @@
-# Exercise 9: Build Agent Flows and Topics to Automate IT Support Ticket Processing
+# Exercise 9: Setup Freshdesk Ticketing and Create IT Support Topics
 
 ## Estimated Duration: 45 Minutes
 
 ## Overview
 
-In this exercise, you will enhance the IT Support Copilot created in the previous exercise by building intelligent topics and automated workflows using Power Automate. You will create a ticket intake topic that collects issue details, build agent flows for automatic ticket categorization and escalation, and integrate these components for seamless automation.
+In this exercise, you will integrate a professional ticketing system (Freshdesk) with your IT Support Copilot. You will set up a Freshdesk free trial account, obtain API credentials, create an agent flow to automatically create tickets in Freshdesk, and then build intelligent topics using generative AI that connect to your Freshdesk flow for ticket escalation.
 
-By the end of this exercise, your IT Support Copilot will be able to automatically process support requests, categorize them, send notifications, and escalate critical issues—all without human intervention.
+By the end of this exercise, your IT Support Copilot will be able to automatically create support tickets in Freshdesk when users need escalation—providing a production-ready helpdesk experience.
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Create a Ticket Intake Topic with Generative AI
-- Task 2: Build a Power Automate Flow for Ticket Notifications
-- Task 3: Create an Escalation Flow for Critical Issues
-- Task 4: Connect Flows to the Agent Topics
-- Task 5: Add Automated Troubleshooting Responses
+- Task 1: Setup Freshdesk Free Trial Account
+- Task 2: Obtain Freshdesk API Credentials
+- Task 3: Create Freshdesk Ticket Flow in Copilot Studio
+- Task 4: Create CredentialResetSupport Topic
+- Task 5: Create VPNConnectivitySupport Topic
+- Task 6: Create HardwareSupportAssistant Topic
 
-### Task 1: Create a Ticket Intake Topic with Generative AI
+### Task 1: Setup Freshdesk Free Trial Account
 
-In this task, you will create a topic that uses generative AI to collect and understand IT support requests.
+In this task, you will create a free Freshdesk trial account to use as your ticketing system.
 
-1. In Microsoft Copilot Studio, open the **IT Support Copilot** you created in the previous exercise.
+1. Open a new browser tab and navigate to:
 
-   ![](./media/ex9-open-agent.png)
+   ```
+   https://www.freshworks.com/freshdesk/
+   ```
+
+   ![](./media/ex9-freshdesk-home.png)
+
+1. Click on **Free trial** or **Try it free** button.
+
+   ![](./media/ex9-freshdesk-trial.png)
+
+1. Fill in the registration form with the following details:
+
+   | Field | Value |
+   |-------|-------|
+   | First Name | ODL User |
+   | Last Name | <inject key="DeploymentID"></inject> |
+   | Work Email | <inject key="AzureAdUserEmail"></inject> |
+   | Company | Contoso |
+
+   ![](./media/ex9-freshdesk-register.png)
+
+1. Click **Sign up** to create your account.
+
+1. Check your email inbox at **Outlook** for the verification email from Freshdesk:
+
+   - Open a new tab and navigate to: `https://outlook.office.com`
+   - Sign in with your lab credentials if prompted
+   - Look for an email from Freshdesk with subject like "Activate your account"
+
+   ![](./media/ex9-freshdesk-email.png)
+
+1. Click the activation link in the email to verify your account.
+
+1. You will be redirected to set your password. Enter:
+
+   ```
+   Freshdesk@2025
+   ```
+
+   ![](./media/ex9-freshdesk-password.png)
+
+1. Complete the setup wizard:
+   - Choose your data center region (select the one closest to you)
+   - Skip any optional onboarding steps
+
+1. Once setup is complete, you will land on the Freshdesk dashboard.
+
+   ![](./media/ex9-freshdesk-dashboard.png)
+
+   >**Important:** Keep this browser tab open. Note the URL in your browser's address bar—it will look like:
+   >```
+   >https://your-company-name.freshdesk.com
+   >```
+   >This is your **Account URL** which you will need in the next task.
+
+### Task 2: Obtain Freshdesk API Credentials
+
+In this task, you will retrieve your Freshdesk API key which is required to connect Copilot Studio to Freshdesk.
+
+1. In the Freshdesk portal, click on your **profile icon** in the top-right corner.
+
+   ![](./media/ex9-freshdesk-profile.png)
+
+1. Select **Profile Settings** from the dropdown menu.
+
+   ![](./media/ex9-freshdesk-settings.png)
+
+1. In your profile page, scroll down to find the **Your API Key** section.
+
+1. Click on **View API Key** to reveal your API key.
+
+   ![](./media/ex9-freshdesk-apikey.png)
+
+1. **Copy the API Key** and save it somewhere safe (e.g., Notepad). You will need this in the next task.
+
+   >**Important:** Keep your API key confidential. This key provides full access to your Freshdesk account.
+
+1. Also note your **Account URL** from the browser address bar:
+   ```
+   https://your-company-name.freshdesk.com
+   ```
+
+   >**Example:** If your URL is `https://contoso-12345.freshdesk.com`, then your Account URL is exactly that.
+
+1. You should now have two values saved:
+   - **Account URL:** `https://your-company-name.freshdesk.com`
+   - **API Key:** Your copied API key
+
+### Task 3: Create Freshdesk Ticket Flow in Copilot Studio
+
+In this task, you will create an agent flow that connects to Freshdesk and creates support tickets automatically.
+
+1. Return to **Microsoft Copilot Studio** and open your **IT Support Copilot**.
+
+   ![](./media/ex9-open-copilot.png)
+
+1. In the left navigation, click on **Actions** (or **Flows** if displayed).
+
+   ![](./media/ex9-actions-nav.png)
+
+1. Click **+ Add an action** and then select **New agent flow** (or **Create a new flow**).
+
+   ![](./media/ex9-new-flow.png)
+
+   >**Note:** Power Automate flow designer will open in a new pane or tab.
+
+1. You will see a flow template with a Copilot trigger: **When an agent calls the flow**.
+
+   ![](./media/ex9-flow-trigger.png)
+
+1. Click on the trigger **When an agent calls the flow** to expand it.
+
+1. Click **+ Add an input** and add the following two inputs:
+
+   | Input Name | Type |
+   |------------|------|
+   | Subject | Text |
+   | Description | Text |
+
+   ![](./media/ex9-flow-inputs.png)
+
+1. Click **+ New step** (or the **+** button below the trigger).
+
+1. In the search box, type **Freshdesk** and wait for the connector to appear.
+
+   ![](./media/ex9-freshdesk-connector.png)
+
+1. Under the **Freshdesk** connector, select the action **Create a ticket**.
+
+   ![](./media/ex9-create-ticket-action.png)
+
+1. You will be prompted to create a connection to Freshdesk. Fill in the connection details:
+
+   | Field | Value |
+   |-------|-------|
+   | Connection Name | helpdesk |
+   | Account URL | Your Freshdesk account URL (e.g., `https://contoso-12345.freshdesk.com`) |
+   | API Key | Your Freshdesk API key (copied in Task 2) |
+   | Password | Enter `X` (just the letter X - this is a placeholder) |
+
+   ![](./media/ex9-freshdesk-connection.png)
+
+   >**Note:** The Password field is required by the connector but Freshdesk uses API key authentication. Enter any character like `X`.
+
+1. Click **Create** or **Sign in** to establish the connection.
+
+1. Once connected, configure the **Create a ticket** action with these values:
+
+   | Field | Value |
+   |-------|-------|
+   | Subject | Click in the field, then click the **lightning bolt (⚡)** icon, select **Subject** from Dynamic content |
+   | Description | Click in the field, then click the **lightning bolt (⚡)** icon, select **Description** from Dynamic content |
+   | Email | <inject key="AzureAdUserEmail"></inject> |
+   | Priority | 2 (Medium) |
+   | Status | 2 (Open) |
+
+   ![](./media/ex9-ticket-config.png)
+
+   >**Tip:** For Subject and Description fields, use the Dynamic content panel to map the input variables from the trigger.
+
+1. Click **+ New step** after the Create a ticket action.
+
+1. Search for **Respond to Copilot** and select it.
+
+   ![](./media/ex9-respond-copilot.png)
+
+1. In the **Respond to Copilot** action, click **+ Add an output**:
+
+   | Field | Value |
+   |-------|-------|
+   | Type | Text |
+   | Name | TicketStatus |
+   | Value | Ticket created successfully. Our IT team will contact you shortly. |
+
+   ![](./media/ex9-respond-output.png)
+
+1. Click **Save** in the top-right corner to save the flow.
+
+   ![](./media/ex9-save-flow.png)
+
+1. Click **Publish** to publish the flow so it's available to the agent.
+
+   ![](./media/ex9-publish-flow.png)
+
+1. After publishing, click on the flow name at the top and rename it to:
+
+   ```
+   Freshdesk
+   ```
+
+   ![](./media/ex9-rename-flow.png)
+
+1. **Test the flow manually** (optional but recommended):
+
+   - Click **Test** in the top-right corner
+   - Select **Manually**
+   - Enter test values:
+     - Subject: `Test Ticket from Copilot`
+     - Description: `This is a test ticket to verify the Freshdesk integration.`
+   - Click **Run flow**
+
+   ![](./media/ex9-test-flow.png)
+
+1. Verify the flow runs successfully (all green checkmarks).
+
+1. **Verify in Freshdesk:**
+   - Switch to your Freshdesk browser tab
+   - Go to **Tickets** from the left menu
+   - You should see the test ticket you just created!
+
+   ![](./media/ex9-freshdesk-ticket.png)
+
+   >**Success!** Your Freshdesk integration is working. Return to Copilot Studio for the next task.
+
+### Task 4: Create CredentialResetSupport Topic
+
+In this task, you will create a topic using generative AI that helps users with password reset issues and escalates to Freshdesk when needed.
+
+1. In Copilot Studio, ensure you are in the **IT Support Copilot**.
 
 1. Click on **Topics** in the left navigation panel.
 
@@ -34,472 +253,203 @@ In this task, you will create a topic that uses generative AI to collect and und
 
    ![](./media/ex9-add-topic.png)
 
-1. In the **Describe what the topic does** field, enter the following description:
+1. Enter the following details:
 
+   **Name:**
    ```
-   Create a topic that handles IT support ticket submission. The topic should:
-   - Greet users and explain that it will help create a support ticket
-   - Ask what category their issue belongs to (Hardware, Software, Network, Email, Account Access, or Other)
-   - Ask for a detailed description of the problem
-   - Ask about the urgency level (Critical, High, Medium, or Low)
-   - Ask for the best phone number to reach them
-   - Confirm the ticket details before submission
+   CredentialResetSupport
    ```
 
-   ![](./media/ex9-topic-description.png)
-
-1. Click **Create** to generate the topic using AI.
-
-   ![](./media/ex9-create-topic.png)
-
-1. Once the topic is generated, review the conversation flow. The AI will have created:
-   - A greeting message
-   - Questions for category, description, urgency, and contact
-   - Variable assignments for each response
-
-   ![](./media/ex9-generated-topic.png)
-
-1. Click on the topic name at the top and rename it to:
-
+   **Description:**
    ```
-   New Ticket Intake
+   Help users who need password reset assistance when they forget their password or their account becomes locked. Ask the user for their username and save it as a variable. Use generative answers to provide self-service reset instructions by referring to the uploaded knowledge sources whenever possible. After sharing the steps, ask the user whether they were able to reset their password successfully. If not, offer to create a support ticket. When creating the ticket, generate a subject line such as "Password Reset Assistance – <username>" and create a detailed description that includes the username and the reason they were unable to reset the password. Map these values to the Freshdesk Power Automate flow inputs for Subject and Description so the flow receives the correct variables. This topic should act as a guided password-reset helper that uses the knowledge base first, and escalates to ticket creation only when needed.
    ```
 
-   ![](./media/ex9-rename-topic.png)
+   ![](./media/ex9-credential-topic.png)
 
-1. Add additional trigger phrases by clicking on the **Trigger phrases** section:
+1. Click **Create** to generate the topic.
 
+1. Wait for the AI to generate the topic (15-30 seconds).
+
+1. Review the generated topic:
+
+   - **Trigger phrases:** Verify it includes phrases like:
+     - "I forgot my password"
+     - "Reset my password"
+     - "Account locked"
+     - "Can't log in"
+     - "Password reset"
+
+   ![](./media/ex9-credential-triggers.png)
+
+1. Review the conversation flow and ensure it:
+   - Asks for username and saves as variable
+   - Provides self-service reset instructions using knowledge base
+   - Asks if issue is resolved
+   - Offers escalation to ticket creation
+
+1. **Connect the topic to the Freshdesk flow:**
+
+   - Locate the point in the conversation where the user indicates the issue is NOT resolved
+   - Click the **+** button at that escalation point
+   - Select **Add a tool** (or **Call an action**)
+
+   ![](./media/ex9-add-tool.png)
+
+1. In the tool selection pane:
+   - Search for **Freshdesk**
+   - Select your **Freshdesk** flow from the list
+
+   ![](./media/ex9-select-freshdesk.png)
+
+1. Configure the flow inputs by mapping the variables:
+
+   - For **Subject**: Click the **{x}** icon and select the appropriate variable, or enter:
+     ```
+     Password Reset Assistance - [username variable]
+     ```
+   - For **Description**: Map the variable containing the issue details
+
+   ![](./media/ex9-map-variables.png)
+
+1. Add a **Message** node after the action:
    ```
-   I need IT help
-   My computer is not working
-   IT support request
-   Technical issue
-   System problem
-   Help with technology
-   Submit a ticket
-   Report an issue
-   Create support ticket
-   I have a problem
+   I've created a support ticket for your password reset request. Our IT team will contact you shortly.
    ```
 
-   ![](./media/ex9-trigger-phrases.png)
+1. Check variable scope settings:
+   - Click on each variable in the topic
+   - If you see an error about "limited scope"
+   - Enable the checkbox for **"Can be used by other topics"** or **"Receive values from other topics"**
 
 1. Click **Save** to save the topic.
 
    ![](./media/ex9-save-topic.png)
 
-### Task 2: Build a Power Automate Flow for Ticket Notifications
+### Task 5: Create VPNConnectivitySupport Topic
 
-In this task, you will create a Power Automate flow that sends email notifications when tickets are created.
+In this task, you will create a topic for VPN and connectivity issues.
 
-1. In the agent editor, click on **Actions** in the left navigation.
+1. Click **+ Add a topic** > **Create from description with Copilot**.
 
-   ![](./media/ex9-actions-nav.png)
+1. Enter the following:
 
-1. Click **+ Add an action**.
-
-   ![](./media/ex9-add-action.png)
-
-1. Select **Create a new flow** to open Power Automate.
-
-   ![](./media/ex9-create-flow.png)
-
-   >**Note:** Power Automate will open in a new tab. Make sure to allow pop-ups if blocked.
-
-1. In Power Automate, you will see a flow template with a Copilot trigger. Name the flow:
-
+   **Name:**
    ```
-   IT Ticket Notification Flow
+   VPNConnectivitySupport
    ```
 
-   ![](./media/ex9-flow-name.png)
-
-1. Click on the **Run a flow from Copilot** trigger to configure inputs. Click **+ Add an input** and add the following inputs:
-
-   | Input Name | Type | Description |
-   |------------|------|-------------|
-   | IssueCategory | Text | The category of the IT issue |
-   | IssueDescription | Text | Detailed description of the problem |
-   | UrgencyLevel | Text | How urgent the issue is |
-   | ContactPhone | Text | Phone number to reach the user |
-
-   ![](./media/ex9-flow-inputs.png)
-
-1. Click **+ New step** and search for **Compose**. Select the **Compose** action.
-
-   ![](./media/ex9-add-compose.png)
-
-1. In the **Inputs** field, enter the following JSON to create a ticket object:
-
-   ```json
-   {
-     "TicketID": "@{guid()}",
-     "Category": "@{triggerBody()?['text']}",
-     "Description": "@{triggerBody()?['text_1']}",
-     "Urgency": "@{triggerBody()?['text_2']}",
-     "Contact": "@{triggerBody()?['text_3']}",
-     "Status": "Open",
-     "CreatedDate": "@{utcNow()}"
-   }
+   **Description:**
+   ```
+   Assist users experiencing VPN or general internet connectivity issues. Ask the user what exact problem or error message they are seeing and save that response as a variable. Ask where the user is working from, such as home, office, or another location, and save that as another variable. Provide basic troubleshooting steps including checking internet connection, verifying Wi-Fi status, restarting the VPN client, checking login credentials, reconnecting to the network, and any other basic connectivity checks. After giving these steps, ask the user whether the issue is resolved. If the user says no, offer to create a support ticket. When creating the ticket, generate a subject line using the location variable, for example "Connectivity Issue – <location>," and generate a detailed description that includes the user's reported error message and the location information. Map these values to the Freshdesk Power Automate flow inputs for Subject and Description so the flow receives the correct variables. This topic should handle all VPN and internet issues but exclude hardware problems, as those are handled in another topic.
    ```
 
-   ![](./media/ex9-compose-json.png)
+   ![](./media/ex9-vpn-topic.png)
 
-1. Click **+ New step** and search for **Condition**. Select the **Condition** control.
+1. Click **Create** to generate the topic.
 
-   ![](./media/ex9-add-condition.png)
+1. Review and verify trigger phrases include:
+   - "VPN not connecting"
+   - "VPN authentication failed"
+   - "Can't connect to VPN"
+   - "Internet not working"
+   - "Connectivity issues"
+   - "Network problems"
 
-1. Configure the condition to check if the issue is critical:
+1. Review the conversation flow and ensure it:
+   - Asks about error message and saves as variable
+   - Asks about location (home/office) and saves as variable
+   - Provides troubleshooting steps
+   - Asks if issue is resolved
+   - Offers ticket creation with location in subject
 
-   - Click in the first field and select `UrgencyLevel` from the Dynamic content
-   - Set the operator to **is equal to**
-   - Enter `Critical` in the value field
+1. **Connect to Freshdesk flow:**
+   - Find the escalation point where user says issue is NOT resolved
+   - Click **+** > **Add a tool** > Select **Freshdesk**
+   - Map the Subject and Description inputs with topic variables
 
-   ![](./media/ex9-condition-config.png)
-
-1. In the **If yes** branch (for critical issues), click **Add an action**.
-
-   - Search for **Office 365 Outlook**
-   - Select **Send an email (V2)**
-
-   ![](./media/ex9-add-email-critical.png)
-
-1. Configure the critical email notification:
-
-   | Field | Value |
-   |-------|-------|
-   | To | <inject key="AzureAdUserEmail"></inject> |
-   | Subject | `🚨 CRITICAL IT TICKET - Immediate Action Required` |
-   | Body | (See below) |
-
-   **Email Body:**
+1. Add a confirmation message:
    ```
-   A CRITICAL IT support ticket has been submitted and requires immediate attention.
-
-   TICKET DETAILS:
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Category: @{triggerBody()?['text']}
-   Urgency: @{triggerBody()?['text_2']}
-   Contact Phone: @{triggerBody()?['text_3']}
-
-   ISSUE DESCRIPTION:
-   @{triggerBody()?['text_1']}
-
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ⚠️ This ticket was automatically flagged as CRITICAL.
-   Please respond within 15 minutes.
+   I've created a support ticket for your connectivity issue. Our IT team will contact you shortly.
    ```
 
-   ![](./media/ex9-critical-email-config.png)
+1. Verify variable scope settings (enable "Can be used by other topics" if needed).
 
-1. In the **If no** branch (for non-critical issues), click **Add an action**.
+1. Click **Save**.
 
-   - Search for **Office 365 Outlook**
-   - Select **Send an email (V2)**
+### Task 6: Create HardwareSupportAssistant Topic
 
-   ![](./media/ex9-add-email-standard.png)
+In this task, you will create a comprehensive topic for hardware issues.
 
-1. Configure the standard email notification:
+1. Click **+ Add a topic** > **Create from description with Copilot**.
 
-   | Field | Value |
-   |-------|-------|
-   | To | <inject key="AzureAdUserEmail"></inject> |
-   | Subject | `New IT Support Ticket - @{triggerBody()?['text']}` |
-   | Body | (See below) |
+1. Enter the following:
 
-   **Email Body:**
+   **Name:**
    ```
-   A new IT support ticket has been submitted.
-
-   TICKET DETAILS:
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Category: @{triggerBody()?['text']}
-   Urgency: @{triggerBody()?['text_2']}
-   Contact Phone: @{triggerBody()?['text_3']}
-
-   ISSUE DESCRIPTION:
-   @{triggerBody()?['text_1']}
-
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━
-   The ticket has been added to the support queue.
+   HardwareSupportAssistant
    ```
 
-   ![](./media/ex9-standard-email-config.png)
-
-1. After the condition block, click **+ New step** and search for **Respond to Copilot**.
-
-   ![](./media/ex9-respond-copilot.png)
-
-1. In the **Respond to Copilot** action, click **+ Add an output** and configure:
-
-   | Field | Value |
-   |-------|-------|
-   | Type | Text |
-   | Name | TicketConfirmation |
-   | Value | Your ticket has been created successfully. You will receive a confirmation email shortly. |
-
-   ![](./media/ex9-respond-config.png)
-
-1. Click **Save** in the top right corner to save the flow.
-
-   ![](./media/ex9-save-flow.png)
-
-1. Close the Power Automate tab and return to Copilot Studio.
-
-   ![](./media/ex9-return-copilot.png)
-
-### Task 3: Create an Escalation Flow for Critical Issues
-
-In this task, you will create a separate flow specifically for handling escalation requests.
-
-1. In Copilot Studio, click on **Actions** > **+ Add an action** > **Create a new flow**.
-
-   ![](./media/ex9-create-escalation-flow.png)
-
-1. Name the flow:
-
+   **Description:**
    ```
-   IT Escalation Flow
+   Create a hardware support topic that handles all common device issues, including laptops, mice, keyboards, monitors, printers, headphones, docking stations, network adapters, and any other device. Begin by asking the user which device they are having trouble with and save this selection as a variable, then ask them to describe the issue in their own words and save that as another variable. Provide troubleshooting steps based on the selected device: for laptops, include steps for slow performance, freezing, overheating, slow boot, high CPU or memory usage, updates, restart, disk cleanup, and malware checks; for printers, include steps for offline issues, paper jams, blank pages, print queue problems, restarting the spooler, reconnecting cables, reloading paper, and power cycling; for mice and keyboards, include USB or Bluetooth checks, battery checks, driver checks, cleaning stuck keys, and re-pairing; for monitors, include steps for no display, flickering, resolution problems, cable or port checks, brightness and power checks; for headphones and microphones, include audio settings, mic testing, Bluetooth reconnecting, resetting, and driver updates; and for docking stations or network adapters, include cable checks, restarting the dock, firmware checks, and adapter resets. For any "other device," provide general troubleshooting such as checking cables, restarting the device, and verifying drivers. After the troubleshooting steps, ask the user whether the issue is resolved. If not, offer to create a support ticket. When creating the ticket, generate a subject like "Hardware Issue – <device>" and a description that includes the user's reported issue details and device type, and map these values to the Freshdesk Power Automate flow as the Subject and Description inputs.
    ```
 
-   ![](./media/ex9-escalation-name.png)
+   ![](./media/ex9-hardware-topic.png)
 
-1. Configure the trigger inputs:
+1. Click **Create** to generate the topic.
 
-   | Input Name | Type |
-   |------------|------|
-   | TicketID | Text |
-   | EscalationReason | Text |
-   | OriginalCategory | Text |
+1. Review and verify trigger phrases include:
+   - "My laptop is slow"
+   - "Printer not working"
+   - "Mouse not responding"
+   - "Keyboard issue"
+   - "Monitor problems"
+   - "Hardware issue"
+   - "Device not working"
 
-   ![](./media/ex9-escalation-inputs.png)
+1. Review the conversation flow and ensure it:
+   - Asks which device and saves as variable
+   - Asks to describe the issue and saves as variable
+   - Provides device-specific troubleshooting steps
+   - Asks if issue is resolved
+   - Offers ticket creation with device type in subject
 
-1. Click **+ New step** and add **Send an email (V2)** from Office 365 Outlook:
+1. **Connect to Freshdesk flow:**
+   - Find the escalation point where user says issue is NOT resolved
+   - Click **+** > **Add a tool** > Select **Freshdesk**
+   - Map the Subject (e.g., "Hardware Issue - [device]") and Description inputs
 
-   | Field | Value |
-   |-------|-------|
-   | To | <inject key="AzureAdUserEmail"></inject> |
-   | Subject | `⚡ ESCALATION ALERT - Ticket @{triggerBody()?['text']}` |
-   | Body | (See below) |
-
-   **Email Body:**
+1. Add a confirmation message:
    ```
-   An IT support ticket has been ESCALATED.
-
-   ESCALATION DETAILS:
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Ticket ID: @{triggerBody()?['text']}
-   Original Category: @{triggerBody()?['text_2']}
-   
-   ESCALATION REASON:
-   @{triggerBody()?['text_1']}
-
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ⚠️ This ticket requires immediate attention from a senior technician.
-   Please respond within 15 minutes.
+   I've created a support ticket for your hardware issue. Our IT team will contact you shortly.
    ```
 
-   ![](./media/ex9-escalation-email.png)
+1. Verify variable scope settings.
 
-1. Click **+ New step** and add **Respond to Copilot**:
+1. Click **Save**.
 
-   | Field | Value |
-   |-------|-------|
-   | Type | Text |
-   | Name | EscalationConfirmation |
-   | Value | Your issue has been escalated to a senior technician. You will be contacted within 15 minutes. |
+1. **Verify all topics are enabled:**
+   - In the **Topics** list, ensure all 3 topics show as enabled (toggle is on):
+     - CredentialResetSupport
+     - VPNConnectivitySupport
+     - HardwareSupportAssistant
 
-   ![](./media/ex9-escalation-respond.png)
-
-1. Click **Save** and close the Power Automate tab.
-
-### Task 4: Connect Flows to the Agent Topics
-
-In this task, you will integrate the flows into your agent topics.
-
-1. In Copilot Studio, go to **Topics** and open the **New Ticket Intake** topic.
-
-   ![](./media/ex9-open-intake-topic.png)
-
-1. Navigate to the end of the conversation flow (after all questions are asked).
-
-1. Click **+** to add a new node, then select **Call an action**.
-
-   ![](./media/ex9-add-action-node.png)
-
-1. Select **IT Ticket Notification Flow** from the list of available actions.
-
-   ![](./media/ex9-select-notification-flow.png)
-
-1. Map the flow inputs to the topic variables:
-
-   | Flow Input | Topic Variable |
-   |------------|----------------|
-   | IssueCategory | The variable storing category response |
-   | IssueDescription | The variable storing description response |
-   | UrgencyLevel | The variable storing urgency response |
-   | ContactPhone | The variable storing phone response |
-
-   ![](./media/ex9-map-variables.png)
-
-   >**Note:** Variable names may differ based on how AI generated them. Match each input to the corresponding question's saved response.
-
-1. After the action node, add a **Message** node with the confirmation:
-
-   ```
-   ✅ Your IT support ticket has been submitted successfully!
-
-   Ticket Summary:
-   • Category: {IssueCategory}
-   • Urgency: {UrgencyLevel}
-
-   You will receive a confirmation email shortly. A technician will review your request and contact you if needed.
-   ```
-
-   ![](./media/ex9-confirmation-message.png)
-
-1. Click **Save** to save the topic.
-
-1. Now create an **Escalation Request** topic. Click **+ Add a topic** > **Create from description with Copilot**.
-
-1. Enter the description:
-
-   ```
-   Create a topic for users who want to escalate their IT issue. The topic should:
-   - Ask if they have an existing ticket ID (optional)
-   - Ask why they need to escalate (issue not resolved, taking too long, critical impact)
-   - Ask what category the original issue was about
-   - Confirm the escalation will be processed
-   ```
-
-   ![](./media/ex9-escalation-topic-desc.png)
-
-1. Click **Create** and review the generated topic.
-
-1. Rename the topic to `Request Escalation` and add trigger phrases:
-
-   ```
-   I need to escalate
-   This is urgent
-   Speak to a manager
-   My issue is not resolved
-   Need immediate help
-   Escalate my ticket
-   The problem is still not fixed
-   I've been waiting too long
-   ```
-
-   ![](./media/ex9-escalation-triggers.png)
-
-1. At the end of the escalation topic, add **Call an action** and select **IT Escalation Flow**.
-
-1. Map the variables and add a confirmation message.
-
-1. Click **Save** to save the topic.
-
-### Task 5: Add Automated Troubleshooting Responses
-
-In this task, you will add conditional troubleshooting guidance based on the issue category.
-
-1. Return to the **New Ticket Intake** topic.
-
-1. After the confirmation message, add a **Condition** node.
-
-   - Click **+** > **Add a condition** > **Branch based on a condition**
-
-   ![](./media/ex9-add-condition-node.png)
-
-1. Configure the first condition:
-   - Select the IssueCategory variable
-   - Set to **is equal to**
-   - Value: `Hardware`
-
-   ![](./media/ex9-hardware-condition.png)
-
-1. In the Hardware branch, add a **Message** node:
-
-   ```
-   💡 While we process your hardware issue, try these quick fixes:
-
-   1. Check all cable connections
-   2. Restart your computer
-   3. Check if the issue occurs with other devices
-   4. Look for any physical damage
-
-   If these don't help, a technician will contact you soon.
-   ```
-
-   ![](./media/ex9-hardware-message.png)
-
-1. Click **+ New condition** to add another branch for Network issues:
-
-   - Condition: IssueCategory **is equal to** `Network`
-   - Message:
-   ```
-   💡 While we process your network issue, try these quick fixes:
-
-   1. Check if other devices can connect
-   2. Restart your router/modem
-   3. Disconnect and reconnect to WiFi
-   4. Try using an ethernet cable if possible
-
-   Our network team will investigate if the issue persists.
-   ```
-
-   ![](./media/ex9-network-condition.png)
-
-1. Add conditions for other categories as needed:
-
-   **Software:**
-   ```
-   💡 While we process your software issue, try these quick fixes:
-
-   1. Close and reopen the application
-   2. Restart your computer
-   3. Check for available updates
-   4. Clear the application's cache
-
-   A technician will review your request shortly.
-   ```
-
-   **Account Access:**
-   ```
-   💡 For account access issues, you can try:
-
-   1. Self-service password reset: https://passwordreset.microsoftonline.com
-   2. Clear browser cache and cookies
-   3. Try a different browser
-   4. Check if Caps Lock is on
-
-   Your request has been forwarded to our access management team.
-   ```
-
-   ![](./media/ex9-other-conditions.png)
-
-1. Add a **Default** branch for other categories with a generic message:
-
-   ```
-   A technician will review your request and contact you shortly. Thank you for your patience.
-   ```
-
-   ![](./media/ex9-default-message.png)
-
-1. Click **Save** to save all changes.
-
-   ![](./media/ex9-final-save.png)
+   ![](./media/ex9-topics-list.png)
 
 ## Summary
 
-In this exercise, you enhanced the IT Support Copilot with intelligent automation capabilities. You learned how to:
+In this exercise, you successfully integrated Freshdesk as a professional ticketing system with your IT Support Copilot. You learned how to:
 
-- Create topics using generative AI to quickly build conversation flows
-- Build Power Automate flows that integrate with Copilot for automated processing
-- Create escalation workflows for critical issues
-- Connect flows to agent topics with proper variable mapping
-- Add conditional logic for category-specific troubleshooting guidance
+- Set up a Freshdesk free trial account for IT ticketing
+- Obtain and configure API credentials for secure integration
+- Create an agent flow using the Freshdesk connector to automatically create tickets
+- Build intelligent topics using generative AI (CredentialResetSupport, VPNConnectivitySupport, HardwareSupportAssistant)
+- Connect AI-generated topics to the Freshdesk flow for seamless ticket escalation
+- Configure variable mapping between topics and flows
 
-Your IT Support Copilot can now automatically collect issue details, categorize tickets, send notifications, escalate critical issues, and provide immediate troubleshooting guidance—all without human intervention.
+Your IT Support Copilot can now provide troubleshooting guidance using the knowledge base, and when users need escalation, automatically create support tickets in Freshdesk with all the relevant details.
 
-In the next exercise, you will test the complete solution and deploy it to Microsoft Teams.
+In the next exercise, you will test the complete solution end-to-end and deploy it to Microsoft Teams.
 
 ### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

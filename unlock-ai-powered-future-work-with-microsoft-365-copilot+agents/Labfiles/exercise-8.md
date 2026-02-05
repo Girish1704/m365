@@ -318,9 +318,9 @@ In this exercise, you created an IT Support Copilot using Microsoft Copilot Stud
 - Access and navigate Microsoft Copilot Studio
 - Create a new copilot agent for IT support automation
 - Configure detailed instructions for handling IT support scenarios
-- Upload a knowledge base document for AI-powered responses
+- Connect a SharePoint site as a knowledge source for AI-powered responses
 - Test the copilot with various IT support queries
 
-In the next exercise, you will enhance this copilot by creating agent flows that automatically create support tickets when issues cannot be resolved through self-service.
+In the next exercise, you will set up Freshdesk as a professional ticketing system, create an agent flow to automatically create tickets, and build intelligent topics using generative AI that escalate to Freshdesk when users need additional support.
 
 ### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

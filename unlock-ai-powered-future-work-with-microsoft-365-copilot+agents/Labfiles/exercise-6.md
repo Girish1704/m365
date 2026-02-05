@@ -23,55 +23,33 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will navigate to Microsoft Copilot Studio and explore its interface.
 
-1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+1. On the Copilot Studio home page, click **+ Create** from the left navigation.
 
-1. Navigate to Microsoft Copilot Studio:
+   ![](../media/m36-copg-ex6-c-g1.png)
 
-   ```
-   https://copilotstudio.microsoft.com
-   ```
+1. Click **+ Create blank agent** to start creating a new agent.
 
-   ![](../media/ex6-copilot-studio-url.png)
+   ![](../media/m36-copg-ex6-c-g2.png)
 
-1. Sign in with your lab credentials if prompted:
+1. Click **Edit** to update the agent details.
 
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
+   ![](../media/m36-copg-ex6-c-g3.png)
 
-   ![](../media/ex6-studio-signin.png)
+1. Enter the agent name in the **Name (1)** field, add the description in the **Description (2)** box, then click **Save (3)** to apply the changes.
 
-1. If you see a **Stay signed in?** prompt, select **Yes**.
+   | Field | Value |
+   |-------|-------|
+   | Name | `HR Assistant-<inject key="DeploymentID" enableCopy="false"/>` |
+   | Description | `An intelligent HR assistant that helps employees with policies, benefits, and HR-related questions.` |
 
-1. You will be redirected to the Microsoft Copilot Studio home page. Take a moment to explore the interface:
+   ![](../media/m36-copg-ex6-c-g4.png)
 
-   - **Home** - Overview and quick actions
-   - **Agents** - List of all your created agents
-   - **Environments** - Manage different environments
-   - **Solutions** - Package and deploy solutions
+1. Click **Edit** to update the agent instructions.
 
-   ![](../media/ex6-studio-home.png)
+   ![](../media/m36-copg-ex6-c-g5.png)
 
-1. If prompted to select an environment, choose the default environment or your organization's environment.
+1. Enter the agent instructions in the **Instructions (1)** box, then click **Save (2)** to apply the changes.
 
-   ![](../media/ex6-select-environment.png)
-
-   >**Note:** Microsoft Copilot Studio uses the Power Platform environment infrastructure. Different environments allow you to separate development, testing, and production workloads.
-
-### Task 2: Create a New HR Agent
-
-In this task, you will create a new agent specifically designed for HR assistance.
-
-1. On the Copilot Studio home page, click **+ Create** from the left navigation panel.
-
-   ![](../media/ex6-create-copilot.png)
-
-1. Select **New agent** for an AI-assisted setup.
-
-   ![](../media/ex6-new-agent.png)
-
-1. In the **Describe your agent** field, enter the following description:
-
-   **Agent Instructions:**
    ```
    HR assistant that helps employees with:
    - Company policies and procedures
@@ -84,22 +62,27 @@ In this task, you will create a new agent specifically designed for HR assistanc
    The agent should be professional, empathetic, and helpful. It should escalate complex issues to human HR representatives.
    ```
 
-   ![](../media/ex6-agent-description.png)
+   ![](../media/m36-copg-ex6-c-g6.png)
 
-1. Click **Create** to proceed.
+1. Click **+ Add knowledge** to add data and resources to the agent.
 
-1. Copilot Studio will generate a new agent based on your description. Wait for the agent to be created.
+   ![](../media/m36-copg-ex6-c-g8.png)
 
-1. Once created, update the agent settings by selecting **Settings** from the top menu:
+1. Click **SharePoint** to add knowledge from SharePoint sources.
 
-   | Field | Value |
-   |-------|-------|
-   | Name | `HR Assistant-<inject key="DeploymentID" enableCopy="false"/>` |
-   | Description | `An intelligent HR assistant that helps employees with policies, benefits, and HR-related questions.` |
+   ![](../media/m36-copg-ex6-c-g9.png)
 
-   ![](../media/ex6-agent-settings.png)
+1. Enter the SharePoint site URL in the **URL field (1)**, then click **Add (2)** to connect the source.
 
-1. Click **Save** to save your agent settings.
+   ![](../media/m36-copg-ex6-c-g10.png)
+
+1. Click **Add to agent** to attach the SharePoint knowledge source.
+
+   ![](../media/m36-copg-ex6-c-g11.png)
+
+1. Verify that the knowledge source shows **Ready** to confirm it is successfully added.
+
+   ![](../media/m36-copg-ex6-c-g12.png)
 
 ### Task 3: Configure Agent Topics and Conversations
 

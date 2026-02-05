@@ -379,42 +379,6 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
 
    ![](./media/ex5-deadlines-response.png)
 
-1. Test firm policy questions:
-
-   **Prompt:**
-   ```
-   What are the billable hour requirements for Associates? What about the bonus threshold?
-   ```
-
-   ![](./media/ex5-test-policy.png)
-
-   **Expected Output:**
-
-   The agent should find in the **Firm Policies Handbook**:
-   - Associate annual target: 1,800 hours
-   - Bonus threshold: 2,000 hours
-
-   ![](./media/ex5-policy-response.png)
-
-1. Test multi-source query:
-
-   **Prompt:**
-   ```
-   Give me a summary of all clients with outstanding balances over $10,000. Include the client name, attorney, and amount owed.
-   ```
-
-   ![](./media/ex5-test-multi.png)
-
-   **Expected Output:**
-
-   The agent should analyze the **client-roster.csv** and identify:
-   - TechStart Solutions LLC - David Chen - $12,000
-   - Metro Construction Co - David Chen - $15,000
-   - Wilson Estate - Patricia Williams - $18,200
-   - Sunrise Healthcare LLC - Sarah Morrison - $22,000
-
-   ![](./media/ex5-multi-response.png)
-
 ## Summary
 
 In this exercise, you created a **SharePoint Agent** for a law firm that helps legal staff discover documents and extract insights from various file types including Word documents and CSV data files. You learned how to:

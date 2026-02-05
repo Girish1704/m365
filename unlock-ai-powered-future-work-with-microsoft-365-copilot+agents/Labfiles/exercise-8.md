@@ -75,7 +75,7 @@ In this task, you will create a new copilot specifically designed for IT support
 
    | Field | Value |
    |-------|-------|
-   | Name | `IT Support Copilot-<inject key="DeploymentID" enableCopy="false"/>` |
+   | Name | `IT Support Copilot` |
    | Description | `AI-powered assistant for IT support automation including password resets, VPN issues, laptop troubleshooting, and printer support.` |
 
    ![](./media/ex8-agent-details.png)
@@ -143,20 +143,20 @@ In this task, you will configure detailed instructions that define how the copil
 
 In this task, you will upload the IT Support knowledge base document that the copilot will use to answer questions.
 
-1. First, download the IT Support knowledge base. Open a new browser tab and navigate to:
+1. First, download the IT Support dataset. Open a new browser tab and navigate to:
 
    ```
-   https://github.com/CloudLabsAI-Azure/m365/tree/main/unlock-ai-powered-future-work-with-microsoft-365-copilot%2Bagents/Labfiles/ex8-dataset
+   https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads/it-support-dataset.zip
    ```
 
    ![](./media/ex8-github-dataset.png)
 
-1. Download the following file:
-   - `IT_Support_Knowledge_Base.md` - Click on the file, then click **Download raw file**
+1. The zip file will download automatically. Once downloaded, extract the zip file to your **Downloads** folder.
+
+1. Navigate to the extracted folder and open the **e8-dataset** folder. You will find the following file:
+   - `IT_Support_Knowledge_Base.md` - The IT support FAQ document
 
    ![](./media/ex8-download-kb.png)
-
-1. Save the file to your **Downloads** folder.
 
 1. Return to Copilot Studio. On your IT Support Copilot page, click **+ Add knowledge** in the Knowledge section.
 

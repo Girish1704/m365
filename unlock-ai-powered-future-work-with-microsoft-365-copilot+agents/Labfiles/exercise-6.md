@@ -12,18 +12,18 @@ You will create an HR agent that can answer employee questions about policies, b
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Add knowledge sources to the agent
-- Task 2: Access Microsoft Copilot Studio
-- Task 3: Create a new HR Agent
+- Task 1: Upload HR policy documents to SharePoint
+- Task 2: Access Microsoft Copilot Studio and create an HR Agent
+- Task 3: Add knowledge sources to the agent
 - Task 4: Configure agent topics and conversations
 - Task 5: Configure agent actions and integrations
 - Task 6: Test and publish the agent to Microsoft 365 Copilot
 
-### Task 1: Add Knowledge Sources to the Agent
+### Task 1: Upload HR Policy Documents to SharePoint
 
-In this task, you will upload HR policy documents to SharePoint and connect the agent to use them as knowledge sources for grounded responses.
+In this task, you will upload HR policy documents to SharePoint that will later be used as knowledge sources for the agent to provide grounded responses.
 
-#### Step 1: Upload Policy Documents to SharePoint
+#### Step 1: Locate and Review Policy Documents
 
 1. First, open **File Explorer** on your lab VM.
 
@@ -84,9 +84,9 @@ In this task, you will upload HR policy documents to SharePoint and connect the 
 
    >**Note:** These policy documents contain comprehensive Contoso HR information that the agent will use to answer employee questions accurately.
 
-### Task 1: Access Microsoft Copilot Studio
+### Task 2: Access Microsoft Copilot Studio and Create an HR Agent
 
-In this task, you will navigate to Microsoft Copilot Studio and explore its interface.
+In this task, you will navigate to Microsoft Copilot Studio, create a new HR Agent, and configure its basic settings.
 
 1. On the Copilot Studio home page, click **+ Create** from the left navigation.
 
@@ -149,9 +149,13 @@ In this task, you will navigate to Microsoft Copilot Studio and explore its inte
 
    ![](../media/m36-copg-ex6-c-g12.png)
 
+   >**Note:** The SharePoint knowledge source is now connected and will be used by the agent to answer questions based on the HR policy documents.
+
 ### Task 3: Configure Agent Topics and Conversations
 
-In this task, you will configure topics that define how the agent handles different types of conversations. You will use the **Add from description with Copilot** feature to quickly generate topic flows.
+In this task, you will configure topics that define how the agent handles different types of conversations. You will create an escalation topic and use the **Add from description with Copilot** feature to quickly generate topic flows.
+
+#### Topic 1: Escalation to HR
 
 1. Click **Topics (1)**, then select **+ Add a topic (2)** and choose **From blank (3)** to create a new topic.
 
@@ -352,6 +356,10 @@ In this task, you will configure topics that define how the agent handles differ
       ![](../media/m36-copg-ex6-c-g42.png)
 
 1. Click **Save** to save the topic.
+
+### Task 4: Enhance Agent Instructions with Policy References
+
+In this task, you will update the agent instructions to ensure it properly references the HR policy documents from the knowledge base.
 
 1. Click on **Overview** in the left navigation to return to the agent overview.
 

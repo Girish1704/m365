@@ -139,50 +139,52 @@ In this task, you will configure detailed instructions that define how the copil
 
    ![](./media/ex8-save-instructions.png)
 
-### Task 4: Upload the IT Support Knowledge Base
+### Task 4: Add SharePoint Knowledge Source
 
-In this task, you will upload the IT Support knowledge base document that the copilot will use to answer questions.
+In this task, you will connect the IT Support SharePoint site as a knowledge source for the copilot. The SharePoint site contains IT support documentation in PDF format that the copilot will use to answer questions.
 
-1. First, download the IT Support dataset. Open a new browser tab and navigate to:
-
-   ```
-   https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads/it-support-dataset.zip
-   ```
-
-   ![](./media/ex8-github-dataset.png)
-
-1. The zip file will download automatically. Once downloaded, extract the zip file to your **Downloads** folder.
-
-1. Navigate to the extracted folder and open the **e8-dataset** folder. You will find the following file:
-   - `IT_Support_Knowledge_Base.md` - The IT support FAQ document
-
-   ![](./media/ex8-download-kb.png)
-
-1. Return to Copilot Studio. On your IT Support Copilot page, click **+ Add knowledge** in the Knowledge section.
+1. On your IT Support Copilot page, click **+ Add knowledge** in the Knowledge section.
 
    ![](./media/ex8-add-knowledge.png)
 
-1. Select **Files** from the available knowledge source options.
+1. Select **SharePoint** from the available knowledge source options.
 
-   ![](./media/ex8-select-files.png)
+   ![](./media/ex8-select-sharepoint.png)
 
-1. Click **Browse** and navigate to your **Downloads** folder.
+1. In the SharePoint URL field, enter the IT Support SharePoint site URL:
 
-   ![](./media/ex8-browse-files.png)
+   ```
+   https://<inject key="Tenant Name" enableCopy="false"/>.sharepoint.com/sites/ITSupport
+   ```
 
-1. Select the `IT_Support_Knowledge_Base.md` file and click **Open**.
+   ![](./media/ex8-sharepoint-url.png)
 
-   ![](./media/ex8-select-file.png)
+   >**Note:** The IT Support SharePoint site contains the following PDF documents:
+   >| File | Description |
+   >|------|-------------|
+   >| `01-Password-and-Account-Management.pdf` | Password policies, SSPR, MFA, account lockouts |
+   >| `02-VPN-and-Network-Troubleshooting.pdf` | VPN setup, connectivity issues, WiFi |
+   >| `03-Laptop-and-Performance-Guide.pdf` | Slow computer, hardware issues, optimization |
+   >| `04-Printer-and-Peripheral-Support.pdf` | Printer issues, monitors, docks, peripherals |
+   >| `05-IT-Support-Quick-Reference.pdf` | Quick reference card with common solutions |
 
-1. Click **Add** to upload the knowledge base.
+1. Click **Add** to connect the SharePoint site.
 
-   ![](./media/ex8-upload-kb.png)
+   ![](./media/ex8-add-sharepoint.png)
 
-1. Wait for the file to upload and process. You should see the status change to **Ready** or **Synced**.
+1. If prompted, sign in with your lab credentials to authorize access to SharePoint.
+
+   ![](./media/ex8-sharepoint-auth.png)
+
+1. Click **Add to agent** to attach the SharePoint knowledge source to your copilot.
+
+   ![](./media/ex8-add-to-agent.png)
+
+1. Wait for the SharePoint site to sync. You should see the status change to **Ready** or **Synced**.
 
    ![](./media/ex8-kb-ready.png)
 
-   >**Note:** The knowledge base may take 2-5 minutes to process and index. You can proceed to the next task while it processes.
+   >**Note:** The SharePoint knowledge source may take 2-5 minutes to index all documents. You can proceed to the next task while it processes.
 
 ### Task 5: Test the Copilot with Basic IT Queries
 

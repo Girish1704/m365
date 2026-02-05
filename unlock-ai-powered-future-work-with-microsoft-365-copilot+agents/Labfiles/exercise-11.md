@@ -1,24 +1,24 @@
-# Exercise 11: Implement Prompt Action to Generate Quiz Questions Based on a Topic
+# Exercise 11: Create a Quiz Generator Agent with Prompt Actions
 
-## Estimated Duration: 60 Minutes
+## Estimated Duration: 45 Minutes
 
 ## Overview
 
-In this exercise, you will implement a prompt action in Microsoft Copilot Studio that generates quiz questions based on a given topic. Prompt actions allow you to create custom AI-powered responses by defining specific instructions and parameters that shape how the agent generates content.
+In this exercise, you will create a Quiz Generator agent in Microsoft Copilot Studio and implement a prompt action that generates educational quiz questions. Prompt actions are a powerful feature that allows you to define custom AI instructions with specific parameters, enabling highly tailored content generation.
 
-This is useful for educational scenarios, training content creation, and knowledge assessment automation.
+By the end of this exercise, you will have a working prompt action that can generate multiple-choice quiz questions on any topic, with configurable difficulty levels and question counts.
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Access Copilot Studio and create a Quiz Generator agent
-- Task 2: Configure a prompt action for quiz generation
-- Task 3: Define prompt parameters and instructions
-- Task 4: Integrate the prompt action into a topic
-- Task 5: Test and refine the quiz generator
+- Task 1: Create a Quiz Generator Agent
+- Task 2: Create a Prompt Action for Quiz Generation
+- Task 3: Configure Prompt Inputs and Parameters
+- Task 4: Write the Prompt Instructions
+- Task 5: Test the Prompt Action Directly
 
-### Task 1: Access Copilot Studio and Create a Quiz Generator Agent
+### Task 1: Create a Quiz Generator Agent
 
 In this task, you will create a new agent specifically designed for generating educational quizzes.
 
@@ -41,157 +41,221 @@ In this task, you will create a new agent specifically designed for generating e
 
    ![](./media/ex11-create.png)
 
-1. Select **New agent**.
+1. Click on **+ New Agent** to create a new agent.
 
    ![](./media/ex11-new-agent.png)
 
-1. In the **Describe your agent** field, enter:
+1. Click **Skip to configure** to skip the AI-assisted creation and configure manually.
 
-   **Agent Description:**
-   ```
-   Create a quiz generator agent that:
-   - Takes a topic from the user
-   - Generates multiple choice questions about that topic
-   - Supports different difficulty levels
-   - Creates answer keys with explanations
-   - Can generate quizzes of varying lengths
-   - Helps educators and trainers create assessments quickly
-   ```
+   ![](./media/ex11-skip-configure.png)
 
-   ![](./media/ex11-agent-description.png)
-
-1. Click **Create** to generate the agent.
-
-1. Once created, configure the agent settings:
-
-   - Click **Settings** from the top menu
-   - Update the following:
+1. Configure the agent details:
 
    | Field | Value |
    |-------|-------|
-   | Name | `Quiz Generator-<inject key="DeploymentID" enableCopy="false"/>` |
-   | Description | `An intelligent agent that generates educational quiz questions on any topic` |
+   | Name | `Quiz Generator` |
+   | Description | `An intelligent agent that generates educational quiz questions on any topic with customizable difficulty levels` |
+   | Instructions | (See below) |
 
-   ![](./media/ex11-agent-settings.png)
+   **Instructions:**
+   ```
+   You are a Quiz Generator assistant that helps educators, trainers, and learners create educational assessments.
 
-1. Click **Save** to save the settings.
+   Your capabilities include:
+   - Generating multiple-choice quiz questions on any topic
+   - Supporting different difficulty levels (Easy, Medium, Hard)
+   - Creating answer keys with explanations
+   - Producing quizzes of varying lengths (1-10 questions)
 
-### Task 2: Configure a Prompt Action for Quiz Generation
+   When interacting with users:
+   - Be helpful and encouraging
+   - Ask clarifying questions if the topic is too broad
+   - Suggest related topics if appropriate
+   - Ensure all generated content is accurate and educational
+   ```
 
-In this task, you will create a prompt action that defines how quiz questions are generated.
+   ![](./media/ex11-agent-config.png)
 
-1. In the agent editor, click on **Actions** in the left navigation.
+1. Click **Create** to create the agent.
 
-   ![](./media/ex11-actions.png)
+   ![](./media/ex11-create-agent.png)
 
-1. Click **+ Add an action**.
+1. Wait for the agent to be created. You will be redirected to the agent overview page.
 
-   ![](./media/ex11-add-action.png)
+   ![](./media/ex11-agent-created.png)
 
-1. Select **Prompt** from the action types.
+### Task 2: Create a Prompt Action for Quiz Generation
+
+In this task, you will create a prompt action that defines how quiz questions are generated using AI.
+
+1. In the agent editor, click on **Tools** in the left navigation panel.
+
+   ![](./media/ex11-tools-nav.png)
+
+1. Click **+ Add a tool**.
+
+   ![](./media/ex11-add-tool.png)
+
+1. In the **New tool** dialog, select **Prompt**.
 
    ![](./media/ex11-select-prompt.png)
 
-   >**Note:** Prompt actions allow you to create custom AI-powered responses using specific instructions and parameters.
+   >**What is a Prompt?**
+   >
+   >Prompts apply AI to text, documents, or images to analyze, summarize, or transform them. You can create reusable, parameterized AI generation logic.
 
-1. In the prompt action editor, configure the following:
+1. The **Custom prompt** editor will open. You'll see:
 
-   **Name:**
+   - **Instructions** panel (left) - where you write your prompt
+   - **Model** selector - defaults to GPT-4.1 mini
+   - **Model response** panel (right) - shows test results
+   - **+ Add content** button - to add inputs and knowledge
+   - **Get started with Copilot** section - AI helper to create prompts
+
+   ![](./media/ex11-prompt-editor.png)
+
+1. First, let's rename the prompt. Click on the title **"Custom prompt [date/time]"** at the top and rename it to:
+
    ```
    Generate Quiz Questions
    ```
 
-   ![](./media/ex11-prompt-name.png)
+   ![](./media/ex11-rename-prompt.png)
 
-1. In the **Describe the prompt's purpose** field, enter:
+### Task 3: Configure Prompt Inputs and Parameters
 
-   ```
-   Generate multiple choice quiz questions based on a specified topic, difficulty level, and number of questions
-   ```
+In this task, you will add input parameters that control quiz generation. The UI uses "/" to add inputs inline.
 
-   ![](./media/ex11-prompt-purpose.png)
+1. In the **Instructions** text area, you'll see the placeholder text:
+   
+   *"Use copilot to create your instructions or write it here. Use "/" to add inputs and knowledge"*
 
-### Task 3: Define Prompt Parameters and Instructions
+1. Click inside the **Instructions** area and type `/` (forward slash).
 
-In this task, you will define the input parameters and detailed instructions for the prompt action.
+   ![](./media/ex11-slash-command.png)
 
-1. In the **Inputs** section, click **+ Add input** to add parameters:
+1. A menu will appear with two sections:
 
-   **Input 1 - Topic:**
-   - Name: `Topic`
-   - Description: `The subject or topic for which to generate quiz questions`
-   - Type: Text
-   - Required: Yes
+   **Input:**
+   | Option | Description |
+   |--------|-------------|
+   | **Text** | Text input variable |
+   | **Image or document** | File/image input |
+   | **Power Fx** | Formula-based input |
+
+   **Knowledge:**
+   | Option | Description |
+   |--------|-------------|
+   | **+ New connection** | Add a new data connection |
+   | **Dataverse** | Connect to Dataverse tables |
+
+   ![](./media/ex11-slash-menu.png)
+
+1. Select **Text** under the Input section to create the first parameter.
+
+   ![](./media/ex11-select-text.png)
+
+1. A text input field will be added. Configure it:
+
+   | Field | Value |
+   |-------|-------|
+   | Name | `Topic` |
+   | Description | `The subject or topic for quiz questions (e.g., Solar System, Python Programming)` |
 
    ![](./media/ex11-input-topic.png)
 
-1. **Input 2 - Number of Questions:**
+1. Press Enter or click outside to confirm. You'll see `{Topic}` appear in the instructions area.
 
-   - Click **+ Add input**
-   - Name: `NumberOfQuestions`
-   - Description: `How many questions to generate (1-10)`
-   - Type: Text
-   - Required: Yes
+1. Add a space after `{Topic}`, then type `/` again and select **Text**.
+
+1. Configure the second input:
+
+   | Field | Value |
+   |-------|-------|
+   | Name | `NumberOfQuestions` |
+   | Description | `How many questions to generate (1-10)` |
 
    ![](./media/ex11-input-number.png)
 
-1. **Input 3 - Difficulty Level:**
+1. Add a space, type `/` again and select **Text** for the third parameter.
 
-   - Click **+ Add input**
-   - Name: `DifficultyLevel`
-   - Description: `The difficulty level - Easy, Medium, or Hard`
-   - Type: Text
-   - Required: Yes
+1. Configure the third input:
+
+   | Field | Value |
+   |-------|-------|
+   | Name | `DifficultyLevel` |
+   | Description | `The difficulty level - Easy, Medium, or Hard` |
 
    ![](./media/ex11-input-difficulty.png)
 
-1. In the **Prompt** section, enter the detailed instructions:
+1. You should now have three text inputs added: `{Topic}`, `{NumberOfQuestions}`, `{DifficultyLevel}`
+
+   ![](./media/ex11-all-inputs.png)
+
+### Task 4: Write the Prompt Instructions
+
+In this task, you will write detailed instructions that guide the AI in generating high-quality quiz questions.
+
+1. Clear the Instructions area and enter the following complete prompt (you can copy-paste this):
 
    ```
    You are an expert educational content creator specializing in creating quiz questions for learning and assessment purposes.
 
-   Generate exactly {{NumberOfQuestions}} multiple choice quiz questions about the topic: {{Topic}}
+   Generate exactly {NumberOfQuestions} multiple choice quiz questions about the topic: {Topic}
 
-   Difficulty Level: {{DifficultyLevel}}
-
-   Follow these guidelines:
-
-   ## Question Format:
-   For each question, provide:
-   1. The question number and question text
-   2. Four answer options labeled A, B, C, and D
-   3. The correct answer
-   4. A brief explanation of why that answer is correct
+   Difficulty Level: {DifficultyLevel}
 
    ## Difficulty Guidelines:
-   - Easy: Basic concepts, straightforward questions, commonly known facts
-   - Medium: Requires some understanding and application of concepts
-   - Hard: Complex scenarios, requires deeper understanding, may include tricky options
+
+   **Easy:**
+   - Basic concepts and definitions
+   - Straightforward, commonly known facts
+   - Clear correct answer with obviously incorrect distractors
+
+   **Medium:**
+   - Requires understanding and application of concepts
+   - May involve comparing or contrasting ideas
+   - Distractors are plausible but distinguishable
+
+   **Hard:**
+   - Complex scenarios requiring deep understanding
+   - May involve analysis, synthesis, or evaluation
+   - Distractors are very plausible, requiring careful thought
+
+   ## Question Format Requirements:
+
+   For each question, you MUST provide:
+   1. Question number and clear question text
+   2. Exactly four answer options labeled A, B, C, and D
+   3. The correct answer letter
+   4. A brief educational explanation (2-3 sentences)
 
    ## Quality Standards:
-   - Questions should be clear and unambiguous
-   - All incorrect options (distractors) should be plausible
-   - Avoid obvious wrong answers
+
+   - Questions must be clear, unambiguous, and grammatically correct
+   - All four options must be plausible (no joke answers)
    - Each question should test a different aspect of the topic
-   - Explanations should be educational and help reinforce learning
+   - Explanations should reinforce learning, not just state the answer
+   - Avoid "All of the above" or "None of the above" options
+   - Ensure factual accuracy
 
    ## Output Format:
-   Present the quiz in this format:
 
-   **Quiz: [Topic Name]**
-   **Difficulty: [Level]**
-   **Number of Questions: [Number]**
+   📝 **Quiz: {Topic}**
+   📊 **Difficulty: {DifficultyLevel}**
+   📋 **Questions: {NumberOfQuestions}**
 
    ---
 
-   **Question 1:** [Question text]
+   **Question 1:** [Question text here]
+
    A) [Option A]
    B) [Option B]
    C) [Option C]
    D) [Option D]
 
-   **Correct Answer:** [Letter]
-   **Explanation:** [Brief explanation]
+   ✅ **Correct Answer:** [Letter]
+   💡 **Explanation:** [Educational explanation here]
 
    ---
 
@@ -199,295 +263,113 @@ In this task, you will define the input parameters and detailed instructions for
 
    ---
 
-   **Answer Key Summary:**
-   1. [Letter] - [Brief topic]
-   2. [Letter] - [Brief topic]
-   [etc.]
+   ## 📋 Answer Key Summary
+
+   | Q# | Answer | Topic |
+   |----|--------|-------|
+   | 1 | [Letter] | [Brief topic] |
+   | 2 | [Letter] | [Brief topic] |
+   [Continue for all questions...]
 
    Now generate the quiz based on the provided parameters.
    ```
 
-   ![](./media/ex11-prompt-instructions.png)
+   ![](./media/ex11-full-instructions.png)
 
-1. In the **Outputs** section, configure the output:
+   >**Note:** The `{Topic}`, `{NumberOfQuestions}`, and `{DifficultyLevel}` placeholders should already be recognized as your inputs. If they appear as plain text, delete them and use `/` to re-add them as proper input variables.
 
-   - Name: `QuizContent`
-   - Description: `The generated quiz questions with answers and explanations`
-   - Type: Text
+1. Verify that the model is set to **GPT-4.1 mini** (or a similar model) in the Model dropdown.
 
-   ![](./media/ex11-output.png)
+   ![](./media/ex11-model-select.png)
 
-1. Click **Save** to save the prompt action.
+### Task 5: Test the Prompt Action Directly
 
-   ![](./media/ex11-save-prompt.png)
+In this task, you will test the prompt directly in the editor to ensure it generates quality quiz content.
 
-### Task 4: Integrate the Prompt Action into a Topic
-
-In this task, you will create a topic that uses the prompt action to generate quizzes interactively.
-
-1. Click on **Topics** in the left navigation.
-
-   ![](./media/ex11-topics.png)
-
-1. Click **+ New topic** > **From blank**.
-
-   ![](./media/ex11-new-topic.png)
-
-1. Name the topic `Generate Quiz` and add trigger phrases:
-
-   ```
-   Create a quiz
-   Generate quiz questions
-   Make a test
-   I need quiz questions
-   Create assessment questions
-   Help me make a quiz
-   Generate questions about
-   ```
-
-   ![](./media/ex11-topic-triggers.png)
-
-1. Build the conversation flow to collect quiz parameters:
-
-   **Step 1 - Welcome Message:**
-   
-   Add a **Message** node:
-   ```
-   I can help you create a quiz on any topic! Let me gather some information about what you need.
-   ```
-
-   ![](./media/ex11-welcome-message.png)
-
-1. **Step 2 - Collect Topic:**
-
-   Add a **Question** node:
-   - Question text: `What topic would you like the quiz to cover? (e.g., "World War II", "Python Programming", "Climate Change")`
-   - Identify: User's entire response
-   - Save response as: `QuizTopic`
-
-   ![](./media/ex11-topic-question.png)
-
-1. **Step 3 - Collect Number of Questions:**
-
-   Add a **Question** node:
-   - Question text: `How many questions would you like? (Choose 1-10)`
-   - Identify: Multiple choice options
-   - Options:
-     - 3
-     - 5
-     - 7
-     - 10
-
-   - Save response as: `QuestionCount`
-
-   ![](./media/ex11-count-question.png)
-
-1. **Step 4 - Collect Difficulty Level:**
-
-   Add a **Question** node:
-   - Question text: `What difficulty level should the questions be?`
-   - Identify: Multiple choice options
-   - Options:
-     - Easy
-     - Medium
-     - Hard
-
-   - Save response as: `QuizDifficulty`
-
-   ![](./media/ex11-difficulty-question.png)
-
-1. **Step 5 - Confirm and Generate:**
-
-   Add a **Message** node:
-   ```
-   Great! I'll generate a {QuizDifficulty} quiz with {QuestionCount} questions about {QuizTopic}.
-
-   Please wait while I create your quiz...
-   ```
-
-   ![](./media/ex11-confirm-message.png)
-
-1. **Step 6 - Call the Prompt Action:**
-
-   Add a **Call an action** node:
-   - Select **Generate Quiz Questions** (the prompt action you created)
-
-   ![](./media/ex11-call-prompt.png)
-
-1. Map the inputs:
-
-   - Topic: `QuizTopic`
-   - NumberOfQuestions: `QuestionCount`
-   - DifficultyLevel: `QuizDifficulty`
-
-   ![](./media/ex11-map-inputs.png)
-
-1. **Step 7 - Display the Quiz:**
-
-   Add a **Message** node to display the output:
-   ```
-   Here is your quiz:
-
-   {Topic.QuizContent}
-
-   Would you like me to generate another quiz on a different topic?
-   ```
-
-   ![](./media/ex11-display-quiz.png)
-
-1. **Step 8 - Add Follow-up Options:**
-
-   Add a **Question** node:
-   - Question text: `What would you like to do next?`
-   - Identify: Multiple choice options
-   - Options:
-     - Generate another quiz
-     - Make the quiz harder
-     - Make the quiz easier
-     - Add more questions
-     - I'm done
-
-   - Save response as: `NextAction`
-
-   ![](./media/ex11-followup-question.png)
-
-1. Add **Condition** branches based on the response:
-
-   - If "Generate another quiz" - Redirect back to topic start
-   - If "I'm done" - End with goodbye message
-
-   ![](./media/ex11-conditions.png)
-
-1. Click **Save** to save the topic.
-
-   ![](./media/ex11-save-topic.png)
-
-### Task 5: Test and Refine the Quiz Generator
-
-In this task, you will test the quiz generator with various topics and difficulty levels.
-
-1. Click the **Test** button to open the test panel.
+1. Click the **Test** button next to the Model selector.
 
    ![](./media/ex11-test-button.png)
 
-1. **Test 1 - Basic Quiz Generation:**
+1. A dialog will appear asking for input values. Enter the following test values:
 
-   **Prompt:**
-   ```
-   Create a quiz
-   ```
-
-   ![](./media/ex11-test-start.png)
-
-   **Expected Flow:**
-
-   The agent should ask for topic, number of questions, and difficulty:
-
-   ![](./media/ex11-test-flow.png)
-
-1. Provide the following information:
-
-   - Topic: `Solar System`
-   - Number of questions: `5`
-   - Difficulty: `Easy`
+   | Input | Test Value |
+   |-------|------------|
+   | Topic | `Solar System` |
+   | NumberOfQuestions | `3` |
+   | DifficultyLevel | `Easy` |
 
    ![](./media/ex11-test-inputs.png)
 
-   **Expected Output:**
+1. Click **Run** or **Test** to execute the prompt.
 
-   The agent should generate a quiz like this:
+1. The **Model response** panel on the right will show the generated quiz:
 
-   ![](./media/ex11-quiz-output.png)
+   ![](./media/ex11-model-response.png)
 
-   >**Note:** The actual questions and content will vary based on AI generation. The format should follow the specified structure with questions, options, correct answers, and explanations.
-
-1. **Test 2 - Technical Topic:**
-
-   Start a new conversation:
-
-   **Prompt:**
+   **Example Expected Output:**
    ```
-   I need quiz questions
-   ```
+   📝 Quiz: Solar System
+   📊 Difficulty: Easy
+   📋 Questions: 3
 
-   Provide:
-   - Topic: `Microsoft 365 Copilot features`
-   - Number of questions: `3`
-   - Difficulty: `Medium`
+   ---
 
-   ![](./media/ex11-test-technical.png)
+   Question 1: Which planet is known as the "Red Planet"?
 
-   **Expected Output:**
+   A) Venus
+   B) Mars
+   C) Jupiter
+   D) Saturn
 
-   ![](./media/ex11-technical-output.png)
+   ✅ Correct Answer: B
+   💡 Explanation: Mars is called the Red Planet because of its reddish appearance, caused by iron oxide (rust) on its surface.
 
-1. **Test 3 - Hard Difficulty:**
-
-   Start a new conversation:
-
-   **Prompt:**
-   ```
-   Generate quiz questions
+   ---
+   [Additional questions...]
    ```
 
-   Provide:
-   - Topic: `Machine Learning algorithms`
-   - Number of questions: `5`
-   - Difficulty: `Hard`
+1. **Verify Quality:**
 
-   ![](./media/ex11-test-hard.png)
+   Check the generated quiz for:
+   - [ ] Correct number of questions (3)
+   - [ ] Appropriate difficulty (Easy = basic facts)
+   - [ ] All questions have exactly 4 options
+   - [ ] Correct answers are accurate
+   - [ ] Explanations are educational
+   - [ ] Proper formatting with emojis
 
-   **Expected Output:**
+1. **Test with Different Parameters:**
 
-   The questions should be noticeably more challenging with complex scenarios:
+   Click **Test** again and try different values:
 
-   ![](./media/ex11-hard-output.png)
+   | Test Case | Topic | Questions | Difficulty |
+   |-----------|-------|-----------|------------|
+   | Test 2 | Microsoft 365 | 5 | Medium |
+   | Test 3 | Machine Learning | 3 | Hard |
 
-1. **Test 4 - Follow-up Actions:**
+   ![](./media/ex11-additional-tests.png)
 
-   After generating a quiz, test the follow-up options:
+1. If the output quality needs improvement, modify the instructions and test again.
 
-   - Select "Generate another quiz" to verify the flow restarts correctly
+1. Once satisfied with the results, click **Save** in the bottom-right corner.
 
-   ![](./media/ex11-test-followup.png)
+   ![](./media/ex11-save-prompt.png)
 
-1. **Verify Question Quality:**
+1. You will be returned to the Tools list. Your **Generate Quiz Questions** prompt should now appear in the list.
 
-   Review the generated quizzes for:
-   - Correct formatting (questions, options A-D, answers, explanations)
-   - Appropriate difficulty level
-   - Accurate information
-   - Plausible distractors (wrong answers)
-
-   ![](./media/ex11-verify-quality.png)
-
-1. If needed, refine the prompt instructions in the prompt action:
-
-   - Navigate back to **Actions** > **Generate Quiz Questions**
-   - Modify the prompt instructions to improve output quality
-   - Save and test again
-
-   ![](./media/ex11-refine-prompt.png)
-
-1. Once testing is complete, click **Publish** to publish the agent.
-
-   ![](./media/ex11-publish.png)
-
-1. Select the channels for publishing and confirm.
-
-   ![](./media/ex11-publish-confirm.png)
+   ![](./media/ex11-prompt-saved.png)
 
 ## Summary
 
-In this exercise, you implemented a prompt action in Microsoft Copilot Studio to generate educational quiz questions. You learned how to:
+In this exercise, you created a Quiz Generator agent and implemented a prompt action for generating educational quiz questions. You learned how to:
 
-- Create a specialized quiz generator agent
-- Configure prompt actions with detailed instructions
-- Define input parameters for customizable outputs
-- Build conversational flows that integrate prompt actions
-- Test and refine AI-generated content
-- Create follow-up options for enhanced user experience
+- Create a specialized agent for educational content generation
+- Configure prompt actions with multiple input parameters
+- Write detailed prompt instructions that guide AI output
+- Use variable placeholders (`{{Variable}}`) in prompts
+- Define structured output formats for consistent results
+- Test prompt actions directly before integrating into topics
 
-Prompt actions are powerful tools for creating custom AI-powered responses that can be tailored to specific business needs, from educational content to automated report generation.
+In the next exercise, you will build a conversational topic that integrates this prompt action, allowing users to interactively generate quizzes through a guided conversation flow.
 
-### You have successfully completed this exercise. Congratulations on completing all exercises in this lab!
+### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

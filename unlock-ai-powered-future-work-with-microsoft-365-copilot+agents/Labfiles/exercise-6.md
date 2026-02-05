@@ -12,12 +12,77 @@ You will create an HR agent that can answer employee questions about policies, b
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Access Microsoft Copilot Studio
-- Task 2: Create a new HR Agent
-- Task 3: Configure agent topics and conversations
-- Task 4: Add knowledge sources to the agent
+- Task 1: Add knowledge sources to the agent
+- Task 2: Access Microsoft Copilot Studio
+- Task 3: Create a new HR Agent
+- Task 4: Configure agent topics and conversations
 - Task 5: Configure agent actions and integrations
 - Task 6: Test and publish the agent to Microsoft 365 Copilot
+
+### Task 1: Add Knowledge Sources to the Agent
+
+In this task, you will upload HR policy documents to SharePoint and connect the agent to use them as knowledge sources for grounded responses.
+
+#### Step 1: Upload Policy Documents to SharePoint
+
+1. First, open **File Explorer** on your lab VM.
+
+1. Navigate to the HR policy documents folder:
+
+   ```
+   C:\datasets\policies
+   ```
+
+   ![](../media/ex6-policies-folder.png)
+
+1. You will find the following HR policy documents:
+
+   | Document | Description |
+   |----------|-------------|
+   | 01-Leave-Policy.md | Annual, sick, personal, parental leave entitlements |
+   | 02-Holiday-Calendar-2025.md | Official holidays and floating holidays |
+   | 03-Employee-Benefits-Guide.md | Medical, dental, 401k, wellness programs |
+   | 04-Code-of-Conduct.md | Ethics, values, conflicts of interest |
+   | 05-Performance-Review-Policy.md | Ratings, goals, merit increases |
+   | 06-Onboarding-Guide.md | First day through 90-day milestones |
+   | 07-Remote-Work-Policy.md | Hybrid/remote work guidelines |
+   | 08-Health-and-Safety-Policy.md | Emergency procedures, hazard reporting |
+   | 09-Travel-and-Expense-Policy.md | Booking, per diem, reimbursement |
+   | 10-Anti-Harassment-Policy.md | Discrimination prevention, reporting |
+   | 11-IT-Security-Policy.md | Passwords, devices, data handling |
+   | 12-Training-and-Development-Policy.md | Tuition, certifications, mentoring |
+
+1. Select all the policy files (Ctrl+A) and copy them (Ctrl+C).
+
+1. Open a new browser tab and navigate to your SharePoint site:
+
+   ```
+   https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com/sites/HRPoliciesHub-<inject key="DeploymentID" enableCopy="false"/>
+   ```
+
+1. Click on **Documents** in the left navigation.
+
+   ![](../media/ex6-sharepoint-documents.png)
+
+1. Click **+ New** > **Folder** to create a new folder.
+
+1. Name the folder `HR Policies` and click **Create**.
+
+   ![](../media/ex6-create-folder.png)
+
+1. Open the **HR Policies** folder and click **Upload** > **Files**.
+
+   ![](../media/ex6-upload-files.png)
+
+1. Navigate to `C:\datasets\policies`, select all the policy documents, and click **Open**.
+
+   ![](../media/ex6-select-policies.png)
+
+1. Wait for all files to upload successfully. You should see all 12 policy documents in the folder.
+
+   ![](../media/ex6-policies-uploaded.png)
+
+   >**Note:** These policy documents contain comprehensive Contoso HR information that the agent will use to answer employee questions accurately.
 
 ### Task 1: Access Microsoft Copilot Studio
 
@@ -88,21 +153,108 @@ In this task, you will navigate to Microsoft Copilot Studio and explore its inte
 
 In this task, you will configure topics that define how the agent handles different types of conversations. You will use the **Add from description with Copilot** feature to quickly generate topic flows.
 
-1. In the agent editor, click on **Topics** in the left navigation.
+1. Click **Topics (1)**, then select **+ Add a topic (2)** and choose **From blank (3)** to create a new topic.
 
-   ![](../media/ex6-topics-section.png)
+   ![](../media/m36-copg-ex6-c-g13.png)
 
-1. You will see some default topics already created. Click **+ Add a topic** to expand the dropdown menu.
+1. Enter the topic description in the **Describe what the topic does** box.
 
-   ![](../media/ex6-add-topic-dropdown.png)
+   ```
+   This tool can handle queries like these:
+   contact HR, escalate to HR, report issue to HR, I need help from HR, talk to human resources
+   ```
+
+   ![](../media/m36-copg-ex6-c-g14.png)
+
+1. Click the **+ (Add) (1)** icon to add the next node to the topic flow.
+
+   ![](../media/m36-copg-ex6-c-g15.png)
+
+1. Select **Send a message** to add a message node to the topic flow.
+
+   ![](../media/m36-copg-ex6-c-g16.png)
+
+1. Enter the response text in the **Message** box to define the agent’s reply.
+
+   ![](../media/m36-copg-ex6-c-g17.png)
+
+1. Click the **+ (Add) (1)** icon, then select **Send a message (2)** to add another message node.
+
+   ![](../media/m36-copg-ex6-c-g18.png)
+
+1. Enter the response text in the **Message** box to define the next agent reply.
+
+   ![](../media/m36-copg-ex6-c-g19.png)
 
 1. Select **Add from description with Copilot** option.
 
-   ![](../media/ex6-add-from-description.png)
+   ![](../media/m36-copg-ex6-c-g20.png)
 
-   >**Note:** This feature uses AI to automatically generate a complete topic flow based on your description, saving significant time compared to building topics manually.
+1. Enter the question in the **Question text (1)** field, then select **User’s entire response (2)** under Identify.
 
-#### Topic 1: General HR Help
+   ![](../media/m36-copg-ex6-c-g21.png)
+
+1. Click the **Var1** variable under **Save user response as** to edit the response storage.
+
+   ![](../media/m36-copg-ex6-c-g22.png)
+
+1. Enter the variable name in the **Variable name (1)** field, then click the **Close (X) (2)** button to save the changes.
+
+   ![](../media/m36-copg-ex6-c-g23.png)
+
+1. Click the **+ (Add) (1)** icon, then select **Ask a question (2)** to add another question node.
+
+   ![](../media/m36-copg-ex6-c-g24.png)
+
+1. Enter the name prompt in the **Question text (1)** field, then select **Person name (2)** under Identify.
+
+   ![](../media/m36-copg-ex6-c-g25.png)
+
+1. Click the **Var1** variable under **Save user response as** to rename and configure the name field.
+
+   ![](../media/m36-copg-ex6-c-g26.png)
+
+1. Enter the variable name in the **Variable name (1)** field, then click the **Close (X) (2)** button to save the changes.
+
+   ![](../media/m36-copg-ex6-c-g27.png)
+
+1. Click the **+ (Add) (1)** icon, then select **Ask a question (2)** to add another question node.
+
+   ![](../media/m36-copg-ex6-c-g28.png)
+
+1. Enter the email prompt in the **Question text (1)** field, select **Email (2)** under Identify, then save the response in **ContactEmail (3)**.
+
+   ![](../media/m36-copg-ex6-c-g29.png)
+
+1. Click the **+ (Add) (1)** icon, then select **Send a message (2)** to add a confirmation message.
+
+   ![](../media/m36-copg-ex6-c-g30.png)
+
+1. Enter the confirmation message in the **Message text (1)** box to inform the user.
+
+   ![](../media/m36-copg-ex6-c-g31.png)
+
+1. Click **Untitled** to rename the topic.
+
+   ![](../media/m36-copg-ex6-c-g32.png)
+
+1. Enter **Escalation to HR** as the topic name to save and identify the flow.
+
+   ![](../media/m36-copg-ex6-c-g33.png)
+
+1. Click **Save** to store your changes.
+
+   ![](../media/m36-copg-ex6-c-g34.png)
+
+#### Topic 2: General HR Help
+
+1. Click **Topics** to return to the topics list after saving the topic.
+
+   ![](../media/m36-copg-ex6-c-g35.png)
+
+1. Click **+ Add a topic (1)**, then select **Add from description with Copilot (2)** to create a new topic automatically.
+
+   ![](../media/m36-copg-ex6-c-g36.png)
 
 1. In the **Add from description with Copilot** dialog, enter the following:
 
@@ -131,9 +283,7 @@ In this task, you will configure topics that define how the agent handles differ
    End by asking if the user needs any more help.
    ```
 
-   ![](../media/ex6-general-hr-description.png)
-
-1. Click **Create** to generate the topic.
+   ![](../media/m36-copg-ex6-c-g37.png)
 
 1. Copilot Studio will automatically generate the conversation flow with:
    - Welcome message
@@ -143,13 +293,21 @@ In this task, you will configure topics that define how the agent handles differ
    - Escalation option
    - Closing message
 
-   ![](../media/ex6-general-hr-flow.png)
+1. Review the generated flow.
 
-1. Review the generated flow and click **Save** to save the topic.
+1. Click **Topic checker (1)** to verify **Errors (0) (2)**, then click **Save (3)** to store the changes.
 
-#### Topic 2: Leave and Time Off
+   ![](../media/m36-copg-ex6-c-g40.png)
 
-1. Click **+ Add a topic** > **Add from description with Copilot** again.
+#### Topic 3: Leave and Time Off
+
+1. Click **Topics** to return to the topics list after saving the topic.
+
+   ![](../media/m36-copg-ex6-c-g35.png)
+
+1. Click **+ Add a topic (1)**, then select **Add from description with Copilot (2)** to create a new topic automatically.
+
+   ![](../media/m36-copg-ex6-c-g36.png)
 
 1. Enter the following details:
 
@@ -179,7 +337,7 @@ In this task, you will configure topics that define how the agent handles differ
    End by asking if the user needs further assistance.
    ```
 
-   ![](../media/ex6-leave-description.png)
+   ![](../media/m36-copg-ex6-c-g41.png)
 
 1. Click **Create** to generate the topic.
 
@@ -191,161 +349,9 @@ In this task, you will configure topics that define how the agent handles differ
    - Special cases handling
    - Closing message
 
-   ![](../media/ex6-leave-flow.png)
+      ![](../media/m36-copg-ex6-c-g42.png)
 
 1. Click **Save** to save the topic.
-
-#### Topic 3: Escalation to HR
-
-1. Click **+ Add a topic** > **Add from description with Copilot** one more time.
-
-1. Enter the following details:
-
-   | Field | Value |
-   |-------|-------|
-   | **Name your topic** | `Escalation to HR` |
-   | **Create a topic to...** | See description below |
-
-   **Topic Description:**
-   ```
-   Create a topic that helps users contact or escalate issues to HR.
-   Start with a polite and supportive message.
-   Ask the user to describe their issue or concern.
-   Collect the following details:
-   - Issue summary
-   - Employee name
-   - Contact email address
-   Confirm that the information has been received.
-   Inform the user that the request will be shared with HR.
-   Explain that HR will follow up through email.
-   Reassure the user about privacy and confidentiality.
-   End by asking if they need any more help.
-   ```
-
-   ![](../media/ex6-escalation-description.png)
-
-1. Click **Create** to generate the topic.
-
-1. Review the generated flow which should include:
-   - Acknowledgment message
-   - Question to collect issue description
-   - Question to collect employee name
-   - Question to collect contact email
-   - Confirmation message
-   - Next steps information
-   - Privacy statement
-
-   ![](../media/ex6-escalation-flow.png)
-
-1. Click **Save** to save the topic.
-
-   >**Note:** The AI-generated topics may vary slightly. You can edit the generated nodes to customize the messages or add additional logic as needed.
-
-### Task 4: Add Knowledge Sources to the Agent
-
-In this task, you will upload HR policy documents to SharePoint and connect the agent to use them as knowledge sources for grounded responses.
-
-#### Step 1: Upload Policy Documents to SharePoint
-
-1. First, open **File Explorer** on your lab VM.
-
-1. Navigate to the HR policy documents folder:
-
-   ```
-   C:\datasets\policies
-   ```
-
-   ![](../media/ex6-policies-folder.png)
-
-1. You will find the following HR policy documents:
-
-   | Document | Description |
-   |----------|-------------|
-   | 01-Leave-Policy.md | Annual, sick, personal, parental leave entitlements |
-   | 02-Holiday-Calendar-2025.md | Official holidays and floating holidays |
-   | 03-Employee-Benefits-Guide.md | Medical, dental, 401k, wellness programs |
-   | 04-Code-of-Conduct.md | Ethics, values, conflicts of interest |
-   | 05-Performance-Review-Policy.md | Ratings, goals, merit increases |
-   | 06-Onboarding-Guide.md | First day through 90-day milestones |
-   | 07-Remote-Work-Policy.md | Hybrid/remote work guidelines |
-   | 08-Health-and-Safety-Policy.md | Emergency procedures, hazard reporting |
-   | 09-Travel-and-Expense-Policy.md | Booking, per diem, reimbursement |
-   | 10-Anti-Harassment-Policy.md | Discrimination prevention, reporting |
-   | 11-IT-Security-Policy.md | Passwords, devices, data handling |
-   | 12-Training-and-Development-Policy.md | Tuition, certifications, mentoring |
-
-1. Select all the policy files (Ctrl+A) and copy them (Ctrl+C).
-
-1. Open a new browser tab and navigate to your SharePoint site:
-
-   ```
-   https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com/sites/HRPoliciesHub-<inject key="DeploymentID" enableCopy="false"/>
-   ```
-
-1. Click on **Documents** in the left navigation.
-
-   ![](../media/ex6-sharepoint-documents.png)
-
-1. Click **+ New** > **Folder** to create a new folder.
-
-1. Name the folder `HR Policies` and click **Create**.
-
-   ![](../media/ex6-create-folder.png)
-
-1. Open the **HR Policies** folder and click **Upload** > **Files**.
-
-   ![](../media/ex6-upload-files.png)
-
-1. Navigate to `C:\datasets\policies`, select all the policy documents, and click **Open**.
-
-   ![](../media/ex6-select-policies.png)
-
-1. Wait for all files to upload successfully. You should see all 12 policy documents in the folder.
-
-   ![](../media/ex6-policies-uploaded.png)
-
-   >**Note:** These policy documents contain comprehensive Contoso HR information that the agent will use to answer employee questions accurately.
-
-#### Step 2: Connect SharePoint as Knowledge Source
-
-1. Return to **Microsoft Copilot Studio** and your HR Assistant agent.
-
-1. In the agent editor, click on **Knowledge** in the left navigation.
-
-   ![](../media/ex6-knowledge-section.png)
-
-1. Click **+ Add knowledge**.
-
-   ![](../media/ex6-add-knowledge.png)
-
-1. Select **SharePoint** as the knowledge source type.
-
-   ![](../media/ex6-sharepoint-source.png)
-
-1. Enter the URL of the HR Policies SharePoint site with the Documents library:
-
-   ```
-   https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com/sites/HRPoliciesHub-<inject key="DeploymentID" enableCopy="false"/>/Shared%20Documents/HR%20Policies
-   ```
-
-   ![](../media/ex6-enter-sharepoint.png)
-
-   >**Note:** This points directly to the HR Policies folder containing all the policy documents you uploaded.
-
-1. Click **Add** to add the knowledge source.
-
-   ![](../media/ex6-knowledge-added.png)
-
-1. Configure how the agent uses knowledge:
-
-   - Enable **Use knowledge to answer questions**
-   - Set response style to **Professional and helpful**
-
-   ![](../media/ex6-knowledge-config.png)
-
-1. Click **Save** to save the knowledge configuration.
-
-#### Step 3: Update Agent Instructions
 
 1. Click on **Overview** in the left navigation to return to the agent overview.
 

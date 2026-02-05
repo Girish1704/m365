@@ -255,9 +255,7 @@ In this task, you will test your Help Desk agent with various queries.
 
    **Expected Output:**
 
-   ![](./media/ex4-greeting-response.png)
-
-   The agent should respond with a helpful greeting and ask what information you need.
+   The agent should greet you warmly and provide a summary of available information, including office locations, parking, facilities, and contact details from the knowledge base.
 
 1. Test office location and parking:
 
@@ -270,9 +268,7 @@ In this task, you will test your Help Desk agent with various queries.
 
    **Expected Output:**
 
-   ![](./media/ex4-password-response.png)
-
-   The agent should provide office address and parking information.
+   The agent should provide the main office address and parking details (Garage A & B with badge access) from the knowledge base.
 
 1. Test conference room booking:
 
@@ -285,9 +281,7 @@ In this task, you will test your Help Desk agent with various queries.
 
    **Expected Output:**
 
-   ![](./media/ex4-vpn-response.png)
-
-   The agent should explain the conference room booking process.
+   The agent should explain the step-by-step process for booking via Outlook Calendar's Room Finder, including available room numbers and capacity.
 
 1. Test HR policy questions:
 
@@ -300,9 +294,7 @@ In this task, you will test your Help Desk agent with various queries.
 
    **Expected Output:**
 
-   ![](./media/ex4-email-response.png)
-
-   The agent should provide leave policy information and guidance on submitting requests.
+   The agent should provide leave entitlement details (15 days annual, 10 days sick) and guide you to the HR portal to submit requests.
 
 1. Test facilities information:
 
@@ -315,9 +307,7 @@ In this task, you will test your Help Desk agent with various queries.
 
    **Expected Output:**
 
-   ![](./media/ex4-hardware-response.png)
-
-   The agent should provide cafeteria hours and information about building amenities.
+   The agent should provide cafeteria hours (breakfast, lunch times) and list building amenities (gym, quiet rooms, lactation rooms).
 
 1. Test department referral:
 
@@ -330,9 +320,7 @@ In this task, you will test your Help Desk agent with various queries.
 
    **Expected Output:**
 
-   ![](./media/ex4-security-response.png)
-
-   The agent should recognize this requires HR assistance and direct the user to the HR department.
+   The agent should direct you to the HR portal (hr.contoso.com) for updating personal information and provide HR contact details for assistance.
 
 ## Summary
 

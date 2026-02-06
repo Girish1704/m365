@@ -43,24 +43,13 @@ In this task, you will create a topic that triggers when users want to generate 
 
    ![](./media/ex12-topic-name.png)
 
-1. Add trigger phrases that will activate this topic. Click on the **Trigger phrases** section and add:
+1. In the **Trigger** node, you'll see **The agent chooses** with an **Edit** link. In the **Describe what the topic does** field, enter:
 
    ```
-   Create a quiz
-   Generate quiz questions
-   Make a test
-   I need quiz questions
-   Create assessment questions
-   Help me make a quiz
-   Generate questions about
-   Quiz me on
-   Make questions about
-   Create a test about
-   I want to learn about
-   Test my knowledge on
+   This topic generates customized multiple-choice quiz questions on any topic. It helps users create quizzes by collecting the topic, number of questions, and difficulty level. Users can ask things like "Create a quiz", "Generate quiz questions", "Make a test", "Quiz me on", or "Help me make a quiz".
    ```
 
-   ![](./media/ex12-trigger-phrases.png)
+   ![](./media/ex12-trigger-description.png)
 
 1. Click **Save** to save the topic configuration.
 
@@ -81,7 +70,7 @@ In this task, you will create the conversation flow that collects quiz parameter
    ```
    Welcome to the Quiz Generator!
 
-   I can create customized multiple-choice quizzes on any topic you'd like. Let me gather a few details to create the perfect quiz for you.
+   I can create customized multiple-choice quizzes on any topic you'd like.
    ```
 
    ![](./media/ex12-welcome-message.png)
@@ -148,16 +137,42 @@ In this task, you will create the conversation flow that collects quiz parameter
 
 1. Click **+** to add the next step.
 
-1. **Step 5 - Confirmation Message:**
+1. **Step 5 - Convert Choice Variables to Text:**
+
+   Since the prompt action expects string inputs, we need to convert the multiple choice variables to text format.
+
+   Select **Variable management** > **Set a variable value** and configure:
+
+   | Field | Value |
+   |-------|-------|
+   | Variable | Click **Create new** and name it `QuestionCountText` |
+   | To value | Use the formula: `Text(Topic.QuestionCount)` |
+
+   ![](./media/ex12-convert-count.png)
+
+1. Click **+** and add another **Set a variable value**:
+
+   | Field | Value |
+   |-------|-------|
+   | Variable | Click **Create new** and name it `DifficultyText` |
+   | To value | Use the formula: `Text(Topic.QuizDifficulty)` |
+
+   ![](./media/ex12-convert-difficulty.png)
+
+   >**Note:** The `Text()` function converts the choice/option set value to a string that the prompt action can accept.
+
+1. Click **+** to add the next step.
+
+1. **Step 6 - Confirmation Message:**
 
    Select **Send a message** and enter:
 
    ```
    Perfect! Here's what I'll create for you:
 
-   **Topic:** {Topic.QuizTopic}
-   **Questions:** {Topic.QuestionCount}
-   **Difficulty:** {Topic.QuizDifficulty}
+   Topic: {Topic.QuizTopic}
+   Questions: {Topic.QuestionCountText}
+   Difficulty: {Topic.DifficultyText}
 
    Generating your quiz now... Please wait a moment.
    ```
@@ -182,17 +197,17 @@ In this task, you will integrate the prompt action to generate the quiz based on
 
    ![](./media/ex12-select-prompt-action.png)
 
-1. Map the input parameters:
+1. Map the input parameters using the **converted text variables**:
 
    | Prompt Input | Topic Variable |
    |--------------|----------------|
    | Topic | `QuizTopic` |
-   | NumberOfQuestions | `QuestionCount` |
-   | DifficultyLevel | `QuizDifficulty` |
+   | NumberOfQuestions | `QuestionCountText` |
+   | DifficultyLevel | `DifficultyText` |
 
    ![](./media/ex12-map-inputs.png)
 
-   >**Tip:** Click on each input field, then click the **{x}** icon to select the corresponding variable from the topic.
+   >**Tip:** Click on each input field, then click the **{x}** icon to select the corresponding variable from the topic. Make sure to use the Text versions of the variables (QuestionCountText and DifficultyText) for the prompt action inputs.
 
 1. The action will automatically create an output variable for the quiz content. Note the output variable name (e.g., `QuizContent` or `Generate Quiz Questions.QuizContent`).
 

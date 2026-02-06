@@ -145,73 +145,25 @@ In this task, you will create a SharePoint Agent directly from within the ShareP
 
 1. (Optional) To change the agent icon, click **Change** below the icon and select a legal or document-related icon.
 
-   ![](../media/ex5-agent-icon-change.png)
+1. Select **Sources (1)**, then turn on the **Prioritize sources (2)** toggle.
 
-1. On the right side, you'll see the **Agent preview** panel showing sample prompts:
-   - "Summarize recent files"
-   - "Tell me more about..."
-   - "How can you help me?"
-
-   ![](../media/ex5-agent-preview.png)
-
-1. Click on the **Sources** tab to configure knowledge sources.
-
-   ![](../media/ex5-sources-tab.png)
-
-1. On the **Sources** tab, you'll see:
-
-   - A message explaining that responses are based on the sources selected
-   - A toggle to **Prioritize the knowledge sources** before the agent's general knowledge (ensure this is **ON**)
-   - An **Add a source** section with a search box and **From OneDrive** button
-
-   ![](../media/ex5-sources-overview.png)
+   ![](../media/m36-copg-ex8-e-g23.png)
 
 1. Verify that the **Morrison Law Firm** site is listed with the **Documents** folder expanded. This means the agent will have access to all documents in your site.
-
-   ![](../media/ex5-sources-config.png)
 
    >**Note:** Up to 20 sources can be chosen for each agent. You can add additional SharePoint sites or OneDrive files if needed.
 
 1. Click on the **Behavior** tab to configure how the agent responds.
 
-   ![](../media/ex5-behavior-tab.png)
-
 ### Task 4: Configure the Agent for Document Discovery and Insights
 
 In this task, you will configure the agent's behavior including welcome messaging, starter prompts, and custom instructions.
 
-1. On the **Behavior** tab, you'll see three sections:
-
-   **Welcome messaging:**
-   - Helps users understand how to best use the agent
-   - Default text: "Ask a question or get started with one of these prompts:"
-
-   **Starter prompts:**
-   - Sample prompts that showcase how the agent can help
-   - Default prompts: "Summarize recent files", "Tell me more about...", "How can you help me?"
-
-   **Agent instructions:**
-   - Define the agent's role, tone, and limitations
-
-   ![](../media/ex5-behavior-overview.png)
-
-1. Update the **Welcome messaging** field:
+1. Select **Behavior (1)**, enter a welcome message in the **Welcome messaging (2)** box, enter the agent instructions in the **Agent instructions (3)** field, then click **Create (4)** to finish.
 
    ```
-   Welcome to the Legal Document Assistant! I can help you find case documents, look up client information, analyze billing data, and answer questions about firm policies. Ask a question or try one of these prompts:
+   Welcome to the Legal Document Assistant! How can I help you?
    ```
-
-   ![](../media/ex5-welcome-message.png)
-
-1. Update the **Starter prompts** to be more relevant for the law firm:
-
-   | Prompt # | Value |
-   |----------|-------|
-   | Prompt 1 | `Where can I find the client contract template?` |
-   | Prompt 2 | `What is the status of the Johnson v. Apex case?` |
-   | Prompt 3 | `Show me billing data for Sarah Morrison` |
-
-   ![](../media/ex5-starter-prompts.png)
 
 1. In the **Agent instructions** field, replace the default text with the following:
 
@@ -245,27 +197,17 @@ In this task, you will configure the agent's behavior including welcome messagin
    - For confidential matters, remind users about attorney-client privilege
    ```
 
-   ![](../media/ex5-agent-instructions.png)
-
-1. Review all three tabs to ensure everything is configured correctly:
-
-   | Tab | Configuration |
-   |-----|---------------|
-   | Overview | Name: Legal Document Assistant, Purpose: Filled in |
-   | Sources | Morrison Law Firm site with Documents folder, toggle ON |
-   | Behavior | Welcome message, 3 starter prompts, agent instructions |
-
 1. Click **Create** at the bottom of the dialog to create the SharePoint Agent.
 
-   ![](../media/ex5-create-button.png)
+   ![](../media/m36-copg-ex8-e-g24.png)
 
-1. Wait for the agent to be created and indexed. This may take a few moments.
+1. Click **Chat with agent** to start interacting with your newly created agent.
 
-   ![](../media/ex5-agent-creating.png)
+   ![](../media/m36-copg-ex8-e-g25.png)
 
-1. Once created, the agent will be available in the SharePoint site. You can access it through the Copilot panel or the agent list.
+1. Use the **Message Copilot** box to enter your prompt and start interacting with the agent in Microsoft 365.
 
-   ![](../media/ex5-agent-created.png)
+   ![](../media/m36-copg-ex8-e-g26.png)
 
 ### Task 5: Test the Agent for Document Search and Data Analysis
 
@@ -284,7 +226,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
 
    The agent should identify that the **Client Contract Template** is located in the **Templates** folder and provide a brief description of its contents.
 
-   ![](../media/ex5-location-response.png)
+   ![](../media/m36-copg-ex8-e-g27.png)
 
 1. Test case information lookup:
 
@@ -293,7 +235,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    What is the status of the Johnson v. Apex case? Who is the lead attorney and what are the next steps?
    ```
 
-   ![](../media/ex5-test-case.png)
+   ![](../media/m36-copg-ex5-d-g14.png)
 
    **Expected Output:**
 
@@ -303,8 +245,6 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    - Next deadline: Deposition scheduled
    - Estimated damages: $1,180,000+
 
-   ![](../media/ex5-case-response.png)
-
 1. Test client data lookup:
 
    **Prompt:**
@@ -312,7 +252,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    Look up the client TechStart Solutions. Who is their attorney and what is their outstanding balance?
    ```
 
-   ![](../media/ex5-test-client.png)
+   ![](../media/m36-copg-ex5-d-g16.png)
 
    **Expected Output:**
 
@@ -322,8 +262,6 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    - Total Billed: $67,200
    - Outstanding Balance: $12,000
 
-   ![](../media/ex5-client-response.png)
-
 1. Test billing data analysis:
 
    **Prompt:**
@@ -331,7 +269,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    How many billable hours did Sarah Morrison have in March 2024? What was her total billed amount?
    ```
 
-   ![](../media/ex5-test-billing.png)
+   ![](../media/m36-copg-ex5-d-g17.png)
 
    **Expected Output:**
 
@@ -340,8 +278,6 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    - Billed Amount: $81,900
    - Collections: $73,700
 
-   ![](../media/ex5-billing-response.png)
-
 1. Test fee schedule lookup:
 
    **Prompt:**
@@ -349,33 +285,13 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    What is the hourly rate for a Senior Associate? What about flat fees for an LLC formation?
    ```
 
-   ![](../media/ex5-test-fees.png)
+   ![](../media/m36-copg-ex5-d-g18.png)
 
    **Expected Output:**
 
    The agent should provide from the **Fee Schedule**:
    - Senior Associate hourly rate: $375
    - LLC Formation flat fee: $800
-
-   ![](../media/ex5-fees-response.png)
-
-1. Test case deadline lookup:
-
-   **Prompt:**
-   ```
-   What cases have deadlines coming up in June 2024? List them with their deadline descriptions.
-   ```
-
-   ![](../media/ex5-test-deadlines.png)
-
-   **Expected Output:**
-
-   The agent should identify from **case-tracking.csv**:
-   - Johnson v. Apex: June 12 - Deposition - Robert Lee
-   - Metro Construction v. Supplier: June 5 - Discovery Responses Due
-   - Sunrise Healthcare Restructuring: June 15 - Restructuring Plan Review
-
-   ![](../media/ex5-deadlines-response.png)
 
 ## Summary
 

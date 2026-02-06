@@ -34,32 +34,11 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will create a SharePoint site to store law firm documents including case files, client information, and billing data.
 
-1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
-
-1. Navigate to the Microsoft 365 portal:
-
-   ```
-   https://www.microsoft365.com
-   ```
-
-1. Sign in with your lab credentials if prompted:
-
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
-
-1. If you see a **Stay signed in?** prompt, select **Yes**.
-
 1. On the Microsoft 365 home page, click on **Apps** from the left navigation panel.
-
-   ![](./media/ex5-apps-panel.png)
 
 1. Select **SharePoint** from the list of apps.
 
-   ![](./media/ex5-sharepoint-app.png)
-
 1. Click on **+ Create site** in the top navigation.
-
-   ![](./media/ex5-create-site.png)
 
 1. Select **Team site** and configure:
 
@@ -69,15 +48,15 @@ In this task, you will create a SharePoint site to store law firm documents incl
    | Site description | `Document repository for Morrison & Associates Law Firm - case files, client data, and billing information` |
    | Privacy settings | Private |
 
-   ![](./media/ex5-site-settings.png)
+   ![](../media/m36-copg-ex5-d-g1.png)
 
 1. Click **Create** and wait for the site to be provisioned.
 
-   ![](./media/ex5-site-creating.png)
+   ![](../media/ex5-site-creating.png)
 
 1. Once created, you will be redirected to your new SharePoint site.
 
-   ![](./media/ex5-site-created.png)
+   ![](../media/ex5-site-created.png)
 
 ### Task 2: Upload Law Firm Documents to the Site
 
@@ -85,9 +64,9 @@ In this task, you will download law firm documents from GitHub and upload them t
 
 1. In your SharePoint site, click on **Documents** in the left navigation.
 
-   ![](./media/ex5-documents.png)
+   ![](../media/ex5-documents.png)
 
-1. Click **+ New** > **Folder** to create an organized structure. Create the following folders:
+1. Click **Documents (1)** in the left navigation, then click **Upload (2)** and select **Folder (3)** to create a new folder.
 
    | Folder Name | Purpose |
    |-------------|---------|
@@ -95,7 +74,7 @@ In this task, you will download law firm documents from GitHub and upload them t
    | `Case Files` | Active case documents and summaries |
    | `Data` | Client rosters, case tracking, and billing data |
 
-   ![](./media/ex5-create-folders.png)
+   ![](../media/m36-copg-ex5-d-g3.png)
 
 1. Open a new browser tab and navigate to the GitHub repository containing the law firm documents:
 
@@ -103,7 +82,7 @@ In this task, you will download law firm documents from GitHub and upload them t
    https://github.com/CloudLabsAI-Azure/m365/tree/main/unlock-ai-powered-future-work-with-microsoft-365-copilot%2Bagents/Labfiles/ex5-dataset
    ```
 
-   ![](./media/ex5-github-lawfirm.png)
+   ![](../media/ex5-github-lawfirm.png)
 
 1. Download all 7 documents (click on each file, then click the **Download raw file** button):
 
@@ -122,7 +101,7 @@ In this task, you will download law firm documents from GitHub and upload them t
    | `06-case-tracking.csv` | Active cases with status and deadlines | Data |
    | `07-billing-summary-2024.csv` | Monthly billing by attorney | Data |
 
-   ![](./media/ex5-download-files.png)
+   ![](../media/ex5-download-files.png)
 
    >**Tip:** Save all files to your **Downloads** folder for easy access.
 
@@ -133,141 +112,160 @@ In this task, you will download law firm documents from GitHub and upload them t
    - `03-Legal-Fee-Schedule-2024.docx.md`
    - `04-Firm-Policies-Handbook.docx.md`
 
-   ![](./media/ex5-upload-templates.png)
-
 1. Navigate to the **Case Files** folder and upload:
    - `02-Case-Summary-Johnson-v-Apex.docx.md`
-
-   ![](./media/ex5-upload-casefiles.png)
 
 1. Navigate to the **Data** folder and upload:
    - `05-client-roster.csv`
    - `06-case-tracking.csv`
    - `07-billing-summary-2024.csv`
 
-   ![](./media/ex5-upload-data.png)
-
-1. Verify all 7 documents are uploaded across the three folders.
-
-   ![](./media/ex5-all-uploaded.png)
-
-1. Click on one of the CSV files to preview and verify the data is accessible.
-
-   ![](./media/ex5-preview-csv.png)
-
 ### Task 3: Create a SharePoint Agent from the Site
 
 In this task, you will create a SharePoint Agent directly from within the SharePoint site. This agent will help legal staff discover documents and extract insights from both Word documents and CSV data.
 
-1. In your SharePoint site, ensure you are on the site home page by clicking on **Home** in the left navigation.
+1. In your SharePoint site, ensure you are on the **Documents** page or the site home page.
 
-   ![](./media/ex5-site-home.png)
+1. Click **+ New (1)**, then select **Create an agent (2)** to start creating a SharePoint agent.
 
-1. Look for the **Copilot** icon in the top command bar or right side panel.
+   ![](../media/m36-copg-ex8-e-g21.png)
 
-   ![](./media/ex5-copilot-icon.png)
+   >**Note:** The "Create an agent" option allows you to create an AI assistant that is scoped to the current SharePoint site's content.
 
-1. Click on the **Copilot** icon to open the Copilot panel within SharePoint.
-
-   ![](./media/ex5-copilot-panel.png)
-
-1. In the Copilot panel, click on **Create an agent** or look for the **Agents** tab.
-
-   ![](./media/ex5-create-agent-button.png)
-
-   >**Note:** The SharePoint Copilot panel allows you to create agents that are scoped to the current site's content.
-
-1. In the agent creation interface, configure the following:
+1. Select **Overview (1)**, enter the agent name in the **Name (2)** field, then enter the purpose in the **Purpose (3)** box.
 
    | Field | Value |
    |-------|-------|
-   | Agent name | `Legal Document Assistant` |
-   | Description | `Helps legal staff find case documents, client information, billing data, and provides insights from firm records.` |
+   | Name | `Legal Document Assistant` |
+   | Purpose | `Helps legal staff find case documents, client information, billing data, and provides insights from firm records stored in this SharePoint site.` |
 
-   ![](./media/ex5-agent-name.png)
+   ![](../media/m36-copg-ex8-e-g22.png)
 
-1. For the agent icon, select a legal or document-related icon, or let Copilot generate one.
+   >**Note:** A description in the Purpose field is required before you can create the agent.
 
-   ![](./media/ex5-agent-icon.png)
+1. (Optional) To change the agent icon, click **Change** below the icon and select a legal or document-related icon.
 
-1. Click **Next** to proceed to instructions configuration.
+   ![](../media/ex5-agent-icon-change.png)
+
+1. On the right side, you'll see the **Agent preview** panel showing sample prompts:
+   - "Summarize recent files"
+   - "Tell me more about..."
+   - "How can you help me?"
+
+   ![](../media/ex5-agent-preview.png)
+
+1. Click on the **Sources** tab to configure knowledge sources.
+
+   ![](../media/ex5-sources-tab.png)
+
+1. On the **Sources** tab, you'll see:
+
+   - A message explaining that responses are based on the sources selected
+   - A toggle to **Prioritize the knowledge sources** before the agent's general knowledge (ensure this is **ON**)
+   - An **Add a source** section with a search box and **From OneDrive** button
+
+   ![](../media/ex5-sources-overview.png)
+
+1. Verify that the **Morrison Law Firm** site is listed with the **Documents** folder expanded. This means the agent will have access to all documents in your site.
+
+   ![](../media/ex5-sources-config.png)
+
+   >**Note:** Up to 20 sources can be chosen for each agent. You can add additional SharePoint sites or OneDrive files if needed.
+
+1. Click on the **Behavior** tab to configure how the agent responds.
+
+   ![](../media/ex5-behavior-tab.png)
 
 ### Task 4: Configure the Agent for Document Discovery and Insights
 
-In this task, you will configure the agent with instructions focused on legal document discovery and data analysis.
+In this task, you will configure the agent's behavior including welcome messaging, starter prompts, and custom instructions.
 
-1. In the **Instructions** section, enter the following to define the agent's behavior:
+1. On the **Behavior** tab, you'll see three sections:
 
-   **Agent Instructions:**
+   **Welcome messaging:**
+   - Helps users understand how to best use the agent
+   - Default text: "Ask a question or get started with one of these prompts:"
+
+   **Starter prompts:**
+   - Sample prompts that showcase how the agent can help
+   - Default prompts: "Summarize recent files", "Tell me more about...", "How can you help me?"
+
+   **Agent instructions:**
+   - Define the agent's role, tone, and limitations
+
+   ![](../media/ex5-behavior-overview.png)
+
+1. Update the **Welcome messaging** field:
+
+   ```
+   Welcome to the Legal Document Assistant! I can help you find case documents, look up client information, analyze billing data, and answer questions about firm policies. Ask a question or try one of these prompts:
+   ```
+
+   ![](../media/ex5-welcome-message.png)
+
+1. Update the **Starter prompts** to be more relevant for the law firm:
+
+   | Prompt # | Value |
+   |----------|-------|
+   | Prompt 1 | `Where can I find the client contract template?` |
+   | Prompt 2 | `What is the status of the Johnson v. Apex case?` |
+   | Prompt 3 | `Show me billing data for Sarah Morrison` |
+
+   ![](../media/ex5-starter-prompts.png)
+
+1. In the **Agent instructions** field, replace the default text with the following:
+
    ```
    You are a Legal Document Assistant for Morrison & Associates Law Firm. Your role is to help legal staff find documents, extract information, and provide insights from firm records.
 
-   1. DOCUMENT DISCOVERY
+   DOCUMENT DISCOVERY:
    - Help users locate specific documents (contracts, case files, policies)
    - Identify which folder contains the requested document
    - Provide document names and their locations
 
-   2. CASE INFORMATION
+   CASE INFORMATION:
    - Provide details about active cases from case summaries
    - Look up case status, deadlines, and assigned attorneys
    - Extract key dates and milestones from case documents
 
-   3. CLIENT DATA
+   CLIENT DATA:
    - Find client contact information from the client roster
    - Look up client engagement dates and assigned attorneys
    - Provide billing status and outstanding balances
 
-   4. BILLING & FINANCIAL INSIGHTS
+   BILLING & FINANCIAL INSIGHTS:
    - Analyze billing data by attorney or time period
    - Calculate totals and identify trends
    - Provide fee schedule information for different services
 
-   5. FIRM POLICIES
-   - Answer questions about firm policies and procedures
-   - Explain billable hour requirements and compensation
-   - Provide information about office locations and contacts
-
-   Available Documents:
-   TEMPLATES FOLDER:
-   - Client Contract Template: Standard engagement agreement
-   - Legal Fee Schedule 2024: Hourly rates, flat fees, retainers
-   - Firm Policies Handbook: Employee policies, procedures, contacts
-
-   CASE FILES FOLDER:
-   - Johnson v. Apex Manufacturing: Employment discrimination case summary
-
-   DATA FOLDER:
-   - Client Roster (CSV): 12 clients with contact info, attorneys, billing
-   - Case Tracking (CSV): 10 active cases with status and deadlines
-   - Billing Summary 2024 (CSV): Monthly billing by attorney (Jan-Apr)
-
-   Response Guidelines:
+   RESPONSE GUIDELINES:
    - Always cite the document and folder where information was found
    - For CSV data, provide specific values and calculations when asked
-   - Summarize key points before providing details
+   - Reply in a professional, formal tone
    - For confidential matters, remind users about attorney-client privilege
-   - Direct complex legal questions to the appropriate attorney
    ```
 
-   ![](./media/ex5-agent-instructions.png)
+   ![](../media/ex5-agent-instructions.png)
 
-1. Click **Next** to proceed to knowledge source configuration.
+1. Review all three tabs to ensure everything is configured correctly:
 
-1. In the **Knowledge** section, verify that the **Morrison Law Firm** site is listed as a knowledge source.
+   | Tab | Configuration |
+   |-----|---------------|
+   | Overview | Name: Legal Document Assistant, Purpose: Filled in |
+   | Sources | Morrison Law Firm site with Documents folder, toggle ON |
+   | Behavior | Welcome message, 3 starter prompts, agent instructions |
 
-   ![](./media/ex5-knowledge-auto.png)
+1. Click **Create** at the bottom of the dialog to create the SharePoint Agent.
 
-1. Ensure all three folders (Templates, Case Files, Data) are included in the scope.
-
-   ![](./media/ex5-folder-scope.png)
-
-1. Click **Create** to finalize the SharePoint Agent.
-
-   ![](./media/ex5-create-final.png)
+   ![](../media/ex5-create-button.png)
 
 1. Wait for the agent to be created and indexed. This may take a few moments.
 
-   ![](./media/ex5-agent-created.png)
+   ![](../media/ex5-agent-creating.png)
+
+1. Once created, the agent will be available in the SharePoint site. You can access it through the Copilot panel or the agent list.
+
+   ![](../media/ex5-agent-created.png)
 
 ### Task 5: Test the Agent for Document Search and Data Analysis
 
@@ -280,13 +278,13 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    Where can I find the client contract template?
    ```
 
-   ![](./media/ex5-test-location.png)
+   ![](../media/ex5-test-location.png)
 
    **Expected Output:**
 
    The agent should identify that the **Client Contract Template** is located in the **Templates** folder and provide a brief description of its contents.
 
-   ![](./media/ex5-location-response.png)
+   ![](../media/ex5-location-response.png)
 
 1. Test case information lookup:
 
@@ -295,7 +293,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    What is the status of the Johnson v. Apex case? Who is the lead attorney and what are the next steps?
    ```
 
-   ![](./media/ex5-test-case.png)
+   ![](../media/ex5-test-case.png)
 
    **Expected Output:**
 
@@ -305,7 +303,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    - Next deadline: Deposition scheduled
    - Estimated damages: $1,180,000+
 
-   ![](./media/ex5-case-response.png)
+   ![](../media/ex5-case-response.png)
 
 1. Test client data lookup:
 
@@ -314,7 +312,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    Look up the client TechStart Solutions. Who is their attorney and what is their outstanding balance?
    ```
 
-   ![](./media/ex5-test-client.png)
+   ![](../media/ex5-test-client.png)
 
    **Expected Output:**
 
@@ -324,7 +322,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    - Total Billed: $67,200
    - Outstanding Balance: $12,000
 
-   ![](./media/ex5-client-response.png)
+   ![](../media/ex5-client-response.png)
 
 1. Test billing data analysis:
 
@@ -333,7 +331,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    How many billable hours did Sarah Morrison have in March 2024? What was her total billed amount?
    ```
 
-   ![](./media/ex5-test-billing.png)
+   ![](../media/ex5-test-billing.png)
 
    **Expected Output:**
 
@@ -342,7 +340,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    - Billed Amount: $81,900
    - Collections: $73,700
 
-   ![](./media/ex5-billing-response.png)
+   ![](../media/ex5-billing-response.png)
 
 1. Test fee schedule lookup:
 
@@ -351,7 +349,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    What is the hourly rate for a Senior Associate? What about flat fees for an LLC formation?
    ```
 
-   ![](./media/ex5-test-fees.png)
+   ![](../media/ex5-test-fees.png)
 
    **Expected Output:**
 
@@ -359,7 +357,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    - Senior Associate hourly rate: $375
    - LLC Formation flat fee: $800
 
-   ![](./media/ex5-fees-response.png)
+   ![](../media/ex5-fees-response.png)
 
 1. Test case deadline lookup:
 
@@ -368,7 +366,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    What cases have deadlines coming up in June 2024? List them with their deadline descriptions.
    ```
 
-   ![](./media/ex5-test-deadlines.png)
+   ![](../media/ex5-test-deadlines.png)
 
    **Expected Output:**
 
@@ -377,7 +375,7 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    - Metro Construction v. Supplier: June 5 - Discovery Responses Due
    - Sunrise Healthcare Restructuring: June 15 - Restructuring Plan Review
 
-   ![](./media/ex5-deadlines-response.png)
+   ![](../media/ex5-deadlines-response.png)
 
 ## Summary
 

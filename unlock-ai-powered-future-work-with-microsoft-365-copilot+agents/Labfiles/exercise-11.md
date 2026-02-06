@@ -28,26 +28,26 @@ In this task, you will create a new agent specifically designed for generating e
    https://copilotstudio.microsoft.com
    ```
 
-   ![](./media/ex11-studio-url.png)
+   ![](../media/ex11-studio-url.png)
 
 1. Sign in with your lab credentials if prompted:
 
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
    - Password: <inject key="AzureAdUserPassword"></inject>
 
-   ![](./media/ex11-signin.png)
+   ![](../media/ex11-signin.png)
 
 1. On the Copilot Studio home page, click **+ Create** from the left navigation.
 
-   ![](./media/ex11-create.png)
+   ![](../media/ex11-create.png)
 
 1. Click on **+ New Agent** to create a new agent.
 
-   ![](./media/ex11-new-agent.png)
+   ![](../media/ex11-new-agent.png)
 
 1. Click **Skip to configure** to skip the AI-assisted creation and configure manually.
 
-   ![](./media/ex11-skip-configure.png)
+   ![](../media/ex11-skip-configure.png)
 
 1. Configure the agent details:
 
@@ -74,15 +74,15 @@ In this task, you will create a new agent specifically designed for generating e
    - Ensure all generated content is accurate and educational
    ```
 
-   ![](./media/ex11-agent-config.png)
+   ![](../media/ex11-agent-config.png)
 
 1. Click **Create** to create the agent.
 
-   ![](./media/ex11-create-agent.png)
+   ![](../media/ex11-create-agent.png)
 
 1. Wait for the agent to be created. You will be redirected to the agent overview page.
 
-   ![](./media/ex11-agent-created.png)
+   ![](../media/ex11-agent-created.png)
 
 ### Task 2: Create a Prompt Action for Quiz Generation
 
@@ -90,15 +90,15 @@ In this task, you will create a prompt action that defines how quiz questions ar
 
 1. In the agent editor, click on **Tools** in the left navigation panel.
 
-   ![](./media/ex11-tools-nav.png)
+   ![](../media/ex11-tools-nav.png)
 
 1. Click **+ Add a tool**.
 
-   ![](./media/ex11-add-tool.png)
+   ![](../media/ex11-add-tool.png)
 
 1. In the **New tool** dialog, select **Prompt**.
 
-   ![](./media/ex11-select-prompt.png)
+   ![](../media/ex11-select-prompt.png)
 
    >**What is a Prompt?**
    >
@@ -112,7 +112,7 @@ In this task, you will create a prompt action that defines how quiz questions ar
    - **+ Add content** button - to add inputs and knowledge
    - **Get started with Copilot** section - AI helper to create prompts
 
-   ![](./media/ex11-prompt-editor.png)
+   ![](../media/ex11-prompt-editor.png)
 
 1. First, let's rename the prompt. Click on the title **"Custom prompt [date/time]"** at the top and rename it to:
 
@@ -120,7 +120,7 @@ In this task, you will create a prompt action that defines how quiz questions ar
    Generate Quiz Questions
    ```
 
-   ![](./media/ex11-rename-prompt.png)
+   ![](../media/ex11-rename-prompt.png)
 
 ### Task 3: Configure Prompt Inputs and Parameters
 
@@ -132,7 +132,7 @@ In this task, you will add input parameters that control quiz generation. The UI
 
 1. Click inside the **Instructions** area and type `/` (forward slash).
 
-   ![](./media/ex11-slash-command.png)
+   ![](../media/ex11-slash-command.png)
 
 1. A menu will appear with two sections:
 
@@ -149,11 +149,11 @@ In this task, you will add input parameters that control quiz generation. The UI
    | **+ New connection** | Add a new data connection |
    | **Dataverse** | Connect to Dataverse tables |
 
-   ![](./media/ex11-slash-menu.png)
+   ![](../media/ex11-slash-menu.png)
 
 1. Select **Text** under the Input section to create the first parameter.
 
-   ![](./media/ex11-select-text.png)
+   ![](../media/ex11-select-text.png)
 
 1. A text input field will be added. Configure it:
 
@@ -162,7 +162,7 @@ In this task, you will add input parameters that control quiz generation. The UI
    | Name | `Topic` |
    | Description | `The subject or topic for quiz questions (e.g., Solar System, Python Programming)` |
 
-   ![](./media/ex11-input-topic.png)
+   ![](../media/ex11-input-topic.png)
 
 1. Press Enter or click outside to confirm. You'll see `{Topic}` appear in the instructions area.
 
@@ -175,7 +175,7 @@ In this task, you will add input parameters that control quiz generation. The UI
    | Name | `NumberOfQuestions` |
    | Description | `How many questions to generate (1-10)` |
 
-   ![](./media/ex11-input-number.png)
+   ![](../media/ex11-input-number.png)
 
 1. Add a space, type `/` again and select **Text** for the third parameter.
 
@@ -186,11 +186,11 @@ In this task, you will add input parameters that control quiz generation. The UI
    | Name | `DifficultyLevel` |
    | Description | `The difficulty level - Beginner, Intermediate, or Advanced` |
 
-   ![](./media/ex11-input-difficulty.png)
+   ![](../media/ex11-input-difficulty.png)
 
 1. You should now have three text inputs added: `{Topic}`, `{NumberOfQuestions}`, `{DifficultyLevel}`
 
-   ![](./media/ex11-all-inputs.png)
+   ![](../media/ex11-all-inputs.png)
 
 ### Task 4: Write the Prompt Instructions
 
@@ -274,13 +274,13 @@ In this task, you will write detailed instructions that guide the AI in generati
    Now generate the quiz based on the provided parameters.
    ```
 
-   ![](./media/ex11-full-instructions.png)
+   ![](../media/ex11-full-instructions.png)
 
    >**Note:** The `{Topic}`, `{NumberOfQuestions}`, and `{DifficultyLevel}` placeholders should already be recognized as your inputs. If they appear as plain text, delete them and use `/` to re-add them as proper input variables.
 
 1. Verify that the model is set to **GPT-4.1 mini** (or a similar model) in the Model dropdown.
 
-   ![](./media/ex11-model-select.png)
+   ![](../media/ex11-model-select.png)
 
 ### Task 5: Test the Prompt Action Directly
 
@@ -288,7 +288,7 @@ In this task, you will test the prompt directly in the editor to ensure it gener
 
 1. Click the **Test** button next to the Model selector.
 
-   ![](./media/ex11-test-button.png)
+   ![](../media/ex11-test-button.png)
 
 1. A dialog will appear asking for input values. Enter the following test values:
 
@@ -298,13 +298,13 @@ In this task, you will test the prompt directly in the editor to ensure it gener
    | NumberOfQuestions | `3` |
    | DifficultyLevel | `Beginner` |
 
-   ![](./media/ex11-test-inputs.png)
+   ![](../media/ex11-test-inputs.png)
 
 1. Click **Run** or **Test** to execute the prompt.
 
 1. The **Model response** panel on the right will show the generated quiz:
 
-   ![](./media/ex11-model-response.png)
+   ![](../media/ex11-model-response.png)
 
    **Example Expected Output:**
    ```
@@ -347,17 +347,17 @@ In this task, you will test the prompt directly in the editor to ensure it gener
    | Test 2 | Microsoft 365 | 5 | Intermediate |
    | Test 3 | Machine Learning | 3 | Advanced |
 
-   ![](./media/ex11-additional-tests.png)
+   ![](../media/ex11-additional-tests.png)
 
 1. If the output quality needs improvement, modify the instructions and test again.
 
 1. Once satisfied with the results, click **Save** in the bottom-right corner.
 
-   ![](./media/ex11-save-prompt.png)
+   ![](../media/ex11-save-prompt.png)
 
 1. You will be returned to the Tools list. Your **Generate Quiz Questions** prompt should now appear in the list.
 
-   ![](./media/ex11-prompt-saved.png)
+   ![](../media/ex11-prompt-saved.png)
 
 ## Summary
 

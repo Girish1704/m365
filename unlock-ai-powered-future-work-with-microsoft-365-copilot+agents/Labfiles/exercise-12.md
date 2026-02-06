@@ -24,15 +24,15 @@ In this task, you will create a topic that triggers when users want to generate 
 
 1. In Microsoft Copilot Studio, open your **Quiz Generator** agent created in the previous exercise.
 
-   ![](./media/ex12-open-agent.png)
+   ![](../media/ex12-open-agent.png)
 
 1. Click on **Topics** in the left navigation panel.
 
-   ![](./media/ex12-topics-nav.png)
+   ![](../media/ex12-topics-nav.png)
 
 1. Click **+ Add a topic** and select **From blank**.
 
-   ![](./media/ex12-new-topic.png)
+   ![](../media/ex12-new-topic.png)
 
 1. Configure the topic name:
 
@@ -41,7 +41,7 @@ In this task, you will create a topic that triggers when users want to generate 
    Generate Quiz
    ```
 
-   ![](./media/ex12-topic-name.png)
+   ![](../media/ex12-topic-name.png)
 
 1. In the **Trigger** node, you'll see **The agent chooses** with an **Edit** link. In the **Describe what the topic does** field, enter:
 
@@ -49,11 +49,11 @@ In this task, you will create a topic that triggers when users want to generate 
    This topic generates customized multiple-choice quiz questions on any topic. It helps users create quizzes by collecting the topic, number of questions, and difficulty level. Users can ask things like "Create a quiz", "Generate quiz questions", "Make a test", "Quiz me on", or "Help me make a quiz".
    ```
 
-   ![](./media/ex12-trigger-description.png)
+   ![](../media/ex12-trigger-description.png)
 
 1. Click **Save** to save the topic configuration.
 
-   ![](./media/ex12-save-topic.png)
+   ![](../media/ex12-save-topic.png)
 
 ### Task 2: Build the Conversation Flow
 
@@ -61,7 +61,7 @@ In this task, you will create the conversation flow that collects quiz parameter
 
 1. In the topic editor, you'll see the trigger node. Click the **+** button below it to add the first step.
 
-   ![](./media/ex12-add-first-step.png)
+   ![](../media/ex12-add-first-step.png)
 
 1. **Step 1 - Welcome Message:**
 
@@ -73,7 +73,7 @@ In this task, you will create the conversation flow that collects quiz parameter
    I can create customized multiple-choice quizzes on any topic you'd like.
    ```
 
-   ![](./media/ex12-welcome-message.png)
+   ![](../media/ex12-welcome-message.png)
 
 1. Click **+** to add the next step.
 
@@ -88,7 +88,7 @@ In this task, you will create the conversation flow that collects quiz parameter
    | Identify | User's entire response |
    | Save response as | Click **>** and create a new variable named `QuizTopic` |
 
-   ![](./media/ex12-topic-question.png)
+   ![](../media/ex12-topic-question.png)
 
 1. Click **+** to add the next step.
 
@@ -111,7 +111,7 @@ In this task, you will create the conversation flow that collects quiz parameter
    |-------|-------|
    | Save response as | Create a new variable named `QuestionCount` |
 
-   ![](./media/ex12-count-question.png)
+   ![](../media/ex12-count-question.png)
 
 1. Click **+** to add the next step.
 
@@ -133,7 +133,7 @@ In this task, you will create the conversation flow that collects quiz parameter
    |-------|-------|
    | Save response as | Create a new variable named `QuizDifficulty` |
 
-   ![](./media/ex12-difficulty-question.png)
+   ![](../media/ex12-difficulty-question.png)
 
 1. Click **+** to add the next step.
 
@@ -148,7 +148,7 @@ In this task, you will create the conversation flow that collects quiz parameter
    | Variable | Click **Create new** and name it `QuestionCountText` |
    | To value | Use the formula: `Text(Topic.QuestionCount)` |
 
-   ![](./media/ex12-convert-count.png)
+   ![](../media/ex12-convert-count.png)
 
 1. Click **+** and add another **Set a variable value**:
 
@@ -157,7 +157,7 @@ In this task, you will create the conversation flow that collects quiz parameter
    | Variable | Click **Create new** and name it `DifficultyText` |
    | To value | Use the formula: `Text(Topic.QuizDifficulty)` |
 
-   ![](./media/ex12-convert-difficulty.png)
+   ![](../media/ex12-convert-difficulty.png)
 
    >**Note:** The `Text()` function converts the choice/option set value to a string that the prompt action can accept.
 
@@ -177,7 +177,7 @@ In this task, you will create the conversation flow that collects quiz parameter
    Generating your quiz now... Please wait a moment.
    ```
 
-   ![](./media/ex12-confirm-message.png)
+   ![](../media/ex12-confirm-message.png)
 
    >**Note:** Use the **{x}** button to insert variables. The variable format may appear as `{Topic.VariableName}` or just `{VariableName}` depending on your Copilot Studio version.
 
@@ -191,11 +191,11 @@ In this task, you will integrate the prompt action to generate the quiz based on
 
 1. Select **Call an action** (or **Add a tool**).
 
-   ![](./media/ex12-call-action.png)
+   ![](../media/ex12-call-action.png)
 
 1. In the action selection panel, find and select **Generate Quiz Questions** (the prompt action you created in Exercise 11).
 
-   ![](./media/ex12-select-prompt-action.png)
+   ![](../media/ex12-select-prompt-action.png)
 
 1. Map the input parameters using the **converted text variables**:
 
@@ -205,13 +205,13 @@ In this task, you will integrate the prompt action to generate the quiz based on
    | NumberOfQuestions | `QuestionCountText` |
    | DifficultyLevel | `DifficultyText` |
 
-   ![](./media/ex12-map-inputs.png)
+   ![](../media/ex12-map-inputs.png)
 
    >**Tip:** Click on each input field, then click the **{x}** icon to select the corresponding variable from the topic. Make sure to use the Text versions of the variables (QuestionCountText and DifficultyText) for the prompt action inputs.
 
 1. The action will automatically create an output variable for the quiz content. Note the output variable name (e.g., `QuizContent` or `Generate Quiz Questions.QuizContent`).
 
-   ![](./media/ex12-action-output.png)
+   ![](../media/ex12-action-output.png)
 
 1. Click **+** to add the next step.
 
@@ -227,7 +227,7 @@ In this task, you will integrate the prompt action to generate the quiz based on
 
    >**Note:** Replace `{Topic.QuizContent}` with the actual output variable from your prompt action. Use the **{x}** button to insert it correctly.
 
-   ![](./media/ex12-display-quiz.png)
+   ![](../media/ex12-display-quiz.png)
 
 1. Click **+** to add the follow-up step.
 
@@ -251,7 +251,7 @@ In this task, you will integrate the prompt action to generate the quiz based on
    |-------|-------|
    | Save response as | Create a new variable named `NextAction` |
 
-   ![](./media/ex12-followup-options.png)
+   ![](../media/ex12-followup-options.png)
 
 1. Click **+** to add condition branches.
 
@@ -259,14 +259,14 @@ In this task, you will integrate the prompt action to generate the quiz based on
 
    Select **Add a condition** > **Branch based on a condition**.
 
-   ![](./media/ex12-add-condition.png)
+   ![](../media/ex12-add-condition.png)
 
 1. Configure the first condition:
 
    - Condition: `NextAction` **is equal to** `Generate another quiz`
    - Action: Select **Redirect to another topic** > **Generate Quiz** (redirects back to start)
 
-   ![](./media/ex12-condition-another.png)
+   ![](../media/ex12-condition-another.png)
 
 1. Add another condition branch:
 
@@ -278,7 +278,7 @@ In this task, you will integrate the prompt action to generate the quiz based on
      Good luck with your learning journey. Feel free to come back anytime you need more quizzes!
      ```
 
-   ![](./media/ex12-condition-done.png)
+   ![](../media/ex12-condition-done.png)
 
 1. For the "Make it harder" / "Make it easier" / "Add more questions" options, you can either:
 
@@ -292,11 +292,11 @@ In this task, you will integrate the prompt action to generate the quiz based on
 
    Then redirect to the topic start.
 
-   ![](./media/ex12-default-action.png)
+   ![](../media/ex12-default-action.png)
 
 1. Click **Save** to save the complete topic.
 
-   ![](./media/ex12-save-complete.png)
+   ![](../media/ex12-save-complete.png)
 
 ### Task 4: Test the Complete Quiz Generator
 
@@ -304,7 +304,7 @@ In this task, you will perform comprehensive testing of the quiz generator.
 
 1. Click the **Test** button in the top-right corner to open the test panel.
 
-   ![](./media/ex12-test-button.png)
+   ![](../media/ex12-test-button.png)
 
 1. **Test 1 - Complete Flow:**
 
@@ -313,7 +313,7 @@ In this task, you will perform comprehensive testing of the quiz generator.
    Create a quiz
    ```
 
-   ![](./media/ex12-test-start.png)
+   ![](../media/ex12-test-start.png)
 
 1. Follow the conversation:
 
@@ -321,7 +321,7 @@ In this task, you will perform comprehensive testing of the quiz generator.
    - **Questions:** `5 questions`
    - **Difficulty:** `Easy - Basic concepts and facts`
 
-   ![](./media/ex12-test-flow.png)
+   ![](../media/ex12-test-flow.png)
 
 1. Verify the output:
 
@@ -335,7 +335,7 @@ In this task, you will perform comprehensive testing of the quiz generator.
    - [ ] Difficulty is appropriate (Easy)
    - [ ] Follow-up options appear
 
-   ![](./media/ex12-test-output.png)
+   ![](../media/ex12-test-output.png)
 
 1. **Test 2 - Different Topic and Difficulty:**
 
@@ -351,7 +351,7 @@ In this task, you will perform comprehensive testing of the quiz generator.
    - **Questions:** `3 questions`
    - **Difficulty:** `Medium - Requires understanding and application`
 
-   ![](./media/ex12-test-medium.png)
+   ![](../media/ex12-test-medium.png)
 
 1. Verify the medium difficulty questions require more thought and understanding.
 
@@ -369,7 +369,7 @@ In this task, you will perform comprehensive testing of the quiz generator.
    - **Questions:** `5 questions`
    - **Difficulty:** `Hard - Complex scenarios and deep knowledge`
 
-   ![](./media/ex12-test-hard.png)
+   ![](../media/ex12-test-hard.png)
 
 1. Verify the hard questions include complex scenarios and require deep knowledge.
 
@@ -380,7 +380,7 @@ In this task, you will perform comprehensive testing of the quiz generator.
 
    Verify the conversation restarts and asks for a new topic.
 
-   ![](./media/ex12-test-restart.png)
+   ![](../media/ex12-test-restart.png)
 
 1. **Test 5 - Completion Flow:**
 
@@ -389,7 +389,7 @@ In this task, you will perform comprehensive testing of the quiz generator.
 
    Verify the goodbye message appears.
 
-   ![](./media/ex12-test-complete.png)
+   ![](../media/ex12-test-complete.png)
 
 1. Document your test results:
 
@@ -407,37 +407,37 @@ In this task, you will publish the Quiz Generator and optionally deploy it to Mi
 
 1. Once testing is complete, click **Publish** in the top menu.
 
-   ![](./media/ex12-publish-button.png)
+   ![](../media/ex12-publish-button.png)
 
 1. Review the publishing summary and click **Publish** to confirm.
 
-   ![](./media/ex12-publish-confirm.png)
+   ![](../media/ex12-publish-confirm.png)
 
 1. Wait for the publishing process to complete (1-2 minutes).
 
-   ![](./media/ex12-publish-success.png)
+   ![](../media/ex12-publish-success.png)
 
 1. **(Optional) Deploy to Microsoft Teams:**
 
    - Click on **Channels** in the left navigation
    - Select **Microsoft Teams**
 
-   ![](./media/ex12-channels.png)
+   ![](../media/ex12-channels.png)
 
 1. Click **Turn on Teams** to enable the Teams channel.
 
-   ![](./media/ex12-turn-on-teams.png)
+   ![](../media/ex12-turn-on-teams.png)
 
 1. Configure Teams availability:
 
    - Select **Show to everyone in my org** or **Show to users or groups**
    - Click **Submit for admin approval** (or **Add to Teams** if you have permissions)
 
-   ![](./media/ex12-teams-config.png)
+   ![](../media/ex12-teams-config.png)
 
 1. Click **Open the app in Teams** to test in Teams.
 
-   ![](./media/ex12-open-teams.png)
+   ![](../media/ex12-open-teams.png)
 
 1. In Microsoft Teams, test the Quiz Generator:
 
@@ -446,7 +446,7 @@ In this task, you will publish the Quiz Generator and optionally deploy it to Mi
    Create a quiz about cloud computing
    ```
 
-   ![](./media/ex12-teams-test.png)
+   ![](../media/ex12-teams-test.png)
 
 1. Verify the complete flow works correctly in Teams:
 
@@ -455,7 +455,7 @@ In this task, you will publish the Quiz Generator and optionally deploy it to Mi
    - Quiz is generated and displayed
    - Follow-up options work
 
-   ![](./media/ex12-teams-complete.png)
+   ![](../media/ex12-teams-complete.png)
 
 ## Summary
 

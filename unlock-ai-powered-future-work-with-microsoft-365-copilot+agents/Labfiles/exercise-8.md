@@ -30,14 +30,14 @@ In this task, you will navigate to Microsoft Copilot Studio and explore its inte
    https://copilotstudio.microsoft.com
    ```
 
-   ![](./media/ex8-copilot-studio-url.png)
+   ![](../media/ex8-copilot-studio-url.png)
 
 1. Sign in with your lab credentials if prompted:
 
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
    - Password: <inject key="AzureAdUserPassword"></inject>
 
-   ![](./media/ex8-studio-signin.png)
+   ![](../media/ex8-studio-signin.png)
 
 1. If you see a **Stay signed in?** prompt, select **Yes**.
 
@@ -47,11 +47,11 @@ In this task, you will navigate to Microsoft Copilot Studio and explore its inte
    - **Agents** — List of all your created agents
    - **Environments** — Manage different environments
 
-   ![](./media/ex8-studio-home.png)
+   ![](../media/ex8-studio-home.png)
 
 1. If prompted to select an environment, choose the default environment or your organization's environment.
 
-   ![](./media/ex8-select-environment.png)
+   ![](../media/ex8-select-environment.png)
 
 ### Task 2: Create a New IT Support Copilot
 
@@ -59,17 +59,17 @@ In this task, you will create a new copilot specifically designed for IT support
 
 1. On the Copilot Studio home page, click **+ Create** from the left navigation panel.
 
-   ![](./media/ex8-create-copilot.png)
+   ![](../media/ex8-create-copilot.png)
 
 1. Click on **+ New Agent** option to create a new agent.
 
-   ![](./media/ex8-new-agent.png)
+   ![](../media/ex8-new-agent.png)
 
    >**Note:** If you see an error like "There was a problem creating your agent", click **Create a blank agent** instead.
 
 1. Once on the agent overview pane, click **Edit** inside the **Details** card to edit the agent's name and description.
 
-   ![](./media/ex8-edit-details.png)
+   ![](../media/ex8-edit-details.png)
 
 1. Configure the agent details as follows:
 
@@ -78,7 +78,7 @@ In this task, you will create a new copilot specifically designed for IT support
    | Name | `IT Support Copilot` |
    | Description | `AI-powered assistant for IT support automation including password resets, VPN issues, laptop troubleshooting, and printer support.` |
 
-   ![](./media/ex8-agent-details.png)
+   ![](../media/ex8-agent-details.png)
 
 1. Click **Save** to apply the changes.
 
@@ -88,7 +88,7 @@ In this task, you will configure detailed instructions that define how the copil
 
 1. On the agent overview page, scroll down to the **Instructions** card and click **Edit**.
 
-   ![](./media/ex8-edit-instructions.png)
+   ![](../media/ex8-edit-instructions.png)
 
 1. Enter the following instructions in the **Instructions** box:
 
@@ -133,11 +133,11 @@ In this task, you will configure detailed instructions that define how the copil
    - Provide next steps or escalation options when solutions don't work
    ```
 
-   ![](./media/ex8-instructions-content.png)
+   ![](../media/ex8-instructions-content.png)
 
 1. Click **Save** to save the instructions.
 
-   ![](./media/ex8-save-instructions.png)
+   ![](../media/ex8-save-instructions.png)
 
 ### Task 4: Add SharePoint Knowledge Source
 
@@ -145,11 +145,11 @@ In this task, you will connect the IT Support SharePoint site as a knowledge sou
 
 1. On your IT Support Copilot page, click **+ Add knowledge** in the Knowledge section.
 
-   ![](./media/ex8-add-knowledge.png)
+   ![](../media/ex8-add-knowledge.png)
 
 1. Select **SharePoint** from the available knowledge source options.
 
-   ![](./media/ex8-select-sharepoint.png)
+   ![](../media/ex8-select-sharepoint.png)
 
 1. In the SharePoint URL field, enter the IT Support SharePoint site URL:
 
@@ -157,7 +157,7 @@ In this task, you will connect the IT Support SharePoint site as a knowledge sou
    https://<inject key="Tenant Name" enableCopy="false"/>.sharepoint.com/sites/ITSupport
    ```
 
-   ![](./media/ex8-sharepoint-url.png)
+   ![](../media/ex8-sharepoint-url.png)
 
    >**Note:** The IT Support SharePoint site contains the following PDF documents:
    >| File | Description |
@@ -170,19 +170,19 @@ In this task, you will connect the IT Support SharePoint site as a knowledge sou
 
 1. Click **Add** to connect the SharePoint site.
 
-   ![](./media/ex8-add-sharepoint.png)
+   ![](../media/ex8-add-sharepoint.png)
 
 1. If prompted, sign in with your lab credentials to authorize access to SharePoint.
 
-   ![](./media/ex8-sharepoint-auth.png)
+   ![](../media/ex8-sharepoint-auth.png)
 
 1. Click **Add to agent** to attach the SharePoint knowledge source to your copilot.
 
-   ![](./media/ex8-add-to-agent.png)
+   ![](../media/ex8-add-to-agent.png)
 
 1. Wait for the SharePoint site to sync. You should see the status change to **Ready** or **Synced**.
 
-   ![](./media/ex8-kb-ready.png)
+   ![](../media/ex8-kb-ready.png)
 
    >**Note:** The SharePoint knowledge source may take 2-5 minutes to index all documents. You can proceed to the next task while it processes.
 
@@ -192,7 +192,7 @@ In this task, you will test the IT Support Copilot with various common IT suppor
 
 1. Click the **Test** button in the top-right corner or look for the **Test your copilot** panel on the right side.
 
-   ![](./media/ex8-test-button.png)
+   ![](../media/ex8-test-button.png)
 
 1. The test chat panel will open. Start with a greeting:
 
@@ -201,13 +201,13 @@ In this task, you will test the IT Support Copilot with various common IT suppor
    Hello, I need IT help
    ```
 
-   ![](./media/ex8-test-greeting.png)
+   ![](../media/ex8-test-greeting.png)
 
    **Expected Output:**
 
    The copilot should greet you and offer to help with IT issues, possibly listing the types of problems it can assist with.
 
-   ![](./media/ex8-greeting-response.png)
+   ![](../media/ex8-greeting-response.png)
 
 1. **Test 1 - Password Reset:**
 
@@ -216,13 +216,13 @@ In this task, you will test the IT Support Copilot with various common IT suppor
    I forgot my password and can't log in
    ```
 
-   ![](./media/ex8-test-password.png)
+   ![](../media/ex8-test-password.png)
 
    **Expected Output:**
 
    The copilot should provide step-by-step instructions for self-service password reset from the knowledge base.
 
-   ![](./media/ex8-password-response.png)
+   ![](../media/ex8-password-response.png)
 
 1. **Test 2 - VPN Issues:**
 
@@ -233,13 +233,13 @@ In this task, you will test the IT Support Copilot with various common IT suppor
    My VPN won't connect
    ```
 
-   ![](./media/ex8-test-vpn.png)
+   ![](../media/ex8-test-vpn.png)
 
    **Expected Output:**
 
    The copilot should ask clarifying questions and provide VPN troubleshooting steps.
 
-   ![](./media/ex8-vpn-response.png)
+   ![](../media/ex8-vpn-response.png)
 
 1. **Test 3 - Slow Laptop:**
 
@@ -250,13 +250,13 @@ In this task, you will test the IT Support Copilot with various common IT suppor
    My laptop is running really slow
    ```
 
-   ![](./media/ex8-test-laptop.png)
+   ![](../media/ex8-test-laptop.png)
 
    **Expected Output:**
 
    The copilot should provide performance troubleshooting steps such as restarting, checking Task Manager, and running disk cleanup.
 
-   ![](./media/ex8-laptop-response.png)
+   ![](../media/ex8-laptop-response.png)
 
 1. **Test 4 - Printer Problems:**
 
@@ -267,13 +267,13 @@ In this task, you will test the IT Support Copilot with various common IT suppor
    My printer shows as offline
    ```
 
-   ![](./media/ex8-test-printer.png)
+   ![](../media/ex8-test-printer.png)
 
    **Expected Output:**
 
    The copilot should provide steps to bring the printer back online.
 
-   ![](./media/ex8-printer-response.png)
+   ![](../media/ex8-printer-response.png)
 
 1. **Test 5 - Knowledge Base Query:**
 
@@ -284,13 +284,13 @@ In this task, you will test the IT Support Copilot with various common IT suppor
    What are the password requirements?
    ```
 
-   ![](./media/ex8-test-requirements.png)
+   ![](../media/ex8-test-requirements.png)
 
    **Expected Output:**
 
    The copilot should provide the password policy requirements from the knowledge base (minimum 12 characters, uppercase, lowercase, numbers, special characters).
 
-   ![](./media/ex8-requirements-response.png)
+   ![](../media/ex8-requirements-response.png)
 
 1. **Test 6 - Contact Information:**
 
@@ -299,13 +299,13 @@ In this task, you will test the IT Support Copilot with various common IT suppor
    How do I contact IT support?
    ```
 
-   ![](./media/ex8-test-contact.png)
+   ![](../media/ex8-test-contact.png)
 
    **Expected Output:**
 
    The copilot should provide IT Help Desk contact information from the knowledge base.
 
-   ![](./media/ex8-contact-response.png)
+   ![](../media/ex8-contact-response.png)
 
 1. Review your test results. The copilot should be providing helpful, knowledge-based responses for common IT issues.
 

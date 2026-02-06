@@ -24,11 +24,11 @@ In this task, you will systematically test all three IT support topics to ensure
 
 1. In Microsoft Copilot Studio, open your **IT Support Copilot**.
 
-   ![](./media/ex10-open-copilot.png)
+   ![](../media/ex10-open-copilot.png)
 
 1. Click the **Test** button to open the test panel on the right side.
 
-   ![](./media/ex10-test-panel.png)
+   ![](../media/ex10-test-panel.png)
 
 1. Ensure all 3 topics are **enabled**:
    - CredentialResetSupport
@@ -42,7 +42,7 @@ In this task, you will systematically test all three IT support topics to ensure
 
 1. Sign in to Freshdesk and navigate to **Tickets** to monitor ticket creation in real-time.
 
-   ![](./media/ex10-freshdesk-tickets.png)
+   ![](../media/ex10-freshdesk-tickets.png)
 
    >**Tip:** Keep both Copilot Studio and Freshdesk tabs visible for testing.
 
@@ -55,7 +55,7 @@ In this task, you will systematically test all three IT support topics to ensure
    I forgot my password
    ```
 
-   ![](./media/ex10-test-password.png)
+   ![](../media/ex10-test-password.png)
 
 1. Follow the conversation flow:
    - Provide your username when asked (e.g., `jsmith`)
@@ -68,7 +68,7 @@ In this task, you will systematically test all three IT support topics to ensure
    - Should offer to create a ticket when issue isn't resolved
    - Should display confirmation message after ticket creation
 
-   ![](./media/ex10-password-result.png)
+   ![](../media/ex10-password-result.png)
 
 1. **Test Scenario 2 - VPNConnectivitySupport Topic:**
 
@@ -79,7 +79,7 @@ In this task, you will systematically test all three IT support topics to ensure
    VPN won't connect
    ```
 
-   ![](./media/ex10-test-vpn.png)
+   ![](../media/ex10-test-vpn.png)
 
 1. Follow the conversation:
    - Describe the error (e.g., `Authentication failed when trying to connect`)
@@ -93,7 +93,7 @@ In this task, you will systematically test all three IT support topics to ensure
    - Provides relevant troubleshooting steps
    - Creates ticket with location in subject line
 
-   ![](./media/ex10-vpn-result.png)
+   ![](../media/ex10-vpn-result.png)
 
 1. **Test Scenario 3 - HardwareSupportAssistant Topic:**
 
@@ -104,7 +104,7 @@ In this task, you will systematically test all three IT support topics to ensure
    My laptop is slow
    ```
 
-   ![](./media/ex10-test-hardware.png)
+   ![](../media/ex10-test-hardware.png)
 
 1. Follow the conversation:
    - Select device type when asked (e.g., `Laptop`)
@@ -118,7 +118,7 @@ In this task, you will systematically test all three IT support topics to ensure
    - Provides device-specific troubleshooting
    - Creates ticket with device type in subject
 
-   ![](./media/ex10-hardware-result.png)
+   ![](../media/ex10-hardware-result.png)
 
 ### Task 2: Verify Tickets in Freshdesk Portal
 
@@ -128,14 +128,14 @@ In this task, you will verify that all test tickets were created correctly in Fr
 
 1. Go to **Tickets** in the left navigation (or click on **All Tickets**).
 
-   ![](./media/ex10-freshdesk-all-tickets.png)
+   ![](../media/ex10-freshdesk-all-tickets.png)
 
 1. You should see the tickets created during testing. Verify you have tickets with subjects like:
    - "Password Reset Assistance – jsmith"
    - "Connectivity Issue – home" (or similar)
    - "Hardware Issue – Laptop"
 
-   ![](./media/ex10-freshdesk-ticket-list.png)
+   ![](../media/ex10-freshdesk-ticket-list.png)
 
 1. Click on the **Password Reset** ticket to open it.
 
@@ -149,7 +149,7 @@ In this task, you will verify that all test tickets were created correctly in Fr
    | Status | Open |
    | Requester Email | Your lab email address |
 
-   ![](./media/ex10-freshdesk-ticket-details.png)
+   ![](../media/ex10-freshdesk-ticket-details.png)
 
 1. Click on the **Connectivity Issue** ticket and verify:
 
@@ -195,14 +195,14 @@ In this task, you will verify that your copilot can answer questions directly fr
    How do I set up MFA on my account?
    ```
 
-   ![](./media/ex10-test-kb-mfa.png)
+   ![](../media/ex10-test-kb-mfa.png)
 
 1. **Expected Results:**
    - Copilot provides a direct answer from the knowledge base
    - Does NOT trigger a topic or offer to create a ticket immediately
    - Provides helpful step-by-step instructions
 
-   ![](./media/ex10-kb-mfa-result.png)
+   ![](../media/ex10-kb-mfa-result.png)
 
 1. Try another knowledge base query:
 
@@ -233,7 +233,7 @@ In this task, you will publish your IT Support Copilot and make it available in 
 
 1. In Copilot Studio, click **Publish** in the top menu bar.
 
-   ![](./media/ex10-publish-button.png)
+   ![](../media/ex10-publish-button.png)
 
 1. Review the publishing checklist:
 
@@ -242,34 +242,34 @@ In this task, you will publish your IT Support Copilot and make it available in 
    - ✅ Knowledge base is synced and ready
    - ✅ All testing is complete
 
-   ![](./media/ex10-publish-checklist.png)
+   ![](../media/ex10-publish-checklist.png)
 
 1. Click **Publish** to publish your copilot.
 
-   ![](./media/ex10-confirm-publish.png)
+   ![](../media/ex10-confirm-publish.png)
 
 1. Wait for the publishing process to complete (1-2 minutes). You should see a success message.
 
-   ![](./media/ex10-publish-success.png)
+   ![](../media/ex10-publish-success.png)
 
 1. Click on **Channels** in the left navigation.
 
-   ![](./media/ex10-channels.png)
+   ![](../media/ex10-channels.png)
 
 1. Find **Microsoft Teams** and click on it.
 
-   ![](./media/ex10-teams-channel.png)
+   ![](../media/ex10-teams-channel.png)
 
 1. Click **Turn on Teams** to enable the Teams channel.
 
-   ![](./media/ex10-turn-on-teams.png)
+   ![](../media/ex10-turn-on-teams.png)
 
 1. Configure the Teams availability:
 
    - Select **Show to everyone in my org** (recommended for company-wide access)
    - Or select **Show to users or groups** for limited rollout
 
-   ![](./media/ex10-teams-availability.png)
+   ![](../media/ex10-teams-availability.png)
 
 1. Click **Submit for admin approval** (or **Add to Teams** if you have permissions).
 
@@ -277,7 +277,7 @@ In this task, you will publish your IT Support Copilot and make it available in 
 
 1. Click **Open the app in Teams** or **Add to Teams** to install the bot in Teams.
 
-   ![](./media/ex10-add-to-teams.png)
+   ![](../media/ex10-add-to-teams.png)
 
 ### Task 5: Test the Copilot in Microsoft Teams
 
@@ -298,13 +298,13 @@ In this task, you will test the complete user journey within Microsoft Teams.
 
 1. Search for **IT Support Copilot** and click on it.
 
-   ![](./media/ex10-teams-search.png)
+   ![](../media/ex10-teams-search.png)
 
 1. Click **Add** to add the copilot to your Teams.
 
 1. The copilot chat will open automatically.
 
-   ![](./media/ex10-teams-copilot.png)
+   ![](../media/ex10-teams-copilot.png)
 
 1. **Test 1 - Password Reset in Teams:**
 
@@ -313,7 +313,7 @@ In this task, you will test the complete user journey within Microsoft Teams.
    I forgot my password
    ```
 
-   ![](./media/ex10-teams-password.png)
+   ![](../media/ex10-teams-password.png)
 
 1. Follow the conversation:
    - Provide username when asked
@@ -325,7 +325,7 @@ In this task, you will test the complete user journey within Microsoft Teams.
    - Confirmation message appears in Teams
    - Switch to Freshdesk and verify the ticket was created
 
-   ![](./media/ex10-teams-password-complete.png)
+   ![](../media/ex10-teams-password-complete.png)
 
 1. **Test 2 - VPN Issue in Teams:**
 
@@ -345,11 +345,11 @@ In this task, you will test the complete user journey within Microsoft Teams.
    What are the steps to reset my password?
    ```
 
-   ![](./media/ex10-teams-kb-query.png)
+   ![](../media/ex10-teams-kb-query.png)
 
 1. **Expected:** The copilot should provide instructions from the knowledge base without offering to create a ticket.
 
-   ![](./media/ex10-teams-kb-result.png)
+   ![](../media/ex10-teams-kb-result.png)
 
 1. (Optional) **Share the copilot with your team:**
 

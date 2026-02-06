@@ -12,46 +12,20 @@ You will create a general Help Desk agent that can answer common employee questi
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Navigate to Copilot Agent Builder
-- Task 2: Create an IT Help Desk Agent
-- Task 3: Configure agent instructions
-- Task 4: Add knowledge sources
-- Task 5: Test the agent
+- Task 1: Create an IT Help Desk Agent
+- Task 2: Configure agent instructions
+- Task 3: Add knowledge sources
+- Task 4: Test the agent
 
-### Task 1: Navigate to Copilot Agent Builder
+### Task 1: Create a Help Desk Agent
 
-In this task, you will access the agent creation interface within Microsoft 365 Copilot.
-
-1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
-
-1. Navigate to the Microsoft 365 portal:
-
-   ```
-   https://www.microsoft365.com
-   ```
-
-1. Sign in with your lab credentials if prompted:
-
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
-
-1. If you see a **Stay signed in?** prompt, select **Yes**.
+In this task, you will create a new agent for general help desk assistance.
 
 1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
 
-   ![](./media/ex4-copilot-icon.png)
+1. Click **New agent** under the **Agents** section to start creating a custom Copilot agent.
 
-1. In the Copilot interface, click on the **Agents** button on the right side panel.
-
-   ![](./media/ex4-agents-button.png)
-
-1. In the agents panel, click on **Create agent** or **+ New agent** to start building your custom agent.
-
-   ![](./media/ex4-create-agent.png)
-
-### Task 2: Create a Help Desk Agent
-
-In this task, you will create a new agent for general help desk assistance.
+   ![](../media/m36-copg-ex4-e-g1.png)
 
 1. In the agent creation wizard, provide the following details:
 
@@ -60,17 +34,11 @@ In this task, you will create a new agent for general help desk assistance.
    | Agent name | `Help Desk` |
    | Description | `An AI assistant that helps employees with common questions about company resources, facilities, HR policies, and general workplace inquiries.` |
 
-   ![](./media/ex4-agent-details.png)
+   ![](../media/m36-copg-ex4-e-g2.png)
 
 1. For the agent icon, select an appropriate icon or let Copilot generate one based on the description.
 
-   ![](./media/ex4-agent-icon.png)
-
-1. Click **Next** or **Continue** to proceed to the instructions configuration.
-
-   >**Note:** The agent name should be descriptive and unique. The description helps users understand what the agent can assist with.
-
-### Task 3: Configure Agent Instructions
+### Task 2: Configure Agent Instructions
 
 In this task, you will define how the agent should behave and respond to users.
 
@@ -110,17 +78,13 @@ In this task, you will define how the agent should behave and respond to users.
    - Make promises about service timelines
    ```
 
-   ![](./media/ex4-agent-instructions.png)
+   ![](../media/m36-copg-ex4-e-g3.png)
 
-1. Click **Next** to proceed to knowledge configuration.
-
-### Task 4: Add Knowledge Sources
+### Task 3: Add Knowledge Sources
 
 In this task, you will create a knowledge base document locally and upload it directly to the agent as a knowledge source.
 
 1. First, create a company knowledge base document. Open **Notepad** on your VM.
-
-   ![](./media/ex4-open-notepad.png)
 
 1. Copy and paste the following content into Notepad:
 
@@ -190,7 +154,7 @@ In this task, you will create a knowledge base document locally and upload it di
    Hours: Monday-Friday, 8 AM - 6 PM
    ```
 
-   ![](./media/ex4-notepad-content.png)
+   ![](../media/ex4-notepad-content.png)
 
 1. Save the file:
    - Click **File** > **Save As**
@@ -199,33 +163,33 @@ In this task, you will create a knowledge base document locally and upload it di
    - Name the file `Employee-Help-Guide.docx`
    - Click **Save**
 
-   ![](./media/ex4-save-file.png)
+   ![](../media/ex4-save-file.png)
 
-   >**Tip:** Alternatively, you can open Microsoft Word, paste the content, and save it as a proper Word document for better formatting.
+1. Return to the agent configuration in your browser. In the **Knowledge** section.
 
-1. Return to the agent configuration in your browser. In the **Knowledge** section, click **+ Add knowledge source**.
+1. Click the **Upload (1)** icon in the **Knowledge** section to add a file as a knowledge source.
 
-   ![](./media/ex4-add-knowledge.png)
+   ![](../media/m36-copg-ex4-e-g19.png)
 
 1. Select **Upload files** from the available options.
 
-   ![](./media/ex4-upload-option.png)
-
-1. Click **Browse** or drag and drop the `Employee-Help-Guide.docx` file from your Desktop.
-
-   ![](./media/ex4-browse-file.png)
+1. Click **Browse** and select the `Employee-Help-Guide.pdf` file.
 
 1. Wait for the file to upload. You should see the file listed in the knowledge sources.
 
-   ![](./media/ex4-file-uploaded.png)
+   ![](../media/m36-copg-ex4-e-g20.png)
 
    >**Note:** The agent will process and index the uploaded file. This may take a few moments.
 
 1. Click **Create** to finalize the agent.
 
-   ![](./media/ex4-create-final.png)
+   ![](../media/m36-copg-ex4-e-g9.png)
 
-### Task 5: Test the Agent
+1. Click **Go to agent** to open your newly created Copilot agent.
+
+   ![](../media/m36-copg-ex4-e-g10.png)
+
+### Task 4: Test the Agent
 
 In this task, you will test your Help Desk agent with various queries.
 
@@ -236,11 +200,13 @@ In this task, you will test your Help Desk agent with various queries.
    Hello, I need help finding information about the office.
    ```
 
-   ![](./media/ex4-test-greeting.png)
+   ![](../media/m36-copg-ex4-e-g12.png)
 
    **Expected Output:**
 
    The agent should greet you warmly and provide a summary of available information, including office locations, parking, facilities, and contact details from the knowledge base.
+
+      ![](../media/m36-copg-ex4-e-g21.png)
 
 1. Test office location and parking:
 
@@ -249,7 +215,7 @@ In this task, you will test your Help Desk agent with various queries.
    Where is the main office located and where can I park?
    ```
 
-   ![](./media/ex4-test-password.png)
+   ![](../media/m36-copg-ex4-e-g14.png)
 
    **Expected Output:**
 
@@ -262,7 +228,7 @@ In this task, you will test your Help Desk agent with various queries.
    How do I book a conference room for a meeting tomorrow?
    ```
 
-   ![](./media/ex4-test-vpn.png)
+   ![](../media/m36-copg-ex4-e-g15.png)
 
    **Expected Output:**
 
@@ -275,7 +241,7 @@ In this task, you will test your Help Desk agent with various queries.
    How many days of annual leave do I get, and how do I request time off?
    ```
 
-   ![](./media/ex4-test-email.png)
+   ![](../media/m36-copg-ex4-e-g16.png)
 
    **Expected Output:**
 
@@ -288,7 +254,7 @@ In this task, you will test your Help Desk agent with various queries.
    What are the cafeteria hours and what amenities are available in the building?
    ```
 
-   ![](./media/ex4-test-hardware.png)
+   ![](../media/m36-copg-ex4-e-g17.png)
 
    **Expected Output:**
 
@@ -301,7 +267,7 @@ In this task, you will test your Help Desk agent with various queries.
    I need to update my emergency contact information and change my direct deposit.
    ```
 
-   ![](./media/ex4-test-security.png)
+   ![](../media/m36-copg-ex4-e-g18.png)
 
    **Expected Output:**
 

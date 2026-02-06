@@ -63,7 +63,7 @@ In this task, you will create a new agent specifically designed for generating e
 
    Your capabilities include:
    - Generating multiple-choice quiz questions on any topic
-   - Supporting different difficulty levels (Easy, Medium, Hard)
+   - Supporting different difficulty levels (Beginner, Intermediate, Advanced)
    - Creating answer keys with explanations
    - Producing quizzes of varying lengths (1-10 questions)
 
@@ -184,7 +184,7 @@ In this task, you will add input parameters that control quiz generation. The UI
    | Field | Value |
    |-------|-------|
    | Name | `DifficultyLevel` |
-   | Description | `The difficulty level - Easy, Medium, or Hard` |
+   | Description | `The difficulty level - Beginner, Intermediate, or Advanced` |
 
    ![](./media/ex11-input-difficulty.png)
 
@@ -207,17 +207,17 @@ In this task, you will write detailed instructions that guide the AI in generati
 
    ## Difficulty Guidelines:
 
-   **Easy:**
+   **Beginner:**
    - Basic concepts and definitions
    - Straightforward, commonly known facts
    - Clear correct answer with obviously incorrect distractors
 
-   **Medium:**
+   **Intermediate:**
    - Requires understanding and application of concepts
    - May involve comparing or contrasting ideas
    - Distractors are plausible but distinguishable
 
-   **Hard:**
+   **Advanced:**
    - Complex scenarios requiring deep understanding
    - May involve analysis, synthesis, or evaluation
    - Distractors are very plausible, requiring careful thought
@@ -296,7 +296,7 @@ In this task, you will test the prompt directly in the editor to ensure it gener
    |-------|------------|
    | Topic | `Solar System` |
    | NumberOfQuestions | `3` |
-   | DifficultyLevel | `Easy` |
+   | DifficultyLevel | `Beginner` |
 
    ![](./media/ex11-test-inputs.png)
 
@@ -309,7 +309,7 @@ In this task, you will test the prompt directly in the editor to ensure it gener
    **Example Expected Output:**
    ```
    📝 Quiz: Solar System
-   📊 Difficulty: Easy
+   📊 Difficulty: Beginner
    📋 Questions: 3
 
    ---
@@ -332,7 +332,7 @@ In this task, you will test the prompt directly in the editor to ensure it gener
 
    Check the generated quiz for:
    - [ ] Correct number of questions (3)
-   - [ ] Appropriate difficulty (Easy = basic facts)
+   - [ ] Appropriate difficulty (Beginner = basic facts)
    - [ ] All questions have exactly 4 options
    - [ ] Correct answers are accurate
    - [ ] Explanations are educational
@@ -344,8 +344,8 @@ In this task, you will test the prompt directly in the editor to ensure it gener
 
    | Test Case | Topic | Questions | Difficulty |
    |-----------|-------|-----------|------------|
-   | Test 2 | Microsoft 365 | 5 | Medium |
-   | Test 3 | Machine Learning | 3 | Hard |
+   | Test 2 | Microsoft 365 | 5 | Intermediate |
+   | Test 3 | Machine Learning | 3 | Advanced |
 
    ![](./media/ex11-additional-tests.png)
 

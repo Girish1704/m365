@@ -79,7 +79,7 @@ In this task, you will create the conversation flow that collects quiz parameter
    Select **Send a message** and enter:
 
    ```
-   🎓 Welcome to the Quiz Generator!
+   Welcome to the Quiz Generator!
 
    I can create customized multiple-choice quizzes on any topic you'd like. Let me gather a few details to create the perfect quiz for you.
    ```
@@ -94,7 +94,7 @@ In this task, you will create the conversation flow that collects quiz parameter
 
    | Field | Value |
    |-------|-------|
-   | Question text | `📚 What topic would you like the quiz to cover?` |
+   | Question text | `What topic would you like the quiz to cover?` |
    | Subtitle (optional) | `For example: "Solar System", "World War II", "Python Programming", "Microsoft 365"` |
    | Identify | User's entire response |
    | Save response as | Click **>** and create a new variable named `QuizTopic` |
@@ -109,7 +109,7 @@ In this task, you will create the conversation flow that collects quiz parameter
 
    | Field | Value |
    |-------|-------|
-   | Question text | `🔢 How many questions would you like in your quiz?` |
+   | Question text | `How many questions would you like in your quiz?` |
    | Identify | Multiple choice options |
 
    Add the following options:
@@ -132,7 +132,7 @@ In this task, you will create the conversation flow that collects quiz parameter
 
    | Field | Value |
    |-------|-------|
-   | Question text | `📊 What difficulty level would you prefer?` |
+   | Question text | `What difficulty level would you prefer?` |
    | Identify | Multiple choice options |
 
    Add the following options:
@@ -153,13 +153,13 @@ In this task, you will create the conversation flow that collects quiz parameter
    Select **Send a message** and enter:
 
    ```
-   ✅ Perfect! Here's what I'll create for you:
+   Perfect! Here's what I'll create for you:
 
-   📚 **Topic:** {Topic.QuizTopic}
-   🔢 **Questions:** {Topic.QuestionCount}
-   📊 **Difficulty:** {Topic.QuizDifficulty}
+   **Topic:** {Topic.QuizTopic}
+   **Questions:** {Topic.QuestionCount}
+   **Difficulty:** {Topic.QuizDifficulty}
 
-   ⏳ Generating your quiz now... Please wait a moment.
+   Generating your quiz now... Please wait a moment.
    ```
 
    ![](./media/ex12-confirm-message.png)
@@ -205,7 +205,7 @@ In this task, you will integrate the prompt action to generate the quiz based on
    Select **Send a message** and enter:
 
    ```
-   🎉 Here's your customized quiz!
+   Here's your customized quiz!
 
    {Topic.QuizContent}
    ```
@@ -226,11 +226,11 @@ In this task, you will integrate the prompt action to generate the quiz based on
    | Identify | Multiple choice options |
 
    Add the following options:
-   - `🔄 Generate another quiz`
-   - `📈 Make it harder`
-   - `📉 Make it easier`
-   - `➕ Add more questions`
-   - `✅ I'm done, thank you!`
+   - `Generate another quiz`
+   - `Make it harder`
+   - `Make it easier`
+   - `Add more questions`
+   - `I'm done, thank you!`
 
    | Field | Value |
    |-------|-------|
@@ -248,17 +248,17 @@ In this task, you will integrate the prompt action to generate the quiz based on
 
 1. Configure the first condition:
 
-   - Condition: `NextAction` **is equal to** `🔄 Generate another quiz`
+   - Condition: `NextAction` **is equal to** `Generate another quiz`
    - Action: Select **Redirect to another topic** > **Generate Quiz** (redirects back to start)
 
    ![](./media/ex12-condition-another.png)
 
 1. Add another condition branch:
 
-   - Condition: `NextAction` **is equal to** `✅ I'm done, thank you!`
+   - Condition: `NextAction` **is equal to** `I'm done, thank you!`
    - Action: Add a **Message** node:
      ```
-     🎓 Thank you for using the Quiz Generator!
+     Thank you for using the Quiz Generator!
 
      Good luck with your learning journey. Feel free to come back anytime you need more quizzes!
      ```
@@ -324,7 +324,7 @@ In this task, you will perform comprehensive testing of the quiz generator.
 
 1. **Test 2 - Different Topic and Difficulty:**
 
-   Click **Reset** (🗑️) to start fresh.
+   Click **Reset** to start fresh.
 
    **Prompt:**
    ```
@@ -361,7 +361,7 @@ In this task, you will perform comprehensive testing of the quiz generator.
 1. **Test 4 - Follow-up Actions:**
 
    After generating a quiz, select:
-   - `🔄 Generate another quiz`
+   - `Generate another quiz`
 
    Verify the conversation restarts and asks for a new topic.
 
@@ -370,7 +370,7 @@ In this task, you will perform comprehensive testing of the quiz generator.
 1. **Test 5 - Completion Flow:**
 
    Generate a quiz and then select:
-   - `✅ I'm done, thank you!`
+   - `I'm done, thank you!`
 
    Verify the goodbye message appears.
 
@@ -380,11 +380,11 @@ In this task, you will perform comprehensive testing of the quiz generator.
 
    | Test Case | Topic | Questions | Difficulty | Status |
    |-----------|-------|-----------|------------|--------|
-   | Basic Flow | Solar System | 5 | Easy | ☐ Pass |
-   | M365 Topic | Microsoft 365 Copilot | 3 | Medium | ☐ Pass |
-   | Hard Mode | Machine Learning | 5 | Hard | ☐ Pass |
-   | Restart | Any | Any | Any | ☐ Pass |
-   | Goodbye | Any | Any | Any | ☐ Pass |
+   | Basic Flow | Solar System | 5 | Beginner | Pass |
+   | M365 Topic | Microsoft 365 Copilot | 3 | Intermediate | Pass |
+   | Hard Mode | Machine Learning | 5 | Advanced | Pass |
+   | Restart | Any | Any | Any | Pass |
+   | Goodbye | Any | Any | Any | Pass |
 
 ### Task 5: Publish and Deploy to Teams (Optional)
 
@@ -455,14 +455,14 @@ In this exercise, you built a complete conversational topic that integrates the 
 - Publish and deploy agents to Microsoft Teams
 
 Your Quiz Generator agent is now a complete solution that can:
-- ✅ Generate quizzes on any topic
-- ✅ Support multiple difficulty levels (Easy, Medium, Hard)
-- ✅ Create 3, 5, 7, or 10 questions per quiz
-- ✅ Provide answer keys with explanations
-- ✅ Allow users to generate multiple quizzes in one session
-- ✅ Be accessed through Teams (if deployed)
+- Generate quizzes on any topic
+- Support multiple difficulty levels (Beginner, Intermediate, Advanced)
+- Create 3, 5, 7, or 10 questions per quiz
+- Provide answer keys with explanations
+- Allow users to generate multiple quizzes in one session
+- Be accessed through Teams (if deployed)
 
-## 🎉 Congratulations!
+## Congratulations!
 
 You have successfully completed all exercises in this lab! You've learned how to:
 

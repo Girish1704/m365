@@ -44,7 +44,7 @@ In this task, you will create a SharePoint site to store law firm documents incl
 
    | Field | Value |
    |-------|-------|
-   | Site name | `Morrison Law Firm-<inject key="DeploymentID" enableCopy="false"/>` |
+   | Site name | `Morrison Law Firm` |
    | Site description | `Document repository for Morrison & Associates Law Firm - case files, client data, and billing information` |
    | Privacy settings | Private |
 

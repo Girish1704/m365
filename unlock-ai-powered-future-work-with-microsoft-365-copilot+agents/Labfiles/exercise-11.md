@@ -22,34 +22,19 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will create a new agent specifically designed for generating educational quizzes.
 
-1. In the VM, open **Microsoft Edge** browser and navigate to:
-
-   ```
-   https://copilotstudio.microsoft.com
-   ```
-
-   ![](../media/ex11-studio-url.png)
-
-1. Sign in with your lab credentials if prompted:
-
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
-
-   ![](../media/ex11-signin.png)
-
 1. On the Copilot Studio home page, click **+ Create** from the left navigation.
 
-   ![](../media/ex11-create.png)
+   ![](../media/m36-copg-ex6-c-g1.png)
 
-1. Click on **+ New Agent** to create a new agent.
+1. Click **+ Create blank agent** to start creating a new agent.
 
-   ![](../media/ex11-new-agent.png)
+   ![](../media/m36-copg-ex6-c-g2.png)
 
-1. Click **Skip to configure** to skip the AI-assisted creation and configure manually.
+1. On the agent **Overview** page, verify that the agent has been successfully provisioned, and then select **Edit**.
 
-   ![](../media/ex11-skip-configure.png)
+   ![](../media/m36-copg-ex11-f-g45.png)
 
-1. Configure the agent details:
+1. In the **Details** pane, enter the required information in the **Name (1)** and **Description (2)** fields, and then select **Save (3)**.
 
    | Field | Value |
    |-------|-------|
@@ -57,7 +42,14 @@ In this task, you will create a new agent specifically designed for generating e
    | Description | `An intelligent agent that generates educational quiz questions on any topic with customizable difficulty levels` |
    | Instructions | (See below) |
 
-   **Instructions:**
+   ![](../media/m36-copg-ex11-f-g46.png)
+
+1. In the **Instructions** section, select **Edit**.
+
+   ![](../media/m36-copg-ex11-f-g47.png)
+
+1. In the **Instructions** editor, enter the required content in the text area **(1)**, and then select **Save (2)**.
+
    ```
    You are a Quiz Generator assistant that helps educators, trainers, and learners create educational assessments.
 
@@ -74,31 +66,19 @@ In this task, you will create a new agent specifically designed for generating e
    - Ensure all generated content is accurate and educational
    ```
 
-   ![](../media/ex11-agent-config.png)
-
-1. Click **Create** to create the agent.
-
-   ![](../media/ex11-create-agent.png)
-
-1. Wait for the agent to be created. You will be redirected to the agent overview page.
-
-   ![](../media/ex11-agent-created.png)
+   ![](../media/m36-copg-ex11-f-g48.png)
 
 ### Task 2: Create a Prompt Action for Quiz Generation
 
 In this task, you will create a prompt action that defines how quiz questions are generated using AI.
 
-1. In the agent editor, click on **Tools** in the left navigation panel.
+1. In the agent editor, select **Tools (1)** from the left navigation pane, and then choose **+ New tool (2)**.
 
-   ![](../media/ex11-tools-nav.png)
-
-1. Click **+ Add a tool**.
-
-   ![](../media/ex11-add-tool.png)
+   ![](../media/m36-copg-ex11-f-g1.png)
 
 1. In the **New tool** dialog, select **Prompt**.
 
-   ![](../media/ex11-select-prompt.png)
+   ![](../media/m36-copg-ex11-f-g43.png)
 
    >**What is a Prompt?**
    >
@@ -120,83 +100,15 @@ In this task, you will create a prompt action that defines how quiz questions ar
    Generate Quiz Questions
    ```
 
-   ![](../media/ex11-rename-prompt.png)
+   ![](../media/m36-copg-ex11-f-g2.png)
 
-### Task 3: Configure Prompt Inputs and Parameters
+   ![](../media/m36-copg-ex11-f-g44.png)
 
-In this task, you will add input parameters that control quiz generation. The UI uses "/" to add inputs inline.
-
-1. In the **Instructions** text area, you'll see the placeholder text:
-   
-   *"Use copilot to create your instructions or write it here. Use "/" to add inputs and knowledge"*
-
-1. Click inside the **Instructions** area and type `/` (forward slash).
-
-   ![](../media/ex11-slash-command.png)
-
-1. A menu will appear with two sections:
-
-   **Input:**
-   | Option | Description |
-   |--------|-------------|
-   | **Text** | Text input variable |
-   | **Image or document** | File/image input |
-   | **Power Fx** | Formula-based input |
-
-   **Knowledge:**
-   | Option | Description |
-   |--------|-------------|
-   | **+ New connection** | Add a new data connection |
-   | **Dataverse** | Connect to Dataverse tables |
-
-   ![](../media/ex11-slash-menu.png)
-
-1. Select **Text** under the Input section to create the first parameter.
-
-   ![](../media/ex11-select-text.png)
-
-1. A text input field will be added. Configure it:
-
-   | Field | Value |
-   |-------|-------|
-   | Name | `Topic` |
-   | Description | `The subject or topic for quiz questions (e.g., Solar System, Python Programming)` |
-
-   ![](../media/ex11-input-topic.png)
-
-1. Press Enter or click outside to confirm. You'll see `{Topic}` appear in the instructions area.
-
-1. Add a space after `{Topic}`, then type `/` again and select **Text**.
-
-1. Configure the second input:
-
-   | Field | Value |
-   |-------|-------|
-   | Name | `NumberOfQuestions` |
-   | Description | `How many questions to generate (1-10)` |
-
-   ![](../media/ex11-input-number.png)
-
-1. Add a space, type `/` again and select **Text** for the third parameter.
-
-1. Configure the third input:
-
-   | Field | Value |
-   |-------|-------|
-   | Name | `DifficultyLevel` |
-   | Description | `The difficulty level - Beginner, Intermediate, or Advanced` |
-
-   ![](../media/ex11-input-difficulty.png)
-
-1. You should now have three text inputs added: `{Topic}`, `{NumberOfQuestions}`, `{DifficultyLevel}`
-
-   ![](../media/ex11-all-inputs.png)
-
-### Task 4: Write the Prompt Instructions
+### Task 3: Write the Prompt Instructions
 
 In this task, you will write detailed instructions that guide the AI in generating high-quality quiz questions.
 
-1. Clear the Instructions area and enter the following complete prompt (you can copy-paste this):
+1. Enter the following complete prompt (you can copy-paste this):
 
    ```
    You are an expert educational content creator specializing in creating quiz questions for learning and assessment purposes.
@@ -274,90 +186,98 @@ In this task, you will write detailed instructions that guide the AI in generati
    Now generate the quiz based on the provided parameters.
    ```
 
-   ![](../media/ex11-full-instructions.png)
+### Task 4: Configure Prompt Inputs and Parameters
 
-   >**Note:** The `{Topic}`, `{NumberOfQuestions}`, and `{DifficultyLevel}` placeholders should already be recognized as your inputs. If they appear as plain text, delete them and use `/` to re-add them as proper input variables.
+In this task, you will add input parameters that control quiz generation.
 
-1. Verify that the model is set to **GPT-4.1 mini** (or a similar model) in the Model dropdown.
+1. In the **Instructions** text area, you'll see the placeholder text:
+   
+1. In the **Instructions** editor, select the `{NumberOfQuestions}` input variable **(1)**, and then choose **+ Add content (2)**.
 
-   ![](../media/ex11-model-select.png)
+   ![](../media/m36-copg-ex11-f-g24.png)
 
-### Task 5: Test the Prompt Action Directly
+1. From the input menu, select **Text**.
 
-In this task, you will test the prompt directly in the editor to ensure it generates quality quiz content.
+   ![](../media/m36-copg-ex11-f-g25.png)
 
-1. Click the **Test** button next to the Model selector.
+1. In the input configuration pane, enter the required information in the **Name (1)** and **Sample data (2)** fields, and then select **Close (3)**.
 
-   ![](../media/ex11-test-button.png)
+   | Field | Value |
+   |-------|-------|
+   | Name | `NumberOfQuestions` |
+   | Description | `How many questions to generate (1-10)` |
 
-1. A dialog will appear asking for input values. Enter the following test values:
+   ![](../media/m36-copg-ex11-f-g26.png)
 
-   | Input | Test Value |
-   |-------|------------|
-   | Topic | `Solar System` |
-   | NumberOfQuestions | `3` |
-   | DifficultyLevel | `Beginner` |
+1. In the **Instructions** editor, select the `{Topic}` input variable **(1)**, and then choose **+ Add content (2)**.
 
-   ![](../media/ex11-test-inputs.png)
+   ![](../media/m36-copg-ex11-f-g27.png)
 
-1. Click **Run** or **Test** to execute the prompt.
+1. From the **In your prompt** menu, select **Text**.
 
-1. The **Model response** panel on the right will show the generated quiz:
+   ![](../media/m36-copg-ex11-f-g28.png)
 
-   ![](../media/ex11-model-response.png)
+1. In the input configuration pane, enter the required information in the **Name (1)** and **Sample data (2)** fields, and then select **Close (3)**.
 
-   **Example Expected Output:**
-   ```
-   📝 Quiz: Solar System
-   📊 Difficulty: Beginner
-   📋 Questions: 3
+   | Field | Value |
+   |-------|-------|
+   | Name | `Topic` |
+   | Description | `The subject or topic for quiz questions (e.g., Solar System, Python Programming)` |
 
-   ---
+   ![](../media/m36-copg-ex11-f-g29.png)
 
-   Question 1: Which planet is known as the "Red Planet"?
+1. In the **Instructions** editor, select the `{DifficultyLevel}` input variable **(1)**, and then choose **+ Add content (2)**.
 
-   A) Venus
-   B) Mars
-   C) Jupiter
-   D) Saturn
+   ![](../media/m36-copg-ex11-f-g30.png)
 
-   ✅ Correct Answer: B
-   💡 Explanation: Mars is called the Red Planet because of its reddish appearance, caused by iron oxide (rust) on its surface.
+1. From the **In your prompt** menu, select **Text**.
 
-   ---
-   [Additional questions...]
-   ```
+   ![](../media/m36-copg-ex11-f-g28.png)
 
-1. **Verify Quality:**
+1. In the input configuration pane, enter the required information in the **Name (1)** and **Sample data (2)** fields, and then select **Close (3)**.
 
-   Check the generated quiz for:
-   - [ ] Correct number of questions (3)
-   - [ ] Appropriate difficulty (Beginner = basic facts)
-   - [ ] All questions have exactly 4 options
-   - [ ] Correct answers are accurate
-   - [ ] Explanations are educational
-   - [ ] Proper formatting with emojis
+   | Field | Value |
+   |-------|-------|
+   | Name | `DifficultyLevel` |
+   | Description | `The difficulty level - Beginner, Intermediate, or Advanced` |
 
-1. **Test with Different Parameters:**
+   ![](../media/m36-copg-ex11-f-g31.png)
 
-   Click **Test** again and try different values:
+1. In the **Output Format** section, select the `{Topic}` input variable **(1)**, and then choose **+ Add content (2)** to add additional inputs.
 
-   | Test Case | Topic | Questions | Difficulty |
-   |-----------|-------|-----------|------------|
-   | Test 2 | Microsoft 365 | 5 | Intermediate |
-   | Test 3 | Machine Learning | 3 | Advanced |
+   ![](../media/m36-copg-ex11-f-g33.png)
 
-   ![](../media/ex11-additional-tests.png)
+   ![](../media/m36-copg-ex11-f-g34.png)
 
-1. If the output quality needs improvement, modify the instructions and test again.
+1. From the input menu, select **In your prompt**.
 
-1. Once satisfied with the results, click **Save** in the bottom-right corner.
+   ![](../media/m36-copg-ex11-f-g35.png)
 
-   ![](../media/ex11-save-prompt.png)
+1. From the **In your prompt** list, select **Topic**.
 
-1. You will be returned to the Tools list. Your **Generate Quiz Questions** prompt should now appear in the list.
+   ![](../media/m36-copg-ex11-f-g36.png)
 
-   ![](../media/ex11-prompt-saved.png)
+1. Repeat the same steps to add the `{DifficultyLevel}` and `{NumberOfQuestions}` input variables to the **Output Format** section.
+
+   ![](../media/m36-copg-ex11-f-g37.png)
+
+1. Select **Test** to validate the prompt using the configured input variables.
+
+   ![](../media/m36-copg-ex11-f-g22.png)
+
+1. Verify that the generated quiz is displayed in the **Model response (1)** panel without any errors, and then select **Save (2)**.
+
+   ![](../media/m36-copg-ex11-f-g38.png)
+
+1. If a confirmation dialog appears to add the prompt to the agent, select **Yes**.
+
+1. In the **Add to an Agent** dialog, select the **Quiz Generator** agent, and then choose **Add**.
+
+   ![](../media/m36-copg-ex11-f-g39.png)
+
+1. Select **Agents**, choose **Quiz Generator**, navigate to **Tools (1)**, and then verify that the **Generate QuizQuestions (3)** prompt is listed.
+
+   ![](../media/m36-copg-ex11-f-g40.png)
 
 ## Summary
 

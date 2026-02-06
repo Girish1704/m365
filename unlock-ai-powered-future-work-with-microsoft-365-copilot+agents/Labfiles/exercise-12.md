@@ -26,13 +26,9 @@ In this task, you will create a topic that triggers when users want to generate 
 
    ![](../media/ex12-open-agent.png)
 
-1. Click on **Topics** in the left navigation panel.
+1. Select **Topics (1)** in the top navigation, choose **+ Add a topic (2)**, and then select **From blank (3)** to create a new topic.
 
-   ![](../media/ex12-topics-nav.png)
-
-1. Click **+ Add a topic** and select **From blank**.
-
-   ![](../media/ex12-new-topic.png)
+   ![](../media/m36-copg-ex11-f-g41.png)
 
 1. Configure the topic name:
 
@@ -41,31 +37,25 @@ In this task, you will create a topic that triggers when users want to generate 
    Generate Quiz
    ```
 
-   ![](../media/ex12-topic-name.png)
+   ![](../media/m36-copg-ex11-f-g42.png)
 
-1. In the **Trigger** node, you'll see **The agent chooses** with an **Edit** link. In the **Describe what the topic does** field, enter:
+1. In the **Trigger** node, enter:
 
    ```
    This topic generates customized multiple-choice quiz questions on any topic. It helps users create quizzes by collecting the topic, number of questions, and difficulty level. Users can ask things like "Create a quiz", "Generate quiz questions", "Make a test", "Quiz me on", or "Help me make a quiz".
    ```
 
-   ![](../media/ex12-trigger-description.png)
+   ![](../media/m36-copg-ex12-g-g1.png)
 
-1. Click **Save** to save the topic configuration.
+1. In the **Trigger** node, select **+** to add the next step to the topic flow.
 
-   ![](../media/ex12-save-topic.png)
+   ![](../media/m36-copg-ex12-g-g2.png)
 
-### Task 2: Build the Conversation Flow
+1. From the add step menu, select **Send a message** to insert a message node into the topic flow.
 
-In this task, you will create the conversation flow that collects quiz parameters from users.
+   ![](../media/m36-copg-ex12-g-g3.png)
 
-1. In the topic editor, you'll see the trigger node. Click the **+** button below it to add the first step.
-
-   ![](../media/ex12-add-first-step.png)
-
-1. **Step 1 - Welcome Message:**
-
-   Select **Send a message** and enter:
+1. In the **Message** node, enter the welcome text to introduce the Quiz Generator to users.
 
    ```
    Welcome to the Quiz Generator!
@@ -73,99 +63,124 @@ In this task, you will create the conversation flow that collects quiz parameter
    I can create customized multiple-choice quizzes on any topic you'd like.
    ```
 
-   ![](../media/ex12-welcome-message.png)
+   ![](../media/m36-copg-ex12-g-g4.png)
 
-1. Click **+** to add the next step.
+1. Select the **+** button below the message node to add the next step in the conversation flow.
 
-1. **Step 2 - Collect Topic:**
+   ![](../media/m36-copg-ex12-g-g5.png)
 
-   Select **Ask a question** and configure:
+1. From the add step menu, select **Ask a question** to collect input from the user.
 
-   | Field | Value |
-   |-------|-------|
-   | Question text | `What topic would you like the quiz to cover?` |
-   | Subtitle (optional) | `For example: "Solar System", "World War II", "Python Programming", "Microsoft 365"` |
-   | Identify | User's entire response |
-   | Save response as | Click **>** and create a new variable named `QuizTopic` |
+   ![](../media/m36-copg-ex12-g-g6.png)
 
-   ![](../media/ex12-topic-question.png)
+1. In the **Question** node, enter the prompt in the **Question text (1)** field, and set **Identify (2)** to **User’s entire response**.
 
-1. Click **+** to add the next step.
+   ![](../media/m36-copg-ex12-g-g7.png)
 
-1. **Step 3 - Collect Number of Questions:**
+1. In the **Question** node, select the **Var1** variable under **Save user response as** to edit the variable name.
 
-   Select **Ask a question** and configure:
+   ![](../media/m36-copg-ex12-g-g8.png)
+
+1. In the **Variable properties** pane, enter the new name in the **Variable name `QuizTopic` (1)** field, and then select **Close (2)** to save the changes.
+
+   ![](../media/m36-copg-ex12-g-g9.png)
+
+1. Select the **+ (1)** button below the node, and then choose **Ask a question (2)** to add the next input step.
+
+   ![](../media/m36-copg-ex12-g-g10.png)
+
+1. In the **Question** node, verify that the **Question text (1)**, **Identify (2)**, and **Save user response as (3)** fields are configured correctly for collecting the number of questions.
 
    | Field | Value |
    |-------|-------|
    | Question text | `How many questions would you like in your quiz?` |
-   | Identify | Multiple choice options |
-
-   Add the following options:
-   - `3 questions`
-   - `5 questions`
-   - `7 questions`
-   - `10 questions`
-
-   | Field | Value |
-   |-------|-------|
+   | Identify | User’s entire response |
    | Save response as | Create a new variable named `QuestionCount` |
 
-   ![](../media/ex12-count-question.png)
+   ![](../media/m36-copg-ex12-g-g11.png)
 
-1. Click **+** to add the next step.
+1. Select the **+ (1)** button below the node, and then choose **Ask a question (2)** to add the next question step.
 
-1. **Step 4 - Collect Difficulty Level:**
+   ![](../media/m36-copg-ex12-g-g12.png)
 
-   Select **Ask a question** and configure:
+1. In the **Question** node, enter the prompt in the **Question text (1)** field, set **Identify (2)** to **Multiple choice options**, and select **New option (3)** to add answer choices.
 
    | Field | Value |
    |-------|-------|
    | Question text | `What difficulty level would you prefer?` |
    | Identify | Multiple choice options |
 
-   Add the following options:
-   - `Easy - Basic concepts and facts`
-   - `Medium - Requires understanding and application`
-   - `Hard - Complex scenarios and deep knowledge`
+   ![](../media/m36-copg-ex12-g-g13.png)
+
+1. Under **Options for user (1)**, verify that all required choices are added, and confirm the response is saved as **QuizDifficulty (2)**.
+
+   - `Beginner`
+   - `Intermediate`
+   - `Advanced`
 
    | Field | Value |
    |-------|-------|
    | Save response as | Create a new variable named `QuizDifficulty` |
 
-   ![](../media/ex12-difficulty-question.png)
+   ![](../media/m36-copg-ex12-g-g14.png)
 
-1. Click **+** to add the next step.
+1. Select the **+ (1)** button below the node, and then choose **Variable management (2)** to manage topic variables.
 
-1. **Step 5 - Convert Choice Variables to Text:**
+   ![](../media/m36-copg-ex12-g-g15.png)
 
-   Since the prompt action expects string inputs, we need to convert the multiple choice variables to text format.
+1. Under **All other conditions**, select the **+** button to add the next step for the default branch.
 
-   Select **Variable management** > **Set a variable value** and configure:
+   ![](../media/m36-copg-ex12-g-g42.png)
 
-   | Field | Value |
-   |-------|-------|
-   | Variable | Click **Create new** and name it `QuestionCountText` |
-   | To value | Use the formula: `Text(Topic.QuestionCount)` |
+1. Under **All other conditions**, select the **+** button, and then choose **Send a message** to add a default response.
 
-   ![](../media/ex12-convert-count.png)
+   ![](../media/m36-copg-ex12-g-g43.png)
 
-1. Click **+** and add another **Set a variable value**:
+1. In the **Message** node, enter the default response in the text field **(1)**, and then select the **+ (2)** button to continue building the flow.
 
-   | Field | Value |
-   |-------|-------|
-   | Variable | Click **Create new** and name it `DifficultyText` |
-   | To value | Use the formula: `Text(Topic.QuizDifficulty)` |
+   ![](../media/m36-copg-ex12-g-g44.png)
 
-   ![](../media/ex12-convert-difficulty.png)
+1. From the add step menu, select **Topic management (1)**, and then choose **Go to step (2)** to redirect the conversation flow.
 
-   >**Note:** The `Text()` function converts the choice/option set value to a string that the prompt action can accept.
+   ![](../media/m36-copg-ex12-g-g45.png)
 
-1. Click **+** to add the next step.
+1. In the **Select destination step** panel, choose the **Question** node for difficulty selection to redirect the flow back to this step.
 
-1. **Step 6 - Confirmation Message:**
+   ![](../media/m36-copg-ex12-g-g46.png)
 
-   Select **Send a message** and enter:
+1. Verify that the flow redirects from the default message back to the difficulty **Question** node for retry.
+
+   ![](../media/m36-copg-ex12-g-g47.png)
+
+1. From the **Variable management** menu, select **Set a variable value** to configure a new variable.
+
+   ![](../media/m36-copg-ex12-g-g26.png)
+
+1. In the **Set variable** field, select the picker **(1)**, and then choose **Create a new variable (2)** to define a new variable.
+
+   ![](../media/m36-copg-ex12-g-g27.png)
+
+1. In the **Set variable value** node, select **DifficultyText (1)**, enter the name in the **Variable name (2)** field, and then select **Close (3)** to save the variable.
+
+   ![](../media/m36-copg-ex12-g-g28.png)
+
+1. In the **To value** field, select the picker **(1)**, and then choose **QuizTopic (2)** to assign the source variable.
+
+   ![](../media/m36-copg-ex12-g-g29.png)
+
+1. In the **Set variable value** node, verify that **DifficultyText** is set to type **string**, and confirm the value is assigned correctly.
+
+   ![](../media/m36-copg-ex12-g-g30.png)
+
+1. In the **To value** field, select the picker **(1)**, switch to **Formula (2)**, enter `Text(Topic.QuizDifficulty)` **(3)**, and then select **Insert (4)**.
+
+   ![](../media/m36-copg-ex12-g-g31.png)
+
+1. Select the **+ (1)** button below the node, and then choose **Send a message (2)** to add a confirmation message.
+
+   ![](../media/m36-copg-ex12-g-g59.png)
+
+1. In the **Message** node, enter the confirmation text using the variables.
 
    ```
    Perfect! Here's what I'll create for you:
@@ -177,245 +192,91 @@ In this task, you will create the conversation flow that collects quiz parameter
    Generating your quiz now... Please wait a moment.
    ```
 
-   ![](../media/ex12-confirm-message.png)
+   ![](../media/m36-copg-ex12-g-g16.png)
 
-   >**Note:** Use the **{x}** button to insert variables. The variable format may appear as `{Topic.VariableName}` or just `{VariableName}` depending on your Copilot Studio version.
+1. After inserting the variables in the **Message** node, click outside the variable fields to automatically apply and format them in the message.
 
-1. Click **Save** to save your progress.
+   ![](../media/m36-copg-ex12-g-g19.png)
 
-### Task 3: Connect the Prompt Action to the Topic
+1. Select the **+** button below the confirmation message to add the next step in the topic flow.
 
-In this task, you will integrate the prompt action to generate the quiz based on collected parameters.
+1. Select **Add a tool (1)**, switch to the **Tool (2)** tab, and then choose **Generate QuizQuestions (3)** to add the prompt action.
 
-1. Click **+** after the confirmation message to add the next step.
+   ![](../media/m36-copg-ex12-g-g21.png)
 
-1. Select **Call an action** (or **Add a tool**).
+1. In the **Tool** node, select **+ Set value** to configure the input parameters for the action.
 
-   ![](../media/ex12-call-action.png)
+   ![](../media/m36-copg-ex12-g-g22.png)
 
-1. In the action selection panel, find and select **Generate Quiz Questions** (the prompt action you created in Exercise 11).
+1. In the input mapping panel, select **Topic (1)**, **DifficultyLevel (2)**, and **NumberOfQuestions (3)** to map the corresponding topic variables.
 
-   ![](../media/ex12-select-prompt-action.png)
+   ![](../media/m36-copg-ex12-g-g23.png)
 
-1. Map the input parameters using the **converted text variables**:
+1. In the **Tool** node, verify that the input fields for are displayed so you can enter or select the required values.
 
-   | Prompt Input | Topic Variable |
-   |--------------|----------------|
-   | Topic | `QuizTopic` |
-   | NumberOfQuestions | `QuestionCountText` |
-   | DifficultyLevel | `DifficultyText` |
+   ![](../media/m36-copg-ex12-g-g24.png)
 
-   ![](../media/ex12-map-inputs.png)
+1. In the **DifficultyLevel** input, select the picker **(1)**, and then choose **QuizDifficulty (2)** to map the variable.
 
-   >**Tip:** Click on each input field, then click the **{x}** icon to select the corresponding variable from the topic. Make sure to use the Text versions of the variables (QuestionCountText and DifficultyText) for the prompt action inputs.
+   ![](../media/m36-copg-ex12-g-g32.png)
 
-1. The action will automatically create an output variable for the quiz content. Note the output variable name (e.g., `QuizContent` or `Generate Quiz Questions.QuizContent`).
+1. In the **NumberOfQuestions** input, select the picker **(1)**, and then choose **QuestionCount (2)** to map the variable.
 
-   ![](../media/ex12-action-output.png)
+   ![](../media/m36-copg-ex12-g-g33.png)
 
-1. Click **+** to add the next step.
+1. In the **Topic** input, select the picker **(1)**, confirm the **Custom (2)** tab is selected, and then choose **QuizTopic (3)** to map the variable.
 
-1. **Step 6 - Display the Generated Quiz:**
+   ![](../media/m36-copg-ex12-g-g34.png)
 
-   Select **Send a message** and enter:
+1. Select **Save** to store the latest changes to the topic.
 
-   ```
-   Here's your customized quiz!
+   ![](../media/m36-copg-ex12-g-g50.png)
 
-   {Topic.QuizContent}
-   ```
-
-   >**Note:** Replace `{Topic.QuizContent}` with the actual output variable from your prompt action. Use the **{x}** button to insert it correctly.
-
-   ![](../media/ex12-display-quiz.png)
-
-1. Click **+** to add the follow-up step.
-
-1. **Step 7 - Follow-up Options:**
-
-   Select **Ask a question** and configure:
-
-   | Field | Value |
-   |-------|-------|
-   | Question text | `What would you like to do next?` |
-   | Identify | Multiple choice options |
-
-   Add the following options:
-   - `Generate another quiz`
-   - `Make it harder`
-   - `Make it easier`
-   - `Add more questions`
-   - `I'm done, thank you!`
-
-   | Field | Value |
-   |-------|-------|
-   | Save response as | Create a new variable named `NextAction` |
-
-   ![](../media/ex12-followup-options.png)
-
-1. Click **+** to add condition branches.
-
-1. **Step 8 - Handle Follow-up Actions:**
-
-   Select **Add a condition** > **Branch based on a condition**.
-
-   ![](../media/ex12-add-condition.png)
-
-1. Configure the first condition:
-
-   - Condition: `NextAction` **is equal to** `Generate another quiz`
-   - Action: Select **Redirect to another topic** > **Generate Quiz** (redirects back to start)
-
-   ![](../media/ex12-condition-another.png)
-
-1. Add another condition branch:
-
-   - Condition: `NextAction` **is equal to** `I'm done, thank you!`
-   - Action: Add a **Message** node:
-     ```
-     Thank you for using the Quiz Generator!
-
-     Good luck with your learning journey. Feel free to come back anytime you need more quizzes!
-     ```
-
-   ![](../media/ex12-condition-done.png)
-
-1. For the "Make it harder" / "Make it easier" / "Add more questions" options, you can either:
-
-   - **Option A:** Set the corresponding variable and redirect back to the prompt action
-   - **Option B:** Add a message suggesting they start a new quiz with different settings
-
-   For simplicity, add a default message:
-   ```
-   To change difficulty or add more questions, let's start a new quiz! Just tell me the topic again.
-   ```
-
-   Then redirect to the topic start.
-
-   ![](../media/ex12-default-action.png)
-
-1. Click **Save** to save the complete topic.
-
-   ![](../media/ex12-save-complete.png)
-
-### Task 4: Test the Complete Quiz Generator
+### Task : Test the Complete Quiz Generator
 
 In this task, you will perform comprehensive testing of the quiz generator.
 
-1. Click the **Test** button in the top-right corner to open the test panel.
+1. Select **Test** in the top menu to open the testing panel and validate the topic flow.
 
-   ![](../media/ex12-test-button.png)
+   ![](../media/m36-copg-ex12-g-g51.png)
 
 1. **Test 1 - Complete Flow:**
 
-   **Prompt:**
    ```
-   Create a quiz
-   ```
-
-   ![](../media/ex12-test-start.png)
-
-1. Follow the conversation:
-
-   - **Topic:** `Solar System`
-   - **Questions:** `5 questions`
-   - **Difficulty:** `Easy - Basic concepts and facts`
-
-   ![](../media/ex12-test-flow.png)
-
-1. Verify the output:
-
-   - [ ] Welcome message appears
-   - [ ] Topic question is asked
-   - [ ] Number of questions options appear
-   - [ ] Difficulty level options appear
-   - [ ] Confirmation message shows selected options
-   - [ ] Quiz is generated with correct format
-   - [ ] Questions match the topic (Solar System)
-   - [ ] Difficulty is appropriate (Easy)
-   - [ ] Follow-up options appear
-
-   ![](../media/ex12-test-output.png)
-
-1. **Test 2 - Different Topic and Difficulty:**
-
-   Click **Reset** to start fresh.
-
-   **Prompt:**
-   ```
-   I need quiz questions
+   Can you help me create a quiz?
    ```
 
-   Provide:
-   - **Topic:** `Microsoft 365 Copilot`
-   - **Questions:** `3 questions`
-   - **Difficulty:** `Medium - Requires understanding and application`
+   ![](../media/m36-copg-ex12-g-g52.png)
 
-   ![](../media/ex12-test-medium.png)
+1. In the test chat panel, enter a topic in the message box **(1)**, and then select **Send (2)** to continue the conversation.
 
-1. Verify the medium difficulty questions require more thought and understanding.
+   ![](../media/m36-copg-ex12-g-g53.png)
 
-1. **Test 3 - Hard Difficulty:**
+1. In the test chat panel, enter the number of questions in the input field **(1)**, and then select **Send (2)** to proceed.
 
-   Reset and test:
+   ![](../media/m36-copg-ex12-g-g54.png)
 
-   **Prompt:**
-   ```
-   Quiz me on
-   ```
+1. In the test chat panel, select a difficulty option, such as **Intermediate**, to continue the quiz setup.
 
-   Provide:
-   - **Topic:** `Machine Learning algorithms`
-   - **Questions:** `5 questions`
-   - **Difficulty:** `Hard - Complex scenarios and deep knowledge`
+   ![](../media/m36-copg-ex12-g-g55.png)
 
-   ![](../media/ex12-test-hard.png)
+1. Wait for the confirmation message to display while the agent generates the quiz content.
 
-1. Verify the hard questions include complex scenarios and require deep knowledge.
-
-1. **Test 4 - Follow-up Actions:**
-
-   After generating a quiz, select:
-   - `Generate another quiz`
-
-   Verify the conversation restarts and asks for a new topic.
-
-   ![](../media/ex12-test-restart.png)
-
-1. **Test 5 - Completion Flow:**
-
-   Generate a quiz and then select:
-   - `I'm done, thank you!`
-
-   Verify the goodbye message appears.
-
-   ![](../media/ex12-test-complete.png)
-
-1. Document your test results:
-
-   | Test Case | Topic | Questions | Difficulty | Status |
-   |-----------|-------|-----------|------------|--------|
-   | Basic Flow | Solar System | 5 | Beginner | Pass |
-   | M365 Topic | Microsoft 365 Copilot | 3 | Intermediate | Pass |
-   | Hard Mode | Machine Learning | 5 | Advanced | Pass |
-   | Restart | Any | Any | Any | Pass |
-   | Goodbye | Any | Any | Any | Pass |
+   ![](../media/m36-copg-ex12-g-g56.png)
 
 ### Task 5: Publish and Deploy to Teams (Optional)
 
 In this task, you will publish the Quiz Generator and optionally deploy it to Microsoft Teams.
 
-1. Once testing is complete, click **Publish** in the top menu.
+1. Once testing is complete.
 
-   ![](../media/ex12-publish-button.png)
+1. Select **Publish** in the top menu to make the updated topic available.
 
-1. Review the publishing summary and click **Publish** to confirm.
+   ![](../media/m36-copg-ex12-g-g57.png)
 
-   ![](../media/ex12-publish-confirm.png)
+1. In the **Publish this agent** dialog, select **Publish** to confirm and deploy the latest changes.
 
-1. Wait for the publishing process to complete (1-2 minutes).
-
-   ![](../media/ex12-publish-success.png)
+   ![](../media/m36-copg-ex12-g-g58.png)
 
 1. **(Optional) Deploy to Microsoft Teams:**
 

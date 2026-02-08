@@ -15,9 +15,10 @@ In this exercise, you will complete the following tasks:
 - Task 1: Setup Freshdesk Free Trial Account
 - Task 2: Obtain Freshdesk API Credentials
 - Task 3: Create Freshdesk Ticket Flow in Copilot Studio
-- Task 4: Create CredentialResetSupport Topic
-- Task 5: Create VPNConnectivitySupport Topic
-- Task 6: Create HardwareSupportAssistant Topic
+- Task 4: Create CreateSupportTicket Topic
+- Task 5: Create CredentialResetSupport Topic
+- Task 6: Create VPNConnectivitySupport Topic
+- Task 7: Create HardwareSupportAssistant Topic
 
 ### Task 1: Setup Freshdesk Free Trial Account
 
@@ -239,9 +240,9 @@ In this task, you will create an agent flow that connects to Freshdesk and creat
 
    >**Success!** Your Freshdesk integration is working. Return to Copilot Studio for the next task.
 
-### Task 4: Create CredentialResetSupport Topic
+### Task 4: Create CreateSupportTicket Topic
 
-In this task, you will create a topic using generative AI that helps users with password reset issues and escalates to Freshdesk when needed.
+In this task, you will create a simple topic that directly creates support tickets in Freshdesk. This topic accepts a Subject and Description from the user and passes them to the Freshdesk flow.
 
 1. In Copilot Studio, ensure you are in the **IT Support Copilot**.
 
@@ -252,6 +253,76 @@ In this task, you will create a topic using generative AI that helps users with 
 1. Click **+ Add a topic** and select **Create from description with Copilot**.
 
    ![](../media/ex9-add-topic.png)
+
+1. Enter the following details:
+
+   **Name:**
+   ```
+   CreateSupportTicket
+   ```
+
+   **Description:**
+   ```
+   Create a simple support ticket topic. Ask the user for the ticket subject and save it as a variable. Then ask them to describe their issue in detail and save that as another variable. After collecting both values, call the Freshdesk Power Automate flow and pass the subject variable to the Subject input and the description variable to the Description input. After the ticket is created, display a confirmation message saying the ticket has been created and IT team will contact them shortly.
+   ```
+
+   ![](../media/ex9-create-ticket-topic.png)
+
+1. Click **Create** to generate the topic.
+
+1. Wait for the AI to generate the topic (15-30 seconds).
+
+1. Review the generated topic:
+
+   - **Trigger phrases:** Verify it includes phrases like:
+     - "Create a ticket"
+     - "Open a support ticket"
+     - "I need to create a ticket"
+     - "Submit a ticket"
+     - "Log a ticket"
+
+1. Review the conversation flow and ensure it:
+   - Asks for the ticket subject and saves as `Subject` variable
+   - Asks for issue description and saves as `Description` variable
+   - Calls the Freshdesk flow with these variables
+
+1. **Connect the topic to the Freshdesk flow:**
+
+   - Locate the point after both variables are collected
+   - Click the **+** button
+   - Select **Add a tool** (or **Call an action**)
+
+   ![](../media/ex9-add-tool.png)
+
+1. In the tool selection pane:
+   - Search for **Freshdesk**
+   - Select your **Freshdesk** flow from the list
+
+   ![](../media/ex9-select-freshdesk.png)
+
+1. Configure the flow inputs by mapping the variables:
+
+   - For **Subject**: Click the **{x}** icon and select the **Subject** variable
+   - For **Description**: Click the **{x}** icon and select the **Description** variable
+
+   ![](../media/ex9-map-ticket-variables.png)
+
+   >**Important:** The variable names must match exactly. If your variables have different names, rename them in the Question nodes to `Subject` and `Description`.
+
+1. Add a **Message** node after the action:
+   ```
+   I've created your support ticket successfully. Our IT team will contact you shortly.
+   ```
+
+1. Click **Save** to save the topic.
+
+   ![](../media/ex9-save-topic.png)
+
+### Task 5: Create CredentialResetSupport Topic
+
+In this task, you will create a topic using generative AI that helps users with password reset issues and escalates to Freshdesk when needed.
+
+1. Click **+ Add a topic** and select **Create from description with Copilot**.
 
 1. Enter the following details:
 
@@ -286,47 +357,28 @@ In this task, you will create a topic using generative AI that helps users with 
    - Asks for username and saves as variable
    - Provides self-service reset instructions using knowledge base
    - Asks if issue is resolved
-   - Offers escalation to ticket creation
+   - Offers ticket creation if not resolved
 
 1. **Connect the topic to the Freshdesk flow:**
 
    - Locate the point in the conversation where the user indicates the issue is NOT resolved
    - Click the **+** button at that escalation point
    - Select **Add a tool** (or **Call an action**)
+   - Search for **Freshdesk** and select your flow
+   - Map the generated Subject and Description variables to the flow inputs
 
    ![](../media/ex9-add-tool.png)
-
-1. In the tool selection pane:
-   - Search for **Freshdesk**
-   - Select your **Freshdesk** flow from the list
-
-   ![](../media/ex9-select-freshdesk.png)
-
-1. Configure the flow inputs by mapping the variables:
-
-   - For **Subject**: Click the **{x}** icon and select the appropriate variable, or enter:
-     ```
-     Password Reset Assistance - [username variable]
-     ```
-   - For **Description**: Map the variable containing the issue details
-
-   ![](../media/ex9-map-variables.png)
 
 1. Add a **Message** node after the action:
    ```
    I've created a support ticket for your password reset request. Our IT team will contact you shortly.
    ```
 
-1. Check variable scope settings:
-   - Click on each variable in the topic
-   - If you see an error about "limited scope"
-   - Enable the checkbox for **"Can be used by other topics"** or **"Receive values from other topics"**
-
 1. Click **Save** to save the topic.
 
    ![](../media/ex9-save-topic.png)
 
-### Task 5: Create VPNConnectivitySupport Topic
+### Task 6: Create VPNConnectivitySupport Topic
 
 In this task, you will create a topic for VPN and connectivity issues.
 
@@ -361,23 +413,21 @@ In this task, you will create a topic for VPN and connectivity issues.
    - Asks about location (home/office) and saves as variable
    - Provides troubleshooting steps
    - Asks if issue is resolved
-   - Offers ticket creation with location in subject
+   - Offers ticket creation if not resolved
 
-1. **Connect to Freshdesk flow:**
+1. **Connect the topic to the Freshdesk flow:**
    - Find the escalation point where user says issue is NOT resolved
    - Click **+** > **Add a tool** > Select **Freshdesk**
-   - Map the Subject and Description inputs with topic variables
+   - Map the Subject and Description variables to the flow inputs
 
 1. Add a confirmation message:
    ```
    I've created a support ticket for your connectivity issue. Our IT team will contact you shortly.
    ```
 
-1. Verify variable scope settings (enable "Can be used by other topics" if needed).
-
 1. Click **Save**.
 
-### Task 6: Create HardwareSupportAssistant Topic
+### Task 7: Create HardwareSupportAssistant Topic
 
 In this task, you will create a comprehensive topic for hardware issues.
 
@@ -413,24 +463,23 @@ In this task, you will create a comprehensive topic for hardware issues.
    - Asks to describe the issue and saves as variable
    - Provides device-specific troubleshooting steps
    - Asks if issue is resolved
-   - Offers ticket creation with device type in subject
+   - Offers ticket creation if not resolved
 
-1. **Connect to Freshdesk flow:**
+1. **Connect the topic to the Freshdesk flow:**
    - Find the escalation point where user says issue is NOT resolved
    - Click **+** > **Add a tool** > Select **Freshdesk**
-   - Map the Subject (e.g., "Hardware Issue - [device]") and Description inputs
+   - Map the Subject and Description variables to the flow inputs
 
 1. Add a confirmation message:
    ```
    I've created a support ticket for your hardware issue. Our IT team will contact you shortly.
    ```
 
-1. Verify variable scope settings.
-
 1. Click **Save**.
 
 1. **Verify all topics are enabled:**
-   - In the **Topics** list, ensure all 3 topics show as enabled (toggle is on):
+   - In the **Topics** list, ensure all 4 topics show as enabled (toggle is on):
+     - CreateSupportTicket
      - CredentialResetSupport
      - VPNConnectivitySupport
      - HardwareSupportAssistant
@@ -444,9 +493,10 @@ In this exercise, you successfully integrated Freshdesk as a professional ticket
 - Set up a Freshdesk free trial account for IT ticketing
 - Obtain and configure API credentials for secure integration
 - Create an agent flow using the Freshdesk connector to automatically create tickets
-- Build intelligent topics using generative AI (CredentialResetSupport, VPNConnectivitySupport, HardwareSupportAssistant)
-- Connect AI-generated topics to the Freshdesk flow for seamless ticket escalation
-- Configure variable mapping between topics and flows
+- Build a dedicated CreateSupportTicket topic for direct ticket creation
+- Build intelligent troubleshooting topics using generative AI (CredentialResetSupport, VPNConnectivitySupport, HardwareSupportAssistant)
+- Connect topics to the Freshdesk flow for seamless ticket escalation
+- Map topic variables to flow inputs (Subject and Description)
 
 Your IT Support Copilot can now provide troubleshooting guidance using the knowledge base, and when users need escalation, automatically create support tickets in Freshdesk with all the relevant details.
 

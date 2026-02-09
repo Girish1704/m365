@@ -196,6 +196,13 @@ In this task, you will test your Help Desk agent with various queries.
 
    The agent should direct you to the HR portal (hr.contoso.com) for updating personal information and provide HR contact details for assistance.
 
+<validation step="6d3931fa-b346-4486-81be-36a06404664f" />
+
+> **Congratulations** on completing the Challenge! Now, it's time to validate it. Here are the steps:
+> - Hit the Validate button for the corresponding Challenge. If you receive a success message, you can proceed to the next Challenge. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
+
 ## Summary
 
 In this exercise, you created and configured a custom Copilot Agent for general Help Desk assistance. You learned how to:

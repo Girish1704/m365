@@ -312,6 +312,13 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
    - Key relationships with Mini Gifts Distributors, Euro Shopping Channel, and other top accounts
    - Opportunities in premium markets like Japan and APAC
 
+<validation step="90032a8b-8ec1-4622-ac1e-112a714a2010" />
+ 
+> **Congratulations** on completing the Challenge! Now, it's time to validate it. Here are the steps:
+> - Hit the Validate button for the corresponding Challenge. If you receive a success message, you can proceed to the next Challenge. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
+
 ## Summary
 
 In this exercise, you explored the Analyst Agent in Microsoft 365 Copilot. You learned how to:

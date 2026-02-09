@@ -283,6 +283,13 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    - Senior Associate hourly rate: $375
    - LLC Formation flat fee: $800
 
+<validation step="69d40f02-a078-4f03-a54c-98c6f3081299" />
+
+> **Congratulations** on completing the Challenge! Now, it's time to validate it. Here are the steps:
+> - Hit the Validate button for the corresponding Challenge. If you receive a success message, you can proceed to the next Challenge. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
+
 ## Summary
 
 In this exercise, you created a **SharePoint Agent** for a law firm that helps legal staff discover documents and extract insights from various file types including Word documents and CSV data files. You learned how to:

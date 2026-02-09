@@ -14,9 +14,8 @@ In this exercise, you will complete the following tasks:
 
 - Task 1: Access the Document Analyzer Agent
 - Task 2: Analyze document content
-- Task 3: Ask questions about the document
-- Task 4: Extract key information
-- Task 5: Transform document content
+- Task 3: Extract key information
+- Task 4: Transform document content
 
 ### Task 1: Access the Document Analyzer Agent
 
@@ -100,9 +99,8 @@ In this task, you will use Copilot to analyze the document content.
 
 >**Note:** Copilot in Word analyzes the document you have open. Make sure the Contoso-Annual-Review-2024 document is the active document before proceeding.
 
-1. In the Copilot pane, type the following prompt:
+1. In the **Copilot** pane, enter the analysis prompt in the **message box (1)**, and then select **Send (2)**.
 
-   **Prompt:**
    ```
    Analyze this document and provide:
    1. A brief overview of what this document is about
@@ -114,12 +112,12 @@ In this task, you will use Copilot to analyze the document content.
 
    **Expected Output:**
 
+   ![](../media/d1-d1-cor-g10.png)
+
    Copilot will analyze the document and provide:
    - **Brief Overview:** Identifies this as a corporate annual business review covering fiscal year 2024 performance
    - **Main Sections:** Executive Summary, Key Financial Highlights, Strategic Initiatives, Challenges and Risks, Outlook for 2025
    - **Tone and Purpose:** Professional, optimistic yet balanced; designed for stakeholder communication
-
-   ![](../media/ex3-analyze-response.png)
 
    >**Troubleshooting:** If Copilot responds that it cannot find content or the document appears empty:
    >- Check that you're in the correct document (Contoso-Annual-Review-2024)
@@ -134,7 +132,7 @@ In this task, you will use Copilot to analyze the document content.
    What are the key performance indicators (KPIs) mentioned in this document? List them with their values and year-over-year changes.
    ```
 
-   ![](../media/ex3-kpi-prompt.png)
+   ![](../media/d1-d1-cor-g11.png)
 
    **Expected Output:**
 
@@ -145,18 +143,17 @@ In this task, you will use Copilot to analyze the document content.
    - Net Income: $756M (↑24% YoY)
    - Employee Count: 12,500 (↑15.7% from 10,800)
 
-   ![](../media/ex3-kpi-response.png)
+      ![](../media/ex3-kpi-prompt.png)
 
-   >**Tip:** If you want the data in a specific format, you can ask: "Can you format this as a table?" or "Can you show this as a comparison chart?"
+   >**Note:** If you want the data in a specific format, you can ask: "Can you format this as a table?" or "Can you show this as a comparison chart?"
 
-1. Ask for sentiment analysis:
+1. In the **Copilot** pane, enter the sentiment analysis prompt, and then submit it.
 
-   **Prompt:**
    ```
    What is the overall sentiment of this report? Is it optimistic, cautious, or neutral? Provide evidence from the text to support your assessment.
    ```
 
-   ![](../media/ex3-sentiment-prompt.png)
+   ![](../media/d1-d1-cor-g12.png)
 
    **Expected Output:**
 
@@ -168,140 +165,19 @@ In this task, you will use Copilot to analyze the document content.
    
    However, it will note balanced reporting with acknowledgment of challenges (competition, talent acquisition, supply chain).
 
-   ![](../media/ex3-sentiment-response.png)
-
    >**Note:** If Copilot cannot assess sentiment, it means it couldn't access the document text. Verify the document is open and has content.
 
-### Task 3: Ask Questions About the Document
-
-In this task, you will ask specific questions about the document content.
-
->**Important:** The quality of answers depends on how specific your questions are. More focused questions typically yield better responses.
-
-In this task, you will ask specific questions about the document content.
-
-1. Ask about financial performance:
-
-   **Prompt:**
-   ```
-   Which business division had the highest growth rate, and what contributed to this growth?
-   ```
-
-   ![](../media/ex3-growth-prompt.png)
-
-   **Expected Output:**
-
-   Copilot will identify:
-   - **Highest Growth Division:** Cloud Services with 28% YoY growth
-   - **Contributing Factors:**
-     - Successful cloud migration initiative (85% of enterprise customers migrated)
-     - High customer satisfaction (4.6/5) indicating strong retention
-     - Market shift toward cloud-based solutions
-     - AI integration making cloud offerings more competitive
-
-   ![](../media/ex3-growth-response.png)
-
-   >**Pro Tip:** If you want more detail, follow up with: "What about the other divisions? How did they perform?"
-
-1. Ask about challenges:
-
-   **Prompt:**
-   ```
-   What challenges did Contoso face in 2024, and how might these impact their 2025 goals?
-   ```
-
-   ![](../media/ex3-challenges-prompt.png)
-
-   **Expected Output:**
-
-   Copilot will analyze the challenges and their potential impact:
-
-   **2024 Challenges:**
-   1. **Increased cloud competition** - Could pressure margins and slow growth
-   2. **AI/ML talent shortage** - May slow AI feature development
-   3. **Supply chain constraints** - Affected Q2 hardware deliveries
-   4. **Currency fluctuations** - 3% impact on international revenue
-
-   **Impact on 2025 Goals:**
-   - **Cloud migration goal (95%):** Competition may make this harder to achieve
-   - **AI expansion:** Talent gaps could delay rollout of new AI capabilities
-   - **International expansion (5 new markets):** Currency risks could affect revenue projections
-   - **$4.8-5.0B revenue target:** Supply chain and competition risks could pressure this target
-
-   ![](../media/ex3-challenges-response.png)
-
-   >**Note:** Copilot makes logical connections between stated challenges and stated goals. The quality of this analysis depends on how explicitly these connections are stated in the source document.
-
-1. Ask about strategic initiatives:
-
-   **Prompt:**
-   ```
-   Did Contoso meet their strategic targets? Compare the targets mentioned with the actual achievements.
-   ```
-
-   ![](../media/ex3-targets-prompt.png)
-
-   **Expected Output:**
-
-   Copilot will compare targets with achievements:
-
-   **Explicitly Met/Exceeded Targets:**
-   - **Cloud Migration:** Target 75% → Achieved 85% **Exceeded**
-   - **AI Adoption:** "Exceeded expectations" with 40% customer adoption in Q1
-   
-   **Achievements Reported (No Explicit Target Stated):**
-   - Market Expansion: Entered 3 new markets, contributed $180M revenue
-   - Sustainability: Achieved carbon neutrality, 35% footprint reduction
-   - Customer Satisfaction: 4.6/5 for cloud services
-
-   ![](../media/ex3-targets-response.png)
-
-   >**Important:** Copilot can only confirm "met target" when both target and actual are explicitly stated in the document. For other items, it will note strong performance but cannot quantify as "met/missed" without baseline targets.
-
-1. Ask a comparative question:
-
-   **Prompt:**
-   ```
-   How does the revenue from new international markets compare to the overall revenue growth?
-   ```
-
-   ![](../media/ex3-compare-prompt.png)
-
-   **Expected Output:**
-
-   Copilot will perform calculations and comparisons:
-
-   **Revenue from New International Markets:** $180M
-   - Japan: $95M
-   - Brazil + Germany: $85M (combined)
-
-   **Overall Revenue Growth (YoY):**
-   - 2024 Revenue: $4.2B (up 15%)
-   - 2023 Revenue: ~$3.65B (calculated: $4.2B ÷ 1.15)
-   - Dollar Growth: ~$550M
-
-   **Comparison:**
-   - New markets revenue ($180M) represents **32.7%** of total YoY growth (~$550M)
-   - New markets are **4.3%** of total 2024 revenue ($180M / $4.2B)
-   
-   **Key Insight:** While new markets are a small portion of total revenue, they contributed nearly one-third of the company's growth.
-
-   ![](../media/ex3-compare-response.png)
-
-   >**Note:** Copilot can perform mathematical reasoning and calculations based on document data. If calculations seem incorrect, you can ask it to "show your work" or "verify the calculation."
-
-### Task 4: Extract Key Information
+### Task 3: Extract Key Information
 
 In this task, you will extract specific information from the document.
 
-1. Extract financial data:
+1. In the **Copilot** pane, enter the financial data extraction prompt in the **message box (1)**, and then select **Send (2)**.
 
-   **Prompt:**
    ```
    Create a table summarizing all financial figures mentioned in this document, including revenue, margins, and growth percentages.
    ```
 
-   ![](../media/ex4-financials-prompt.png)
+   ![](../media/d1-d1-cor-g20.png)
 
    **Expected Output:**
 
@@ -317,21 +193,20 @@ In this task, you will extract specific information from the document.
    | Net Income | $756M | $610M | +24% |
    | Employees | 12,500 | 10,800 | +15.7% |
 
-   ![](../media/ex3-financials-response.png)
+   ![](../media/d1-d1-cor-g21.png)
 
-   >**Tip:** If the table isn't formatted exactly as you need, you can refine with:
+   >**Note:** If the table isn't formatted exactly as you need, you can refine with:
    >- "Can you add a column for dollar change (not just percentage)?"
    >- "Can you highlight which metrics exceeded 20% growth?"
    >- "Can you format this for Excel import?"
 
-1. Extract action items:
+1. In the **Copilot** pane, enter the future plans and commitments prompt in the **message box (1)**, and then select **Send (2)**.
 
-   **Prompt:**
    ```
    What are all the future plans and commitments mentioned in this document? List them as action items with specific targets.
    ```
 
-   ![](../media/ex3-actions-prompt.png)
+   ![](../media/d1-d1-cor-g22.png)
 
    **Expected Output:**
 
@@ -345,72 +220,51 @@ In this task, you will extract specific information from the document.
    5. ☐ Expand AI capabilities across all products
    6. ☐ Implement 10% dividend increase to shareholders
 
-   ![](../media/ex3-actions-response.png)
+   >**Note:** You can ask Copilot to: "Organize these by priority" or "Add responsible parties and deadlines based on industry best practices"
 
-   >**Pro Tip:** You can ask Copilot to: "Organize these by priority" or "Add responsible parties and deadlines based on industry best practices"
+1. In the **Copilot** pane, enter the key dates and timelines prompt in the **message box (1)**, and then select **Send (2)**.```
 
-1. Extract key dates and timelines:
-
-   **Prompt:**
    ```
    List all time-related references in this document, including years, quarters, and future projections.
    ```
 
-   ![](../media/ex3-timeline-prompt.png)
+   ![](../media/d1-d1-cor-g23.png)
 
-   **Expected Output:**
-
-   ![](../media/ex3-timeline-response.png)
-
-### Task 5: Transform Document Content
+### Task 4: Transform Document Content
 
 In this task, you will transform the document content into different formats.
 
-1. Create a summary:
+1. Review the existing **Key Financial Highlights** section in the document to understand the current formatting and structure used for financial information.
 
-   **Prompt:**
+   ![](../media/d1-d1-cor-g26.png)
+
+1. In the **Copilot** pane, select **Options (1)**, and then choose **Agent mode (2)** to allow direct edits to the document.```
+
+   ![](../media/d1-d1-cor-g24.png)
+
+1. In the **Copilot** pane, enter the formatting update prompt in the **message box (1)**, and then select **Send (2)**.
+
    ```
-   Create a 3-paragraph executive summary of this document that could be shared with investors.
+   Update the formatting of the Key Financial Highlights section in the Word document to use clear sub-numbering instead of bullet points, with consistent spacing and emphasis for key metrics.
    ```
 
-   ![](../media/ex3-summary-prompt.png)
+   ![](../media/d1-d1-cor-g25.png)
 
    **Expected Output:**
 
-   Copilot will generate an investor-focused executive summary covering:
-   - **Paragraph 1:** Strong financial performance (15% revenue growth, $4.2B total, 24% net income increase)
-   - **Paragraph 2:** Strategic success (85% cloud migration, successful AI integration, international expansion)
-   - **Paragraph 3:** Forward outlook (confident 2025 projections, $500M R&D investment, 10% dividend increase)
+   Copilot automatically updates the **Key Financial Highlights** section in the document
 
-   ![](../media/ex3-summary-response.png)
+   ![](../media/d1-d1-cor-g27.png)
 
-   >**Iteration Tip:** If the summary doesn't match your needs:
-   >- "Make this more concise (2 paragraphs instead of 3)"
-   >- "Add more specific financial figures"
-   >- "Adjust the tone to be more conservative"
-   >- "Focus more on risks and challenges"
+1. Review the document and continue interacting with **Copilot** to update, refine, or transform any section of the Word file as needed using prompts and direct edits.
 
-1. Transform into bullet points:
+1. In the **Copilot** pane, enter the risk perspective rewrite prompt in the **message box (1)**, and then select **Send (2)**.
 
-   **Prompt:**
-   ```
-   Convert the key findings of this report into a bulleted list format suitable for a presentation slide. Maximum 10 bullets.
-   ```
-
-   ![](../media/ex3-bullets-prompt.png)
-
-   **Expected Output:**
-
-   ![](../media/ex3-bullets-response.png)
-
-1. Create a different perspective:
-
-   **Prompt:**
    ```
    Rewrite the challenges section from a risk management perspective, categorizing each challenge by risk level (high, medium, low) and suggesting mitigation strategies.
    ```
 
-   ![](../media/ex3-risk-prompt.png)
+   ![](../media/d1-d1-cor-g18.png)
 
    **Expected Output:**
 
@@ -435,18 +289,15 @@ In this task, you will transform the document content into different formats.
      - *Impact:* Limited hardware delivery delays
      - *Mitigation:* Diversify supplier base, increase inventory buffers
 
-   ![](../media/ex3-risk-response.png)
-
    >**Note:** Risk categorization may vary based on Copilot's interpretation. You can refine by asking: "Can you justify why each risk is rated at that level?"
 
-1. Create email content:
+1. In the **Copilot** pane, enter the email drafting prompt in the **message box (1)**, and then select **Send (2)**.
 
-   **Prompt:**
    ```
    Draft a brief email to the board of directors highlighting the top 3 achievements and top 3 focus areas for 2025 based on this report.
    ```
 
-   ![](../media/ex3-email-prompt.png)
+   ![](../media/d1-d1-cor-g19.png)
 
    **Expected Output:**
 
@@ -475,19 +326,11 @@ In this task, you will transform the document content into different formats.
    [Name]
    ```
 
-   ![](../media/ex3-email-response.png)
-
    >**Customization Options:** You can refine the email by asking:
    >- "Make this more formal/casual"
    >- "Add a section about challenges"
    >- "Make it shorter (3 bullets each instead of full paragraphs)"
    >- "Change the tone to be more cautious about 2025 targets"
-
-1. To insert any of the generated content into your document, click **Insert** or **Copy** on the Copilot response.
-
-   >**Important:** When you click **Insert**, Copilot will add the content at your current cursor position in the document. Make sure your cursor is in the right location before inserting.
-
-   ![](../media/ex3-insert-content.png)
 
 ## Summary
 

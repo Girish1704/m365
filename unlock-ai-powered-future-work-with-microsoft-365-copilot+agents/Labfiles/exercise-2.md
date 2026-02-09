@@ -58,7 +58,7 @@ In this task, you will navigate to Microsoft 365 Copilot and access the Research
 
 In this task, you will use the Researcher Agent to research a business topic.
 
-1. Enter the follow-up question in the **message box (1)**, then click the **Send (2)** button to submit it.
+1. Enter the research prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
    **Prompt:**
    ```
@@ -68,6 +68,8 @@ In this task, you will use the Researcher Agent to research a business topic.
    3. Common challenges and barriers
    4. Best practices for successful implementation
    ```
+
+   ![](../media/d1-d1-cor-g4.png)
 
    >**Note:** The Researcher agent may ask clarifying questions before proceeding, such as:
    >- Are you looking for global trends or specific region/industry?
@@ -81,7 +83,19 @@ In this task, you will use the Researcher Agent to research a business topic.
    - **Short** (1 to 5 pages)
    - **Long** (5+ pages)
 
-   Select **Short** for a concise report.
+      ![](../media/d1-d1-cor-g5.png)
+
+1. Enter **Short (1)** in the **message box**, and then click the **Send (2)** button to proceed.
+
+   ![](../media/d1-d1-cor-g6.png)
+
+1. Wait for the Researcher agent to generate the report, and then use the **Expand** control to view the full response if needed.
+
+   ![](../media/d1-d1-cor-g7.png)
+
+1. Review the generated research sections in the expanded response pane, and scroll to explore the detailed insights provided by the Researcher agent.
+
+   ![](../media/d1-d1-cor-g8.png)
 
    **Expected Output:**
 
@@ -92,11 +106,12 @@ In this task, you will use the Researcher Agent to research a business topic.
    - **Challenges:** Data quality, talent gaps, change management, ethical concerns
    - **Best Practices:** Start small, focus on data quality, build cross-functional teams
 
+      ![](../media/d1-d1-cor-g9.png)
+
       >**Note:** The actual content and depth may vary based on the Researcher's sources and the report length you selected.
 
-1. Dig deeper into specific areas:
+1. Enter the implementation challenges prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Expand on the implementation challenges. What are the top 5 reasons AI projects fail in enterprises, and what can organizations do to avoid these pitfalls?
    ```
@@ -115,19 +130,14 @@ In this task, you will use the Researcher Agent to research a business topic.
    - **Talent gaps** - Shortage of skilled AI/ML professionals
    - **Change resistance** - Organizational culture not ready for AI-driven processes
 
-   ![](../media/ex2-challenges-response.png)
-
 1. Now try using one of the quick action cards. Click on **Market analysis** and enter a company name like **Microsoft** to see how the Researcher analyzes market positioning.
 
    **Expected Output:**
 
    The Researcher will provide market analysis covering competitive landscape, market share, strategic positioning, and recent developments.
 
-   ![](../media/ex2-market-response.png)
+1. Enter the industry-specific insights prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-1. Request industry-specific insights:
-
-   **Prompt:**
    ```
    How does AI adoption differ across industries? Compare AI adoption patterns in financial services, healthcare, and manufacturing sectors.
    ```
@@ -138,17 +148,14 @@ In this task, you will use the Researcher Agent to research a business topic.
 
    The Researcher will provide a comparative analysis across the three sectors, highlighting differences in adoption rates, use cases, and challenges.
 
-   ![](../media/ex2-industry-response.png)
-
    >**Note:** If you need more detail on a specific industry, ask a follow-up question like "Can you expand on healthcare AI adoption challenges?"
 
 ### Task 3: Organize and Synthesize Information
 
 In this task, you will have the Researcher Agent organize and synthesize the gathered information.
 
-1. Request a structured outline:
+1. Enter the structured outline prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Based on the research we have gathered, create a detailed outline for a whitepaper titled "Enterprise AI Adoption: A Strategic Guide for Business Leaders". Include main sections and subsections.
    ```
@@ -169,22 +176,18 @@ In this task, you will have the Researcher Agent organize and synthesize the gat
    - Recommendations for Business Leaders
    - Conclusion
 
-   ![](../media/ex2-outline-response.png)
-
    >**Note:** The outline structure may vary. If you need more detail in specific sections, you can ask "Can you expand section 3 with more subsections?"
 
-1. Ask for key takeaways:
+1. Enter the key takeaways prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Synthesize all the information we have discussed into 10 key takeaways that a C-level executive should know about AI adoption.
    ```
 
    ![](../media/m36-copg-ex2-a-g9.png)
 
-1. Request a comparison framework:
+1. Enter the comparison framework prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Create a comparison table that organizations can use to evaluate their AI readiness. Include categories like data infrastructure, talent, culture, and governance, with maturity levels from beginner to advanced.
    ```
@@ -201,9 +204,8 @@ In this task, you will have the Researcher Agent organize and synthesize the gat
 
 In this task, you will use the Researcher Agent to create different types of structured content.
 
-1. Create an infographic description:
+1. Enter the infographic description prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Describe an infographic that visualizes the AI adoption journey for enterprises. Include 5-6 stages with key activities and milestones for each stage.
    ```
@@ -223,7 +225,7 @@ In this task, you will use the Researcher Agent to create different types of str
 
    >**Note:** The Researcher describes the infographic concept but doesn't create actual visuals. If you need the visual created, you would need to use design tools or ask: "Can you turn this into a visual presentation format?"
 
-1. Create a checklist:
+1. Enter the AI readiness checklist prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
    **Prompt:**
    ```
@@ -232,7 +234,7 @@ In this task, you will use the Researcher Agent to create different types of str
 
    ![](../media/m36-copg-ex2-a-g12.png)
 
-1. Create FAQ content:
+1. Enter the FAQ generation prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
    **Prompt:**
    ```

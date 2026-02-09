@@ -38,83 +38,126 @@ The lab environment consists of the following components:
 - Microsoft 365 Agents Toolkit (VS Code extension) for declarative agent development
 - SharePoint Online for creating SharePoint-based agents
 
-![](./media/architecture.png)
-
-## Getting Started with Lab
-
-Welcome to Unlock AI Powered Future Work with Microsoft 365 Copilot + Agents Hands-On Lab. We have prepared a seamless environment for you to explore and learn. Let us begin by making the most of this experience.
-
 ### Accessing Your Lab Environment
 
-Once you are ready to dive in, your virtual machine and lab guide will be right at your fingertips within your web browser.
+Once you're ready to dive in, your virtual machine and Lab guide will be right at your fingertips within your web browser.
 
-![](./media/gs-vm-guide.png)
+![](../media/gs-cor-g453-g1.png)
 
 ### Exploring Your Lab Resources
 
-To get a better understanding of your lab resources and credentials, navigate to the **Environment** tab.
+To get a better understanding of your Lab resources and credentials, navigate to the Environment tab.
 
-![](./media/gs-environment.png)
+![](../media/gs-leave-2.png)
 
 ### Utilizing the Split Window Feature
 
-For convenience, you can open the lab guide in a separate window by selecting the **Split Window** button from the top right corner.
+For convenience, you can open the Lab guide in a separate window by selecting the Split Window button from the top right corner.
 
-![](./media/gs-split-window.png)
+![](../media/gs-leave-3.png)
 
 ### Managing Your Virtual Machine
 
-Feel free to start, stop, or restart your virtual machine as needed from the **Resources** tab. Your experience is in your hands.
+Feel free to start, stop, or restart your virtual machine as needed from the Resources tab. Your experience is in your hands!
 
-![](./media/gs-resources.png)
+![](../media/gs-leave-4.png)
 
->**Important:** This lab uses a single environment across all 3 days. Do NOT delete any resources (SharePoint sites, agents, files) between sessions as they will be used in subsequent exercises.
+## Let's Get Started with Copilot Studio and Microsoft 365
 
-## Login to Microsoft 365 Portal
+1. In the LabVM, click on **Microsoft Edge** browser which is created on desktop.
 
->**Important:** This lab uses browser-based access to Microsoft 365 applications. All M365 apps (Copilot, Outlook, Word, Excel, SharePoint, etc.) will be accessed through the web browser at `https://www.microsoft365.com`.
+   ![](../media/gs-cor-g453-g2.png)
 
-1. In the VM, open **Microsoft Edge** browser from the desktop shortcut or taskbar.
-
-   ![](./media/gs-edge.png)
-
-1. Navigate to the Microsoft 365 portal:
+1. Open a new browser tab and navigate to the Power Apps portal using the link below:
 
    ```
-   https://www.microsoft365.com
+   https://make.powerapps.com/
    ```
 
-1. On the **Sign in** page, enter the following email/username and click **Next**.
+1. On the **Sign into Microsoft** tab, you will see the login screen. Enter the provided email or username, and click **Next** to proceed.
 
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Email/Username: **<inject key="AzureAdUserEmail"></inject>**
 
-   ![](./media/gs-signin-email.png)
+     ![](../media/gs-lab3-g2.png)
 
 1. Now, enter the following password and click on **Sign in**.
 
-   - Password: <inject key="AzureAdUserPassword"></inject>
+   - Password: **<inject key="AzureAdUserPassword"></inject>**
 
-   ![](./media/gs-signin-password.png)
+     ![](../media/gs-lab3-g3.png)
 
-   >**Note:** If you see the **Action Required** dialog box, select **Ask Later** option.
+     > **Note:** If you see the Action Required dialog box, then select **Ask Later** option.
+     
+1. If you see the pop-up **Stay Signed in?**, click **No**.
 
-1. If you see the pop-up **Stay Signed in?**, select **Yes**.
+   ![](../media/gs-4.png)
 
-   ![](./media/gs-stay-signed-in.png)
+1. If the **Welcome to Power Apps** pop-up appears, leave the default country/region selection and click **Get started**.
 
-1. You will be redirected to the Microsoft 365 home page. You should see the Microsoft 365 apps and the Copilot icon in the left navigation.
+   ![](../media/gs-travel-g1.png)
 
-   ![](./media/gs-m365-home.png)
+1. You have now successfully logged in to the Power Apps portal. Keep the portal open, as you will be using it later in the lab.
 
-## Support Contact
+   ![](../media/gs-5.png)
 
-The CloudLabs support team is available 24/7, 365 days a year, via email and live chat to ensure seamless assistance at any time. We offer dedicated support channels tailored specifically for both learners and instructors, ensuring that all your needs are promptly and efficiently addressed.
+1. Inside the **Power Apps** portal, select **Tables (1)** from the left navigation menu and click **Create with Excel or .CSV file (2)** to begin importing the lab dataset.
 
-Learner Support Contacts:
+   ![](../media/ex1-travel-g1.png)
 
-- Email Support: cloudlabs-support@spektrasystems.com
-- Live Chat Support: https://cloudlabs.ai/labs-support
+   > **Environment Foundation:** This step creates the foundational environment that will support your agents with company-specific data and knowledge sources.
 
-Now, click on **Next** from the lower right corner to move to the next page.
+1. In the **Create in new environment?** dialog, click **Create** to provision a environment.
 
-## Happy Learning!!
+   ![](../media/ex1-travel-g2.png)
+
+1. When the upload screen appears, click **Cancel**.
+
+   ![](../media/zgr-gt3.png)
+
+1. Navigate to **Microsoft Copilot Studio** by opening a new browser tab and using the link below:
+
+   ```
+   https://copilotstudio.microsoft.com
+   ```
+
+1. On the **Welcome to Microsoft Copilot Studio** screen, keep the default **country/region** selection and click **Get Started** to continue.
+
+   ![](../media/gs-travel-g2.png)
+
+1. If the **Welcome to Copilot Studio!** pop-up appears, click **Skip** to continue to the main dashboard.
+
+   ![](../media/gs-travel-g3.png)
+
+1. If you are directly taken to the **agent creation** screen, click the **ellipsis (1)** icon beside the **Create** button, then select **Cancel agent creation (2)** to return to the main dashboard.
+
+   ![](../media/gs-travel-g4.png)
+
+1. In Copilot Studio, open the environment picker **(1)**, expand **Supported environments (2)**, and select **ODL_User <inject key="Deployment ID" enableCopy="false"></inject>'s Environment (3)** to switch.
+
+   ![](../media/ex1-travel-g6.png)
+
+1. If you are not able to see the environment under **Supported environments**, follow the below steps.
+
+   ![](../media/cor2-gs-g4.png)
+
+   1. Go back to the **Power Apps** portal, on your **ODL_User <inject key="Deployment ID" enableCopy="false"></inject>’s Environment** copy the **Environment ID** from the browser URL as highlighted.
+
+      ![](../media/cor2-gs-g5.png)
+      
+   1. Open a **new browser tab**, and paste the copied **Environment ID** at the end of the following URL to verify access:
+
+      ```
+      https://copilotstudio.microsoft.com/environments/(Environment ID)
+      ```
+
+      ![](../media/cor2-gs-g6.png)
+
+      > **Note:** Replace **(Environment ID)** with the ID you copied in the previous step.
+      
+   1. You will be navigated to the **Copilot Studio** portal. Verify that **ODL_User <inject key="Deployment ID" enableCopy="false"></inject>’s Environment** is visible and selected under **Supported environments**.
+
+      ![](../media/cor2-gs-g7.png)
+
+Now, click on the **Next** from lower right corner to move on next page.
+
+## Happy Hacking!!

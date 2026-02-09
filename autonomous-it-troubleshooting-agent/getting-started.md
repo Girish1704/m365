@@ -1,22 +1,22 @@
-## Getting Started with Challenge
+## Getting Started with Lab
 
-Welcome to Hack in a Day: Autonomous IT Troubleshooting Agent challenge! We've prepared a seamless environment for you to explore and learn. Let's begin by making the most of this experience.
+Welcome to your Autonomous IT Troubleshooting Agent Lab! We've prepared a seamless environment for you to explore and learn. Let's begin by making the most of this experience.
 
-### Accessing Your Challenge Environment
+### Accessing Your Lab Environment
 
-Once you're ready to dive in, your virtual machine and challenge guide will be right at your fingertips within your web browser.
+Once you're ready to dive in, your virtual machine and lab guide will be right at your fingertips within your web browser.
 
 ![](./media/gs1.png)
 
-### Exploring Your Challenge Resources
+### Exploring Your Lab Resources
 
-To get a better understanding of your challenge resources and credentials, navigate to the Environment tab.
+To get a better understanding of your lab resources and credentials, navigate to the Environment tab.
 
 ![](./media/gs-leave-2.png)
 
 ### Utilizing the Split Window Feature
 
-For convenience, you can open the challenge guide in a separate window by selecting the Split Window button from the top right corner.
+For convenience, you can open the lab guide in a separate window by selecting the Split Window button from the top right corner.
 
 ![](./media/gs-leave-3.png)
 
@@ -172,4 +172,4 @@ Feel free to start, stop, or restart your virtual machine as needed from the Res
 
 Now, click on the **Next** from lower right corner to move on next page.
 
-## Happy Hacking!!
+## Happy Learning!!

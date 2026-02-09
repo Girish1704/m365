@@ -11,10 +11,15 @@ Through hands-on exercises, you will master advanced Microsoft Copilot Studio ca
 ## Day 3 Topics Covered
 
 - Autonomous Agents Overview
+- Building IT Support Copilot with Knowledge Base
+- SharePoint Integration for Knowledge Sources
+- Freshdesk Ticketing System Integration
 - Agent Flows and Automation
-- IT Support Automation Scenarios
+- Creating Support Topics with Generative AI
+- Testing and Deploying Agents to Microsoft Teams
 - Prompt Actions in Copilot Studio
-- Dynamic Content Generation
+- Dynamic Quiz Generation
+- Conversational Topics and User Interaction
 - Agent Management and Governance
 - Security and Compliance Considerations
 
@@ -22,12 +27,21 @@ Through hands-on exercises, you will master advanced Microsoft Copilot Studio ca
 
 | Exercise | Title | Duration |
 |----------|-------|----------|
-| Exercise 8 | Build an autonomous agent and implement agent flows to streamline IT Support Operations using Copilot Studio | 120 minutes |
-| Exercise 9 | Implement prompt action to generate quiz questions based on a topic | 60 minutes |
-
-## Learning Objectives
-
-After completing Day 3, you will be able to:
+| Exercise 8 | Build an IT Support Copilot using Microsoft Copilot Studio | 45 minutes |
+| Exercise 9 | Setup Freshdesk ticketing and create IT support topics | 45 minutes |
+| Exercise 10 | Test and deploy IT Support Copilot to Microsoft Teams | 30 minutes |
+| Exercise 11 | Create a Quiz Generator Agent with prompt actions | 45 minutes |
+| Exercise 12 | Build conversational topics and deploy Quiz Generator | 45 minutes |
+Build IT Support Copilot with SharePoint knowledge sources
+- Integrate Freshdesk ticketing system with Copilot Studio
+- Design and build autonomous agents that execute without constant user input
+- Create agent flows that orchestrate multi-step business processes
+- Implement IT support automation with automated ticket creation
+- Deploy agents to Microsoft Teams for organizational use
+- Build prompt actions for dynamic content generation
+- Create Quiz Generator agent with customizable parameters
+- Design conversational topics that collect user input
+- Test and publish agents to production environments
 
 - Design and build autonomous agents that execute without constant user input
 - Create agent flows that orchestrate multi-step business processes

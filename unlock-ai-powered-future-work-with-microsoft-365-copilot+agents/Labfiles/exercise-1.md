@@ -68,23 +68,23 @@ In this task, you will navigate to Microsoft 365 Copilot and access the Analyst 
 
 ### Task 2: Upload and Analyze Sales Data
 
-In this task, you will upload a sales data file and have the Analyst Agent analyze it.
+In this task, you will download the required datasets and upload a sales data file to the Analyst Agent for analysis.
+
+1. First, download the required datasets for this lab. Open a new browser tab and navigate to:
+
+   ```
+   https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/Day1-datasets.zip
+   ```
+
+1. Once downloaded, extract the **Day1-datasets.zip** file to a location of your choice (e.g., Desktop or Downloads folder).
 
 1. With the Analyst Agent active, you will see a chat interface ready for your prompts.
-
-1. A sales data file has been provided for you in the VM. Navigate to the following location to verify the file exists:
-
-   ```
-   C:\datasets\sales_data_sample.csv
-   ```
-
-   >**Note:** This CSV file contains 376 rows of real sales data with columns including ORDERNUMBER, QUANTITYORDERED, PRICEEACH, SALES, ORDERDATE, STATUS, YEAR_ID (2003-2005), PRODUCTLINE, CUSTOMERNAME, TERRITORY, COUNTRY, and DEALSIZE.
 
 1. Click the **+ (Add) (1)** icon, then select **Upload images and files (2)** to upload your data.
 
    ![](../media/m36-copg-ex1-g2.png)
 
-1. Navigate to `C:\datasets\` and select the **sales_data_sample.csv** file, then click **Open**.
+1. Browse to the location where you extracted the datasets, select the **sales_data_sample.csv** file, then click **Open**.
 
    ![](../media/ex1-select-csv.png)
 

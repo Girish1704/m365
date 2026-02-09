@@ -30,6 +30,8 @@ In this exercise, you will complete the following tasks:
 - Task 4: Configure the agent for document discovery and insights
 - Task 5: Test the agent for document search and data analysis
 
+>**Important:** This exercise requires the datasets that were downloaded in Exercise 1. If you haven't completed Exercise 1, please download and extract the datasets from: `https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/Day1-datasets.zip`
+
 ### Task 1: Create a Law Firm SharePoint Site
 
 In this task, you will create a SharePoint site to store law firm documents including case files, client information, and billing data.
@@ -60,7 +62,7 @@ In this task, you will create a SharePoint site to store law firm documents incl
 
 ### Task 2: Upload Law Firm Documents to the Site
 
-In this task, you will download law firm documents from GitHub and upload them to your SharePoint site. These documents include Word documents (contracts, case summaries, policies) and CSV files (client roster, case tracking, billing data).
+In this task, you will locate the law firm documents from the datasets you downloaded earlier and upload them to your SharePoint site. These documents include Word documents (contracts, case summaries, policies) and CSV files (client roster, case tracking, billing data).
 
 1. In your SharePoint site, click on **Documents** in the left navigation.
 
@@ -76,15 +78,7 @@ In this task, you will download law firm documents from GitHub and upload them t
 
    ![](../media/m36-copg-ex5-d-g3.png)
 
-1. Open a new browser tab and navigate to the GitHub repository containing the law firm documents:
-
-   ```
-   https://github.com/CloudLabsAI-Azure/m365/tree/main/unlock-ai-powered-future-work-with-microsoft-365-copilot%2Bagents/Labfiles/ex5-dataset
-   ```
-
-   ![](../media/ex5-github-lawfirm.png)
-
-1. Download all 7 documents (click on each file, then click the **Download raw file** button):
+1. Navigate to the folder where you extracted the datasets in Exercise 1. Inside the **law-data** folder, you will find all 7 documents needed for this task:
 
    **Word Documents (4 files):**
    | Document | Description | Upload To |
@@ -101,21 +95,17 @@ In this task, you will download law firm documents from GitHub and upload them t
    | `06-case-tracking.csv` | Active cases with status and deadlines | Data |
    | `07-billing-summary-2024.csv` | Monthly billing by attorney | Data |
 
-   ![](../media/ex5-download-files.png)
-
-   >**Tip:** Save all files to your **Downloads** folder for easy access.
-
 1. Return to your SharePoint site. Navigate to the **Templates** folder.
 
-1. Click **Upload** > **Files** and upload:
+1. Click **Upload** > **Files**, browse to the **law-data** folder in your extracted datasets, and upload:
    - `01-Client-Contract-Template.docx.md`
    - `03-Legal-Fee-Schedule-2024.docx.md`
    - `04-Firm-Policies-Handbook.docx.md`
 
-1. Navigate to the **Case Files** folder and upload:
+1. Navigate to the **Case Files** folder. Click **Upload** > **Files**, browse to the **law-data** folder, and upload:
    - `02-Case-Summary-Johnson-v-Apex.docx.md`
 
-1. Navigate to the **Data** folder and upload:
+1. Navigate to the **Data** folder. Click **Upload** > **Files**, browse to the **law-data** folder, and upload:
    - `05-client-roster.csv`
    - `06-case-tracking.csv`
    - `07-billing-summary-2024.csv`

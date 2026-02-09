@@ -17,6 +17,8 @@ In this exercise, you will complete the following tasks:
 - Task 3: Add knowledge sources
 - Task 4: Test the agent
 
+>**Important:** This exercise requires the datasets that were downloaded in Exercise 1. If you haven't completed Exercise 1, please download and extract the datasets from: `https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/Day1-datasets.zip`
+
 ### Task 1: Create a Help Desk Agent
 
 In this task, you will create a new agent for general help desk assistance.
@@ -82,90 +84,9 @@ In this task, you will define how the agent should behave and respond to users.
 
 ### Task 3: Add Knowledge Sources
 
-In this task, you will create a knowledge base document locally and upload it directly to the agent as a knowledge source.
+In this task, you will upload the Employee Help Guide document from the datasets as a knowledge source for your agent.
 
-1. First, create a company knowledge base document. Open **Notepad** on your VM.
-
-1. Copy and paste the following content into Notepad:
-
-   ```
-   EMPLOYEE HELP GUIDE
-   Contoso Corporation
-
-   FREQUENTLY ASKED QUESTIONS
-
-   1. OFFICE LOCATIONS & PARKING
-   
-   Main Office:
-   - Address: 123 Business Park Drive, Seattle, WA 98101
-   - Parking: Available in Garage A and B (employee badge required)
-   - Building hours: 6 AM - 10 PM weekdays
-   - Security desk: Ground floor, available 24/7
-   
-   Branch Office:
-   - Address: 456 Tech Center, Bellevue, WA 98004
-   - Visitor parking: Street level
-   - Building hours: 7 AM - 7 PM weekdays
-
-   2. CONFERENCE ROOM BOOKING
-   
-   To book a conference room:
-   - Go to Outlook Calendar
-   - Click "New Meeting"
-   - Click "Room Finder" to see availability
-   - Select room and send meeting invite
-   - Rooms available: CR-101 through CR-210
-   - Maximum capacity ranges from 4 to 20 people
-
-   3. HR POLICIES & BENEFITS
-   
-   Leave Policy:
-   - Annual leave: 15 days per year
-   - Sick leave: 10 days per year
-   - Submit requests via HR portal at hr.contoso.com
-   
-   Benefits:
-   - Health insurance enrollment during onboarding
-   - 401(k) with 5% company match
-   - Wellness program with gym membership
-   - Contact HR at hr@contoso.com for details
-
-   4. CAFETERIA & AMENITIES
-   
-   Main Cafeteria:
-   - Breakfast: 7:30 AM - 9:30 AM
-   - Lunch: 11:30 AM - 2:00 PM
-   - Snacks & beverages: All day
-   - Payment: Badge tap or credit card
-   
-   Amenities:
-   - Gym: Basement level, 6 AM - 9 PM
-   - Quiet rooms: 2nd and 4th floors
-   - Lactation rooms: Available on all floors
-
-   5. GENERAL CONTACT INFORMATION
-   
-   - Help Desk: helpdesk@contoso.com or Ext. 4357
-   - IT Support: itsupport@contoso.com or Ext. 4832
-   - HR Department: hr@contoso.com or Ext. 4100
-   - Facilities: facilities@contoso.com or Ext. 4200
-   - Reception: reception@contoso.com or Ext. 4000
-   
-   Hours: Monday-Friday, 8 AM - 6 PM
-   ```
-
-   ![](../media/ex4-notepad-content.png)
-
-1. Save the file:
-   - Click **File** > **Save As**
-   - Navigate to **Desktop**
-   - Set **Save as type** to **All Files (*.*)**
-   - Name the file `Employee-Help-Guide.docx`
-   - Click **Save**
-
-   ![](../media/ex4-save-file.png)
-
-1. Return to the agent configuration in your browser. In the **Knowledge** section.
+1. In the agent configuration in your browser, locate the **Knowledge** section.
 
 1. Click the **Upload (1)** icon in the **Knowledge** section to add a file as a knowledge source.
 
@@ -254,7 +175,9 @@ In this task, you will test your Help Desk agent with various queries.
    What are the cafeteria hours and what amenities are available in the building?
    ```
 
-   ![](../media/m36-copg-ex4-e-g17.png)
+   ![](../media/m36, navigate to the location where you extracted the datasets in Exercise 1, and select the **Employee-Help-Guide.pdf** file, then click **Open**.
+
+   >**Note:** The Employee-Help-Guide.pdf contains company information including office locations, parking, conference room booking, HR policies, benefits, cafeteria hours, and general contact information
 
    **Expected Output:**
 

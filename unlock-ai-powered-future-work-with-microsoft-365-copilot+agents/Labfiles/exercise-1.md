@@ -28,7 +28,7 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will navigate to Microsoft 365 Copilot and access the Analyst Agent.
 
-1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+1. In the VM, open **Microsoft Edge**, and then open a **new tab**.
 
 1. Navigate to the Microsoft 365 portal:
 
@@ -41,9 +41,12 @@ In this task, you will navigate to Microsoft 365 Copilot and access the Analyst 
 1. Sign in with your lab credentials:
 
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
+
+     ![](../media/gs-lab3-g2.png)
+
    - Password: <inject key="AzureAdUserPassword"></inject>
 
-1. If you see a **Stay signed in?** prompt, select **No**.
+     ![](../media/gs-lab3-g3.png)
 
 1. Click the **X (Close)** button at the top-right corner of the popup to cancel it.
 
@@ -73,14 +76,12 @@ In this task, you will download the required datasets and upload a sales data fi
 1. First, download the required datasets for this lab. Open a new browser tab and navigate to:
 
    ```
-   https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/Day1-datasets.zip
+   https://github.com/Girish1704/github-copilot-for-managers/archive/refs/heads/Day1-datasets.zip
    ```
 
 1. Once downloaded, extract the **Day1-datasets.zip** file to a location of your choice (e.g., Desktop or Downloads folder).
 
-1. With the Analyst Agent active, you will see a chat interface ready for your prompts.
-
-1. Click the **+ (Add) (1)** icon, then select **Upload images and files (2)** to upload your data.
+1. With the Analyst Agent active, click the **+ (Add) (1)** icon, then select **Upload images and files (2)** to upload your data.
 
    ![](../media/m36-copg-ex1-g2.png)
 
@@ -134,9 +135,8 @@ In this task, you will download the required datasets and upload a sales data fi
 
 In this task, you will use the Analyst Agent to identify trends and generate actionable insights.
 
-1. Request trend analysis:
+1. Enter the trend analysis prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Identify the top 3 trends in this sales data across the years 2003-2005 and explain what business factors might be driving these trends.
    ```
@@ -151,9 +151,8 @@ In this task, you will use the Analyst Agent to identify trends and generate act
    - **Trend 2:** Strong and consistent outperformance by Classic Cars across all years - driven by premium product positioning and distributor affinity
    - **Trend 3:** Territory imbalance with EMEA and NA dominating while APAC and Japan show "high-value but low-volume" profiles
 
-1. Ask for predictive insights:
+1. Enter the predictive insights prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Based on the sales trends across 2003-2005, which territories and product lines should the company focus on for growth? Which customer segments show the most potential?
    ```
@@ -169,9 +168,8 @@ In this task, you will use the Analyst Agent to identify trends and generate act
    - **Product Focus:** Continue investing in Classic Cars while expanding Motorcycles as a secondary growth driver
    - **Customer Segments:** Major wholesalers (Mini Gifts, Euro Shopping Channel) and premium collectors in Japan/APAC
 
-1. Request comparative analysis:
+1. Enter the comparative analysis prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Compare the performance of Classic Cars vs Motorcycles product lines across all territories. Which product line is more consistent and which has more variability in deal sizes?
    ```
@@ -188,51 +186,10 @@ In this task, you will use the Analyst Agent to identify trends and generate act
 
 ### Task 4: Create Data Visualizations
 
-In this task, you will ask the Analyst Agent to suggest and describe data visualizations.
+In this task, you will ask the Analyst Agent to suggest and describe data format.
 
-1. Request visualization recommendations:
+1. Enter the table formatting prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
-   ```
-   What are the best types of charts to visualize this sales data for an executive presentation? Consider the territories, product lines, and time-based trends. Describe each chart and what insights it would highlight.
-   ```
-
-   ![](../media/m36-copg-ex1-g8.png)
-
-   **Expected Output:**
-
-   The Analyst Agent will recommend charts such as:
-
-   - **YoY Sales Column Chart:** Shows 2003, 2004, 2005 totals to highlight the +17% growth and 2005 decline
-   - **Territory Contribution Stacked Bar:** 100% bars showing NA, EMEA, APAC, Japan mix by year
-   - **Territory x Product Line Heatmap:** Matrix with color intensity for sales, highlighting EMEA x Classic Cars as the strongest cell
-   - **Product Line Ranked Bars:** Horizontal bars showing Classic Cars > Motorcycles > Trucks & Buses
-   - **Top Customers Pareto Chart:** Bars with cumulative % line showing customer concentration
-   - **Deal Size Boxplots:** Distribution of order values by deal size and product line
-
-1. Ask for a specific visualization description:
-
-   **Prompt:**
-   ```
-   Describe a dashboard layout that would effectively present this sales data to senior leadership. Include 4-5 key visualizations covering territory performance, product line analysis, customer distribution, and deal size patterns.
-   ```
-
-   ![](../media/m36-copg-ex1-g9.png)
-
-   **Expected Output:**
-
-   The Analyst Agent will describe an executive dashboard layout including:
-
-   - **Top Section:** KPI strip with Total Sales, YoY %, Top Territory, Top Product Line
-   - **Tile 1:** YoY Sales Trend (Clustered Columns for 2003-2005)
-   - **Tile 2:** Territory x Product Line Heatmap (EMEA x Classic Cars highlighted)
-   - **Tile 3:** Top Customers Pareto Chart (showing concentration risk)
-   - **Tile 4:** Deal Size Mix by Product Line (100% stacked bars)
-   - **Tile 5:** Per-Order Sales Distribution Boxplots
-
-1. Request data formatting for export:
-
-   **Prompt:**
    ```
    Format the territory sales summary as a table that I can copy into a PowerPoint presentation, with clear headers showing territory, total sales, number of orders, and average deal size.
    ```
@@ -256,9 +213,8 @@ In this task, you will ask the Analyst Agent to suggest and describe data visual
 
 In this task, you will use the Analyst Agent to create a compelling narrative around the data.
 
-1. Request an executive summary:
+1. Enter the executive summary prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Write an executive summary (3-4 paragraphs) of our sales performance based on this data from 2003-2005. Include key achievements across territories, top-performing product lines, and recommended actions for future growth.
    ```
@@ -274,9 +230,8 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
    - **Product Line Success:** Classic Cars as the flagship driver with $1.16M, Motorcycles as a stable secondary line
    - **Recommended Actions:** Focus on EMEA growth, deepen key account relationships, explore premium offerings in Japan/APAC, strengthen discount governance
 
-1. Ask for presentation talking points:
+1. Enter the presentation talking points prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Create 5 key talking points for presenting this sales data to the board of directors. Each point should include the data insight from territories, product lines, or customer segments and its business implication.
    ```
@@ -293,9 +248,8 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
    4. **Customer Concentration Risk:** Top 5 customers drive significant share - diversify mid-tier accounts
    5. **Deal Size Variability:** Classic Cars has higher Large-deal dependence - adjust forecasting
 
-1. Request a data story:
+1. Enter the data story prompt in the **message box (1)**, and then click the **Send (2)** button to submit it.
 
-   **Prompt:**
    ```
    Tell the story of our sales performance across 2003-2005 in a narrative format that would engage a non-technical audience. Highlight the growth in different territories, successful product lines, and key customer relationships.
    ```
@@ -311,13 +265,6 @@ In this task, you will use the Analyst Agent to create a compelling narrative ar
    - The Classic Cars success story and customer partnerships
    - Key relationships with Mini Gifts Distributors, Euro Shopping Channel, and other top accounts
    - Opportunities in premium markets like Japan and APAC
-
-<validation step="90032a8b-8ec1-4622-ac1e-112a714a2010" />
- 
-> **Congratulations** on completing the Challenge! Now, it's time to validate it. Here are the steps:
-> - Hit the Validate button for the corresponding Challenge. If you receive a success message, you can proceed to the next Challenge. 
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
 
 ## Summary
 

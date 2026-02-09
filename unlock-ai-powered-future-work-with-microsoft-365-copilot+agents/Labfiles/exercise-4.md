@@ -17,13 +17,15 @@ In this exercise, you will complete the following tasks:
 - Task 3: Add knowledge sources
 - Task 4: Test the agent
 
->**Important:** This exercise requires the datasets that were downloaded in Exercise 1. If you haven't completed Exercise 1, please download and extract the datasets from: `https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/Day1-datasets.zip`
+>**Important:** This exercise requires the datasets that were downloaded in Exercise 1. If you haven't completed Exercise 1, please download and extract the datasets from: `https://github.com/Girish1704/github-copilot-for-managers/archive/refs/heads/Day1-datasets.zip`
 
 ### Task 1: Create a Help Desk Agent
 
 In this task, you will create a new agent for general help desk assistance.
 
 1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
+
+   ![](../media/m365-cop-ex1-g2.png)
 
 1. Click **New agent** under the **Agents** section to start creating a custom Copilot agent.
 
@@ -195,13 +197,6 @@ In this task, you will test your Help Desk agent with various queries.
    **Expected Output:**
 
    The agent should direct you to the HR portal (hr.contoso.com) for updating personal information and provide HR contact details for assistance.
-
-<validation step="6d3931fa-b346-4486-81be-36a06404664f" />
-
-> **Congratulations** on completing the Challenge! Now, it's time to validate it. Here are the steps:
-> - Hit the Validate button for the corresponding Challenge. If you receive a success message, you can proceed to the next Challenge. 
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
 
 ## Summary
 

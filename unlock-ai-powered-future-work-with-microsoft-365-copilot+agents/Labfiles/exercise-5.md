@@ -30,17 +30,35 @@ In this exercise, you will complete the following tasks:
 - Task 4: Configure the agent for document discovery and insights
 - Task 5: Test the agent for document search and data analysis
 
->**Important:** This exercise requires the datasets that were downloaded in Exercise 1. If you haven't completed Exercise 1, please download and extract the datasets from: `https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/Day1-datasets.zip`
+>**Important:** This exercise requires the datasets that were downloaded in Exercise 1. If you haven't completed Exercise 1, please download and extract the datasets from: `https://github.com/Girish1704/github-copilot-for-managers/archive/refs/heads/Day1-datasets.zip`
 
 ### Task 1: Create a Law Firm SharePoint Site
 
 In this task, you will create a SharePoint site to store law firm documents including case files, client information, and billing data.
 
-1. On the Microsoft 365 home page, click on **Apps** from the left navigation panel.
+1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
 
-1. Select **SharePoint** from the list of apps.
+   ![](../media/m365-cop-ex1-g2.png)
 
-1. Click on **+ Create site** in the top navigation.
+1. In the left navigation pane, select **Apps (1)**, and then choose **SharePoint (2)** to open SharePoint.```
+
+   ![](../media/m365-cop-ex2-g5.png)
+
+1. In SharePoint, select **Create (1)**, and then choose **Site (2)** to start creating a new site.
+
+   ![](../media/m365-cop-ex2-g6.png)
+
+1. On the **Create a site** page, select **Team site** to create a collaborative workspace for your team.
+
+   ![](../media/m365-cop-ex2-g7.png)
+
+1. On the **Select a template** page, choose the **Standard team** template to continue creating the team site.
+
+   ![](../media/m365-cop-ex2-g8.png)
+
+1. On the **Preview and use 'Standard team' template** page, review the site details, and then select **Use template** to continue.
+
+   ![](../media/m365-cop-ex2-g9.png)
 
 1. Select **Team site** and configure:
 
@@ -52,63 +70,25 @@ In this task, you will create a SharePoint site to store law firm documents incl
 
    ![](../media/m36-copg-ex5-d-g1.png)
 
-1. Click **Create** and wait for the site to be provisioned.
+1. On the **Set language and other options** page, confirm **Private – only members can access this site (1)** under Privacy settings, and then select **Create site (2)**.
 
-   ![](../media/ex5-site-creating.png)
+   ![](../media/m365-cop-ex2-g11.png)
 
-1. Once created, you will be redirected to your new SharePoint site.
+1. On the **Add site owners and members** page, select **Finish** to complete the site creation.
 
-   ![](../media/ex5-site-created.png)
+   ![](../media/m365-cop-ex2-g12.png)
 
 ### Task 2: Upload Law Firm Documents to the Site
 
 In this task, you will locate the law firm documents from the datasets you downloaded earlier and upload them to your SharePoint site. These documents include Word documents (contracts, case summaries, policies) and CSV files (client roster, case tracking, billing data).
 
-1. In your SharePoint site, click on **Documents** in the left navigation.
+1. In your SharePoint site, click **Documents (1)** in the left navigation, then click **Upload (2)** and select **Folder (3)** to create a new folder.
 
-   ![](../media/ex5-documents.png)
+   ![](../media/m36-copg-ex5-d-g2.png)
 
-1. Click **Documents (1)** in the left navigation, then click **Upload (2)** and select **Folder (3)** to create a new folder.
-
-   | Folder Name | Purpose |
-   |-------------|---------|
-   | `Templates` | Contract templates and standard forms |
-   | `Case Files` | Active case documents and summaries |
-   | `Data` | Client rosters, case tracking, and billing data |
+1. Navigate to the location where you extracted the datasets in Exercise 1, select the **law-data** folder, and upload it to the SharePoint **Documents** library.
 
    ![](../media/m36-copg-ex5-d-g3.png)
-
-1. Navigate to the folder where you extracted the datasets in Exercise 1. Inside the **law-data** folder, you will find all 7 documents needed for this task:
-
-   **Word Documents (4 files):**
-   | Document | Description | Upload To |
-   |----------|-------------|-----------|
-   | `01-Client-Contract-Template.docx.md` | Standard client engagement agreement | Templates |
-   | `02-Case-Summary-Johnson-v-Apex.docx.md` | Active employment discrimination case | Case Files |
-   | `03-Legal-Fee-Schedule-2024.docx.md` | Hourly rates and flat fees | Templates |
-   | `04-Firm-Policies-Handbook.docx.md` | Employee policies and procedures | Templates |
-
-   **CSV Files (3 files):**
-   | Document | Description | Upload To |
-   |----------|-------------|-----------|
-   | `05-client-roster.csv` | Complete client list with contact info and billing | Data |
-   | `06-case-tracking.csv` | Active cases with status and deadlines | Data |
-   | `07-billing-summary-2024.csv` | Monthly billing by attorney | Data |
-
-1. Return to your SharePoint site. Navigate to the **Templates** folder.
-
-1. Click **Upload** > **Files**, browse to the **law-data** folder in your extracted datasets, and upload:
-   - `01-Client-Contract-Template.docx.md`
-   - `03-Legal-Fee-Schedule-2024.docx.md`
-   - `04-Firm-Policies-Handbook.docx.md`
-
-1. Navigate to the **Case Files** folder. Click **Upload** > **Files**, browse to the **law-data** folder, and upload:
-   - `02-Case-Summary-Johnson-v-Apex.docx.md`
-
-1. Navigate to the **Data** folder. Click **Upload** > **Files**, browse to the **law-data** folder, and upload:
-   - `05-client-roster.csv`
-   - `06-case-tracking.csv`
-   - `07-billing-summary-2024.csv`
 
 ### Task 3: Create a SharePoint Agent from the Site
 
@@ -116,7 +96,7 @@ In this task, you will create a SharePoint Agent directly from within the ShareP
 
 1. In your SharePoint site, ensure you are on the **Documents** page or the site home page.
 
-1. Click **+ New (1)**, then select **Create an agent (2)** to start creating a SharePoint agent.
+1. In the SharePoint **Documents** library, select **New (1)**, and then choose **Create an agent (2)** to start creating a new Copilot agent.
 
    ![](../media/m36-copg-ex8-e-g21.png)
 
@@ -135,7 +115,7 @@ In this task, you will create a SharePoint Agent directly from within the ShareP
 
 1. (Optional) To change the agent icon, click **Change** below the icon and select a legal or document-related icon.
 
-1. Select **Sources (1)**, then turn on the **Prioritize sources (2)** toggle.
+1. On the **Create your new agent** page, select **Sources (1)**, and then enable **Prioritize the knowledge sources you added (2)**.
 
    ![](../media/m36-copg-ex8-e-g23.png)
 
@@ -155,7 +135,7 @@ In this task, you will configure the agent's behavior including welcome messagin
    Welcome to the Legal Document Assistant! How can I help you?
    ```
 
-1. In the **Agent instructions** field, replace the default text with the following:
+   In the **Agent instructions** field, replace the default text with the following:
 
    ```
    You are a Legal Document Assistant for Morrison & Associates Law Firm. Your role is to help legal staff find documents, extract information, and provide insights from firm records.
@@ -187,7 +167,7 @@ In this task, you will configure the agent's behavior including welcome messagin
    - For confidential matters, remind users about attorney-client privilege
    ```
 
-1. Click **Create** at the bottom of the dialog to create the SharePoint Agent.
+   Click **Create** at the bottom of the dialog to create the SharePoint Agent.
 
    ![](../media/m36-copg-ex8-e-g24.png)
 
@@ -282,13 +262,6 @@ In this task, you will test the SharePoint Agent's ability to find documents, lo
    The agent should provide from the **Fee Schedule**:
    - Senior Associate hourly rate: $375
    - LLC Formation flat fee: $800
-
-<validation step="69d40f02-a078-4f03-a54c-98c6f3081299" />
-
-> **Congratulations** on completing the Challenge! Now, it's time to validate it. Here are the steps:
-> - Hit the Validate button for the corresponding Challenge. If you receive a success message, you can proceed to the next Challenge. 
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
 
 ## Summary
 

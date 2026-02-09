@@ -26,10 +26,10 @@ In this task, you will download the IT Support documents and upload them to Shar
 1. First, download the IT Support documents. Open a new browser tab and navigate to:
 
    ```
-   https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/main.zip
+   https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/Day3-datasets.zip
    ```
 
-1. Once downloaded, extract the **main.zip** file to a location of your choice (e.g., Desktop or Downloads folder).
+1. Once downloaded, extract the **Day3-datasets.zip** file to a location of your choice (e.g., Desktop or Downloads folder).
 
 1. Open **File Explorer** and navigate to the extracted folder. Inside the **IT-Datasets** folder, you will find the following IT Support documents:
 
@@ -53,7 +53,7 @@ In this task, you will download the IT Support documents and upload them to Shar
 
 1. Click **Upload** > **Files** to upload the IT Support documents.
 
-1. Browse to the location where you extracted the main.zip, navigate to the **IT-Datasets** folder, select all 5 PDF files, and click **Open**.
+1. Browse to the location where you extracted the Day3-datasets.zip, navigate to the **IT-Datasets** folder, select all 5 PDF files, and click **Open**.
 
 1. Wait for all files to upload successfully. You should see all 5 IT Support documents in the Documents library.
 

@@ -12,13 +12,54 @@ This is the first part of building an autonomous IT support solution. In subsequ
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Access Microsoft Copilot Studio
-- Task 2: Create a new IT Support Copilot
-- Task 3: Configure copilot instructions for IT support scenarios
-- Task 4: Upload the IT Support knowledge base
-- Task 5: Test the copilot with basic IT queries
+- Task 1: Upload IT Support documents to SharePoint
+- Task 2: Access Microsoft Copilot Studio
+- Task 3: Create a new IT Support Copilot
+- Task 4: Configure copilot instructions for IT support scenarios
+- Task 5: Add SharePoint knowledge source
+- Task 6: Test the copilot with basic IT queries
 
-### Task 1: Access Microsoft Copilot Studio
+### Task 1: Upload IT Support Documents to SharePoint
+
+In this task, you will download the IT Support documents and upload them to SharePoint. These documents will serve as the knowledge base for your IT Support Copilot.
+
+1. First, download the IT Support documents. Open a new browser tab and navigate to:
+
+   ```
+   https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/main.zip
+   ```
+
+1. Once downloaded, extract the **main.zip** file to a location of your choice (e.g., Desktop or Downloads folder).
+
+1. Open **File Explorer** and navigate to the extracted folder. Inside the **IT-Datasets** folder, you will find the following IT Support documents:
+
+   | Document | Description |
+   |----------|-------------|
+   | 01-Password-and-Account-Management.pdf | Password policies, SSPR, MFA, account lockouts |
+   | 02-VPN-and-Network-Troubleshooting.pdf | VPN setup, connectivity issues, WiFi |
+   | 03-Laptop-and-Performance-Guide.pdf | Slow computer, hardware issues, optimization |
+   | 04-Printer-and-Peripheral-Support.pdf | Printer issues, monitors, docks, peripherals |
+   | 05-IT-Support-Quick-Reference.pdf | Quick reference card with common solutions |
+
+   >**Note:** These 5 PDF files contain comprehensive IT support documentation that your copilot will use to answer employee questions.
+
+1. Open a new browser tab and navigate to your SharePoint site:
+
+   ```
+   https://<inject key="Tenant Name" enableCopy="false"/>.sharepoint.com/sites/ITSupport
+   ```
+
+1. Click on **Documents** in the left navigation.
+
+1. Click **Upload** > **Files** to upload the IT Support documents.
+
+1. Browse to the location where you extracted the main.zip, navigate to the **IT-Datasets** folder, select all 5 PDF files, and click **Open**.
+
+1. Wait for all files to upload successfully. You should see all 5 IT Support documents in the Documents library.
+
+   >**Note:** These documents will be indexed by the copilot to provide accurate, knowledge-based responses to IT support queries.
+
+### Task 2: Access Microsoft Copilot Studio
 
 In this task, you will navigate to Microsoft Copilot Studio and explore its interface.
 
@@ -53,7 +94,7 @@ In this task, you will navigate to Microsoft Copilot Studio and explore its inte
 
    ![](../media/ex8-select-environment.png)
 
-### Task 2: Create a New IT Support Copilot
+### Task 3: Create a New IT Support Copilot
 
 In this task, you will create a new copilot specifically designed for IT support automation.
 
@@ -82,7 +123,7 @@ In this task, you will create a new copilot specifically designed for IT support
 
 1. Click **Save** to apply the changes.
 
-### Task 3: Configure Copilot Instructions for IT Support Scenarios
+### Task 4: Configure Copilot Instructions for IT Support Scenarios
 
 In this task, you will configure detailed instructions that define how the copilot should handle IT support requests.
 
@@ -139,9 +180,9 @@ In this task, you will configure detailed instructions that define how the copil
 
    ![](../media/ex8-save-instructions.png)
 
-### Task 4: Add SharePoint Knowledge Source
+### Task 5: Add SharePoint Knowledge Source
 
-In this task, you will connect the IT Support SharePoint site as a knowledge source for the copilot. The SharePoint site contains IT support documentation in PDF format that the copilot will use to answer questions.
+In this task, you will connect the IT Support SharePoint site as a knowledge source for the copilot. The SharePoint site now contains the IT Support documentation that the copilot will reference to answer questions.
 
 1. On your IT Support Copilot page, click **+ Add knowledge** in the Knowledge section.
 
@@ -158,15 +199,6 @@ In this task, you will connect the IT Support SharePoint site as a knowledge sou
    ```
 
    ![](../media/ex8-sharepoint-url.png)
-
-   >**Note:** The IT Support SharePoint site contains the following PDF documents:
-   >| File | Description |
-   >|------|-------------|
-   >| `01-Password-and-Account-Management.pdf` | Password policies, SSPR, MFA, account lockouts |
-   >| `02-VPN-and-Network-Troubleshooting.pdf` | VPN setup, connectivity issues, WiFi |
-   >| `03-Laptop-and-Performance-Guide.pdf` | Slow computer, hardware issues, optimization |
-   >| `04-Printer-and-Peripheral-Support.pdf` | Printer issues, monitors, docks, peripherals |
-   >| `05-IT-Support-Quick-Reference.pdf` | Quick reference card with common solutions |
 
 1. Click **Add** to connect the SharePoint site.
 
@@ -195,7 +227,7 @@ In this task, you will test the IT Support Copilot with various common IT suppor
    ![](../media/ex8-test-button.png)
 
 1. The test chat panel will open. Start with a greeting:
-
+6
    **Prompt:**
    ```
    Hello, I need IT help

@@ -21,38 +21,36 @@ In this exercise, you will complete the following tasks:
 
 ### Task 1: Upload HR Policy Documents to SharePoint
 
-In this task, you will upload HR policy documents to SharePoint that will later be used as knowledge sources for the agent to provide grounded responses.
+In this task, you will download the HR policy documents and upload them to SharePoint. These documents will later be used as knowledge sources for the agent to provide grounded responses.
 
-#### Step 1: Locate and Review Policy Documents
+#### Step 1: Download and Review Policy Documents
 
-1. First, open **File Explorer** on your lab VM.
-
-1. Navigate to the HR policy documents folder:
+1. First, download the HR policy documents. Open a new browser tab and navigate to:
 
    ```
-   C:\datasets\policies
+   https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/Day2-datasets.zip
    ```
 
-   ![](../media/ex6-policies-folder.png)
+1. Once downloaded, extract the **Day2-datasets.zip** file to a location of your choice (e.g., Desktop or Downloads folder).
 
-1. You will find the following HR policy documents:
+1. Open **File Explorer** and navigate to the extracted folder. Inside the **policy** folder, you will find the following HR policy documents:
 
    | Document | Description |
    |----------|-------------|
-   | 01-Leave-Policy.md | Annual, sick, personal, parental leave entitlements |
-   | 02-Holiday-Calendar-2025.md | Official holidays and floating holidays |
-   | 03-Employee-Benefits-Guide.md | Medical, dental, 401k, wellness programs |
-   | 04-Code-of-Conduct.md | Ethics, values, conflicts of interest |
-   | 05-Performance-Review-Policy.md | Ratings, goals, merit increases |
-   | 06-Onboarding-Guide.md | First day through 90-day milestones |
-   | 07-Remote-Work-Policy.md | Hybrid/remote work guidelines |
-   | 08-Health-and-Safety-Policy.md | Emergency procedures, hazard reporting |
-   | 09-Travel-and-Expense-Policy.md | Booking, per diem, reimbursement |
-   | 10-Anti-Harassment-Policy.md | Discrimination prevention, reporting |
-   | 11-IT-Security-Policy.md | Passwords, devices, data handling |
-   | 12-Training-and-Development-Policy.md | Tuition, certifications, mentoring |
+   | Anti-Harassment-Policy.pdf | Discrimination prevention, reporting |
+   | Code-of-Conduct.pdf | Ethics, values, conflicts of interest |
+   | Employee-Benefits-Guide.pdf | Medical, dental, 401k, wellness programs |
+   | Health-and-Safety-Policy.pdf | Emergency procedures, hazard reporting |
+   | Holiday-Calendar-2025.pdf | Official holidays and floating holidays |
+   | IT-Security-Policy.pdf | Passwords, devices, data handling |
+   | Leave-Policy.pdf | Annual, sick, personal, parental leave entitlements |
+   | Onboarding-Guide.pdf | First day through 90-day milestones |
+   | Performance-Review-Policy.pdf | Ratings, goals, merit increases |
+   | Remote-Work-Policy.pdf | Hybrid/remote work guidelines |
+   | Training-and-Development-Policy.pdf | Tuition, certifications, mentoring |
+   | Travel-and-Expense-Policy.pdf | Booking, per diem, reimbursement |
 
-1. Select all the policy files (Ctrl+A) and copy them (Ctrl+C).
+   >**Note:** These 12 PDF files contain comprehensive Contoso HR policy information.
 
 1. Open a new browser tab and navigate to your SharePoint site:
 
@@ -74,7 +72,7 @@ In this task, you will upload HR policy documents to SharePoint that will later 
 
    ![](../media/ex6-upload-files.png)
 
-1. Navigate to `C:\datasets\policies`, select all the policy documents, and click **Open**.
+1. Browse to the location where you extracted the Day2-datasets, navigate to the **policy** folder, select all the policy PDF documents, and click **Open**.
 
    ![](../media/ex6-select-policies.png)
 
@@ -104,7 +102,7 @@ In this task, you will navigate to Microsoft Copilot Studio, create a new HR Age
 
    | Field | Value |
    |-------|-------|
-   | Name | `HR Assistant-<inject key="DeploymentID" enableCopy="false"/>` |
+   | Name | `HR Assistant` |
    | Description | `An intelligent HR assistant that helps employees with policies, benefits, and HR-related questions.` |
 
    ![](../media/m36-copg-ex6-c-g4.png)

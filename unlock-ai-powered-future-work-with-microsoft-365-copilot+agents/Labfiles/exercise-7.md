@@ -1,370 +1,212 @@
-# Exercise 7: Build a Poetic Declarative Agent Using Microsoft 365 Agents Toolkit
+# Exercise 7: Build an HR Agent with Microsoft Copilot Studio - Part 2
 
-## Estimated Duration: 90 Minutes
+## Estimated Duration: 30 Minutes
 
 ## Overview
 
-In this exercise, you will use the Microsoft 365 Agents Toolkit extension for Visual Studio Code to build a declarative agent. Declarative agents are custom Copilot agents defined through a manifest and configuration files, allowing developers to create specialized agents without extensive coding.
-
-You will create a "Poetic Assistant" - a creative agent that helps users express ideas through poetry, generate creative writing, and explore different poetic styles.
+In this exercise, you will complete the HR Agent you started building in Exercise 6. You will enhance the agent's instructions to properly reference policy documents, configure actions and integrations, thoroughly test the agent's capabilities, and publish it to Microsoft 365 Copilot.
 
 ## Prerequisites
 
-- Visual Studio Code installed on your VM
-- Microsoft 365 Agents Toolkit extension
-- Node.js installed on your VM
+- Completed Exercise 6: Build an HR Agent with Microsoft Copilot Studio - Part 1
+- HR Agent created in Copilot Studio with topics configured
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Install and configure Microsoft 365 Agents Toolkit
-- Task 2: Create a new declarative agent project
-- Task 3: Configure the agent manifest
-- Task 4: Define agent instructions and capabilities
-- Task 5: Test the declarative agent locally
+- Task 1: Enhance agent instructions with policy references
+- Task 2: Configure agent actions and integrations
+- Task 3: Test and publish the agent to Microsoft 365 Copilot
 
-### Task 1: Install and Configure Microsoft 365 Agents Toolkit
+### Task 1: Enhance Agent Instructions with Policy References
 
-In this task, you will install the Microsoft 365 Agents Toolkit extension in Visual Studio Code.
+In this task, you will update the agent instructions to ensure it properly references the HR policy documents from the knowledge base.
 
-1. Open **File Explorer**, click **This PC > Windows (C:) (1)**, then select **New (2)** and click **Folder (3)** to create a new folder.
+1. Return to your HR Assistant agent in Microsoft Copilot Studio.
 
-   ![](../media/m36-copg-ex7-d-g7.png)
+1. Click on **Overview** in the left navigation to return to the agent overview.
 
-1. Right-click the new folder, select **Rename**, type **Codespace**, and press **Enter**.
+1. Locate the **Instructions** section and click **Edit**.
 
-   ![](../media/m36-copg-ex7-d-g8.png)
+   ![](../media/ex6-edit-instructions.png)
 
-1. In the VM, open **Visual Studio Code** from the desktop or Start menu.
-
-1. Click **File (1)**, then select **Open Folder… (2)** to open a folder in Visual Studio Code.
-
-   ![](../media/m36-copg-ex7-d-g9.png)
-
-1. Select the folder path **C:\Codespace (1)**, then click **Select folder (2)** to open it in Visual Studio Code.
-
-   ![](../media/m36-copg-ex7-d-g10.png)
-
-1. Click **Yes, I trust the authors** to enable all features for this folder.
-
-   ![](../media/m36-copg-ex7-d-g0.png)
-
-1. Click **Extensions (1)** (or press `Ctrl+Shift+X`), enter **Microsoft 365 Agents Toolkit (2)** in the search box, then click **Install (3)** to install the extension.
-
-   ![](../media/m36-copg-ex7-d-g1.png)
-
-1. Click **Install** to install the Microsoft 365 Agents Toolkit extension.
-
-   ![](../media/m36-copg-ex7-d-g2.png)
-
-1. Wait for the installation to complete. Once installed, you will see the **Microsoft 365 Agents Toolkit** icon in the left sidebar.
-
-### Task 2: Create a New Declarative Agent Project
-
-In this task, you will create a new declarative agent project using the toolkit.
-
-1. Click the **Microsoft 365 Agents Toolkit (1)** icon, then select **Create a New Agent/App (2)** to start a new project.
-
-   ![](../media/m36-copg-ex7-d-g4.png)
-
-1. Select **Declarative Agent** to create a new agent for Microsoft 365 Copilot.
-
-   ![](../media/m36-copg-ex7-d-g5.png)
-
-1. Select **No Action** to create the declarative agent without adding any actions.
-
-   ![](../media/m36-copg-ex7-d-g6.png)
-
-1. Select **Default folder C:\Codespace** to use the default project location.
-
-1. Enter **PoeticAssistant** as the application name, then press **Enter** to confirm.
-
-   ![](../media/m36-copg-ex7-d-g12.png)
-
-1. Wait for the project scaffolding to complete. VS Code will open the new project in a new window.
-
-1. If a prompt appears regarding the trustworthiness of the source, click on **Yes, I trust the authors**.
-
-1. Explore the project structure:
+1. Update the agent instructions to reference the policy documents:
 
    ```
-   PoeticAssistant/
-   ├── appPackage/
-   │   ├── declarativeAgent.json    # Agent configuration
-   │   ├── manifest.json            # App manifest
-   │   └── color.png / outline.png  # App icons
-   ├── .vscode/
-   │   └── settings.json / tasks.json
-   └── README.md
+   You are an HR Assistant for Contoso Corporation. Your role is to help employees with HR-related questions.
+
+   When answering questions:
+   - Always refer to the official HR policy documents in the knowledge base
+   - For leave questions, reference the Leave Policy and Holiday Calendar
+   - For benefits questions, reference the Employee Benefits Guide
+   - For conduct or ethics questions, reference the Code of Conduct
+   - For performance questions, reference the Performance Review Policy
+   - For new employee questions, reference the Onboarding Guide
+   - For remote work questions, reference the Remote Work Policy
+   - For safety concerns, reference the Health and Safety Policy
+   - For travel questions, reference the Travel and Expense Policy
+   - For harassment or discrimination concerns, reference the Anti-Harassment Policy
+   - For IT or security questions, reference the IT Security Policy
+   - For training questions, reference the Training and Development Policy
+
+   Be professional, empathetic, and helpful. Provide accurate information from the policy documents.
+   If you cannot find the answer in the policies, offer to escalate to the HR team.
+   Always maintain confidentiality and privacy.
    ```
 
-1. Click the **Microsoft 365 Agents Toolkit (1)** icon, then select **Sign in to Microsoft 365 (2)** to sign in with your account.
+   ![](../media/ex6-updated-instructions.png)
 
-   ![](../media/m36-copg-ex7-d-g20.png)
+1. Click **Save** to save the updated instructions.
 
-1. Click **Sign in** to continue with your Microsoft 365 account.
+### Task 2: Configure Agent Actions and Integrations
 
-   ![](../media/m36-copg-ex7-d-g21.png)
+In this task, you will configure actions that the agent can perform.
 
-1. When the browser opens for authentication, sign in with your lab credentials:
+1. In the agent editor, click on **Actions** in the left navigation.
 
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
+   ![](../media/ex6-actions-section.png)
 
-1. After successful authentication, close the browser tab and return to VS Code.
+1. Click **+ Add an action**.
 
-1. Verify that **Copilot Access Enabled** is displayed under Accounts.
+   ![](../media/ex6-add-action.png)
 
-   ![](../media/m36-copg-ex7-d-g22.png)
+1. Browse the available action types:
 
-1. Click **Sign in to Azure** to connect your Azure account.
+   - **Prebuilt connectors** - Connect to external services
+   - **Power Automate flows** - Trigger automated workflows
+   - **Custom connectors** - Connect to custom APIs
 
-   ![](../media/m36-copg-ex7-d-g23.png)
+   ![](../media/ex6-action-types.png)
 
-1. Click **Sign in** to authenticate your Azure account.
+1. For this exercise, we will create a simple escalation flow. Select **Power Automate** > **Create a new flow**.
 
-   ![](../media/m36-copg-ex7-d-g24.png)
+   ![](../media/ex6-create-flow.png)
 
-1. Click **Allow** to grant permission for the extension to sign in.
+1. If Power Automate opens, create a simple flow:
 
-   ![](../media/m36-copg-ex7-d-g25.png)
+   - Trigger: When called from Copilot Studio
+   - Action: Send an email to HR
 
-1. Click **No, this app only** to continue signing in without registering the device.
+   >**Note:** For this lab, you can skip creating the actual flow. The important concept is understanding how actions extend agent capabilities.
 
-   ![](../media/m36-copg-ex7-d-g26.png)
+1. Return to Copilot Studio and configure the greeting message:
 
-### Task 3: Configure the Agent Manifest
-
-In this task, you will configure the declarative agent manifest to define the Poetic Assistant.
-
-1. Expand **appPackage (1)**, then open **manifest.json (2)** to edit the file.
-
-   ![](../media/m36-copg-ex7-d-g13.png)
-
-1. Update the manifest with the following information:
-
-   ```json
-   {
-     "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
-     "manifestVersion": "devPreview",
-     "version": "1.0.0",
-     "id": "${{TEAMS_APP_ID}}",
-     "developer": {
-       "name": "Contoso Labs",
-       "websiteUrl": "https://www.contoso.com",
-       "privacyUrl": "https://www.contoso.com/privacy",
-       "termsOfUseUrl": "https://www.contoso.com/terms"
-     },
-     "icons": {
-       "color": "color.png",
-       "outline": "outline.png"
-     },
-     "name": {
-       "short": "Poetic Assistant",
-       "full": "Poetic Assistant - Creative Writing Copilot"
-     },
-     "description": {
-       "short": "A creative writing assistant that helps you express ideas through poetry",
-       "full": "The Poetic Assistant is a declarative agent that helps users create poetry, explore different poetic forms, and express their thoughts in creative and artistic ways. It understands various poetic styles including haiku, sonnet, limerick, free verse, and more."
-     },
-     "accentColor": "#8B4513",
-     "copilotAgents": {
-       "declarativeAgents": [
-         {
-           "id": "poeticAssistant",
-           "file": "declarativeAgent.json"
-         }
-       ]
-     },
-     "permissions": [
-       "identity",
-       "messageTeamMembers"
-     ],
-     "validDomains": []
-   }
-   ```
-
-   ![](../media/m36-copg-ex7-d-g14.png)
-
-1. Save the file (`Ctrl+S`).
-
-### Task 4: Define Agent Instructions and Capabilities
-
-In this task, you will configure the declarative agent's personality and capabilities.
-
-1. Expand **appPackage (1)**, then open **declarativeAgent.json (2)** to edit the file.
-
-   ![](../media/m36-copg-ex7-d-g16.png)
-
-1. Replace the content with the following configuration:
-
-   ```json
-   {
-     "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.2/schema.json",
-     "version": "v1.2",
-     "name": "Poetic Assistant",
-     "description": "A creative writing companion that helps you craft beautiful poetry and explore the art of verse",
-     "instructions": "You are the Poetic Assistant, a creative writing companion with a deep love for poetry and artistic expression. Your role is to help users express their thoughts, emotions, and ideas through the beautiful art of poetry.\n\n## Your Personality:\n- You are warm, encouraging, and appreciative of creative efforts\n- You speak with eloquence and occasionally use poetic language yourself\n- You celebrate the beauty in every attempt at creative expression\n- You are patient and supportive with beginners while challenging experienced writers\n\n## Your Expertise:\n- You understand various poetic forms: haiku, sonnet, limerick, free verse, acrostic, villanelle, ode, elegy, and more\n- You can explain meter, rhyme schemes, and literary devices\n- You understand metaphor, simile, personification, alliteration, and other poetic techniques\n- You know poetry from various cultures and time periods\n\n## How You Help:\n1. **Creating Poetry**: Help users write poems based on their themes, emotions, or ideas\n2. **Teaching Forms**: Explain different poetic structures and when to use them\n3. **Improving Work**: Offer constructive feedback on user's poetry\n4. **Finding Inspiration**: Suggest prompts, themes, and creative exercises\n5. **Exploring Styles**: Introduce users to different poetic traditions and famous poets\n\n## Guidelines:\n- Always encourage creative expression, even in imperfect forms\n- Offer multiple variations when creating poetry\n- Explain the 'why' behind your suggestions\n- Respect the user's creative vision while offering improvements\n- Make poetry accessible and fun, not intimidating\n\n## Example Interactions:\n- 'Write a haiku about autumn' -> Create a thoughtful haiku with explanation\n- 'Help me express sadness in a poem' -> Offer multiple approaches and styles\n- 'What is iambic pentameter?' -> Explain with examples and offer to practice\n- 'Review my poem' -> Provide encouraging, constructive feedback",
-     "conversation_starters": [
-       {
-         "title": "Write a Haiku",
-         "text": "Help me write a haiku about nature"
-       },
-       {
-         "title": "Learn Poetry Forms",
-         "text": "What are different types of poetry I can try?"
-       },
-       {
-         "title": "Get Inspired",
-         "text": "Give me a creative writing prompt for poetry"
-       },
-       {
-         "title": "Express an Emotion",
-         "text": "Help me write a poem about feeling hopeful"
-       },
-       {
-         "title": "Review My Work",
-         "text": "I wrote a poem and would like your feedback"
-       }
-     ]
-   }
-   ```
-
-   ![](../media/m36-copg-ex7-d-g17.png)
-
-1. Save the file (`Ctrl+S`).
-
-   >**Note:** The `instructions` field defines the agent's personality, expertise, and behavior. This is similar to a detailed system prompt that shapes how the agent responds.
-
-1. Expand **appPackage (1)**, right-click **instruction.txt (2)**, then select **Delete (3)** to remove the file.
-
-   ![](../media/m36-copg-ex7-d-g18.png)
-
-   > **Note:** The instructions are already included in **declarativeAgent.json**, so this file is no longer required.
-
-1. Click **Move to Recycle Bin** to confirm deleting the file.
-
-   ![](../media/m36-copg-ex7-d-g19.png)
-
-1. Optionally, update the agent icons in the `appPackage` folder:
-
-   - `color.png` - 192x192 pixel color icon
-   - `outline.png` - 32x32 pixel outline icon
-
-   For this exercise, you can keep the default icons.
-
-### Task 5: Provision and Test the Declarative Agent
-
-In this task, you will provision the agent and test it in Microsoft 365 Copilot.
-
-1. Click the **Microsoft 365 Agents Toolkit (1)** icon, then select **Provision (2)** to provision the agent.
-
-   ![](../media/m36-copg-ex7-d-g27.png)
-
-1. Wait for the provisioning to complete. You should see a success message in the output panel:
+   - Click on **Topics** > **System** > **Greeting**
+   - Customize the greeting:
 
    ```
-   (√) Done: Lifecycle stage provision was executed successfully.
+   Welcome to the HR Assistant! I can help you with:
+
+   - Leave policies and requests
+   - Benefits information
+   - Onboarding procedures
+   - HR policies and guidelines
+   - General HR questions
+
+   How can I assist you today?
    ```
 
-   >**Note:** The provisioning process packages your app files, validates them, and installs the declarative agent to your Microsoft 365 tenant.
+   ![](../media/ex6-greeting.png)
 
-1. Once provisioning is complete, open a browser and navigate to:
+1. Click **Save**.
 
+### Task 3: Test and Publish the Agent to Microsoft 365 Copilot
+
+In this task, you will test the agent and prepare it for publishing.
+
+1. Click the **Test** button in the bottom left corner to open the test panel.
+
+   ![](../media/ex6-test-button.png)
+
+1. Test the agent with various queries:
+
+   **Test 1 - Greeting:**
    ```
-   https://m365.cloud.microsoft/chat
+   Hello
    ```
 
-1. In the Copilot chat, look for your **Poetic Assistant** in the right pane or agents panel and select it.
+   ![](../media/ex6-test-greeting.png)
 
-   ![](../media/m36-copg-ex7-d-g28.png)
+   **Expected Output:**
 
-1. Test the Poetic Assistant with various prompts:
+   ![](../media/ex6-greeting-response.png)
 
-   **Test 1 - Write a Haiku:**
+1. **Test 2 - Leave Request:**
 
    **Prompt:**
    ```
-   Write a haiku about the morning sun
+   How do I request vacation time?
    ```
 
-   ![](../media/m36-copg-ex7-d-g30.png)
+   ![](../media/ex6-test-leave.png)
 
-   **Expected Response:**
+   **Expected Output:**
 
-   The agent should create a haiku following the 5-7-5 syllable pattern with gentle morning imagery.
+   ![](../media/ex6-leave-response.png)
 
-1. **Test 2 - Explain a Poetry Form:**
+1. **Test 3 - Benefits:**
 
    **Prompt:**
    ```
-   What is a sonnet and how do I write one?
+   What health insurance options are available?
    ```
 
-   ![](../media/m36-copg-ex7-d-g31.png)
+   ![](../media/ex6-test-benefits.png)
 
-   **Expected Response:**
+   **Expected Output:**
 
-   The agent should explain the sonnet structure (14 lines, rhyme schemes like ABAB CDCD EFEF GG), iambic pentameter, and provide step-by-step guidance on writing one.
+   ![](../media/ex6-benefits-response.png)
 
-1. **Test 3 - Creative Expression:**
+1. **Test 4 - Knowledge-based question:**
 
    **Prompt:**
    ```
-   Help me write a poem about the feeling of accomplishment after completing a difficult task
+   How many sick days can I take without a medical certificate?
    ```
 
-   ![](../media/m36-copg-ex7-d-g32.png)
+   ![](../media/ex6-test-knowledge.png)
 
-   **Expected Response:**
+   **Expected Output:**
 
-   The agent should offer multiple poem styles (free verse, rhyming, dramatic) celebrating the feeling of triumph and achievement.
+   ![](../media/ex6-knowledge-response.png)
 
-1. **Test 4 - Review Poetry:**
+1. Once testing is complete, click **Publish** in the top right corner.
 
-   **Prompt:**
-   ```
-   Here is my poem, please review it:
-   
-   The silent moon watches over me
-   As stars dance in the velvet sky
-   I wonder what they all might see
-   As night's soft curtain slowly drifts by
-   ```
+   ![](../media/ex6-publish-button.png)
 
-   ![](../media/m36-copg-ex7-d-g33.png)
+1. In the publish dialog, select **Microsoft 365 Copilot** as the channel.
 
-   **Expected Response:**
+   ![](../media/ex6-publish-m365.png)
 
-   The agent should provide warm, constructive feedback highlighting what works well (imagery, rhythm, mood) and offer gentle suggestions for improvement.
+1. Review the publishing settings and click **Publish**.
 
-1. **Test 5 - Learn Techniques:**
+   ![](../media/ex6-publish-confirm.png)
 
-   **Prompt:**
-   ```
-   Teach me about alliteration and give me examples
-   ```
+1. Wait for the publishing process to complete.
 
-   ![](../media/m36-copg-ex7-d-g34.png)
+   ![](../media/ex6-publishing.png)
 
-   **Expected Response:**
+   >**Note:** The agent may take a few minutes to appear in Microsoft 365 Copilot after publishing.
 
-   The agent should explain alliteration (repeating consonant sounds at the beginning of words) with examples like "silent stars shimmer" and "soft shadows slip silently."
+1. Once published, you can access the agent from Microsoft 365 Copilot Chat:
 
-   >**Note:** Feel free to explore other conversation starters or ask your own creative questions to test the agent's capabilities.
+   - Go to `https://www.microsoft365.com`
+   - Click on **Copilot**
+   - Look for your HR Assistant agent in the agents panel
+
+   ![](../media/ex6-agent-in-copilot.png)
 
 ## Summary
 
-In this exercise, you built a declarative agent using the Microsoft 365 Agents Toolkit. You learned how to:
+In this exercise, you completed building the HR Agent using Microsoft Copilot Studio. You learned how to:
 
-- Install and configure the Microsoft 365 Agents Toolkit in VS Code
-- Sign in to Microsoft 365 and verify Copilot access
-- Create a new declarative agent project
-- Configure the app manifest with agent metadata
-- Define detailed agent instructions and conversation starters
-- Provision and test the agent in Microsoft 365 Copilot
+- Enhance agent instructions with specific policy references for accurate responses
+- Explore actions and integrations with Power Automate
+- Configure system topics like the greeting message
+- Test the agent with various scenarios to validate functionality
+- Publish the agent to Microsoft 365 Copilot for end-user access
 
-Declarative agents provide a powerful way to create specialized Copilot experiences without extensive coding, using configuration and natural language instructions.
+The HR Agent is now live and can help employees with policies, benefits, leave management, and general HR questions while maintaining professional and empathetic interactions.
 
 ### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

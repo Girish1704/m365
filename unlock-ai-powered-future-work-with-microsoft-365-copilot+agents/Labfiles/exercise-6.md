@@ -1,12 +1,12 @@
-# Exercise 6: Extend Microsoft 365 Copilot Chat with an HR Agent Built Using Microsoft Copilot Studio
+# Exercise 6: Build an HR Agent with Microsoft Copilot Studio - Part 1
 
-## Estimated Duration: 90 Minutes
+## Estimated Duration: 60 Minutes
 
 ## Overview
 
-In this exercise, you will build a comprehensive HR Agent using Microsoft Copilot Studio that extends Microsoft 365 Copilot Chat capabilities. Microsoft Copilot Studio provides a powerful low-code platform for creating intelligent agents that can handle complex conversations, connect to enterprise data sources, and integrate with Microsoft 365 Copilot.
+In this exercise, you will begin building a comprehensive HR Agent using Microsoft Copilot Studio that extends Microsoft 365 Copilot Chat capabilities. Microsoft Copilot Studio provides a powerful low-code platform for creating intelligent agents that can handle complex conversations, connect to enterprise data sources, and integrate with Microsoft 365 Copilot.
 
-You will create an HR agent that can answer employee questions about policies, benefits, leave management, and direct complex queries to appropriate HR personnel.
+In Part 1, you will create the foundational HR agent, connect it to SharePoint knowledge sources, and configure conversation topics that define how the agent handles different types of employee inquiries.
 
 ## Exercise Objectives
 
@@ -14,10 +14,7 @@ In this exercise, you will complete the following tasks:
 
 - Task 1: Upload HR policy documents to SharePoint
 - Task 2: Access Microsoft Copilot Studio and create an HR Agent
-- Task 3: Add knowledge sources to the agent
-- Task 4: Configure agent topics and conversations
-- Task 5: Configure agent actions and integrations
-- Task 6: Test and publish the agent to Microsoft 365 Copilot
+- Task 3: Configure agent topics and conversations
 
 ### Task 1: Upload HR Policy Documents to SharePoint
 
@@ -355,193 +352,18 @@ In this task, you will configure topics that define how the agent handles differ
 
 1. Click **Save** to save the topic.
 
-### Task 4: Enhance Agent Instructions with Policy References
-
-In this task, you will update the agent instructions to ensure it properly references the HR policy documents from the knowledge base.
-
-1. Click on **Overview** in the left navigation to return to the agent overview.
-
-1. Locate the **Instructions** section and click **Edit**.
-
-   ![](../media/ex6-edit-instructions.png)
-
-1. Update the agent instructions to reference the policy documents:
-
-   ```
-   You are an HR Assistant for Contoso Corporation. Your role is to help employees with HR-related questions.
-
-   When answering questions:
-   - Always refer to the official HR policy documents in the knowledge base
-   - For leave questions, reference the Leave Policy and Holiday Calendar
-   - For benefits questions, reference the Employee Benefits Guide
-   - For conduct or ethics questions, reference the Code of Conduct
-   - For performance questions, reference the Performance Review Policy
-   - For new employee questions, reference the Onboarding Guide
-   - For remote work questions, reference the Remote Work Policy
-   - For safety concerns, reference the Health and Safety Policy
-   - For travel questions, reference the Travel and Expense Policy
-   - For harassment or discrimination concerns, reference the Anti-Harassment Policy
-   - For IT or security questions, reference the IT Security Policy
-   - For training questions, reference the Training and Development Policy
-
-   Be professional, empathetic, and helpful. Provide accurate information from the policy documents.
-   If you cannot find the answer in the policies, offer to escalate to the HR team.
-   Always maintain confidentiality and privacy.
-   ```
-
-   ![](../media/ex6-updated-instructions.png)
-
-1. Click **Save** to save the updated instructions.
-
-### Task 5: Configure Agent Actions and Integrations
-
-In this task, you will configure actions that the agent can perform.
-
-1. In the agent editor, click on **Actions** in the left navigation.
-
-   ![](../media/ex6-actions-section.png)
-
-1. Click **+ Add an action**.
-
-   ![](../media/ex6-add-action.png)
-
-1. Browse the available action types:
-
-   - **Prebuilt connectors** - Connect to external services
-   - **Power Automate flows** - Trigger automated workflows
-   - **Custom connectors** - Connect to custom APIs
-
-   ![](../media/ex6-action-types.png)
-
-1. For this exercise, we will create a simple escalation flow. Select **Power Automate** > **Create a new flow**.
-
-   ![](../media/ex6-create-flow.png)
-
-1. If Power Automate opens, create a simple flow:
-
-   - Trigger: When called from Copilot Studio
-   - Action: Send an email to HR
-
-   >**Note:** For this lab, you can skip creating the actual flow. The important concept is understanding how actions extend agent capabilities.
-
-1. Return to Copilot Studio and configure the greeting message:
-
-   - Click on **Topics** > **System** > **Greeting**
-   - Customize the greeting:
-
-   ```
-   Welcome to the HR Assistant! I can help you with:
-
-   - Leave policies and requests
-   - Benefits information
-   - Onboarding procedures
-   - HR policies and guidelines
-   - General HR questions
-
-   How can I assist you today?
-   ```
-
-   ![](../media/ex6-greeting.png)
-
-1. Click **Save**.
-
-### Task 6: Test and Publish the Agent to Microsoft 365 Copilot
-
-In this task, you will test the agent and prepare it for publishing.
-
-1. Click the **Test** button in the bottom left corner to open the test panel.
-
-   ![](../media/ex6-test-button.png)
-
-1. Test the agent with various queries:
-
-   **Test 1 - Greeting:**
-   ```
-   Hello
-   ```
-
-   ![](../media/ex6-test-greeting.png)
-
-   **Expected Output:**
-
-   ![](../media/ex6-greeting-response.png)
-
-1. **Test 2 - Leave Request:**
-
-   **Prompt:**
-   ```
-   How do I request vacation time?
-   ```
-
-   ![](../media/ex6-test-leave.png)
-
-   **Expected Output:**
-
-   ![](../media/ex6-leave-response.png)
-
-1. **Test 3 - Benefits:**
-
-   **Prompt:**
-   ```
-   What health insurance options are available?
-   ```
-
-   ![](../media/ex6-test-benefits.png)
-
-   **Expected Output:**
-
-   ![](../media/ex6-benefits-response.png)
-
-1. **Test 4 - Knowledge-based question:**
-
-   **Prompt:**
-   ```
-   How many sick days can I take without a medical certificate?
-   ```
-
-   ![](../media/ex6-test-knowledge.png)
-
-   **Expected Output:**
-
-   ![](../media/ex6-knowledge-response.png)
-
-1. Once testing is complete, click **Publish** in the top right corner.
-
-   ![](../media/ex6-publish-button.png)
-
-1. In the publish dialog, select **Microsoft 365 Copilot** as the channel.
-
-   ![](../media/ex6-publish-m365.png)
-
-1. Review the publishing settings and click **Publish**.
-
-   ![](../media/ex6-publish-confirm.png)
-
-1. Wait for the publishing process to complete.
-
-   ![](../media/ex6-publishing.png)
-
-   >**Note:** The agent may take a few minutes to appear in Microsoft 365 Copilot after publishing.
-
-1. Once published, you can access the agent from Microsoft 365 Copilot Chat:
-
-   - Go to `https://www.microsoft365.com`
-   - Click on **Copilot**
-   - Look for your HR Assistant agent in the agents panel
-
-   ![](../media/ex6-agent-in-copilot.png)
-
 ## Summary
 
-In this exercise, you built an HR Agent using Microsoft Copilot Studio. You learned how to:
+In this exercise, you created the foundation of an HR Agent using Microsoft Copilot Studio. You learned how to:
 
+- Upload HR policy documents to SharePoint as a knowledge base
 - Access and navigate Microsoft Copilot Studio
-- Create a new agent with AI-assisted setup
-- Configure topics and conversation flows
-- Add SharePoint as a knowledge source
-- Configure actions and integrations
-- Test and publish the agent to Microsoft 365 Copilot
+- Create a new agent and configure its basic settings
+- Add SharePoint as a knowledge source for grounded responses
+- Configure three types of conversation topics:
+  - Manual topic creation with conversation flow (Escalation to HR)
+  - AI-generated topics using Copilot (General HR Help and Leave and Time Off)
 
-Microsoft Copilot Studio provides a powerful platform for creating sophisticated agents that can handle complex business scenarios.
+In the next exercise, you will enhance the agent's instructions, configure actions, test its capabilities, and publish it to Microsoft 365 Copilot.
 
 ### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

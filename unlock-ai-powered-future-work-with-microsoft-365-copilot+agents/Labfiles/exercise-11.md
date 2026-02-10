@@ -1,295 +1,390 @@
-# Exercise 11: Create a Quiz Generator Agent with Prompt Actions
+# Exercise 11: Test and Deploy IT Support Copilot to Microsoft Teams
 
-## Estimated Duration: 45 Minutes
+## Estimated Duration: 30 Minutes
 
 ## Overview
 
-In this exercise, you will create a Quiz Generator agent in Microsoft Copilot Studio and implement a prompt action that generates educational quiz questions. Prompt actions are a powerful feature that allows you to define custom AI instructions with specific parameters, enabling highly tailored content generation.
+In this exercise, you will perform comprehensive end-to-end testing of your IT Support Copilot, verify that tickets are being created correctly in Freshdesk, and then deploy the copilot to Microsoft Teams for organization-wide access.
 
-By the end of this exercise, you will have a working prompt action that can generate multiple-choice quiz questions on any topic, with configurable difficulty levels and question counts.
+This is the final step in building an autonomous IT support solution that uses the knowledge base to provide troubleshooting guidance and creates tickets in Freshdesk when escalation is needed—all integrated with Microsoft Teams.
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Create a Quiz Generator Agent
-- Task 2: Create a Prompt Action for Quiz Generation
-- Task 3: Configure Prompt Inputs and Parameters
-- Task 4: Write the Prompt Instructions
-- Task 5: Test the Prompt Action Directly
+- Task 1: Test IT Support Topics End-to-End
+- Task 2: Verify Tickets in Freshdesk Portal
+- Task 3: Test Knowledge Base Integration
+- Task 4: Publish the Copilot to Microsoft Teams
+- Task 5: Test the Copilot in Microsoft Teams
 
-### Task 1: Create a Quiz Generator Agent
+### Task 1: Test IT Support Topics End-to-End
 
-In this task, you will create a new agent specifically designed for generating educational quizzes.
+In this task, you will systematically test all three IT support topics to ensure they work correctly with Freshdesk integration.
 
-1. On the Copilot Studio home page, click **+ Create** from the left navigation.
+1. In Microsoft Copilot Studio, open your **IT Support Copilot**.
 
-   ![](../media/m36-copg-ex6-c-g1.png)
+   ![](../media/ex10-open-copilot.png)
 
-1. Click **+ Create blank agent** to start creating a new agent.
+1. Click the **Test** button to open the test panel on the right side.
 
-   ![](../media/m36-copg-ex6-c-g2.png)
+   ![](../media/ex10-test-panel.png)
 
-1. On the agent **Overview** page, verify that the agent has been successfully provisioned, and then select **Edit**.
+1. Ensure all 3 topics are **enabled**:
+   - CredentialResetSupport
+   - VPNConnectivitySupport
+   - HardwareSupportAssistant
 
-   ![](../media/m36-copg-ex11-f-g45.png)
-
-1. In the **Details** pane, enter the required information in the **Name (1)** and **Description (2)** fields, and then select **Save (3)**.
-
-   | Field | Value |
-   |-------|-------|
-   | Name | `Quiz Generator` |
-   | Description | `An intelligent agent that generates educational quiz questions on any topic with customizable difficulty levels` |
-   | Instructions | (See below) |
-
-   ![](../media/m36-copg-ex11-f-g46.png)
-
-1. In the **Instructions** section, select **Edit**.
-
-   ![](../media/m36-copg-ex11-f-g47.png)
-
-1. In the **Instructions** editor, enter the required content in the text area **(1)**, and then select **Save (2)**.
-
+1. Open a second browser tab with your **Freshdesk portal**:
    ```
-   You are a Quiz Generator assistant that helps educators, trainers, and learners create educational assessments.
-
-   Your capabilities include:
-   - Generating multiple-choice quiz questions on any topic
-   - Supporting different difficulty levels (Beginner, Intermediate, Advanced)
-   - Creating answer keys with explanations
-   - Producing quizzes of varying lengths (1-10 questions)
-
-   When interacting with users:
-   - Be helpful and encouraging
-   - Ask clarifying questions if the topic is too broad
-   - Suggest related topics if appropriate
-   - Ensure all generated content is accurate and educational
+   https://your-company-name.freshdesk.com
    ```
 
-   ![](../media/m36-copg-ex11-f-g48.png)
+1. Sign in to Freshdesk and navigate to **Tickets** to monitor ticket creation in real-time.
 
-### Task 2: Create a Prompt Action for Quiz Generation
+   ![](../media/ex10-freshdesk-tickets.png)
 
-In this task, you will create a prompt action that defines how quiz questions are generated using AI.
+   >**Tip:** Keep both Copilot Studio and Freshdesk tabs visible for testing.
 
-1. In the agent editor, select **Tools (1)** from the left navigation pane, and then choose **+ New tool (2)**.
+1. **Test Scenario 1 - CredentialResetSupport Topic:**
 
-   ![](../media/m36-copg-ex11-f-g1.png)
+   In the Copilot Studio test panel, click **Reset** to start a fresh conversation.
 
-1. In the **New tool** dialog, select **Prompt**.
-
-   ![](../media/m36-copg-ex11-f-g43.png)
-
-   >**What is a Prompt?**
-   >
-   >Prompts apply AI to text, documents, or images to analyze, summarize, or transform them. You can create reusable, parameterized AI generation logic.
-
-1. The **Custom prompt** editor will open. You'll see:
-
-   - **Instructions** panel (left) - where you write your prompt
-   - **Model** selector - defaults to GPT-4.1 mini
-   - **Model response** panel (right) - shows test results
-   - **+ Add content** button - to add inputs and knowledge
-   - **Get started with Copilot** section - AI helper to create prompts
-
-   ![](../media/ex11-prompt-editor.png)
-
-1. First, let's rename the prompt. Click on the title **"Custom prompt [date/time]"** at the top and rename it to:
-
+   **Prompt:**
    ```
-   Generate Quiz Questions
+   I forgot my password
    ```
 
-   ![](../media/m36-copg-ex11-f-g2.png)
+   ![](../media/ex10-test-password.png)
 
-   ![](../media/m36-copg-ex11-f-g44.png)
+1. Follow the conversation flow:
+   - Provide your username when asked (e.g., `jsmith`)
+   - Review the self-service reset instructions from the knowledge base
+   - When asked if the issue is resolved, say: **No**
+   - Confirm you want to create a support ticket
 
-### Task 3: Write the Prompt Instructions
+1. **Expected Results:**
+   - Copilot should ask for username and provide reset instructions
+   - Should offer to create a ticket when issue isn't resolved
+   - Should display confirmation message after ticket creation
 
-In this task, you will write detailed instructions that guide the AI in generating high-quality quiz questions.
+   ![](../media/ex10-password-result.png)
 
-1. Enter the following complete prompt (you can copy-paste this):
+1. **Test Scenario 2 - VPNConnectivitySupport Topic:**
 
+   Click **Reset** to start fresh.
+
+   **Prompt:**
    ```
-   You are an expert educational content creator specializing in creating quiz questions for learning and assessment purposes.
-
-   Generate exactly {NumberOfQuestions} multiple choice quiz questions about the topic: {Topic}
-
-   Difficulty Level: {DifficultyLevel}
-
-   ## Difficulty Guidelines:
-
-   **Beginner:**
-   - Basic concepts and definitions
-   - Straightforward, commonly known facts
-   - Clear correct answer with obviously incorrect distractors
-
-   **Intermediate:**
-   - Requires understanding and application of concepts
-   - May involve comparing or contrasting ideas
-   - Distractors are plausible but distinguishable
-
-   **Advanced:**
-   - Complex scenarios requiring deep understanding
-   - May involve analysis, synthesis, or evaluation
-   - Distractors are very plausible, requiring careful thought
-
-   ## Question Format Requirements:
-
-   For each question, you MUST provide:
-   1. Question number and clear question text
-   2. Exactly four answer options labeled A, B, C, and D
-   3. The correct answer letter
-   4. A brief educational explanation (2-3 sentences)
-
-   ## Quality Standards:
-
-   - Questions must be clear, unambiguous, and grammatically correct
-   - All four options must be plausible (no joke answers)
-   - Each question should test a different aspect of the topic
-   - Explanations should reinforce learning, not just state the answer
-   - Avoid "All of the above" or "None of the above" options
-   - Ensure factual accuracy
-
-   ## Output Format:
-
-   📝 **Quiz: {Topic}**
-   📊 **Difficulty: {DifficultyLevel}**
-   📋 **Questions: {NumberOfQuestions}**
-
-   ---
-
-   **Question 1:** [Question text here]
-
-   A) [Option A]
-   B) [Option B]
-   C) [Option C]
-   D) [Option D]
-
-   ✅ **Correct Answer:** [Letter]
-   💡 **Explanation:** [Educational explanation here]
-
-   ---
-
-   [Continue for all questions...]
-
-   ---
-
-   ## 📋 Answer Key Summary
-
-   | Q# | Answer | Topic |
-   |----|--------|-------|
-   | 1 | [Letter] | [Brief topic] |
-   | 2 | [Letter] | [Brief topic] |
-   [Continue for all questions...]
-
-   Now generate the quiz based on the provided parameters.
+   VPN won't connect
    ```
 
-### Task 4: Configure Prompt Inputs and Parameters
+   ![](../media/ex10-test-vpn.png)
 
-In this task, you will add input parameters that control quiz generation.
+1. Follow the conversation:
+   - Describe the error (e.g., `Authentication failed when trying to connect`)
+   - Provide location (e.g., `Working from home`)
+   - Follow troubleshooting steps provided
+   - When asked if resolved, say: **No, still not working**
+   - Confirm ticket creation
 
-1. In the **Instructions** text area, you'll see the placeholder text:
-   
-1. In the **Instructions** editor, select the `{NumberOfQuestions}` input variable **(1)**, and then choose **+ Add content (2)**.
+1. **Expected Results:**
+   - Copilot collects error message and location
+   - Provides relevant troubleshooting steps
+   - Creates ticket with location in subject line
 
-   ![](../media/m36-copg-ex11-f-g24.png)
+   ![](../media/ex10-vpn-result.png)
 
-1. From the input menu, select **Text**.
+1. **Test Scenario 3 - HardwareSupportAssistant Topic:**
 
-   ![](../media/m36-copg-ex11-f-g25.png)
+   Click **Reset** to start fresh.
 
-1. In the input configuration pane, enter the required information in the **Name (1)** and **Sample data (2)** fields, and then select **Close (3)**.
+   **Prompt:**
+   ```
+   My laptop is slow
+   ```
 
-   | Field | Value |
-   |-------|-------|
-   | Name | `NumberOfQuestions` |
-   | Description | `How many questions to generate (1-10)` |
+   ![](../media/ex10-test-hardware.png)
 
-   ![](../media/m36-copg-ex11-f-g26.png)
+1. Follow the conversation:
+   - Select device type when asked (e.g., `Laptop`)
+   - Describe the issue (e.g., `Very slow performance, takes 10 minutes to boot`)
+   - Follow diagnostic steps
+   - When asked if resolved, say: **No**
+   - Confirm ticket creation
 
-1. In the **Instructions** editor, select the `{Topic}` input variable **(1)**, and then choose **+ Add content (2)**.
+1. **Expected Results:**
+   - Copilot identifies device type and captures symptoms
+   - Provides device-specific troubleshooting
+   - Creates ticket with device type in subject
 
-   ![](../media/m36-copg-ex11-f-g27.png)
+   ![](../media/ex10-hardware-result.png)
 
-1. From the **In your prompt** menu, select **Text**.
+### Task 2: Verify Tickets in Freshdesk Portal
 
-   ![](../media/m36-copg-ex11-f-g28.png)
+In this task, you will verify that all test tickets were created correctly in Freshdesk.
 
-1. In the input configuration pane, enter the required information in the **Name (1)** and **Sample data (2)** fields, and then select **Close (3)**.
+1. Switch to your **Freshdesk portal** browser tab.
 
-   | Field | Value |
-   |-------|-------|
-   | Name | `Topic` |
-   | Description | `The subject or topic for quiz questions (e.g., Solar System, Python Programming)` |
+1. Go to **Tickets** in the left navigation (or click on **All Tickets**).
 
-   ![](../media/m36-copg-ex11-f-g29.png)
+   ![](../media/ex10-freshdesk-all-tickets.png)
 
-1. In the **Instructions** editor, select the `{DifficultyLevel}` input variable **(1)**, and then choose **+ Add content (2)**.
+1. You should see the tickets created during testing. Verify you have tickets with subjects like:
+   - "Password Reset Assistance – jsmith"
+   - "Connectivity Issue – home" (or similar)
+   - "Hardware Issue – Laptop"
 
-   ![](../media/m36-copg-ex11-f-g30.png)
+   ![](../media/ex10-freshdesk-ticket-list.png)
 
-1. From the **In your prompt** menu, select **Text**.
+1. Click on the **Password Reset** ticket to open it.
 
-   ![](../media/m36-copg-ex11-f-g28.png)
+1. Verify the ticket details:
 
-1. In the input configuration pane, enter the required information in the **Name (1)** and **Sample data (2)** fields, and then select **Close (3)**.
+   | Field | Expected Value |
+   |-------|----------------|
+   | Subject | Contains "Password Reset Assistance" and username |
+   | Description | Contains username and reason for escalation |
+   | Priority | Medium |
+   | Status | Open |
+   | Requester Email | Your lab email address |
 
-   | Field | Value |
-   |-------|-------|
-   | Name | `DifficultyLevel` |
-   | Description | `The difficulty level - Beginner, Intermediate, or Advanced` |
+   ![](../media/ex10-freshdesk-ticket-details.png)
 
-   ![](../media/m36-copg-ex11-f-g31.png)
+1. Click on the **Connectivity Issue** ticket and verify:
 
-1. In the **Output Format** section, select the `{Topic}` input variable **(1)**, and then choose **+ Add content (2)** to add additional inputs.
+   | Field | Expected Value |
+   |-------|----------------|
+   | Subject | Contains "Connectivity Issue" and location |
+   | Description | Contains error message and location details |
+   | Priority | Medium |
+   | Status | Open |
 
-   ![](../media/m36-copg-ex11-f-g33.png)
+1. Click on the **Hardware Issue** ticket and verify:
 
-   ![](../media/m36-copg-ex11-f-g34.png)
+   | Field | Expected Value |
+   |-------|----------------|
+   | Subject | Contains "Hardware Issue" and device type |
+   | Description | Contains device type and issue description |
+   | Priority | Medium |
+   | Status | Open |
 
-1. From the input menu, select **In your prompt**.
+1. Document your test results:
 
-   ![](../media/m36-copg-ex11-f-g35.png)
+   | Test Scenario | Topic Triggered | Ticket Created | Details Correct |
+   |---------------|-----------------|----------------|-----------------|
+   | Password Reset | ☐ Yes / ☐ No | ☐ Yes / ☐ No | ☐ Yes / ☐ No |
+   | VPN Connectivity | ☐ Yes / ☐ No | ☐ Yes / ☐ No | ☐ Yes / ☐ No |
+   | Hardware Issue | ☐ Yes / ☐ No | ☐ Yes / ☐ No | ☐ Yes / ☐ No |
 
-1. From the **In your prompt** list, select **Topic**.
+   >**Troubleshooting:** If tickets are not appearing:
+   >- Check that the Freshdesk flow is published in Copilot Studio
+   >- Verify the Freshdesk connection is valid (test the flow manually)
+   >- Check for any error messages in the test panel
 
-   ![](../media/m36-copg-ex11-f-g36.png)
+### Task 3: Test Knowledge Base Integration
 
-1. Repeat the same steps to add the `{DifficultyLevel}` and `{NumberOfQuestions}` input variables to the **Output Format** section.
+In this task, you will verify that your copilot can answer questions directly from the knowledge base without creating tickets.
 
-   ![](../media/m36-copg-ex11-f-g37.png)
+1. Return to the **Copilot Studio** test panel and click **Reset**.
 
-1. Select **Test** to validate the prompt using the configured input variables.
+1. Ask a general IT question:
 
-   ![](../media/m36-copg-ex11-f-g22.png)
+   **Prompt:**
+   ```
+   How do I set up MFA on my account?
+   ```
 
-1. Verify that the generated quiz is displayed in the **Model response (1)** panel without any errors, and then select **Save (2)**.
+   ![](../media/ex10-test-kb-mfa.png)
 
-   ![](../media/m36-copg-ex11-f-g38.png)
+1. **Expected Results:**
+   - Copilot provides a direct answer from the knowledge base
+   - Does NOT trigger a topic or offer to create a ticket immediately
+   - Provides helpful step-by-step instructions
 
-1. If a confirmation dialog appears to add the prompt to the agent, select **Yes**.
+   ![](../media/ex10-kb-mfa-result.png)
 
-1. In the **Add to an Agent** dialog, select the **Quiz Generator** agent, and then choose **Add**.
+1. Try another knowledge base query:
 
-   ![](../media/m36-copg-ex11-f-g39.png)
+   **Prompt:**
+   ```
+   What VPN client should I use?
+   ```
 
-1. Select **Agents**, choose **Quiz Generator**, navigate to **Tools (1)**, and then verify that the **Generate QuizQuestions (3)** prompt is listed.
+1. Verify the response comes from your uploaded IT Support documents.
 
-   ![](../media/m36-copg-ex11-f-g40.png)
+1. Test a hardware-related knowledge query:
+
+   **Prompt:**
+   ```
+   How do I clean up disk space on my laptop?
+   ```
+
+1. **Expected:** Copilot should provide disk cleanup instructions from the knowledge base.
+
+1. If responses are generic or not pulling from your knowledge base:
+   - Go to **Settings** → **Generative AI**
+   - Ensure the knowledge source toggle is enabled
+   - Verify your SharePoint IT Support site is connected with status **Ready**
+
+### Task 4: Publish the Copilot to Microsoft Teams
+
+In this task, you will publish your IT Support Copilot and make it available in Microsoft Teams.
+
+1. In Copilot Studio, click **Publish** in the top menu bar.
+
+   ![](../media/ex10-publish-button.png)
+
+1. Review the publishing checklist:
+
+   - All topics are saved and enabled
+   - Freshdesk flow is connected and published
+   - Knowledge base is synced and ready
+   - All testing is complete
+
+   ![](../media/ex10-publish-checklist.png)
+
+1. Click **Publish** to publish your copilot.
+
+   ![](../media/ex10-confirm-publish.png)
+
+1. Wait for the publishing process to complete (1-2 minutes). You should see a success message.
+
+   ![](../media/ex10-publish-success.png)
+
+1. Click on **Channels** in the left navigation.
+
+   ![](../media/ex10-channels.png)
+
+1. Find **Microsoft Teams** and click on it.
+
+   ![](../media/ex10-teams-channel.png)
+
+1. Click **Turn on Teams** to enable the Teams channel.
+
+   ![](../media/ex10-turn-on-teams.png)
+
+1. Configure the Teams availability:
+
+   - Select **Show to everyone in my org** (recommended for company-wide access)
+   - Or select **Show to users or groups** for limited rollout
+
+   ![](../media/ex10-teams-availability.png)
+
+1. Click **Submit for admin approval** (or **Add to Teams** if you have permissions).
+
+   >**Note:** Depending on your organization's policies, the copilot may need admin approval before appearing in the Teams app catalog.
+
+1. Click **Open the app in Teams** or **Add to Teams** to install the bot in Teams.
+
+   ![](../media/ex10-add-to-teams.png)
+
+### Task 5: Test the Copilot in Microsoft Teams
+
+In this task, you will test the complete user journey within Microsoft Teams.
+
+1. Microsoft Teams should open with your IT Support Copilot. 
+
+   If not, open Teams manually:
+   ```
+   https://teams.microsoft.com
+   ```
+
+1. Sign in with your lab credentials if prompted:
+   - **Email:** <inject key="AzureAdUserEmail"></inject>
+   - **Password:** <inject key="AzureAdUserPassword"></inject>
+
+1. In Teams, click **Apps** in the left sidebar.
+
+1. Search for **IT Support Copilot** and click on it.
+
+   ![](../media/ex10-teams-search.png)
+
+1. Click **Add** to add the copilot to your Teams.
+
+1. The copilot chat will open automatically.
+
+   ![](../media/ex10-teams-copilot.png)
+
+1. **Test 1 - Password Reset in Teams:**
+
+   **Prompt:**
+   ```
+   I forgot my password
+   ```
+
+   ![](../media/ex10-teams-password.png)
+
+1. Follow the conversation:
+   - Provide username when asked
+   - Review the self-service instructions
+   - When asked if resolved, say: **No**
+   - Confirm ticket creation
+
+1. Verify:
+   - Confirmation message appears in Teams
+   - Switch to Freshdesk and verify the ticket was created
+
+   ![](../media/ex10-teams-password-complete.png)
+
+1. **Test 2 - VPN Issue in Teams:**
+
+   **Prompt:**
+   ```
+   VPN won't connect from home
+   ```
+
+1. Follow the conversation and escalate to ticket creation.
+
+1. Verify ticket appears in Freshdesk with correct details.
+
+1. **Test 3 - Knowledge Base Query in Teams:**
+
+   **Prompt:**
+   ```
+   What are the steps to reset my password?
+   ```
+
+   ![](../media/ex10-teams-kb-query.png)
+
+1. **Expected:** The copilot should provide instructions from the knowledge base without offering to create a ticket.
+
+   ![](../media/ex10-teams-kb-result.png)
+
+1. (Optional) **Share the copilot with your team:**
+
+   - In Copilot Studio, go to **Channels** → **Microsoft Teams**
+   - Click **Availability options**
+   - Copy the **Share link**
+   - Share via email or Teams channel:
+
+   ```
+   New IT Support Copilot Available!
+
+   Get instant IT support directly in Teams. Our new copilot can help with:
+   - Password resets and account lockouts
+   - VPN and connectivity issues
+   - Hardware troubleshooting (laptops, printers, monitors, keyboards)
+   - And more!
+
+   Simply search for "IT Support Copilot" in Teams Apps to get started.
+   ```
 
 ## Summary
 
-In this exercise, you created a Quiz Generator agent and implemented a prompt action for generating educational quiz questions. You learned how to:
+In this exercise, you completed the full lifecycle of testing and deploying your IT Support Copilot. You learned how to:
 
-- Create a specialized agent for educational content generation
-- Configure prompt actions with multiple input parameters
-- Write detailed prompt instructions that guide AI output
-- Use variable placeholders (`{{Variable}}`) in prompts
-- Define structured output formats for consistent results
-- Test prompt actions directly before integrating into topics
+- Test all three AI-generated topics (CredentialResetSupport, VPNConnectivitySupport, HardwareSupportAssistant)
+- Verify that tickets are created correctly in Freshdesk with proper subject, description, and priority
+- Validate knowledge base integration for direct answers without ticket creation
+- Publish a copilot and enable the Microsoft Teams channel
+- Test the complete user experience directly within Microsoft Teams
 
-In the next exercise, you will build a conversational topic that integrates this prompt action, allowing users to interactively generate quizzes through a guided conversation flow.
+Your IT Support Copilot is now live in Microsoft Teams, ready to help employees with:
+- Password reset and account access issues (with Freshdesk escalation)
+- VPN and network connectivity problems (with Freshdesk escalation)
+- Hardware troubleshooting for laptops, printers, and peripherals (with Freshdesk escalation)
+- Direct answers from the IT knowledge base
+- Automatic ticket creation in Freshdesk when issues cannot be self-resolved
 
 ### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

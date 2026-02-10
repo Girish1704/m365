@@ -1,355 +1,295 @@
-# Exercise 12: Build Conversational Topics and Deploy Quiz Generator
+# Exercise 12: Create a Quiz Generator Agent with Prompt Actions
 
 ## Estimated Duration: 45 Minutes
 
 ## Overview
 
-In this exercise, you will build a conversational topic that integrates the prompt action created in the previous exercise. Users will be able to interactively generate quizzes through a guided conversation that collects their preferences and delivers customized quiz content. You will also test the complete solution and optionally deploy it to Microsoft Teams.
+In this exercise, you will create a Quiz Generator agent in Microsoft Copilot Studio and implement a prompt action that generates educational quiz questions. Prompt actions are a powerful feature that allows you to define custom AI instructions with specific parameters, enabling highly tailored content generation.
 
-By the end of this exercise, you will have a fully functional Quiz Generator agent that users can interact with through natural conversation.
+By the end of this exercise, you will have a working prompt action that can generate multiple-choice quiz questions on any topic, with configurable difficulty levels and question counts.
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Create the Generate Quiz Topic
-- Task 2: Build the Conversation Flow
-- Task 3: Connect the Prompt Action to the Topic
-- Task 4: Test the Complete Quiz Generator
-- Task 5: Publish and Deploy to Teams (Optional)
+- Task 1: Create a Quiz Generator Agent
+- Task 2: Create a Prompt Action for Quiz Generation
+- Task 3: Configure Prompt Inputs and Parameters
+- Task 4: Write the Prompt Instructions
+- Task 5: Test the Prompt Action Directly
 
-### Task 1: Create the Generate Quiz Topic
+### Task 1: Create a Quiz Generator Agent
 
-In this task, you will create a topic that triggers when users want to generate a quiz.
+In this task, you will create a new agent specifically designed for generating educational quizzes.
 
-1. In Microsoft Copilot Studio, open your **Quiz Generator** agent created in the previous exercise.
+1. On the Copilot Studio home page, click **+ Create** from the left navigation.
 
-   ![](../media/ex12-open-agent.png)
+   ![](../media/m36-copg-ex6-c-g1.png)
 
-1. Select **Topics (1)** in the top navigation, choose **+ Add a topic (2)**, and then select **From blank (3)** to create a new topic.
+1. Click **+ Create blank agent** to start creating a new agent.
 
-   ![](../media/m36-copg-ex11-f-g41.png)
+   ![](../media/m36-copg-ex6-c-g2.png)
 
-1. Configure the topic name:
+1. On the agent **Overview** page, verify that the agent has been successfully provisioned, and then select **Edit**.
 
-   **Topic Name:**
-   ```
-   Generate Quiz
-   ```
+   ![](../media/m36-copg-ex11-f-g45.png)
 
-   ![](../media/m36-copg-ex11-f-g42.png)
-
-1. In the **Trigger** node, enter:
-
-   ```
-   This topic generates customized multiple-choice quiz questions on any topic. It helps users create quizzes by collecting the topic, number of questions, and difficulty level. Users can ask things like "Create a quiz", "Generate quiz questions", "Make a test", "Quiz me on", or "Help me make a quiz".
-   ```
-
-   ![](../media/m36-copg-ex12-g-g1.png)
-
-1. In the **Trigger** node, select **+** to add the next step to the topic flow.
-
-   ![](../media/m36-copg-ex12-g-g2.png)
-
-1. From the add step menu, select **Send a message** to insert a message node into the topic flow.
-
-   ![](../media/m36-copg-ex12-g-g3.png)
-
-1. In the **Message** node, enter the welcome text to introduce the Quiz Generator to users.
-
-   ```
-   Welcome to the Quiz Generator!
-
-   I can create customized multiple-choice quizzes on any topic you'd like.
-   ```
-
-   ![](../media/m36-copg-ex12-g-g4.png)
-
-1. Select the **+** button below the message node to add the next step in the conversation flow.
-
-   ![](../media/m36-copg-ex12-g-g5.png)
-
-1. From the add step menu, select **Ask a question** to collect input from the user.
-
-   ![](../media/m36-copg-ex12-g-g6.png)
-
-1. In the **Question** node, enter the prompt in the **Question text (1)** field, and set **Identify (2)** to **User’s entire response**.
-
-   ![](../media/m36-copg-ex12-g-g7.png)
-
-1. In the **Question** node, select the **Var1** variable under **Save user response as** to edit the variable name.
-
-   ![](../media/m36-copg-ex12-g-g8.png)
-
-1. In the **Variable properties** pane, enter the new name in the **Variable name `QuizTopic` (1)** field, and then select **Close (2)** to save the changes.
-
-   ![](../media/m36-copg-ex12-g-g9.png)
-
-1. Select the **+ (1)** button below the node, and then choose **Ask a question (2)** to add the next input step.
-
-   ![](../media/m36-copg-ex12-g-g10.png)
-
-1. In the **Question** node, verify that the **Question text (1)**, **Identify (2)**, and **Save user response as (3)** fields are configured correctly for collecting the number of questions.
+1. In the **Details** pane, enter the required information in the **Name (1)** and **Description (2)** fields, and then select **Save (3)**.
 
    | Field | Value |
    |-------|-------|
-   | Question text | `How many questions would you like in your quiz?` |
-   | Identify | User’s entire response |
-   | Save response as | Create a new variable named `QuestionCount` |
+   | Name | `Quiz Generator` |
+   | Description | `An intelligent agent that generates educational quiz questions on any topic with customizable difficulty levels` |
+   | Instructions | (See below) |
 
-   ![](../media/m36-copg-ex12-g-g11.png)
+   ![](../media/m36-copg-ex11-f-g46.png)
 
-1. Select the **+ (1)** button below the node, and then choose **Ask a question (2)** to add the next question step.
+1. In the **Instructions** section, select **Edit**.
 
-   ![](../media/m36-copg-ex12-g-g12.png)
+   ![](../media/m36-copg-ex11-f-g47.png)
 
-1. In the **Question** node, enter the prompt in the **Question text (1)** field, set **Identify (2)** to **Multiple choice options**, and select **New option (3)** to add answer choices.
+1. In the **Instructions** editor, enter the required content in the text area **(1)**, and then select **Save (2)**.
+
+   ```
+   You are a Quiz Generator assistant that helps educators, trainers, and learners create educational assessments.
+
+   Your capabilities include:
+   - Generating multiple-choice quiz questions on any topic
+   - Supporting different difficulty levels (Beginner, Intermediate, Advanced)
+   - Creating answer keys with explanations
+   - Producing quizzes of varying lengths (1-10 questions)
+
+   When interacting with users:
+   - Be helpful and encouraging
+   - Ask clarifying questions if the topic is too broad
+   - Suggest related topics if appropriate
+   - Ensure all generated content is accurate and educational
+   ```
+
+   ![](../media/m36-copg-ex11-f-g48.png)
+
+### Task 2: Create a Prompt Action for Quiz Generation
+
+In this task, you will create a prompt action that defines how quiz questions are generated using AI.
+
+1. In the agent editor, select **Tools (1)** from the left navigation pane, and then choose **+ New tool (2)**.
+
+   ![](../media/m36-copg-ex11-f-g1.png)
+
+1. In the **New tool** dialog, select **Prompt**.
+
+   ![](../media/m36-copg-ex11-f-g43.png)
+
+   >**What is a Prompt?**
+   >
+   >Prompts apply AI to text, documents, or images to analyze, summarize, or transform them. You can create reusable, parameterized AI generation logic.
+
+1. The **Custom prompt** editor will open. You'll see:
+
+   - **Instructions** panel (left) - where you write your prompt
+   - **Model** selector - defaults to GPT-4.1 mini
+   - **Model response** panel (right) - shows test results
+   - **+ Add content** button - to add inputs and knowledge
+   - **Get started with Copilot** section - AI helper to create prompts
+
+   ![](../media/ex11-prompt-editor.png)
+
+1. First, let's rename the prompt. Click on the title **"Custom prompt [date/time]"** at the top and rename it to:
+
+   ```
+   Generate Quiz Questions
+   ```
+
+   ![](../media/m36-copg-ex11-f-g2.png)
+
+   ![](../media/m36-copg-ex11-f-g44.png)
+
+### Task 3: Write the Prompt Instructions
+
+In this task, you will write detailed instructions that guide the AI in generating high-quality quiz questions.
+
+1. Enter the following complete prompt (you can copy-paste this):
+
+   ```
+   You are an expert educational content creator specializing in creating quiz questions for learning and assessment purposes.
+
+   Generate exactly {NumberOfQuestions} multiple choice quiz questions about the topic: {Topic}
+
+   Difficulty Level: {DifficultyLevel}
+
+   ## Difficulty Guidelines:
+
+   **Beginner:**
+   - Basic concepts and definitions
+   - Straightforward, commonly known facts
+   - Clear correct answer with obviously incorrect distractors
+
+   **Intermediate:**
+   - Requires understanding and application of concepts
+   - May involve comparing or contrasting ideas
+   - Distractors are plausible but distinguishable
+
+   **Advanced:**
+   - Complex scenarios requiring deep understanding
+   - May involve analysis, synthesis, or evaluation
+   - Distractors are very plausible, requiring careful thought
+
+   ## Question Format Requirements:
+
+   For each question, you MUST provide:
+   1. Question number and clear question text
+   2. Exactly four answer options labeled A, B, C, and D
+   3. The correct answer letter
+   4. A brief educational explanation (2-3 sentences)
+
+   ## Quality Standards:
+
+   - Questions must be clear, unambiguous, and grammatically correct
+   - All four options must be plausible (no joke answers)
+   - Each question should test a different aspect of the topic
+   - Explanations should reinforce learning, not just state the answer
+   - Avoid "All of the above" or "None of the above" options
+   - Ensure factual accuracy
+
+   ## Output Format:
+
+   📝 **Quiz: {Topic}**
+   📊 **Difficulty: {DifficultyLevel}**
+   📋 **Questions: {NumberOfQuestions}**
+
+   ---
+
+   **Question 1:** [Question text here]
+
+   A) [Option A]
+   B) [Option B]
+   C) [Option C]
+   D) [Option D]
+
+   ✅ **Correct Answer:** [Letter]
+   💡 **Explanation:** [Educational explanation here]
+
+   ---
+
+   [Continue for all questions...]
+
+   ---
+
+   ## 📋 Answer Key Summary
+
+   | Q# | Answer | Topic |
+   |----|--------|-------|
+   | 1 | [Letter] | [Brief topic] |
+   | 2 | [Letter] | [Brief topic] |
+   [Continue for all questions...]
+
+   Now generate the quiz based on the provided parameters.
+   ```
+
+### Task 4: Configure Prompt Inputs and Parameters
+
+In this task, you will add input parameters that control quiz generation.
+
+1. In the **Instructions** text area, you'll see the placeholder text:
+   
+1. In the **Instructions** editor, select the `{NumberOfQuestions}` input variable **(1)**, and then choose **+ Add content (2)**.
+
+   ![](../media/m36-copg-ex11-f-g24.png)
+
+1. From the input menu, select **Text**.
+
+   ![](../media/m36-copg-ex11-f-g25.png)
+
+1. In the input configuration pane, enter the required information in the **Name (1)** and **Sample data (2)** fields, and then select **Close (3)**.
 
    | Field | Value |
    |-------|-------|
-   | Question text | `What difficulty level would you prefer?` |
-   | Identify | Multiple choice options |
+   | Name | `NumberOfQuestions` |
+   | Description | `How many questions to generate (1-10)` |
 
-   ![](../media/m36-copg-ex12-g-g13.png)
+   ![](../media/m36-copg-ex11-f-g26.png)
 
-1. Under **Options for user (1)**, verify that all required choices are added, and confirm the response is saved as **QuizDifficulty (2)**.
+1. In the **Instructions** editor, select the `{Topic}` input variable **(1)**, and then choose **+ Add content (2)**.
 
-   - `Beginner`
-   - `Intermediate`
-   - `Advanced`
+   ![](../media/m36-copg-ex11-f-g27.png)
+
+1. From the **In your prompt** menu, select **Text**.
+
+   ![](../media/m36-copg-ex11-f-g28.png)
+
+1. In the input configuration pane, enter the required information in the **Name (1)** and **Sample data (2)** fields, and then select **Close (3)**.
 
    | Field | Value |
    |-------|-------|
-   | Save response as | Create a new variable named `QuizDifficulty` |
+   | Name | `Topic` |
+   | Description | `The subject or topic for quiz questions (e.g., Solar System, Python Programming)` |
 
-   ![](../media/m36-copg-ex12-g-g14.png)
+   ![](../media/m36-copg-ex11-f-g29.png)
 
-1. Select the **+ (1)** button below the node, and then choose **Variable management (2)** to manage topic variables.
+1. In the **Instructions** editor, select the `{DifficultyLevel}` input variable **(1)**, and then choose **+ Add content (2)**.
 
-   ![](../media/m36-copg-ex12-g-g15.png)
+   ![](../media/m36-copg-ex11-f-g30.png)
 
-1. Under **All other conditions**, select the **+** button to add the next step for the default branch.
+1. From the **In your prompt** menu, select **Text**.
 
-   ![](../media/m36-copg-ex12-g-g42.png)
+   ![](../media/m36-copg-ex11-f-g28.png)
 
-1. Under **All other conditions**, select the **+** button, and then choose **Send a message** to add a default response.
+1. In the input configuration pane, enter the required information in the **Name (1)** and **Sample data (2)** fields, and then select **Close (3)**.
 
-   ![](../media/m36-copg-ex12-g-g43.png)
+   | Field | Value |
+   |-------|-------|
+   | Name | `DifficultyLevel` |
+   | Description | `The difficulty level - Beginner, Intermediate, or Advanced` |
 
-1. In the **Message** node, enter the default response in the text field **(1)**, and then select the **+ (2)** button to continue building the flow.
+   ![](../media/m36-copg-ex11-f-g31.png)
 
-   ![](../media/m36-copg-ex12-g-g44.png)
+1. In the **Output Format** section, select the `{Topic}` input variable **(1)**, and then choose **+ Add content (2)** to add additional inputs.
 
-1. From the add step menu, select **Topic management (1)**, and then choose **Go to step (2)** to redirect the conversation flow.
+   ![](../media/m36-copg-ex11-f-g33.png)
 
-   ![](../media/m36-copg-ex12-g-g45.png)
+   ![](../media/m36-copg-ex11-f-g34.png)
 
-1. In the **Select destination step** panel, choose the **Question** node for difficulty selection to redirect the flow back to this step.
+1. From the input menu, select **In your prompt**.
 
-   ![](../media/m36-copg-ex12-g-g46.png)
+   ![](../media/m36-copg-ex11-f-g35.png)
 
-1. Verify that the flow redirects from the default message back to the difficulty **Question** node for retry.
+1. From the **In your prompt** list, select **Topic**.
 
-   ![](../media/m36-copg-ex12-g-g47.png)
+   ![](../media/m36-copg-ex11-f-g36.png)
 
-1. From the **Variable management** menu, select **Set a variable value** to configure a new variable.
+1. Repeat the same steps to add the `{DifficultyLevel}` and `{NumberOfQuestions}` input variables to the **Output Format** section.
 
-   ![](../media/m36-copg-ex12-g-g26.png)
+   ![](../media/m36-copg-ex11-f-g37.png)
 
-1. In the **Set variable** field, select the picker **(1)**, and then choose **Create a new variable (2)** to define a new variable.
+1. Select **Test** to validate the prompt using the configured input variables.
 
-   ![](../media/m36-copg-ex12-g-g27.png)
+   ![](../media/m36-copg-ex11-f-g22.png)
 
-1. In the **Set variable value** node, select **DifficultyText (1)**, enter the name in the **Variable name (2)** field, and then select **Close (3)** to save the variable.
+1. Verify that the generated quiz is displayed in the **Model response (1)** panel without any errors, and then select **Save (2)**.
 
-   ![](../media/m36-copg-ex12-g-g28.png)
+   ![](../media/m36-copg-ex11-f-g38.png)
 
-1. In the **To value** field, select the picker **(1)**, and then choose **QuizTopic (2)** to assign the source variable.
+1. If a confirmation dialog appears to add the prompt to the agent, select **Yes**.
 
-   ![](../media/m36-copg-ex12-g-g29.png)
+1. In the **Add to an Agent** dialog, select the **Quiz Generator** agent, and then choose **Add**.
 
-1. In the **Set variable value** node, verify that **DifficultyText** is set to type **string**, and confirm the value is assigned correctly.
+   ![](../media/m36-copg-ex11-f-g39.png)
 
-   ![](../media/m36-copg-ex12-g-g30.png)
+1. Select **Agents**, choose **Quiz Generator**, navigate to **Tools (1)**, and then verify that the **Generate QuizQuestions (3)** prompt is listed.
 
-1. In the **To value** field, select the picker **(1)**, switch to **Formula (2)**, enter `Text(Topic.QuizDifficulty)` **(3)**, and then select **Insert (4)**.
-
-   ![](../media/m36-copg-ex12-g-g31.png)
-
-1. Select the **+ (1)** button below the node, and then choose **Send a message (2)** to add a confirmation message.
-
-   ![](../media/m36-copg-ex12-g-g59.png)
-
-1. In the **Message** node, enter the confirmation text using the variables.
-
-   ```
-   Perfect! Here's what I'll create for you:
-
-   Topic: {Topic.QuizTopic}
-   Questions: {Topic.QuestionCountText}
-   Difficulty: {Topic.DifficultyText}
-
-   Generating your quiz now... Please wait a moment.
-   ```
-
-   ![](../media/m36-copg-ex12-g-g16.png)
-
-1. After inserting the variables in the **Message** node, click outside the variable fields to automatically apply and format them in the message.
-
-   ![](../media/m36-copg-ex12-g-g19.png)
-
-1. Select the **+** button below the confirmation message to add the next step in the topic flow.
-
-1. Select **Add a tool (1)**, switch to the **Tool (2)** tab, and then choose **Generate QuizQuestions (3)** to add the prompt action.
-
-   ![](../media/m36-copg-ex12-g-g21.png)
-
-1. In the **Tool** node, select **+ Set value** to configure the input parameters for the action.
-
-   ![](../media/m36-copg-ex12-g-g22.png)
-
-1. In the input mapping panel, select **Topic (1)**, **DifficultyLevel (2)**, and **NumberOfQuestions (3)** to map the corresponding topic variables.
-
-   ![](../media/m36-copg-ex12-g-g23.png)
-
-1. In the **Tool** node, verify that the input fields for are displayed so you can enter or select the required values.
-
-   ![](../media/m36-copg-ex12-g-g24.png)
-
-1. In the **DifficultyLevel** input, select the picker **(1)**, and then choose **QuizDifficulty (2)** to map the variable.
-
-   ![](../media/m36-copg-ex12-g-g32.png)
-
-1. In the **NumberOfQuestions** input, select the picker **(1)**, and then choose **QuestionCount (2)** to map the variable.
-
-   ![](../media/m36-copg-ex12-g-g33.png)
-
-1. In the **Topic** input, select the picker **(1)**, confirm the **Custom (2)** tab is selected, and then choose **QuizTopic (3)** to map the variable.
-
-   ![](../media/m36-copg-ex12-g-g34.png)
-
-1. Select **Save** to store the latest changes to the topic.
-
-   ![](../media/m36-copg-ex12-g-g50.png)
-
-### Task : Test the Complete Quiz Generator
-
-In this task, you will perform comprehensive testing of the quiz generator.
-
-1. Select **Test** in the top menu to open the testing panel and validate the topic flow.
-
-   ![](../media/m36-copg-ex12-g-g51.png)
-
-1. **Test 1 - Complete Flow:**
-
-   ```
-   Can you help me create a quiz?
-   ```
-
-   ![](../media/m36-copg-ex12-g-g52.png)
-
-1. In the test chat panel, enter a topic in the message box **(1)**, and then select **Send (2)** to continue the conversation.
-
-   ![](../media/m36-copg-ex12-g-g53.png)
-
-1. In the test chat panel, enter the number of questions in the input field **(1)**, and then select **Send (2)** to proceed.
-
-   ![](../media/m36-copg-ex12-g-g54.png)
-
-1. In the test chat panel, select a difficulty option, such as **Intermediate**, to continue the quiz setup.
-
-   ![](../media/m36-copg-ex12-g-g55.png)
-
-1. Wait for the confirmation message to display while the agent generates the quiz content.
-
-   ![](../media/m36-copg-ex12-g-g56.png)
-
-### Task 5: Publish and Deploy to Teams (Optional)
-
-In this task, you will publish the Quiz Generator and optionally deploy it to Microsoft Teams.
-
-1. Once testing is complete.
-
-1. Select **Publish** in the top menu to make the updated topic available.
-
-   ![](../media/m36-copg-ex12-g-g57.png)
-
-1. In the **Publish this agent** dialog, select **Publish** to confirm and deploy the latest changes.
-
-   ![](../media/m36-copg-ex12-g-g58.png)
-
-1. **(Optional) Deploy to Microsoft Teams:**
-
-   - Click on **Channels** in the left navigation
-   - Select **Microsoft Teams**
-
-   ![](../media/ex12-channels.png)
-
-1. Click **Turn on Teams** to enable the Teams channel.
-
-   ![](../media/ex12-turn-on-teams.png)
-
-1. Configure Teams availability:
-
-   - Select **Show to everyone in my org** or **Show to users or groups**
-   - Click **Submit for admin approval** (or **Add to Teams** if you have permissions)
-
-   ![](../media/ex12-teams-config.png)
-
-1. Click **Open the app in Teams** to test in Teams.
-
-   ![](../media/ex12-open-teams.png)
-
-1. In Microsoft Teams, test the Quiz Generator:
-
-   **Prompt:**
-   ```
-   Create a quiz about cloud computing
-   ```
-
-   ![](../media/ex12-teams-test.png)
-
-1. Verify the complete flow works correctly in Teams:
-
-   - Welcome message displays
-   - All questions are asked correctly
-   - Quiz is generated and displayed
-   - Follow-up options work
-
-   ![](../media/ex12-teams-complete.png)
+   ![](../media/m36-copg-ex11-f-g40.png)
 
 ## Summary
 
-In this exercise, you built a complete conversational topic that integrates the prompt action for quiz generation. You learned how to:
+In this exercise, you created a Quiz Generator agent and implemented a prompt action for generating educational quiz questions. You learned how to:
 
-- Create topics with multiple trigger phrases for natural language activation
-- Build multi-step conversation flows with questions and messages
-- Use variables to collect and pass user inputs
-- Connect prompt actions to topics with proper input mapping
-- Handle follow-up actions with condition branches
-- Test conversational flows comprehensively
-- Publish and deploy agents to Microsoft Teams
+- Create a specialized agent for educational content generation
+- Configure prompt actions with multiple input parameters
+- Write detailed prompt instructions that guide AI output
+- Use variable placeholders (`{{Variable}}`) in prompts
+- Define structured output formats for consistent results
+- Test prompt actions directly before integrating into topics
 
-Your Quiz Generator agent is now a complete solution that can:
-- Generate quizzes on any topic
-- Support multiple difficulty levels (Beginner, Intermediate, Advanced)
-- Create 3, 5, 7, or 10 questions per quiz
-- Provide answer keys with explanations
-- Allow users to generate multiple quizzes in one session
-- Be accessed through Teams (if deployed)
+In the next exercise, you will build a conversational topic that integrates this prompt action, allowing users to interactively generate quizzes through a guided conversation flow.
 
-## Congratulations!
-
-You have successfully completed all exercises in this lab! You've learned how to:
-
-1. **Create Copilot Agents** with custom instructions and knowledge bases
-2. **Integrate Freshdesk** for professional ticketing workflows
-3. **Build AI-generated Topics** using natural language descriptions
-4. **Create Power Automate Flows** for automation
-5. **Deploy to Microsoft Teams** for organization-wide access
-6. **Implement Prompt Actions** for custom AI content generation
-7. **Build Conversational Topics** for interactive user experiences
-
-These skills enable you to build powerful AI-powered solutions using Microsoft Copilot Studio that can transform how your organization handles support, education, and automation.
-
-### You have successfully completed all exercises in this lab!
+### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

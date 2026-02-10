@@ -1,505 +1,358 @@
-# Exercise 9: Setup Freshdesk Ticketing and Create IT Support Topics
+# Exercise 9: Build an IT Support Copilot Using Microsoft Copilot Studio
 
 ## Estimated Duration: 45 Minutes
 
 ## Overview
 
-In this exercise, you will integrate a professional ticketing system (Freshdesk) with your IT Support Copilot. You will set up a Freshdesk free trial account, obtain API credentials, create an agent flow to automatically create tickets in Freshdesk, and then build intelligent topics using generative AI that connect to your Freshdesk flow for ticket escalation.
+In this exercise, you will create an AI-powered IT Support Copilot using Microsoft Copilot Studio that helps employees resolve common IT issues automatically. The copilot will leverage a knowledge base to provide intelligent troubleshooting guidance for password resets, VPN connectivity issues, laptop performance problems, and printer support.
 
-By the end of this exercise, your IT Support Copilot will be able to automatically create support tickets in Freshdesk when users need escalation—providing a production-ready helpdesk experience.
+This is the first part of building an autonomous IT support solution. In subsequent exercises, you will add automated ticket creation and deploy the agent to Microsoft Teams.
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Setup Freshdesk Free Trial Account
-- Task 2: Obtain Freshdesk API Credentials
-- Task 3: Create Freshdesk Ticket Flow in Copilot Studio
-- Task 4: Create CreateSupportTicket Topic
-- Task 5: Create CredentialResetSupport Topic
-- Task 6: Create VPNConnectivitySupport Topic
-- Task 7: Create HardwareSupportAssistant Topic
+- Task 1: Upload IT Support documents to SharePoint
+- Task 2: Access Microsoft Copilot Studio
+- Task 3: Create a new IT Support Copilot
+- Task 4: Configure copilot instructions for IT support scenarios
+- Task 5: Add SharePoint knowledge source
+- Task 6: Test the copilot with basic IT queries
 
-### Task 1: Setup Freshdesk Free Trial Account
+### Task 1: Upload IT Support Documents to SharePoint
 
-In this task, you will create a free Freshdesk trial account to use as your ticketing system.
+In this task, you will download the IT Support documents and upload them to SharePoint. These documents will serve as the knowledge base for your IT Support Copilot.
 
-1. Open a new browser tab and navigate to:
+1. First, download the IT Support documents. Open a new browser tab and navigate to:
 
    ```
-   https://www.freshworks.com/freshdesk/
+   https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/Day3-datasets.zip
    ```
 
-   ![](../media/ex9-freshdesk-home.png)
+1. Once downloaded, extract the **Day3-datasets.zip** file to a location of your choice (e.g., Desktop or Downloads folder).
 
-1. Click on **Free trial** or **Try it free** button.
+1. Open **File Explorer** and navigate to the extracted folder. Inside the **IT-Datasets** folder, you will find the following IT Support documents:
 
-   ![](../media/ex9-freshdesk-trial.png)
+   | Document | Description |
+   |----------|-------------|
+   | 01-Password-and-Account-Management.pdf | Password policies, SSPR, MFA, account lockouts |
+   | 02-VPN-and-Network-Troubleshooting.pdf | VPN setup, connectivity issues, WiFi |
+   | 03-Laptop-and-Performance-Guide.pdf | Slow computer, hardware issues, optimization |
+   | 04-Printer-and-Peripheral-Support.pdf | Printer issues, monitors, docks, peripherals |
+   | 05-IT-Support-Quick-Reference.pdf | Quick reference card with common solutions |
 
-1. Fill in the registration form with the following details:
+   >**Note:** These 5 PDF files contain comprehensive IT support documentation that your copilot will use to answer employee questions.
+
+1. Open a new browser tab and navigate to your SharePoint site:
+
+   ```
+   https://<inject key="Tenant Name" enableCopy="false"/>.sharepoint.com/sites/ITSupport
+   ```
+
+1. Click on **Documents** in the left navigation.
+
+1. Click **Upload** > **Files** to upload the IT Support documents.
+
+1. Browse to the location where you extracted the Day3-datasets.zip, navigate to the **IT-Datasets** folder, select all 5 PDF files, and click **Open**.
+
+1. Wait for all files to upload successfully. You should see all 5 IT Support documents in the Documents library.
+
+   >**Note:** These documents will be indexed by the copilot to provide accurate, knowledge-based responses to IT support queries.
+
+### Task 2: Access Microsoft Copilot Studio
+
+In this task, you will navigate to Microsoft Copilot Studio and explore its interface.
+
+1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
+
+1. Navigate to Microsoft Copilot Studio:
+
+   ```
+   https://copilotstudio.microsoft.com
+   ```
+
+   ![](../media/ex8-copilot-studio-url.png)
+
+1. Sign in with your lab credentials if prompted:
+
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
+
+   ![](../media/ex8-studio-signin.png)
+
+1. If you see a **Stay signed in?** prompt, select **Yes**.
+
+1. You will be redirected to the Microsoft Copilot Studio home page. Take a moment to explore the interface:
+
+   - **Home** — Overview and quick actions
+   - **Agents** — List of all your created agents
+   - **Environments** — Manage different environments
+
+   ![](../media/ex8-studio-home.png)
+
+1. If prompted to select an environment, choose the default environment or your organization's environment.
+
+   ![](../media/ex8-select-environment.png)
+
+### Task 3: Create a New IT Support Copilot
+
+In this task, you will create a new copilot specifically designed for IT support automation.
+
+1. On the Copilot Studio home page, click **+ Create** from the left navigation panel.
+
+   ![](../media/ex8-create-copilot.png)
+
+1. Click on **+ New Agent** option to create a new agent.
+
+   ![](../media/ex8-new-agent.png)
+
+   >**Note:** If you see an error like "There was a problem creating your agent", click **Create a blank agent** instead.
+
+1. Once on the agent overview pane, click **Edit** inside the **Details** card to edit the agent's name and description.
+
+   ![](../media/ex8-edit-details.png)
+
+1. Configure the agent details as follows:
 
    | Field | Value |
    |-------|-------|
-   | First Name | ODL User |
-   | Last Name | <inject key="DeploymentID"></inject> |
-   | Work Email | <inject key="AzureAdUserEmail"></inject> |
-   | Company | Contoso |
+   | Name | `IT Support Copilot` |
+   | Description | `AI-powered assistant for IT support automation including password resets, VPN issues, laptop troubleshooting, and printer support.` |
 
-   ![](../media/ex9-freshdesk-register.png)
+   ![](../media/ex8-agent-details.png)
 
-1. Click **Sign up** to create your account.
+1. Click **Save** to apply the changes.
 
-1. Check your email inbox at **Outlook** for the verification email from Freshdesk:
+### Task 4: Configure Copilot Instructions for IT Support Scenarios
 
-   - Open a new tab and navigate to: `https://outlook.office.com`
-   - Sign in with your lab credentials if prompted
-   - Look for an email from Freshdesk with subject like "Activate your account"
+In this task, you will configure detailed instructions that define how the copilot should handle IT support requests.
 
-   ![](../media/ex9-freshdesk-email.png)
+1. On the agent overview page, scroll down to the **Instructions** card and click **Edit**.
 
-1. Click the activation link in the email to verify your account.
+   ![](../media/ex8-edit-instructions.png)
 
-1. You will be redirected to set your password. Enter:
+1. Enter the following instructions in the **Instructions** box:
 
    ```
-   Freshdesk@2025
+   You are an IT Support Copilot designed to help employees resolve common IT issues quickly and efficiently.
+
+   Handle inquiries related to:
+   - Password resets and account lockouts
+   - VPN connectivity issues
+   - Slow device performance and laptop problems
+   - Printer issues and printing problems
+
+   When answering questions:
+   - First, check the uploaded IT support knowledge base for documented solutions
+   - Provide clear, step-by-step troubleshooting guidance
+   - Use simple, non-technical language when explaining solutions
+   - Ask clarifying questions to understand the issue better before providing solutions
+
+   For password reset requests:
+   - Provide self-service reset instructions from the knowledge base
+   - Guide users through the password reset portal process
+   - If unsuccessful, offer to escalate to IT support
+
+   For VPN and connectivity issues:
+   - Guide users through common troubleshooting steps
+   - Check if the issue is resolved after each step
+   - Suggest alternative connection methods if available
+
+   For hardware/performance issues:
+   - Gather details about the problem (slow startup, applications, etc.)
+   - Suggest troubleshooting steps from the knowledge base
+   - Recommend restarting as a first step for most issues
+
+   For printer issues:
+   - Ask about the specific problem (offline, jammed, blank pages)
+   - Provide targeted troubleshooting steps
+   - Guide users to check physical connections and paper
+
+   Always:
+   - Be professional, patient, and helpful
+   - Acknowledge the user's frustration when appropriate
+   - Provide next steps or escalation options when solutions don't work
    ```
 
-   ![](../media/ex9-freshdesk-password.png)
+   ![](../media/ex8-instructions-content.png)
 
-1. Complete the setup wizard:
-   - Choose your data center region (select the one closest to you)
-   - Skip any optional onboarding steps
+1. Click **Save** to save the instructions.
 
-1. Once setup is complete, you will land on the Freshdesk dashboard.
+   ![](../media/ex8-save-instructions.png)
 
-   ![](../media/ex9-freshdesk-dashboard.png)
+### Task 5: Add SharePoint Knowledge Source
 
-   >**Important:** Keep this browser tab open. Note the URL in your browser's address bar—it will look like:
-   >```
-   >https://your-company-name.freshdesk.com
-   >```
-   >This is your **Account URL** which you will need in the next task.
+In this task, you will connect the IT Support SharePoint site as a knowledge source for the copilot. The SharePoint site now contains the IT Support documentation that the copilot will reference to answer questions.
 
-### Task 2: Obtain Freshdesk API Credentials
+1. On your IT Support Copilot page, click **+ Add knowledge** in the Knowledge section.
 
-In this task, you will retrieve your Freshdesk API key which is required to connect Copilot Studio to Freshdesk.
+   ![](../media/ex8-add-knowledge.png)
 
-1. In the Freshdesk portal, click on your **profile icon** in the top-right corner.
+1. Select **SharePoint** from the available knowledge source options.
 
-   ![](../media/ex9-freshdesk-profile.png)
+   ![](../media/ex8-select-sharepoint.png)
 
-1. Select **Profile Settings** from the dropdown menu.
-
-   ![](../media/ex9-freshdesk-settings.png)
-
-1. In your profile page, scroll down to find the **Your API Key** section.
-
-1. Click on **View API Key** to reveal your API key.
-
-   ![](../media/ex9-freshdesk-apikey.png)
-
-1. **Copy the API Key** and save it somewhere safe (e.g., Notepad). You will need this in the next task.
-
-   >**Important:** Keep your API key confidential. This key provides full access to your Freshdesk account.
-
-1. Also note your **Account URL** from the browser address bar:
-   ```
-   https://your-company-name.freshdesk.com
-   ```
-
-   >**Example:** If your URL is `https://contoso-12345.freshdesk.com`, then your Account URL is exactly that.
-
-1. You should now have two values saved:
-   - **Account URL:** `https://your-company-name.freshdesk.com`
-   - **API Key:** Your copied API key
-
-### Task 3: Create Freshdesk Ticket Flow in Copilot Studio
-
-In this task, you will create an agent flow that connects to Freshdesk and creates support tickets automatically.
-
-1. Return to **Microsoft Copilot Studio** and open your **IT Support Copilot**.
-
-   ![](../media/ex9-open-copilot.png)
-
-1. In the left navigation, click on **Actions** (or **Flows** if displayed).
-
-   ![](../media/ex9-actions-nav.png)
-
-1. Click **+ Add an action** and then select **New agent flow** (or **Create a new flow**).
-
-   ![](../media/ex9-new-flow.png)
-
-   >**Note:** Power Automate flow designer will open in a new pane or tab.
-
-1. You will see a flow template with a Copilot trigger: **When an agent calls the flow**.
-
-   ![](../media/ex9-flow-trigger.png)
-
-1. Click on the trigger **When an agent calls the flow** to expand it.
-
-1. Click **+ Add an input** and add the following two inputs:
-
-   | Input Name | Type |
-   |------------|------|
-   | Subject | Text |
-   | Description | Text |
-
-   ![](../media/ex9-flow-inputs.png)
-
-1. Click **+ New step** (or the **+** button below the trigger).
-
-1. In the search box, type **Freshdesk** and wait for the connector to appear.
-
-   ![](../media/ex9-freshdesk-connector.png)
-
-1. Under the **Freshdesk** connector, select the action **Create a ticket**.
-
-   ![](../media/ex9-create-ticket-action.png)
-
-1. You will be prompted to create a connection to Freshdesk. Fill in the connection details:
-
-   | Field | Value |
-   |-------|-------|
-   | Connection Name | helpdesk |
-   | Account URL | Your Freshdesk account URL (e.g., `https://contoso-12345.freshdesk.com`) |
-   | API Key | Your Freshdesk API key (copied in Task 2) |
-   | Password | Enter `X` (just the letter X - this is a placeholder) |
-
-   ![](../media/ex9-freshdesk-connection.png)
-
-   >**Note:** The Password field is required by the connector but Freshdesk uses API key authentication. Enter any character like `X`.
-
-1. Click **Create** or **Sign in** to establish the connection.
-
-1. Once connected, configure the **Create a ticket** action with these values:
-
-   | Field | Value |
-   |-------|-------|
-   | Subject | Click in the field, then click the **lightning bolt (⚡)** icon, select **Subject** from Dynamic content |
-   | Description | Click in the field, then click the **lightning bolt (⚡)** icon, select **Description** from Dynamic content |
-   | Email | <inject key="AzureAdUserEmail"></inject> |
-   | Priority | 2 (Medium) |
-   | Status | 2 (Open) |
-
-   ![](../media/ex9-ticket-config.png)
-
-   >**Tip:** For Subject and Description fields, use the Dynamic content panel to map the input variables from the trigger.
-
-1. Click **+ New step** after the Create a ticket action.
-
-1. Search for **Respond to Copilot** and select it.
-
-   ![](../media/ex9-respond-copilot.png)
-
-1. In the **Respond to Copilot** action, click **+ Add an output**:
-
-   | Field | Value |
-   |-------|-------|
-   | Type | Text |
-   | Name | TicketStatus |
-   | Value | Ticket created successfully. Our IT team will contact you shortly. |
-
-   ![](../media/ex9-respond-output.png)
-
-1. Click **Save** in the top-right corner to save the flow.
-
-   ![](../media/ex9-save-flow.png)
-
-1. Click **Publish** to publish the flow so it's available to the agent.
-
-   ![](../media/ex9-publish-flow.png)
-
-1. After publishing, click on the flow name at the top and rename it to:
+1. In the SharePoint URL field, enter the IT Support SharePoint site URL:
 
    ```
-   Freshdesk
+   https://<inject key="Tenant Name" enableCopy="false"/>.sharepoint.com/sites/ITSupport
    ```
 
-   ![](../media/ex9-rename-flow.png)
+   ![](../media/ex8-sharepoint-url.png)
 
-1. **Test the flow manually** (optional but recommended):
+1. Click **Add** to connect the SharePoint site.
 
-   - Click **Test** in the top-right corner
-   - Select **Manually**
-   - Enter test values:
-     - Subject: `Test Ticket from Copilot`
-     - Description: `This is a test ticket to verify the Freshdesk integration.`
-   - Click **Run flow**
+   ![](../media/ex8-add-sharepoint.png)
 
-   ![](../media/ex9-test-flow.png)
+1. If prompted, sign in with your lab credentials to authorize access to SharePoint.
 
-1. Verify the flow runs successfully (all green checkmarks).
+   ![](../media/ex8-sharepoint-auth.png)
 
-1. **Verify in Freshdesk:**
-   - Switch to your Freshdesk browser tab
-   - Go to **Tickets** from the left menu
-   - You should see the test ticket you just created!
+1. Click **Add to agent** to attach the SharePoint knowledge source to your copilot.
 
-   ![](../media/ex9-freshdesk-ticket.png)
+   ![](../media/ex8-add-to-agent.png)
 
-   >**Success!** Your Freshdesk integration is working. Return to Copilot Studio for the next task.
+1. Wait for the SharePoint site to sync. You should see the status change to **Ready** or **Synced**.
 
-### Task 4: Create CreateSupportTicket Topic
+   ![](../media/ex8-kb-ready.png)
 
-In this task, you will create a simple topic that directly creates support tickets in Freshdesk. This topic accepts a Subject and Description from the user and passes them to the Freshdesk flow.
+   >**Note:** The SharePoint knowledge source may take 2-5 minutes to index all documents. You can proceed to the next task while it processes.
 
-1. In Copilot Studio, ensure you are in the **IT Support Copilot**.
+### Task 5: Test the Copilot with Basic IT Queries
 
-1. Click on **Topics** in the left navigation panel.
+In this task, you will test the IT Support Copilot with various common IT support questions.
 
-   ![](../media/ex9-topics-nav.png)
+1. Click the **Test** button in the top-right corner or look for the **Test your copilot** panel on the right side.
 
-1. Click **+ Add a topic** and select **Create from description with Copilot**.
+   ![](../media/ex8-test-button.png)
 
-   ![](../media/ex9-add-topic.png)
-
-1. Enter the following details:
-
-   **Name:**
+1. The test chat panel will open. Start with a greeting:
+6
+   **Prompt:**
    ```
-   CreateSupportTicket
+   Hello, I need IT help
    ```
 
-   **Description:**
+   ![](../media/ex8-test-greeting.png)
+
+   **Expected Output:**
+
+   The copilot should greet you and offer to help with IT issues, possibly listing the types of problems it can assist with.
+
+   ![](../media/ex8-greeting-response.png)
+
+1. **Test 1 - Password Reset:**
+
+   **Prompt:**
    ```
-   Create a simple support ticket topic. Ask the user for the ticket subject and save it as a variable. Then ask them to describe their issue in detail and save that as another variable. After collecting both values, call the Freshdesk Power Automate flow and pass the subject variable to the Subject input and the description variable to the Description input. After the ticket is created, display a confirmation message saying the ticket has been created and IT team will contact them shortly.
-   ```
-
-   ![](../media/ex9-create-ticket-topic.png)
-
-1. Click **Create** to generate the topic.
-
-1. Wait for the AI to generate the topic (15-30 seconds).
-
-1. Review the generated topic:
-
-   - **Trigger phrases:** Verify it includes phrases like:
-     - "Create a ticket"
-     - "Open a support ticket"
-     - "I need to create a ticket"
-     - "Submit a ticket"
-     - "Log a ticket"
-
-1. Review the conversation flow and ensure it:
-   - Asks for the ticket subject and saves as `Subject` variable
-   - Asks for issue description and saves as `Description` variable
-   - Calls the Freshdesk flow with these variables
-
-1. **Connect the topic to the Freshdesk flow:**
-
-   - Locate the point after both variables are collected
-   - Click the **+** button
-   - Select **Add a tool** (or **Call an action**)
-
-   ![](../media/ex9-add-tool.png)
-
-1. In the tool selection pane:
-   - Search for **Freshdesk**
-   - Select your **Freshdesk** flow from the list
-
-   ![](../media/ex9-select-freshdesk.png)
-
-1. Configure the flow inputs by mapping the variables:
-
-   - For **Subject**: Click the **{x}** icon and select the **Subject** variable
-   - For **Description**: Click the **{x}** icon and select the **Description** variable
-
-   ![](../media/ex9-map-ticket-variables.png)
-
-   >**Important:** The variable names must match exactly. If your variables have different names, rename them in the Question nodes to `Subject` and `Description`.
-
-1. Add a **Message** node after the action:
-   ```
-   I've created your support ticket successfully. Our IT team will contact you shortly.
+   I forgot my password and can't log in
    ```
 
-1. Click **Save** to save the topic.
+   ![](../media/ex8-test-password.png)
 
-   ![](../media/ex9-save-topic.png)
+   **Expected Output:**
 
-### Task 5: Create CredentialResetSupport Topic
+   The copilot should provide step-by-step instructions for self-service password reset from the knowledge base.
 
-In this task, you will create a topic using generative AI that helps users with password reset issues and escalates to Freshdesk when needed.
+   ![](../media/ex8-password-response.png)
 
-1. Click **+ Add a topic** and select **Create from description with Copilot**.
+1. **Test 2 - VPN Issues:**
 
-1. Enter the following details:
+   Click the **Reset** button (trash icon) to start a new conversation.
 
-   **Name:**
+   **Prompt:**
    ```
-   CredentialResetSupport
-   ```
-
-   **Description:**
-   ```
-   Help users who need password reset assistance when they forget their password or their account becomes locked. Ask the user for their username and save it as a variable. Use generative answers to provide self-service reset instructions by referring to the uploaded knowledge sources whenever possible. After sharing the steps, ask the user whether they were able to reset their password successfully. If not, offer to create a support ticket. When creating the ticket, generate a subject line such as "Password Reset Assistance – <username>" and create a detailed description that includes the username and the reason they were unable to reset the password. Map these values to the Freshdesk Power Automate flow inputs for Subject and Description so the flow receives the correct variables. This topic should act as a guided password-reset helper that uses the knowledge base first, and escalates to ticket creation only when needed.
+   My VPN won't connect
    ```
 
-   ![](../media/ex9-credential-topic.png)
+   ![](../media/ex8-test-vpn.png)
 
-1. Click **Create** to generate the topic.
+   **Expected Output:**
 
-1. Wait for the AI to generate the topic (15-30 seconds).
+   The copilot should ask clarifying questions and provide VPN troubleshooting steps.
 
-1. Review the generated topic:
+   ![](../media/ex8-vpn-response.png)
 
-   - **Trigger phrases:** Verify it includes phrases like:
-     - "I forgot my password"
-     - "Reset my password"
-     - "Account locked"
-     - "Can't log in"
-     - "Password reset"
+1. **Test 3 - Slow Laptop:**
 
-   ![](../media/ex9-credential-triggers.png)
+   Reset the conversation and test:
 
-1. Review the conversation flow and ensure it:
-   - Asks for username and saves as variable
-   - Provides self-service reset instructions using knowledge base
-   - Asks if issue is resolved
-   - Offers ticket creation if not resolved
-
-1. **Connect the topic to the Freshdesk flow:**
-
-   - Locate the point in the conversation where the user indicates the issue is NOT resolved
-   - Click the **+** button at that escalation point
-   - Select **Add a tool** (or **Call an action**)
-   - Search for **Freshdesk** and select your flow
-   - Map the generated Subject and Description variables to the flow inputs
-
-   ![](../media/ex9-add-tool.png)
-
-1. Add a **Message** node after the action:
+   **Prompt:**
    ```
-   I've created a support ticket for your password reset request. Our IT team will contact you shortly.
+   My laptop is running really slow
    ```
 
-1. Click **Save** to save the topic.
+   ![](../media/ex8-test-laptop.png)
 
-   ![](../media/ex9-save-topic.png)
+   **Expected Output:**
 
-### Task 6: Create VPNConnectivitySupport Topic
+   The copilot should provide performance troubleshooting steps such as restarting, checking Task Manager, and running disk cleanup.
 
-In this task, you will create a topic for VPN and connectivity issues.
+   ![](../media/ex8-laptop-response.png)
 
-1. Click **+ Add a topic** > **Create from description with Copilot**.
+1. **Test 4 - Printer Problems:**
 
-1. Enter the following:
+   Reset and test:
 
-   **Name:**
+   **Prompt:**
    ```
-   VPNConnectivitySupport
-   ```
-
-   **Description:**
-   ```
-   Assist users experiencing VPN or general internet connectivity issues. Ask the user what exact problem or error message they are seeing and save that response as a variable. Ask where the user is working from, such as home, office, or another location, and save that as another variable. Provide basic troubleshooting steps including checking internet connection, verifying Wi-Fi status, restarting the VPN client, checking login credentials, reconnecting to the network, and any other basic connectivity checks. After giving these steps, ask the user whether the issue is resolved. If the user says no, offer to create a support ticket. When creating the ticket, generate a subject line using the location variable, for example "Connectivity Issue – <location>," and generate a detailed description that includes the user's reported error message and the location information. Map these values to the Freshdesk Power Automate flow inputs for Subject and Description so the flow receives the correct variables. This topic should handle all VPN and internet issues but exclude hardware problems, as those are handled in another topic.
+   My printer shows as offline
    ```
 
-   ![](../media/ex9-vpn-topic.png)
+   ![](../media/ex8-test-printer.png)
 
-1. Click **Create** to generate the topic.
+   **Expected Output:**
 
-1. Review and verify trigger phrases include:
-   - "VPN not connecting"
-   - "VPN authentication failed"
-   - "Can't connect to VPN"
-   - "Internet not working"
-   - "Connectivity issues"
-   - "Network problems"
+   The copilot should provide steps to bring the printer back online.
 
-1. Review the conversation flow and ensure it:
-   - Asks about error message and saves as variable
-   - Asks about location (home/office) and saves as variable
-   - Provides troubleshooting steps
-   - Asks if issue is resolved
-   - Offers ticket creation if not resolved
+   ![](../media/ex8-printer-response.png)
 
-1. **Connect the topic to the Freshdesk flow:**
-   - Find the escalation point where user says issue is NOT resolved
-   - Click **+** > **Add a tool** > Select **Freshdesk**
-   - Map the Subject and Description variables to the flow inputs
+1. **Test 5 - Knowledge Base Query:**
 
-1. Add a confirmation message:
+   Reset and test a specific knowledge base question:
+
+   **Prompt:**
    ```
-   I've created a support ticket for your connectivity issue. Our IT team will contact you shortly.
+   What are the password requirements?
    ```
 
-1. Click **Save**.
+   ![](../media/ex8-test-requirements.png)
 
-### Task 7: Create HardwareSupportAssistant Topic
+   **Expected Output:**
 
-In this task, you will create a comprehensive topic for hardware issues.
+   The copilot should provide the password policy requirements from the knowledge base (minimum 12 characters, uppercase, lowercase, numbers, special characters).
 
-1. Click **+ Add a topic** > **Create from description with Copilot**.
+   ![](../media/ex8-requirements-response.png)
 
-1. Enter the following:
+1. **Test 6 - Contact Information:**
 
-   **Name:**
+   **Prompt:**
    ```
-   HardwareSupportAssistant
-   ```
-
-   **Description:**
-   ```
-   Create a hardware support topic that handles all common device issues, including laptops, mice, keyboards, monitors, printers, headphones, docking stations, network adapters, and any other device. Begin by asking the user which device they are having trouble with and save this selection as a variable, then ask them to describe the issue in their own words and save that as another variable. Provide troubleshooting steps based on the selected device: for laptops, include steps for slow performance, freezing, overheating, slow boot, high CPU or memory usage, updates, restart, disk cleanup, and malware checks; for printers, include steps for offline issues, paper jams, blank pages, print queue problems, restarting the spooler, reconnecting cables, reloading paper, and power cycling; for mice and keyboards, include USB or Bluetooth checks, battery checks, driver checks, cleaning stuck keys, and re-pairing; for monitors, include steps for no display, flickering, resolution problems, cable or port checks, brightness and power checks; for headphones and microphones, include audio settings, mic testing, Bluetooth reconnecting, resetting, and driver updates; and for docking stations or network adapters, include cable checks, restarting the dock, firmware checks, and adapter resets. For any "other device," provide general troubleshooting such as checking cables, restarting the device, and verifying drivers. After the troubleshooting steps, ask the user whether the issue is resolved. If not, offer to create a support ticket. When creating the ticket, generate a subject like "Hardware Issue – <device>" and a description that includes the user's reported issue details and device type, and map these values to the Freshdesk Power Automate flow as the Subject and Description inputs.
+   How do I contact IT support?
    ```
 
-   ![](../media/ex9-hardware-topic.png)
+   ![](../media/ex8-test-contact.png)
 
-1. Click **Create** to generate the topic.
+   **Expected Output:**
 
-1. Review and verify trigger phrases include:
-   - "My laptop is slow"
-   - "Printer not working"
-   - "Mouse not responding"
-   - "Keyboard issue"
-   - "Monitor problems"
-   - "Hardware issue"
-   - "Device not working"
+   The copilot should provide IT Help Desk contact information from the knowledge base.
 
-1. Review the conversation flow and ensure it:
-   - Asks which device and saves as variable
-   - Asks to describe the issue and saves as variable
-   - Provides device-specific troubleshooting steps
-   - Asks if issue is resolved
-   - Offers ticket creation if not resolved
+   ![](../media/ex8-contact-response.png)
 
-1. **Connect the topic to the Freshdesk flow:**
-   - Find the escalation point where user says issue is NOT resolved
-   - Click **+** > **Add a tool** > Select **Freshdesk**
-   - Map the Subject and Description variables to the flow inputs
+1. Review your test results. The copilot should be providing helpful, knowledge-based responses for common IT issues.
 
-1. Add a confirmation message:
-   ```
-   I've created a support ticket for your hardware issue. Our IT team will contact you shortly.
-   ```
-
-1. Click **Save**.
-
-1. **Verify all topics are enabled:**
-   - In the **Topics** list, ensure all 4 topics show as enabled (toggle is on):
-     - CreateSupportTicket
-     - CredentialResetSupport
-     - VPNConnectivitySupport
-     - HardwareSupportAssistant
-
-   ![](../media/ex9-topics-list.png)
+   >**Note:** If responses are generic or don't reference the knowledge base, wait a few minutes for indexing to complete and try again.
 
 ## Summary
 
-In this exercise, you successfully integrated Freshdesk as a professional ticketing system with your IT Support Copilot. You learned how to:
+In this exercise, you created an IT Support Copilot using Microsoft Copilot Studio. You learned how to:
 
-- Set up a Freshdesk free trial account for IT ticketing
-- Obtain and configure API credentials for secure integration
-- Create an agent flow using the Freshdesk connector to automatically create tickets
-- Build a dedicated CreateSupportTicket topic for direct ticket creation
-- Build intelligent troubleshooting topics using generative AI (CredentialResetSupport, VPNConnectivitySupport, HardwareSupportAssistant)
-- Connect topics to the Freshdesk flow for seamless ticket escalation
-- Map topic variables to flow inputs (Subject and Description)
+- Access and navigate Microsoft Copilot Studio
+- Create a new copilot agent for IT support automation
+- Configure detailed instructions for handling IT support scenarios
+- Connect a SharePoint site as a knowledge source for AI-powered responses
+- Test the copilot with various IT support queries
 
-Your IT Support Copilot can now provide troubleshooting guidance using the knowledge base, and when users need escalation, automatically create support tickets in Freshdesk with all the relevant details.
-
-In the next exercise, you will test the complete solution end-to-end and deploy it to Microsoft Teams.
+In the next exercise, you will set up Freshdesk as a professional ticketing system, create an agent flow to automatically create tickets, and build intelligent topics using generative AI that escalate to Freshdesk when users need additional support.
 
 ### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

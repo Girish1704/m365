@@ -1,358 +1,370 @@
-# Exercise 8: Build an IT Support Copilot Using Microsoft Copilot Studio
+# Exercise 8: Build a Poetic Declarative Agent Using Microsoft 365 Agents Toolkit
 
-## Estimated Duration: 45 Minutes
+## Estimated Duration: 90 Minutes
 
 ## Overview
 
-In this exercise, you will create an AI-powered IT Support Copilot using Microsoft Copilot Studio that helps employees resolve common IT issues automatically. The copilot will leverage a knowledge base to provide intelligent troubleshooting guidance for password resets, VPN connectivity issues, laptop performance problems, and printer support.
+In this exercise, you will use the Microsoft 365 Agents Toolkit extension for Visual Studio Code to build a declarative agent. Declarative agents are custom Copilot agents defined through a manifest and configuration files, allowing developers to create specialized agents without extensive coding.
 
-This is the first part of building an autonomous IT support solution. In subsequent exercises, you will add automated ticket creation and deploy the agent to Microsoft Teams.
+You will create a "Poetic Assistant" - a creative agent that helps users express ideas through poetry, generate creative writing, and explore different poetic styles.
+
+## Prerequisites
+
+- Visual Studio Code installed on your VM
+- Microsoft 365 Agents Toolkit extension
+- Node.js installed on your VM
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Upload IT Support documents to SharePoint
-- Task 2: Access Microsoft Copilot Studio
-- Task 3: Create a new IT Support Copilot
-- Task 4: Configure copilot instructions for IT support scenarios
-- Task 5: Add SharePoint knowledge source
-- Task 6: Test the copilot with basic IT queries
+- Task 1: Install and configure Microsoft 365 Agents Toolkit
+- Task 2: Create a new declarative agent project
+- Task 3: Configure the agent manifest
+- Task 4: Define agent instructions and capabilities
+- Task 5: Test the declarative agent locally
 
-### Task 1: Upload IT Support Documents to SharePoint
+### Task 1: Install and Configure Microsoft 365 Agents Toolkit
 
-In this task, you will download the IT Support documents and upload them to SharePoint. These documents will serve as the knowledge base for your IT Support Copilot.
+In this task, you will install the Microsoft 365 Agents Toolkit extension in Visual Studio Code.
 
-1. First, download the IT Support documents. Open a new browser tab and navigate to:
+1. Open **File Explorer**, click **This PC > Windows (C:) (1)**, then select **New (2)** and click **Folder (3)** to create a new folder.
+
+   ![](../media/m36-copg-ex7-d-g7.png)
+
+1. Right-click the new folder, select **Rename**, type **Codespace**, and press **Enter**.
+
+   ![](../media/m36-copg-ex7-d-g8.png)
+
+1. In the VM, open **Visual Studio Code** from the desktop or Start menu.
+
+1. Click **File (1)**, then select **Open Folder… (2)** to open a folder in Visual Studio Code.
+
+   ![](../media/m36-copg-ex7-d-g9.png)
+
+1. Select the folder path **C:\Codespace (1)**, then click **Select folder (2)** to open it in Visual Studio Code.
+
+   ![](../media/m36-copg-ex7-d-g10.png)
+
+1. Click **Yes, I trust the authors** to enable all features for this folder.
+
+   ![](../media/m36-copg-ex7-d-g0.png)
+
+1. Click **Extensions (1)** (or press `Ctrl+Shift+X`), enter **Microsoft 365 Agents Toolkit (2)** in the search box, then click **Install (3)** to install the extension.
+
+   ![](../media/m36-copg-ex7-d-g1.png)
+
+1. Click **Install** to install the Microsoft 365 Agents Toolkit extension.
+
+   ![](../media/m36-copg-ex7-d-g2.png)
+
+1. Wait for the installation to complete. Once installed, you will see the **Microsoft 365 Agents Toolkit** icon in the left sidebar.
+
+### Task 2: Create a New Declarative Agent Project
+
+In this task, you will create a new declarative agent project using the toolkit.
+
+1. Click the **Microsoft 365 Agents Toolkit (1)** icon, then select **Create a New Agent/App (2)** to start a new project.
+
+   ![](../media/m36-copg-ex7-d-g4.png)
+
+1. Select **Declarative Agent** to create a new agent for Microsoft 365 Copilot.
+
+   ![](../media/m36-copg-ex7-d-g5.png)
+
+1. Select **No Action** to create the declarative agent without adding any actions.
+
+   ![](../media/m36-copg-ex7-d-g6.png)
+
+1. Select **Default folder C:\Codespace** to use the default project location.
+
+1. Enter **PoeticAssistant** as the application name, then press **Enter** to confirm.
+
+   ![](../media/m36-copg-ex7-d-g12.png)
+
+1. Wait for the project scaffolding to complete. VS Code will open the new project in a new window.
+
+1. If a prompt appears regarding the trustworthiness of the source, click on **Yes, I trust the authors**.
+
+1. Explore the project structure:
 
    ```
-   https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/Day3-datasets.zip
+   PoeticAssistant/
+   ├── appPackage/
+   │   ├── declarativeAgent.json    # Agent configuration
+   │   ├── manifest.json            # App manifest
+   │   └── color.png / outline.png  # App icons
+   ├── .vscode/
+   │   └── settings.json / tasks.json
+   └── README.md
    ```
 
-1. Once downloaded, extract the **Day3-datasets.zip** file to a location of your choice (e.g., Desktop or Downloads folder).
+1. Click the **Microsoft 365 Agents Toolkit (1)** icon, then select **Sign in to Microsoft 365 (2)** to sign in with your account.
 
-1. Open **File Explorer** and navigate to the extracted folder. Inside the **IT-Datasets** folder, you will find the following IT Support documents:
+   ![](../media/m36-copg-ex7-d-g20.png)
 
-   | Document | Description |
-   |----------|-------------|
-   | 01-Password-and-Account-Management.pdf | Password policies, SSPR, MFA, account lockouts |
-   | 02-VPN-and-Network-Troubleshooting.pdf | VPN setup, connectivity issues, WiFi |
-   | 03-Laptop-and-Performance-Guide.pdf | Slow computer, hardware issues, optimization |
-   | 04-Printer-and-Peripheral-Support.pdf | Printer issues, monitors, docks, peripherals |
-   | 05-IT-Support-Quick-Reference.pdf | Quick reference card with common solutions |
+1. Click **Sign in** to continue with your Microsoft 365 account.
 
-   >**Note:** These 5 PDF files contain comprehensive IT support documentation that your copilot will use to answer employee questions.
+   ![](../media/m36-copg-ex7-d-g21.png)
 
-1. Open a new browser tab and navigate to your SharePoint site:
-
-   ```
-   https://<inject key="Tenant Name" enableCopy="false"/>.sharepoint.com/sites/ITSupport
-   ```
-
-1. Click on **Documents** in the left navigation.
-
-1. Click **Upload** > **Files** to upload the IT Support documents.
-
-1. Browse to the location where you extracted the Day3-datasets.zip, navigate to the **IT-Datasets** folder, select all 5 PDF files, and click **Open**.
-
-1. Wait for all files to upload successfully. You should see all 5 IT Support documents in the Documents library.
-
-   >**Note:** These documents will be indexed by the copilot to provide accurate, knowledge-based responses to IT support queries.
-
-### Task 2: Access Microsoft Copilot Studio
-
-In this task, you will navigate to Microsoft Copilot Studio and explore its interface.
-
-1. In the VM, open **Microsoft Edge** browser from the desktop or taskbar.
-
-1. Navigate to Microsoft Copilot Studio:
-
-   ```
-   https://copilotstudio.microsoft.com
-   ```
-
-   ![](../media/ex8-copilot-studio-url.png)
-
-1. Sign in with your lab credentials if prompted:
+1. When the browser opens for authentication, sign in with your lab credentials:
 
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
    - Password: <inject key="AzureAdUserPassword"></inject>
 
-   ![](../media/ex8-studio-signin.png)
+1. After successful authentication, close the browser tab and return to VS Code.
 
-1. If you see a **Stay signed in?** prompt, select **Yes**.
+1. Verify that **Copilot Access Enabled** is displayed under Accounts.
 
-1. You will be redirected to the Microsoft Copilot Studio home page. Take a moment to explore the interface:
+   ![](../media/m36-copg-ex7-d-g22.png)
 
-   - **Home** — Overview and quick actions
-   - **Agents** — List of all your created agents
-   - **Environments** — Manage different environments
+1. Click **Sign in to Azure** to connect your Azure account.
 
-   ![](../media/ex8-studio-home.png)
+   ![](../media/m36-copg-ex7-d-g23.png)
 
-1. If prompted to select an environment, choose the default environment or your organization's environment.
+1. Click **Sign in** to authenticate your Azure account.
 
-   ![](../media/ex8-select-environment.png)
+   ![](../media/m36-copg-ex7-d-g24.png)
 
-### Task 3: Create a New IT Support Copilot
+1. Click **Allow** to grant permission for the extension to sign in.
 
-In this task, you will create a new copilot specifically designed for IT support automation.
+   ![](../media/m36-copg-ex7-d-g25.png)
 
-1. On the Copilot Studio home page, click **+ Create** from the left navigation panel.
+1. Click **No, this app only** to continue signing in without registering the device.
 
-   ![](../media/ex8-create-copilot.png)
+   ![](../media/m36-copg-ex7-d-g26.png)
 
-1. Click on **+ New Agent** option to create a new agent.
+### Task 3: Configure the Agent Manifest
 
-   ![](../media/ex8-new-agent.png)
+In this task, you will configure the declarative agent manifest to define the Poetic Assistant.
 
-   >**Note:** If you see an error like "There was a problem creating your agent", click **Create a blank agent** instead.
+1. Expand **appPackage (1)**, then open **manifest.json (2)** to edit the file.
 
-1. Once on the agent overview pane, click **Edit** inside the **Details** card to edit the agent's name and description.
+   ![](../media/m36-copg-ex7-d-g13.png)
 
-   ![](../media/ex8-edit-details.png)
+1. Update the manifest with the following information:
 
-1. Configure the agent details as follows:
-
-   | Field | Value |
-   |-------|-------|
-   | Name | `IT Support Copilot` |
-   | Description | `AI-powered assistant for IT support automation including password resets, VPN issues, laptop troubleshooting, and printer support.` |
-
-   ![](../media/ex8-agent-details.png)
-
-1. Click **Save** to apply the changes.
-
-### Task 4: Configure Copilot Instructions for IT Support Scenarios
-
-In this task, you will configure detailed instructions that define how the copilot should handle IT support requests.
-
-1. On the agent overview page, scroll down to the **Instructions** card and click **Edit**.
-
-   ![](../media/ex8-edit-instructions.png)
-
-1. Enter the following instructions in the **Instructions** box:
-
-   ```
-   You are an IT Support Copilot designed to help employees resolve common IT issues quickly and efficiently.
-
-   Handle inquiries related to:
-   - Password resets and account lockouts
-   - VPN connectivity issues
-   - Slow device performance and laptop problems
-   - Printer issues and printing problems
-
-   When answering questions:
-   - First, check the uploaded IT support knowledge base for documented solutions
-   - Provide clear, step-by-step troubleshooting guidance
-   - Use simple, non-technical language when explaining solutions
-   - Ask clarifying questions to understand the issue better before providing solutions
-
-   For password reset requests:
-   - Provide self-service reset instructions from the knowledge base
-   - Guide users through the password reset portal process
-   - If unsuccessful, offer to escalate to IT support
-
-   For VPN and connectivity issues:
-   - Guide users through common troubleshooting steps
-   - Check if the issue is resolved after each step
-   - Suggest alternative connection methods if available
-
-   For hardware/performance issues:
-   - Gather details about the problem (slow startup, applications, etc.)
-   - Suggest troubleshooting steps from the knowledge base
-   - Recommend restarting as a first step for most issues
-
-   For printer issues:
-   - Ask about the specific problem (offline, jammed, blank pages)
-   - Provide targeted troubleshooting steps
-   - Guide users to check physical connections and paper
-
-   Always:
-   - Be professional, patient, and helpful
-   - Acknowledge the user's frustration when appropriate
-   - Provide next steps or escalation options when solutions don't work
+   ```json
+   {
+     "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
+     "manifestVersion": "devPreview",
+     "version": "1.0.0",
+     "id": "${{TEAMS_APP_ID}}",
+     "developer": {
+       "name": "Contoso Labs",
+       "websiteUrl": "https://www.contoso.com",
+       "privacyUrl": "https://www.contoso.com/privacy",
+       "termsOfUseUrl": "https://www.contoso.com/terms"
+     },
+     "icons": {
+       "color": "color.png",
+       "outline": "outline.png"
+     },
+     "name": {
+       "short": "Poetic Assistant",
+       "full": "Poetic Assistant - Creative Writing Copilot"
+     },
+     "description": {
+       "short": "A creative writing assistant that helps you express ideas through poetry",
+       "full": "The Poetic Assistant is a declarative agent that helps users create poetry, explore different poetic forms, and express their thoughts in creative and artistic ways. It understands various poetic styles including haiku, sonnet, limerick, free verse, and more."
+     },
+     "accentColor": "#8B4513",
+     "copilotAgents": {
+       "declarativeAgents": [
+         {
+           "id": "poeticAssistant",
+           "file": "declarativeAgent.json"
+         }
+       ]
+     },
+     "permissions": [
+       "identity",
+       "messageTeamMembers"
+     ],
+     "validDomains": []
+   }
    ```
 
-   ![](../media/ex8-instructions-content.png)
+   ![](../media/m36-copg-ex7-d-g14.png)
 
-1. Click **Save** to save the instructions.
+1. Save the file (`Ctrl+S`).
 
-   ![](../media/ex8-save-instructions.png)
+### Task 4: Define Agent Instructions and Capabilities
 
-### Task 5: Add SharePoint Knowledge Source
+In this task, you will configure the declarative agent's personality and capabilities.
 
-In this task, you will connect the IT Support SharePoint site as a knowledge source for the copilot. The SharePoint site now contains the IT Support documentation that the copilot will reference to answer questions.
+1. Expand **appPackage (1)**, then open **declarativeAgent.json (2)** to edit the file.
 
-1. On your IT Support Copilot page, click **+ Add knowledge** in the Knowledge section.
+   ![](../media/m36-copg-ex7-d-g16.png)
 
-   ![](../media/ex8-add-knowledge.png)
+1. Replace the content with the following configuration:
 
-1. Select **SharePoint** from the available knowledge source options.
-
-   ![](../media/ex8-select-sharepoint.png)
-
-1. In the SharePoint URL field, enter the IT Support SharePoint site URL:
-
-   ```
-   https://<inject key="Tenant Name" enableCopy="false"/>.sharepoint.com/sites/ITSupport
-   ```
-
-   ![](../media/ex8-sharepoint-url.png)
-
-1. Click **Add** to connect the SharePoint site.
-
-   ![](../media/ex8-add-sharepoint.png)
-
-1. If prompted, sign in with your lab credentials to authorize access to SharePoint.
-
-   ![](../media/ex8-sharepoint-auth.png)
-
-1. Click **Add to agent** to attach the SharePoint knowledge source to your copilot.
-
-   ![](../media/ex8-add-to-agent.png)
-
-1. Wait for the SharePoint site to sync. You should see the status change to **Ready** or **Synced**.
-
-   ![](../media/ex8-kb-ready.png)
-
-   >**Note:** The SharePoint knowledge source may take 2-5 minutes to index all documents. You can proceed to the next task while it processes.
-
-### Task 5: Test the Copilot with Basic IT Queries
-
-In this task, you will test the IT Support Copilot with various common IT support questions.
-
-1. Click the **Test** button in the top-right corner or look for the **Test your copilot** panel on the right side.
-
-   ![](../media/ex8-test-button.png)
-
-1. The test chat panel will open. Start with a greeting:
-6
-   **Prompt:**
-   ```
-   Hello, I need IT help
+   ```json
+   {
+     "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.2/schema.json",
+     "version": "v1.2",
+     "name": "Poetic Assistant",
+     "description": "A creative writing companion that helps you craft beautiful poetry and explore the art of verse",
+     "instructions": "You are the Poetic Assistant, a creative writing companion with a deep love for poetry and artistic expression. Your role is to help users express their thoughts, emotions, and ideas through the beautiful art of poetry.\n\n## Your Personality:\n- You are warm, encouraging, and appreciative of creative efforts\n- You speak with eloquence and occasionally use poetic language yourself\n- You celebrate the beauty in every attempt at creative expression\n- You are patient and supportive with beginners while challenging experienced writers\n\n## Your Expertise:\n- You understand various poetic forms: haiku, sonnet, limerick, free verse, acrostic, villanelle, ode, elegy, and more\n- You can explain meter, rhyme schemes, and literary devices\n- You understand metaphor, simile, personification, alliteration, and other poetic techniques\n- You know poetry from various cultures and time periods\n\n## How You Help:\n1. **Creating Poetry**: Help users write poems based on their themes, emotions, or ideas\n2. **Teaching Forms**: Explain different poetic structures and when to use them\n3. **Improving Work**: Offer constructive feedback on user's poetry\n4. **Finding Inspiration**: Suggest prompts, themes, and creative exercises\n5. **Exploring Styles**: Introduce users to different poetic traditions and famous poets\n\n## Guidelines:\n- Always encourage creative expression, even in imperfect forms\n- Offer multiple variations when creating poetry\n- Explain the 'why' behind your suggestions\n- Respect the user's creative vision while offering improvements\n- Make poetry accessible and fun, not intimidating\n\n## Example Interactions:\n- 'Write a haiku about autumn' -> Create a thoughtful haiku with explanation\n- 'Help me express sadness in a poem' -> Offer multiple approaches and styles\n- 'What is iambic pentameter?' -> Explain with examples and offer to practice\n- 'Review my poem' -> Provide encouraging, constructive feedback",
+     "conversation_starters": [
+       {
+         "title": "Write a Haiku",
+         "text": "Help me write a haiku about nature"
+       },
+       {
+         "title": "Learn Poetry Forms",
+         "text": "What are different types of poetry I can try?"
+       },
+       {
+         "title": "Get Inspired",
+         "text": "Give me a creative writing prompt for poetry"
+       },
+       {
+         "title": "Express an Emotion",
+         "text": "Help me write a poem about feeling hopeful"
+       },
+       {
+         "title": "Review My Work",
+         "text": "I wrote a poem and would like your feedback"
+       }
+     ]
+   }
    ```
 
-   ![](../media/ex8-test-greeting.png)
+   ![](../media/m36-copg-ex7-d-g17.png)
 
-   **Expected Output:**
+1. Save the file (`Ctrl+S`).
 
-   The copilot should greet you and offer to help with IT issues, possibly listing the types of problems it can assist with.
+   >**Note:** The `instructions` field defines the agent's personality, expertise, and behavior. This is similar to a detailed system prompt that shapes how the agent responds.
 
-   ![](../media/ex8-greeting-response.png)
+1. Expand **appPackage (1)**, right-click **instruction.txt (2)**, then select **Delete (3)** to remove the file.
 
-1. **Test 1 - Password Reset:**
+   ![](../media/m36-copg-ex7-d-g18.png)
 
-   **Prompt:**
+   > **Note:** The instructions are already included in **declarativeAgent.json**, so this file is no longer required.
+
+1. Click **Move to Recycle Bin** to confirm deleting the file.
+
+   ![](../media/m36-copg-ex7-d-g19.png)
+
+1. Optionally, update the agent icons in the `appPackage` folder:
+
+   - `color.png` - 192x192 pixel color icon
+   - `outline.png` - 32x32 pixel outline icon
+
+   For this exercise, you can keep the default icons.
+
+### Task 5: Provision and Test the Declarative Agent
+
+In this task, you will provision the agent and test it in Microsoft 365 Copilot.
+
+1. Click the **Microsoft 365 Agents Toolkit (1)** icon, then select **Provision (2)** to provision the agent.
+
+   ![](../media/m36-copg-ex7-d-g27.png)
+
+1. Wait for the provisioning to complete. You should see a success message in the output panel:
+
    ```
-   I forgot my password and can't log in
+   (√) Done: Lifecycle stage provision was executed successfully.
    ```
 
-   ![](../media/ex8-test-password.png)
+   >**Note:** The provisioning process packages your app files, validates them, and installs the declarative agent to your Microsoft 365 tenant.
 
-   **Expected Output:**
+1. Once provisioning is complete, open a browser and navigate to:
 
-   The copilot should provide step-by-step instructions for self-service password reset from the knowledge base.
+   ```
+   https://m365.cloud.microsoft/chat
+   ```
 
-   ![](../media/ex8-password-response.png)
+1. In the Copilot chat, look for your **Poetic Assistant** in the right pane or agents panel and select it.
 
-1. **Test 2 - VPN Issues:**
+   ![](../media/m36-copg-ex7-d-g28.png)
 
-   Click the **Reset** button (trash icon) to start a new conversation.
+1. Test the Poetic Assistant with various prompts:
+
+   **Test 1 - Write a Haiku:**
 
    **Prompt:**
    ```
-   My VPN won't connect
+   Write a haiku about the morning sun
    ```
 
-   ![](../media/ex8-test-vpn.png)
+   ![](../media/m36-copg-ex7-d-g30.png)
 
-   **Expected Output:**
+   **Expected Response:**
 
-   The copilot should ask clarifying questions and provide VPN troubleshooting steps.
+   The agent should create a haiku following the 5-7-5 syllable pattern with gentle morning imagery.
 
-   ![](../media/ex8-vpn-response.png)
-
-1. **Test 3 - Slow Laptop:**
-
-   Reset the conversation and test:
+1. **Test 2 - Explain a Poetry Form:**
 
    **Prompt:**
    ```
-   My laptop is running really slow
+   What is a sonnet and how do I write one?
    ```
 
-   ![](../media/ex8-test-laptop.png)
+   ![](../media/m36-copg-ex7-d-g31.png)
 
-   **Expected Output:**
+   **Expected Response:**
 
-   The copilot should provide performance troubleshooting steps such as restarting, checking Task Manager, and running disk cleanup.
+   The agent should explain the sonnet structure (14 lines, rhyme schemes like ABAB CDCD EFEF GG), iambic pentameter, and provide step-by-step guidance on writing one.
 
-   ![](../media/ex8-laptop-response.png)
-
-1. **Test 4 - Printer Problems:**
-
-   Reset and test:
+1. **Test 3 - Creative Expression:**
 
    **Prompt:**
    ```
-   My printer shows as offline
+   Help me write a poem about the feeling of accomplishment after completing a difficult task
    ```
 
-   ![](../media/ex8-test-printer.png)
+   ![](../media/m36-copg-ex7-d-g32.png)
 
-   **Expected Output:**
+   **Expected Response:**
 
-   The copilot should provide steps to bring the printer back online.
+   The agent should offer multiple poem styles (free verse, rhyming, dramatic) celebrating the feeling of triumph and achievement.
 
-   ![](../media/ex8-printer-response.png)
-
-1. **Test 5 - Knowledge Base Query:**
-
-   Reset and test a specific knowledge base question:
+1. **Test 4 - Review Poetry:**
 
    **Prompt:**
    ```
-   What are the password requirements?
+   Here is my poem, please review it:
+   
+   The silent moon watches over me
+   As stars dance in the velvet sky
+   I wonder what they all might see
+   As night's soft curtain slowly drifts by
    ```
 
-   ![](../media/ex8-test-requirements.png)
+   ![](../media/m36-copg-ex7-d-g33.png)
 
-   **Expected Output:**
+   **Expected Response:**
 
-   The copilot should provide the password policy requirements from the knowledge base (minimum 12 characters, uppercase, lowercase, numbers, special characters).
+   The agent should provide warm, constructive feedback highlighting what works well (imagery, rhythm, mood) and offer gentle suggestions for improvement.
 
-   ![](../media/ex8-requirements-response.png)
-
-1. **Test 6 - Contact Information:**
+1. **Test 5 - Learn Techniques:**
 
    **Prompt:**
    ```
-   How do I contact IT support?
+   Teach me about alliteration and give me examples
    ```
 
-   ![](../media/ex8-test-contact.png)
+   ![](../media/m36-copg-ex7-d-g34.png)
 
-   **Expected Output:**
+   **Expected Response:**
 
-   The copilot should provide IT Help Desk contact information from the knowledge base.
+   The agent should explain alliteration (repeating consonant sounds at the beginning of words) with examples like "silent stars shimmer" and "soft shadows slip silently."
 
-   ![](../media/ex8-contact-response.png)
-
-1. Review your test results. The copilot should be providing helpful, knowledge-based responses for common IT issues.
-
-   >**Note:** If responses are generic or don't reference the knowledge base, wait a few minutes for indexing to complete and try again.
+   >**Note:** Feel free to explore other conversation starters or ask your own creative questions to test the agent's capabilities.
 
 ## Summary
 
-In this exercise, you created an IT Support Copilot using Microsoft Copilot Studio. You learned how to:
+In this exercise, you built a declarative agent using the Microsoft 365 Agents Toolkit. You learned how to:
 
-- Access and navigate Microsoft Copilot Studio
-- Create a new copilot agent for IT support automation
-- Configure detailed instructions for handling IT support scenarios
-- Connect a SharePoint site as a knowledge source for AI-powered responses
-- Test the copilot with various IT support queries
+- Install and configure the Microsoft 365 Agents Toolkit in VS Code
+- Sign in to Microsoft 365 and verify Copilot access
+- Create a new declarative agent project
+- Configure the app manifest with agent metadata
+- Define detailed agent instructions and conversation starters
+- Provision and test the agent in Microsoft 365 Copilot
 
-In the next exercise, you will set up Freshdesk as a professional ticketing system, create an agent flow to automatically create tickets, and build intelligent topics using generative AI that escalate to Freshdesk when users need additional support.
+Declarative agents provide a powerful way to create specialized Copilot experiences without extensive coding, using configuration and natural language instructions.
 
 ### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

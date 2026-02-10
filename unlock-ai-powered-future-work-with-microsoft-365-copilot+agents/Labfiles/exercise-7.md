@@ -222,9 +222,9 @@ In this task, you will configure topics that define how the agent handles differ
 
 1. Click **Save** to save the topic.
 
-### Task 2: Build Leave Application Flow with Smart Approval
+#### Task 2: Build Leave Application Flow with Smart Approval
 
-In this task, you will create an automated leave application flow that automatically approves requests for 2 days or less, and routes longer requests to a manager via email for approval.
+In this topic, you will create an automated leave application flow that automatically approves requests for 2 days or less, and routes longer requests to a manager via email for approval.
 
 1. In Microsoft 365 Copilot, select **Apps (1)**, and then choose **Teams (2)**.
 
@@ -528,17 +528,15 @@ In this task, you will create an automated leave application flow that automatic
 
 1. In the **Publish this agent** dialog box, click **Publish** to confirm and deploy the agent.
 
-   ![](../media/ex2-travel-g58.png)
+   ![](../media/d2-d2-cor-g65.png)
 
 1. Once the agent is successfully published, click **Test** to verify and interact with your HR Agent.
-
-   ![](../media/ex2-travel-g59.png)
 
 1. **Test 1 - Short Leave (Auto-Approval):**
 
    In the **Test your agent** panel, type **I want to apply for leave (1)** and click the **Send (2)** icon to initiate the leave application flow.
 
-   ![](../media/cor-g-g23.png)
+   ![](../media/d2-d2-cor-g64.png)
 
    When prompted, provide:
    - **Employee ID:** 121
@@ -546,11 +544,11 @@ In this task, you will create an automated leave application flow that automatic
    - **Days:** 1
    - **Reason:** Personal appointment
 
-      ![](../media/ex2-travel-g61.png)
-
    **Expected Result:** The leave should be automatically approved since it's 2 days or less.
 
-   ![](../media/ex2-travel-g64.png)
+1. Navigate to **Outlook** to verify the leave approval email was received.
+
+   ![](../media/d2-d2-cor-g66.png)
 
 1. **Test 2 - Long Leave (Manager Approval Required):**
 
@@ -566,17 +564,15 @@ In this task, you will create an automated leave application flow that automatic
 
    ![](../media/ex2-travel-g63.png)
 
-   **Expected Result:** An email notification should be sent to the manager for approval.
-
 1. Navigate to **Outlook** to verify the leave approval email was received.
+
+   ![](../media/d2-coor-gs-g10.png)
 
    Verify the email contains:
    - Employee ID and name
    - Leave duration (5 days)
    - Reason for leave
    - Request for manager review
-
-   ![](../media/ex6-email-received.png)
 
    >**Smart Workflow Benefits:** This automated approval system reduces HR workload by auto-approving routine short leave requests while ensuring proper oversight for extended absences through email notifications to managers.
 
@@ -586,9 +582,9 @@ In this task, you will update the agent instructions to ensure it properly refer
 
 1. Return to your HR Assistant agent in Microsoft Copilot Studio.
 
-1. Click on **Overview** in the left navigation to return to the agent overview.
+1. Click on **Overview** and locate the **Instructions** section and click **Edit**.
 
-1. Locate the **Instructions** section and click **Edit**.
+   ![](../media/d2-coor-gs-g8.png)
 
 1. Update the agent instructions to reference the policy documents:
 
@@ -614,15 +610,15 @@ In this task, you will update the agent instructions to ensure it properly refer
    Always maintain confidentiality and privacy.
    ```
 
+   ![](../media/d2-coor-gs-g9.png)
+
 1. Click **Save** to save the updated instructions.
 
 ### Task 4: Configure Agent Greeting Message
 
 In this task, you will configure the greeting message that the agent displays when users start a conversation.
 
-1. From the **menu**, select **Topics** to access the topics list.
-
-   ![](../media/ex2-travel-g75.png)
+1. From the **menu**, select **Topics** to access the topics list.S
 
 1. Click on **System** > **Greeting** to customize the welcome message.
 
@@ -687,33 +683,13 @@ In this task, you will test the agent and prepare it for publishing.
 
    **Expected Output:** The agent should reference the Leave Policy document and provide accurate information.
 
-1. Once testing is complete, navigate to the **Overview (1)** tab and click **Publish (2)** to make the agent live.
-
-   ![](../media/ex2-travel-g57.png)
-
-1. In the **Publish this agent** dialog box, click **Publish** to confirm and deploy the agent.
-
-   ![](../media/ex2-travel-g58.png)
-
-1. Wait for the publishing process to complete.
-
-   >**Note:** The agent may take a few minutes to appear in Microsoft 365 Copilot after publishing.
-
-1. Once published, you can access the agent from Microsoft 365 Copilot Chat:
-
-   - Go to `https://www.microsoft365.com`
-   - Click on **Copilot**
-   - Look for your HR Assistant agent in the agents panel
-
 ## Summary
 
 In this exercise, you completed building the HR Agent using Microsoft Copilot Studio. You learned how to:
 
-- Configure agent topics including Escalation to HR, General HR Help, and Leave and Time Off
-- Build agent flows with smart approval logic for leave requests
-- Integrate Teams notifications for auto-approved requests and email for manager approvals
-- Enhance agent instructions with specific policy references
-- Configure the agent greeting message
+- Enhance agent instructions with specific policy references for accurate responses
+- Explore actions and integrations with agent flows
+- Configure system topics like the greeting message
 - Test the agent with various scenarios to validate functionality
 - Publish the agent to Microsoft 365 Copilot for end-user access
 

@@ -155,8 +155,6 @@ In this task, you will navigate to Microsoft Copilot Studio, create a new HR Age
    Be professional, empathetic, and helpful. Escalate complex issues to human HR representatives.
    ```
 
-   ![](../media/m36-copg-ex6-c-g6.png)
-
 1. Click **+ Add knowledge** to add data and resources to the agent.
 
    ![](../media/m36-copg-ex6-c-g8.png)
@@ -362,9 +360,6 @@ In this task, you will configure topics that define how the agent handles differ
    - Employee Name
    - Number of days
    - Reason
-   Then call the Leave-Flow action with the collected information.
-   Display the approval status returned from the flow.
-   End by asking if the user needs any further assistance.
    ```
 
    ![](../media/m36-copg-ex6-c-g41.png)

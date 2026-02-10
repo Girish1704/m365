@@ -29,8 +29,6 @@ In this task, you will update the agent instructions to ensure it properly refer
 
 1. Locate the **Instructions** section and click **Edit**.
 
-   ![](../media/ex6-edit-instructions.png)
-
 1. Update the agent instructions to reference the policy documents:
 
    ```
@@ -55,8 +53,6 @@ In this task, you will update the agent instructions to ensure it properly refer
    Always maintain confidentiality and privacy.
    ```
 
-   ![](../media/ex6-updated-instructions.png)
-
 1. Click **Save** to save the updated instructions.
 
 ### Task 2: Configure Agent Actions and Integrations
@@ -65,11 +61,7 @@ In this task, you will configure actions that the agent can perform.
 
 1. In the agent editor, click on **Actions** in the left navigation.
 
-   ![](../media/ex6-actions-section.png)
-
 1. Click **+ Add an action**.
-
-   ![](../media/ex6-add-action.png)
 
 1. Browse the available action types:
 
@@ -77,11 +69,9 @@ In this task, you will configure actions that the agent can perform.
    - **Power Automate flows** - Trigger automated workflows
    - **Custom connectors** - Connect to custom APIs
 
-   ![](../media/ex6-action-types.png)
-
 1. For this exercise, we will create a simple escalation flow. Select **Power Automate** > **Create a new flow**.
 
-   ![](../media/ex6-create-flow.png)
+   ![](../../safe-travels/media/ex2-travel-g4.png)
 
 1. If Power Automate opens, create a simple flow:
 
@@ -92,7 +82,11 @@ In this task, you will configure actions that the agent can perform.
 
 1. Return to Copilot Studio and configure the greeting message:
 
-   - Click on **Topics** > **System** > **Greeting**
+   - From the **menu**, select **Topics** to access the topics list.
+
+   ![](../../safe-travels/media/ex2-travel-g75.png)
+
+   - Click on **System** > **Greeting**
    - Customize the greeting:
 
    ```
@@ -107,9 +101,9 @@ In this task, you will configure actions that the agent can perform.
    How can I assist you today?
    ```
 
-   ![](../media/ex6-greeting.png)
+1. Click on the **Save** button to save the topic configuration.
 
-1. Click **Save**.
+   ![](../../safe-travels/media/ex2-travel-g56.png)
 
 ### Task 3: Test and Publish the Agent to Microsoft 365 Copilot
 
@@ -117,20 +111,17 @@ In this task, you will test the agent and prepare it for publishing.
 
 1. Click the **Test** button in the bottom left corner to open the test panel.
 
-   ![](../media/ex6-test-button.png)
+   ![](../../safe-travels/media/ex2-travel-g59.png)
 
 1. Test the agent with various queries:
 
    **Test 1 - Greeting:**
-   ```
-   Hello
-   ```
 
-   ![](../media/ex6-test-greeting.png)
+   In the **Test your agent** panel, type **Hello (1)** and click the **Send (2)** icon.
 
-   **Expected Output:**
+   ![](../../safe-travels/media/cor-g-g23.png)
 
-   ![](../media/ex6-greeting-response.png)
+   **Expected Output:** The agent should respond with a welcome greeting.
 
 1. **Test 2 - Leave Request:**
 
@@ -139,11 +130,7 @@ In this task, you will test the agent and prepare it for publishing.
    How do I request vacation time?
    ```
 
-   ![](../media/ex6-test-leave.png)
-
-   **Expected Output:**
-
-   ![](../media/ex6-leave-response.png)
+   **Expected Output:** The agent should provide information about leave policies and how to request time off.
 
 1. **Test 3 - Benefits:**
 
@@ -152,11 +139,7 @@ In this task, you will test the agent and prepare it for publishing.
    What health insurance options are available?
    ```
 
-   ![](../media/ex6-test-benefits.png)
-
-   **Expected Output:**
-
-   ![](../media/ex6-benefits-response.png)
+   **Expected Output:** The agent should reference the Employee Benefits Guide and provide health insurance information.
 
 1. **Test 4 - Knowledge-based question:**
 
@@ -165,27 +148,17 @@ In this task, you will test the agent and prepare it for publishing.
    How many sick days can I take without a medical certificate?
    ```
 
-   ![](../media/ex6-test-knowledge.png)
+   **Expected Output:** The agent should reference the Leave Policy document and provide accurate information.
 
-   **Expected Output:**
+1. Once testing is complete, navigate to the **Overview (1)** tab and click **Publish (2)** to make the agent live.
 
-   ![](../media/ex6-knowledge-response.png)
+   ![](../../safe-travels/media/ex2-travel-g57.png)
 
-1. Once testing is complete, click **Publish** in the top right corner.
+1. In the **Publish this agent** dialog box, click **Publish** to confirm and deploy the agent.
 
-   ![](../media/ex6-publish-button.png)
-
-1. In the publish dialog, select **Microsoft 365 Copilot** as the channel.
-
-   ![](../media/ex6-publish-m365.png)
-
-1. Review the publishing settings and click **Publish**.
-
-   ![](../media/ex6-publish-confirm.png)
+   ![](../../safe-travels/media/ex2-travel-g58.png)
 
 1. Wait for the publishing process to complete.
-
-   ![](../media/ex6-publishing.png)
 
    >**Note:** The agent may take a few minutes to appear in Microsoft 365 Copilot after publishing.
 
@@ -194,8 +167,6 @@ In this task, you will test the agent and prepare it for publishing.
    - Go to `https://www.microsoft365.com`
    - Click on **Copilot**
    - Look for your HR Assistant agent in the agents panel
-
-   ![](../media/ex6-agent-in-copilot.png)
 
 ## Summary
 

@@ -1,12 +1,12 @@
 # Exercise 6: Build an HR Agent with Microsoft Copilot Studio - Part 1
 
-## Estimated Duration: 60 Minutes
+## Estimated Duration: 90 Minutes
 
 ## Overview
 
 In this exercise, you will begin building a comprehensive HR Agent using Microsoft Copilot Studio that extends Microsoft 365 Copilot Chat capabilities. Microsoft Copilot Studio provides a powerful low-code platform for creating intelligent agents that can handle complex conversations, connect to enterprise data sources, and integrate with Microsoft 365 Copilot.
 
-In Part 1, you will create the foundational HR agent, connect it to SharePoint knowledge sources, and configure conversation topics that define how the agent handles different types of employee inquiries.
+In Part 1, you will create the foundational HR agent, connect it to SharePoint knowledge sources, configure conversation topics, and build an automated leave application workflow with smart approval logic.
 
 ## Exercise Objectives
 
@@ -15,8 +15,55 @@ In this exercise, you will complete the following tasks:
 - Task 1: Upload HR policy documents to SharePoint
 - Task 2: Access Microsoft Copilot Studio and create an HR Agent
 - Task 3: Configure agent topics and conversations
+- Task 4: Build leave application flow with auto-approval and Teams integration
 
-### Task 1: Upload HR Policy Documents to SharePoint
+### Task 1: Create a SharePoint Site
+
+In this task, you will create a SharePoint site to store law firm documents including case files, client information, and billing data.
+
+1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
+
+   ![](../media/m365-cop-ex1-g2.png)
+
+1. In the left navigation pane, select **Apps (1)**, and then choose **SharePoint (2)** to open SharePoint.```
+
+   ![](../media/m365-cop-ex2-g5.png)
+
+1. In SharePoint, select **Create (1)**, and then choose **Site (2)** to start creating a new site.
+
+   ![](../media/m365-cop-ex2-g6.png)
+
+1. On the **Create a site** page, select **Team site** to create a collaborative workspace for your team.
+
+   ![](../media/m365-cop-ex2-g7.png)
+
+1. On the **Select a template** page, choose the **Standard team** template to continue creating the team site.
+
+   ![](../media/m365-cop-ex2-g8.png)
+
+1. On the **Preview and use 'Standard team' template** page, review the site details, and then select **Use template** to continue.
+
+   ![](../media/m365-cop-ex2-g9.png)
+
+1. Select **Team site** and configure:
+
+   | Field | Value |
+   |-------|-------|
+   | Site name | `Morrison Law Firm` |
+   | Site description | `Document repository for Morrison & Associates Law Firm - case files, client data, and billing information` |
+   | Privacy settings | Private |
+
+   ![](../media/m36-copg-ex5-d-g1.png)
+
+1. On the **Set language and other options** page, confirm **Private – only members can access this site (1)** under Privacy settings, and then select **Create site (2)**.
+
+   ![](../media/m365-cop-ex2-g11.png)
+
+1. On the **Add site owners and members** page, select **Finish** to complete the site creation.
+
+   ![](../media/m365-cop-ex2-g12.png)
+
+### Task 2: Upload HR Policy Documents to SharePoint
 
 In this task, you will download the HR policy documents and upload them to SharePoint. These documents will later be used as knowledge sources for the agent to provide grounded responses.
 
@@ -352,6 +399,421 @@ In this task, you will configure topics that define how the agent handles differ
 
 1. Click **Save** to save the topic.
 
+#### Topic 4: Leave Application with Smart Approval
+
+In this topic, you will create an automated leave application flow that automatically approves requests for 2 days or less, and routes longer requests to a manager via Microsoft Teams for approval.
+
+##### Step 1: Create a Teams Channel for Leave Approvals
+
+1. Navigate to **Microsoft Teams** and go to the **Chat (1)** section, click the **New (2)** dropdown, and select **New team (3)** to create a dedicated workspace for leave approvals.
+
+   ![](../../safe-travels/media/ex2-travel-g1.png)
+
+1. Configure your new team with the following details:
+   - **Team name:** Enter `HR Approvals Team`
+   - **First channel:** Type `Leave Approvals`
+   - Click **Create** to establish the team structure.
+
+   ![](../../safe-travels/media/ex2-travel-g2.png)
+
+1. In the **Add members to HR Approvals Team** window, select **Skip** to continue without adding members for this demonstration.
+
+   ![](../../safe-travels/media/ex2-travel-g3.png)
+
+##### Step 2: Create the Leave Approval Power Automate Flow
+
+1. Navigate to **Power Automate** by opening a new browser tab and going to:
+
+   ```
+   https://make.powerautomate.com
+   ```
+
+1. In Power Automate, go to the **Flows (1)** section and click **New agent flow (2)** to create a new automated workflow.
+
+   ![](../../safe-travels/media/ex2-travel-g4.png)
+
+1. Under **AI capabilities**, select **When an agent calls the flow** as the trigger mechanism to enable agent-initiated workflows.
+
+   ![](../../safe-travels/media/ex2-travel-g5.png)
+
+1. Click **Add an input** under the trigger node to define the data parameters that your agent will pass to the workflow.
+
+   ![](../../safe-travels/media/ex2-travel-g6.png)
+
+1. Choose **Number** as the data type for the first input parameter.
+
+   ![](../../safe-travels/media/ex2-travel-g7.png)
+
+1. Add the following input parameters:
+
+   | Input Type | Name |
+   |------------|------|
+   | Text | `EmployeeName` |
+   | Number | `LeaveDays` |
+   | Text | `LeaveType` |
+   | Text | `LeaveReason` |
+   | Text | `StartDate` |
+
+   ![](../../safe-travels/media/ex2-travel-g10.png)
+
+1. Click the **+ (Add)** icon below the trigger to add a new action.
+
+   ![](../../safe-travels/media/ex2-travel-g11.png)
+
+1. Search for **Condition** and select **Condition** from the Control actions.
+
+1. Configure the condition to check if leave days is less than or equal to 2:
+   - **Choose a value:** Select **LeaveDays** from Dynamic content
+   - **Operator:** Select **is less than or equal to**
+   - **Value:** Enter `2`
+
+   ![](../media/ex6-condition-config.png)
+
+   >**Smart Approval Logic:** This condition enables automatic approval for short leave requests (2 days or less), reducing administrative overhead while ensuring longer requests receive proper manager review.
+
+##### Step 3: Configure the Auto-Approval Branch (If Yes - 2 Days or Less)
+
+1. In the **If yes** branch, click **Add an action**.
+
+1. Search for **Post message in a chat or channel (1)** and **select (2)** it from the available Microsoft Teams actions.
+
+   ![](../../safe-travels/media/ex2-travel-g12.png)
+
+1. Establish the Microsoft Teams connection by selecting **Sign in** to authenticate and authorize the workflow integration.
+
+   ![](../../safe-travels/media/ex2-travel-g13.png)
+
+1. Choose your **ODL_User (1)** account credentials to authenticate and establish the Microsoft Teams connection.
+
+   ![](../../safe-travels/media/ex2-travel-g14.png)
+
+1. Configure the Teams message for auto-approved requests:
+   - **Post as (1):** Flow bot
+   - **Post in (2):** Channel
+   - **Team (3):** HR Approvals Team
+   - **Channel (4):** Leave Approvals  
+   - **Message (5):** 
+     ```
+     ✅ **LEAVE AUTO-APPROVED**
+     
+     **Employee:** [EmployeeName]
+     **Leave Type:** [LeaveType]
+     **Duration:** [LeaveDays] day(s)
+     **Start Date:** [StartDate]
+     **Reason:** [LeaveReason]
+     
+     _This request was automatically approved as it is for 2 days or less._
+     ```
+
+   ![](../../safe-travels/media/ex2-travel-g15.png)
+
+1. Highlight **[EmployeeName] (1)** in the message box and click the **Dynamic content (2)** icon to insert the variable.
+
+   ![](../../safe-travels/media/ex2-travel-g16.png)
+
+1. From the **Dynamic content** panel, select the appropriate variable under the "When an agent calls the flow" section.
+
+   ![](../../safe-travels/media/ex2-travel-g17.png)
+
+   >**Note:** Replace all bracketed values [EmployeeName], [LeaveDays], etc. with Dynamic content from the trigger.
+
+1. Click **Add an action** in the **If yes** branch and search for **Respond to agent (1)** and select **Respond to the agent (2)** under the Skills section.
+
+   ![](../../safe-travels/media/ex2-travel-g20.png)
+
+1. Click **Add an output (1)** under the **Respond to the agent** action to define the return message.
+
+   ![](../../safe-travels/media/ex2-travel-g21.png)
+
+1. Select **Text (1)** as the type of output for the agent response.
+
+   ![](../../safe-travels/media/ex2-travel-g22.png)
+
+1. Add the output:
+   - **Name (1):** `ApprovalStatus`
+   - **Value (2):** `Your leave request for [LeaveDays] day(s) has been automatically approved! You will receive a confirmation email shortly.`
+   - **Description (3):** `Confirmation message for auto-approved leave request`
+
+   ![](../../safe-travels/media/ex2-travel-g23.png)
+
+##### Step 4: Configure the Teams Approval Branch (If No - More Than 2 Days)
+
+1. In the **If no** branch, click **Add an action**.
+
+1. Search for **Post adaptive card and wait for a response** and select the Microsoft Teams action.
+
+   ![](../media/ex6-adaptive-card.png)
+
+1. Configure the adaptive card for manager approval:
+   - **Post as:** Flow bot
+   - **Post in:** Channel
+   - **Team:** HR Approvals Team
+   - **Channel:** Leave Approvals
+   - **Message:** Enter the following adaptive card JSON:
+
+   ```json
+   {
+       "type": "AdaptiveCard",
+       "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+       "version": "1.4",
+       "body": [
+           {
+               "type": "TextBlock",
+               "text": "🔔 Leave Approval Request",
+               "weight": "Bolder",
+               "size": "Large",
+               "color": "Accent"
+           },
+           {
+               "type": "FactSet",
+               "facts": [
+                   {"title": "Employee:", "value": "${EmployeeName}"},
+                   {"title": "Leave Type:", "value": "${LeaveType}"},
+                   {"title": "Duration:", "value": "${LeaveDays} day(s)"},
+                   {"title": "Start Date:", "value": "${StartDate}"},
+                   {"title": "Reason:", "value": "${LeaveReason}"}
+               ]
+           },
+           {
+               "type": "TextBlock",
+               "text": "⚠️ This request requires manager approval (more than 2 days)",
+               "wrap": true,
+               "color": "Warning"
+           }
+       ],
+       "actions": [
+           {
+               "type": "Action.Submit",
+               "title": "✅ Approve",
+               "style": "positive",
+               "data": {"action": "approve"}
+           },
+           {
+               "type": "Action.Submit",
+               "title": "❌ Reject",
+               "style": "destructive",
+               "data": {"action": "reject"}
+           }
+       ]
+   }
+   ```
+
+   ![](../media/ex6-adaptive-card-config.png)
+
+   >**Note:** Replace ${EmployeeName}, ${LeaveDays}, etc. with Dynamic content from the trigger when configuring.
+
+   - **Update message:** `Leave request has been processed.`
+   - **Should update card:** Yes
+
+1. Click **Add an action** after the adaptive card and add another **Condition** to check the manager's response.
+
+1. Configure the condition:
+   - **Choose a value:** Select **data.action** from Dynamic content (under the adaptive card response)
+   - **Operator:** Select **is equal to**
+   - **Value:** Enter `approve`
+
+   ![](../media/ex6-approval-condition.png)
+
+1. In the **If yes** branch (Manager Approved), add **Respond to the agent**:
+   - **Type:** Text
+   - **Name:** `ApprovalStatus`
+   - **Value:** `Great news! Your leave request for [LeaveDays] day(s) has been approved by your manager.`
+
+1. In the **If no** branch (Manager Rejected), add **Respond to the agent**:
+   - **Type:** Text
+   - **Name:** `ApprovalStatus`
+   - **Value:** `Your leave request for [LeaveDays] day(s) has been reviewed but was not approved. Please contact HR for more information.`
+
+1. Click **Save draft (1)** to save the current flow configuration before publishing.
+
+   ![](../../safe-travels/media/ex2-travel-g24.png)
+
+1. Verify the confirmation message **"We saved your draft flow. You can test and run it after you publish."** appears at the top of the page.
+
+   ![](../../safe-travels/media/ex2-travel-g25.png)
+
+1. Click **Publish** to make the agent flow available for use.
+
+   ![](../../safe-travels/media/ex2-travel-g26.png)
+
+##### Step 5: Create the Leave Application Topic
+
+1. Return to **Copilot Studio** and navigate to your **HR Assistant** agent.
+
+1. From the **menu**, select **Topics** to create or manage conversation topics for your agent.
+
+   ![](../../safe-travels/media/ex2-travel-g75.png)
+
+1. Click **+ Add a topic (1)**, then select **From blank (2)** to create a new topic.
+
+   ![](../../safe-travels/media/ex2-travel-g31.png)
+
+1. Enter the topic description in the **Describe what the topic does** box:
+
+   ```
+   This topic handles leave applications. Trigger phrases: apply for leave, request time off, submit leave request, I need to take leave, book vacation, request PTO
+   ```
+
+1. Click the **+ (Add)** icon and select **Send a message**. Enter:
+
+   ```
+   I'd be happy to help you apply for leave! Let me collect some information.
+   ```
+
+1. Click **+ (Add)** and select **Ask a question**:
+   - **Question text:** `What type of leave would you like to apply for?`
+   - **Identify:** Select **Multiple choice options**
+   - **Options:** Add the following:
+     - Annual Leave
+     - Sick Leave
+     - Personal Leave
+     - Parental Leave
+   - **Save response as:** `LeaveType`
+
+1. Click **+ (Add)** and add another **Ask a question**:
+   - **Question text:** `How many days of leave do you need?`
+   - **Identify:** Select **Number**
+   - **Save response as:** `LeaveDays`
+
+1. Click **+ (Add)** and add another **Ask a question**:
+   - **Question text:** `What is the start date for your leave? (e.g., 2025-03-15)`
+   - **Identify:** Select **Date and time**
+   - **Save response as:** `StartDate`
+
+1. Click **+ (Add)** and add another **Ask a question**:
+   - **Question text:** `Please provide a brief reason for your leave request.`
+   - **Identify:** Select **User's entire response**
+   - **Save response as:** `LeaveReason`
+
+1. Click **+ (Add)** and add another **Ask a question**:
+   - **Question text:** `What is your full name?`
+   - **Identify:** Select **Person name**
+   - **Save response as:** `EmployeeName`
+
+1. Click **+ (Add)** and select **Send a message**. Enter:
+
+   ```
+   Thanks! Let me process your leave request:
+   
+   📋 **Leave Summary**
+   - Employee: {x} EmployeeName
+   - Type: {x} LeaveType
+   - Duration: {x} LeaveDays day(s)
+   - Start Date: {x} StartDate
+   - Reason: {x} LeaveReason
+   ```
+
+   >**Note:** Use the variable picker {x} to insert the actual variables.
+
+1. Click **+ (Add)** and select **Add a tool** to connect the Power Automate flow.
+
+1. Add the Leave Application Approval Flow tool as follows:
+   - **Add a tool (1):** From the options menu, select **Add a tool**.
+   - **Leave Application Approval Flow (2):** In the list of tools, choose **Leave Application Approval Flow** to link it with the topic.
+
+   ![](../../safe-travels/media/cor-g-g18.png)
+
+1. Map the flow inputs to the topic variables. In the **Power Automate inputs (2)** section, click the variable picker **(1)** and select the appropriate variable for each field:
+   - **EmployeeName:** Select `EmployeeName`
+   - **LeaveDays:** Select `LeaveDays`
+   - **LeaveType:** Select `LeaveType`
+   - **LeaveReason:** Select `LeaveReason`
+   - **StartDate:** Select `StartDate`
+
+   ![](../../safe-travels/media/cor2-gs-g8.png)
+
+1. Once all variables are mapped correctly, verify the configuration.
+
+   ![](../../safe-travels/media/cor-g-g19.png)
+
+1. After mapping the outputs, click the **plus (+)** icon below the **Action** node to add the next step.
+
+   ![](../../safe-travels/media/cor-g-g20.png)
+
+1. From the action menu, select **Send a message** to display a confirmation message to the user.
+
+   ![](../../safe-travels/media/cor-g-g21.png)
+
+1. In the **Message** box, click on the **variable picker (1)** and select **ApprovalStatus (2)** from the list to insert it into the message.
+
+   ![](../../safe-travels/media/ex2-travel-g55.png)
+
+1. Click **+ (Add)** and select **Send a message** for a closing message:
+
+   ```
+   Is there anything else I can help you with today?
+   ```
+
+1. Click **Untitled** at the top and rename the topic to `Leave Application`.
+
+1. Click on the **Save** button to save the topic configuration.
+
+   ![](../../safe-travels/media/ex2-travel-g56.png)
+
+##### Step 6: Test the Leave Application Flow
+
+1. Navigate to the **Overview (1)** tab and click **Publish (2)** to make the agent updates live.
+
+   ![](../../safe-travels/media/ex2-travel-g57.png)
+
+1. In the **Publish this agent** dialog box, click **Publish** to confirm and deploy the agent.
+
+   ![](../../safe-travels/media/ex2-travel-g58.png)
+
+1. Once the agent is successfully published, click **Test** to verify and interact with your HR Agent.
+
+   ![](../../safe-travels/media/ex2-travel-g59.png)
+
+1. **Test 1 - Short Leave (Auto-Approval):**
+
+   In the **Test your agent** panel, type **I want to apply for leave (1)** and click the **Send (2)** icon to initiate the leave application flow.
+
+   ![](../../safe-travels/media/cor-g-g23.png)
+
+   When prompted, provide:
+   - **Leave Type:** Annual Leave
+   - **Days:** 2
+   - **Start Date:** 2025-03-20
+   - **Reason:** Personal appointment
+   - **Name:** John Smith
+
+   ![](../../safe-travels/media/ex2-travel-g61.png)
+
+   **Expected Result:** The leave should be automatically approved since it's 2 days or less.
+
+   ![](../../safe-travels/media/ex2-travel-g64.png)
+
+1. **Test 2 - Long Leave (Manager Approval Required):**
+
+   Type: `I need to request time off`
+
+   When prompted, provide:
+   - **Leave Type:** Annual Leave
+   - **Days:** 5
+   - **Start Date:** 2025-04-01
+   - **Reason:** Family vacation
+   - **Name:** Jane Doe
+
+1. When prompted for Microsoft Teams connection access, click **Allow** to authorize the integration and enable the flow to post leave requests in Teams.
+
+   ![](../../safe-travels/media/ex2-travel-g63.png)
+
+   **Expected Result:** The request should be sent to the Teams channel for manager approval.
+
+1. Navigate to **Microsoft Teams** > **HR Approvals Team** > **Leave Approvals** channel to verify the approval card appears.
+
+   Verify the adaptive card is posted in Microsoft Teams:
+   - **Chat (1):** Open the **Chat** tab.
+   - **Team (2):** Select **HR Approvals Team**.
+   - **Channel (3):** Open **Leave Approvals**.
+   - **Message (4):** Confirm the approval card appears.
+
+   ![](../../safe-travels/media/ex2-travel-g65.png)
+
+1. Click **Approve** or **Reject** on the adaptive card to complete the approval process.
+
+   >**Smart Workflow Benefits:** This automated approval system reduces HR workload by auto-approving routine short leave requests while ensuring proper oversight for extended absences through manager approval via Teams.
+
 ## Summary
 
 In this exercise, you created the foundation of an HR Agent using Microsoft Copilot Studio. You learned how to:
@@ -360,9 +822,13 @@ In this exercise, you created the foundation of an HR Agent using Microsoft Copi
 - Access and navigate Microsoft Copilot Studio
 - Create a new agent and configure its basic settings
 - Add SharePoint as a knowledge source for grounded responses
-- Configure three types of conversation topics:
+- Configure four types of conversation topics:
   - Manual topic creation with conversation flow (Escalation to HR)
   - AI-generated topics using Copilot (General HR Help and Leave and Time Off)
+  - Automated leave application with smart approval logic (Leave Application)
+- Build Power Automate flows with conditional logic for smart approvals
+- Integrate Microsoft Teams for manager approval workflows
+- Implement auto-approval rules for requests of 2 days or less
 
 In the next exercise, you will enhance the agent's instructions, configure actions, test its capabilities, and publish it to Microsoft 365 Copilot.
 

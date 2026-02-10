@@ -350,18 +350,21 @@ In this task, you will configure topics that define how the agent handles differ
 
    **Topic Description:**
    ```
-   Create a topic that helps users with leave and time off questions.
-   Start by greeting the user and asking what they need help with regarding leave.
-   Support questions related to:
-   - Leave policies and entitlements
-   - Leave balance inquiries
-   - How to apply for leave
-   - General leave information
-   Provide clear information about leave policies.
-   Guide users to the HR portal to check their leave balance.
-   If the user wants to apply for leave, redirect them to the Leave Application topic.
-   For special leave cases (medical, parental, emergency), recommend contacting HR directly.
-   End by asking if the user needs further assistance.
+   Create a topic that helps users apply for leave and handles leave requests.
+   Start by greeting the user and saying you can help them apply for leave.
+   Collect the following information from the user:
+   1. Ask for their Employee ID (number)
+   2. Ask for their full name
+   3. Ask how many days of leave they need (number)
+   4. Ask for the reason for their leave request
+   After collecting all information, display a summary showing:
+   - Employee ID
+   - Employee Name
+   - Number of days
+   - Reason
+   Then call the Leave-Flow action with the collected information.
+   Display the approval status returned from the flow.
+   End by asking if the user needs any further assistance.
    ```
 
    ![](../media/m36-copg-ex6-c-g41.png)
@@ -369,22 +372,22 @@ In this task, you will configure topics that define how the agent handles differ
 1. Click **Create** to generate the topic.
 
 1. Review the generated flow which should include:
-   - Welcome message for leave inquiries
-   - Multiple choice question for leave type selection
-   - Conditional responses for each leave type
-   - Information about leave accrual and HR portal
-   - Special cases handling
+   - Welcome message for leave applications
+   - Question nodes to collect Employee ID, Name, Days, and Reason
+   - Leave summary message with collected information
+   - Action node calling the Leave-Flow
+   - Approval status message
    - Closing message
 
       ![](../media/m36-copg-ex6-c-g42.png)
 
 1. Click **Save** to save the topic.
 
-#### Topic 4: Leave Application with Smart Approval
+#### Task 4: Build Leave Application Flow with Smart Approval
 
-In this topic, you will create an automated leave application flow that automatically approves requests for 2 days or less, and routes longer requests to a manager via Microsoft Teams for approval.
+In this topic, you will create an automated leave application flow that automatically approves requests for 2 days or less, and routes longer requests to a manager via email for approval.
 
-1. Navigate to **Microsoft Teams** and go to the **Chat (1)** section, click the **New (2)** dropdown, and select **New team (3)** to create a dedicated workspace for leave approvals.
+1. Navigate to **Microsoft Teams** and go to the **Chat (1)** section, click the **New (2)** dropdown, and select **New team (3)** to create a dedicated workspace for leave notifications.
 
    ![](../media/ex2-travel-g1.png)
 
@@ -506,92 +509,43 @@ In this topic, you will create an automated leave application flow that automati
 
    ![](../media/ex2-travel-g23.png)
 
-##### Step 4: Configure the Teams Approval Branch (If No - More Than 2 Days)
+##### Step 4: Configure the Email Notification Branch (If No - More Than 2 Days)
 
 1. In the **If no** branch, click **Add an action**.
 
-1. Search for **Post adaptive card and wait for a response** and select the Microsoft Teams action.
+1. Search for **Send an email (V2)** and select the Office 365 Outlook action.
 
-   ![](../media/ex6-adaptive-card.png)
+   ![](../media/ex6-send-email.png)
 
-1. Configure the adaptive card for manager approval:
-   - **Post as:** Flow bot
-   - **Post in:** Channel
-   - **Team:** HR Approvals Team
-   - **Channel:** Leave Approvals
-   - **Message:** Enter the following adaptive card JSON:
+1. Establish the Office 365 Outlook connection by selecting **Sign in** to authenticate.
 
-   ```json
-   {
-       "type": "AdaptiveCard",
-       "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-       "version": "1.4",
-       "body": [
-           {
-               "type": "TextBlock",
-               "text": "🔔 Leave Approval Request",
-               "weight": "Bolder",
-               "size": "Large",
-               "color": "Accent"
-           },
-           {
-               "type": "FactSet",
-               "facts": [
-                   {"title": "Employee ID:", "value": "${EmployeeID}"},
-                   {"title": "Employee:", "value": "${EmployeeName}"},
-                   {"title": "Duration:", "value": "${LeaveDays} day(s)"},
-                   {"title": "Reason:", "value": "${LeaveReason}"}
-               ]
-           },
-           {
-               "type": "TextBlock",
-               "text": "⚠️ This request requires manager approval (more than 2 days)",
-               "wrap": true,
-               "color": "Warning"
-           }
-       ],
-       "actions": [
-           {
-               "type": "Action.Submit",
-               "title": "✅ Approve",
-               "style": "positive",
-               "data": {"action": "approve"}
-           },
-           {
-               "type": "Action.Submit",
-               "title": "❌ Reject",
-               "style": "destructive",
-               "data": {"action": "reject"}
-           }
-       ]
-   }
+1. Configure the email for manager approval requests:
+   - **To:** Enter your email address (e.g., `odl_user_XXXXXX@cloudlabssandbox.onmicrosoft.com`)
+   - **Subject:** `Leave Approval`
+   - **Body:** Enter the following:
+
+   ```
+   Leave Approval Request
+
+   Employee ID: [EmployeeID]
+   Employee Name: [EmployeeName]
+   Duration: [LeaveDays] day(s)
+   Reason: [LeaveReason]
+
+   This request requires manager approval as it exceeds 2 days.
+   Please review and respond to the employee accordingly.
    ```
 
-   ![](../media/ex6-adaptive-card-config.png)
+   ![](../media/ex6-email-config.png)
 
-   >**Note:** Replace ${EmployeeID}, ${EmployeeName}, ${LeaveDays}, and ${LeaveReason} with Dynamic content from the trigger when configuring.
+   >**Note:** Replace all bracketed values [EmployeeID], [EmployeeName], [LeaveDays], and [LeaveReason] with Dynamic content from the trigger.
 
-   - **Update message:** `Leave request has been processed.`
-   - **Should update card:** Yes
+1. Click **Add an action** after the email action and search for **Respond to agent (1)** and select **Respond to the agent (2)** under the Skills section.
 
-1. Click **Add an action** after the adaptive card and add another **Condition** to check the manager's response.
-
-1. Configure the condition:
-   - **Choose a value:** Select **data.action** from Dynamic content (under the adaptive card response)
-   - **Operator:** Select **is equal to**
-   - **Value:** Enter `approve`
-
-   ![](../media/ex6-approval-condition.png)
-
-1. In the **If yes** branch (Manager Approved), add **Respond to the agent**:
+1. Add the output:
    - **Type:** Text
    - **Name:** `ApprovalStatus`
-   - **Value:** `Great news! Your leave request for [LeaveDays] day(s) has been approved by your manager.`
-
-1. In the **If no** branch (Manager Rejected), add **Respond to the agent**:
-   - **Type:** Text
-   - **Name:** `ApprovalStatus`
-   - **Value:** `Your leave request for [LeaveDays] day(s) has been reviewed but was not approved. Please contact HR for more information.`
+   - **Value:** `Your leave request for [LeaveDays] day(s) has been submitted for manager approval. You will receive a response via email shortly.`
 
 1. Click **Save draft (1)** to save the current flow configuration before publishing.
 
@@ -605,69 +559,21 @@ In this topic, you will create an automated leave application flow that automati
 
    ![](../media/ex2-travel-g26.png)
 
-##### Step 5: Create the Leave Application Topic
+##### Step 5: Connect the Flow to Leave and Time Off Topic
 
 1. Return to **Copilot Studio** and navigate to your **HR Assistant** agent.
 
-1. From the **menu**, select **Topics** to create or manage conversation topics for your agent.
+1. From the **menu**, select **Topics** to access the topics list.
 
    ![](../media/ex2-travel-g75.png)
 
-1. Click **+ Add a topic (1)**, then select **From blank (2)** to create a new topic.
+1. Click on the **Leave and Time Off** topic you created earlier to edit it.
 
-   ![](../media/ex2-travel-g31.png)
+1. Review the generated topic and locate the action node. If not already present, click **+ (Add)** and select **Add a tool** to connect the agent flow.
 
-1. Enter the topic description in the **Describe what the topic does** box:
-
-   ```
-   This topic handles leave applications. Trigger phrases: apply for leave, request time off, submit leave request, I need to take leave, book vacation, request PTO
-   ```
-
-1. Click the **+ (Add)** icon and select **Send a message**. Enter:
-
-   ```
-   I'd be happy to help you apply for leave! Let me collect some information.
-   ```
-
-1. Click **+ (Add)** and select **Ask a question**:
-   - **Question text:** `What is your Employee ID?`
-   - **Identify:** Select **Number**
-   - **Save response as:** `EmployeeID`
-
-1. Click **+ (Add)** and add another **Ask a question**:
-   - **Question text:** `What is your full name?`
-   - **Identify:** Select **Person name**
-   - **Save response as:** `EmployeeName`
-
-1. Click **+ (Add)** and add another **Ask a question**:
-   - **Question text:** `How many days of leave do you need?`
-   - **Identify:** Select **Number**
-   - **Save response as:** `LeaveDays`
-
-1. Click **+ (Add)** and add another **Ask a question**:
-   - **Question text:** `Please provide a brief reason for your leave request.`
-   - **Identify:** Select **User's entire response**
-   - **Save response as:** `LeaveReason`
-
-1. Click **+ (Add)** and select **Send a message**. Enter:
-
-   ```
-   Thanks! Let me process your leave request:
-   
-   📋 **Leave Summary**
-   - Employee ID: {x} EmployeeID
-   - Employee: {x} EmployeeName
-   - Duration: {x} LeaveDays day(s)
-   - Reason: {x} LeaveReason
-   ```
-
-   >**Note:** Use the variable picker {x} to insert the actual variables.
-
-1. Click **+ (Add)** and select **Add a tool** to connect the agent flow.
-
-1. Add the Leave Application Approval Flow tool as follows:
+1. Add the Leave-Flow tool as follows:
    - **Add a tool (1):** From the options menu, select **Add a tool**.
-   - **Leave Application Approval Flow (2):** In the list of tools, choose **Leave Application Approval Flow** to link it with the topic.
+   - **Leave-Flow (2):** In the list of tools, choose **Leave-Flow** to link it with the topic.
 
    ![](../media/cor-g-g18.png)
 
@@ -683,25 +589,9 @@ In this topic, you will create an automated leave application flow that automati
 
    ![](../media/cor-g-g19.png)
 
-1. After mapping the outputs, click the **plus (+)** icon below the **Action** node to add the next step.
-
-   ![](../media/cor-g-g20.png)
-
-1. From the action menu, select **Send a message** to display a confirmation message to the user.
-
-   ![](../media/cor-g-g21.png)
-
-1. In the **Message** box, click on the **variable picker (1)** and select **ApprovalStatus (2)** from the list to insert it into the message.
+1. After the action node, ensure there is a **Send a message** node that displays the **ApprovalStatus** variable returned from the flow.
 
    ![](../media/ex2-travel-g55.png)
-
-1. Click **+ (Add)** and select **Send a message** for a closing message:
-
-   ```
-   Is there anything else I can help you with today?
-   ```
-
-1. Click **Untitled** at the top and rename the topic to `Leave Application`.
 
 1. Click on the **Save** button to save the topic configuration.
 
@@ -749,25 +639,23 @@ In this topic, you will create an automated leave application flow that automati
    - **Days:** 5
    - **Reason:** Family vacation
 
-1. When prompted for Microsoft Teams connection access, click **Allow** to authorize the integration and enable the flow to post leave requests in Teams.
+1. When prompted for Office 365 Outlook connection access, click **Allow** to authorize the integration and enable the flow to send approval emails.
 
    ![](../media/ex2-travel-g63.png)
 
-   **Expected Result:** The request should be sent to the Teams channel for manager approval.
+   **Expected Result:** An email notification should be sent to the manager for approval.
 
-1. Navigate to **Microsoft Teams** > **HR Approvals Team** > **Leave Approvals** channel to verify the approval card appears.
+1. Navigate to **Outlook** to verify the leave approval email was received.
 
-   Verify the adaptive card is posted in Microsoft Teams:
-   - **Chat (1):** Open the **Chat** tab.
-   - **Team (2):** Select **HR Approvals Team**.
-   - **Channel (3):** Open **Leave Approvals**.
-   - **Message (4):** Confirm the approval card appears.
+   Verify the email contains:
+   - Employee ID and name
+   - Leave duration (5 days)
+   - Reason for leave
+   - Request for manager review
 
-   ![](../media/ex2-travel-g65.png)
+   ![](../media/ex6-email-received.png)
 
-1. Click **Approve** or **Reject** on the adaptive card to complete the approval process.
-
-   >**Smart Workflow Benefits:** This automated approval system reduces HR workload by auto-approving routine short leave requests while ensuring proper oversight for extended absences through manager approval via Teams.
+   >**Smart Workflow Benefits:** This automated approval system reduces HR workload by auto-approving routine short leave requests while ensuring proper oversight for extended absences through email notifications to managers.
 
 ## Summary
 
@@ -780,9 +668,8 @@ In this exercise, you created the foundation of an HR Agent using Microsoft Copi
 - Configure four types of conversation topics:
   - Manual topic creation with conversation flow (Escalation to HR)
   - AI-generated topics using Copilot (General HR Help and Leave and Time Off)
-  - Automated leave application with smart approval logic (Leave Application)
 - Build agent flows with conditional logic for smart approvals
-- Integrate Microsoft Teams for manager approval workflows
+- Integrate email notifications for manager approval workflows
 - Implement auto-approval rules for requests of 2 days or less
 
 In the next exercise, you will enhance the agent's instructions, configure actions, test its capabilities, and publish it to Microsoft 365 Copilot.

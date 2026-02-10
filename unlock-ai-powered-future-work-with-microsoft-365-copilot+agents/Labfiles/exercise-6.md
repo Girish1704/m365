@@ -49,11 +49,9 @@ In this task, you will create a SharePoint site to store law firm documents incl
 
    | Field | Value |
    |-------|-------|
-   | Site name | `Morrison Law Firm` |
-   | Site description | `Document repository for Morrison & Associates Law Firm - case files, client data, and billing information` |
-   | Privacy settings | Private |
+   | Site name | **HRPolicies-<inject key="DeploymentID" enableCopy="false"/>** |
 
-   ![](../media/m36-copg-ex5-d-g1.png)
+   ![](../media/d2-d2-cor-g4.png)
 
 1. On the **Set language and other options** page, confirm **Private – only members can access this site (1)** under Privacy settings, and then select **Create site (2)**.
 
@@ -98,23 +96,9 @@ In this task, you will download the HR policy documents and upload them to Share
 
 1. Open a new browser tab and navigate to your SharePoint site:
 
-   ```
-   https://<inject key="TenantName" enableCopy="false"/>.sharepoint.com/sites/HRPoliciesHub-<inject key="DeploymentID" enableCopy="false"/>
-   ```
+1. In the SharePoint site, select **Documents (1)**, click **Upload (2)**, and then choose **Folder (3)** to create a new folder.``
 
-1. Click on **Documents** in the left navigation.
-
-   ![](../media/ex6-sharepoint-documents.png)
-
-1. Click **+ New** > **Folder** to create a new folder.
-
-1. Name the folder `HR Policies` and click **Create**.
-
-   ![](../media/ex6-create-folder.png)
-
-1. Open the **HR Policies** folder and click **Upload** > **Files**.
-
-   ![](../media/ex6-upload-files.png)
+   ![](../media/d2-d2-cor-g5.png)
 
 1. Browse to the location where you extracted the Day2-datasets, navigate to the **policy** folder, select all the policy PDF documents, and click **Open**.
 

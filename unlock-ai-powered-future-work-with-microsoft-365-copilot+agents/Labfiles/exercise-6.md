@@ -1,24 +1,25 @@
 # Exercise 6: Build an HR Agent with Microsoft Copilot Studio - Part 1
 
-## Estimated Duration: 45 Minutes
+## Estimated Duration: 90 Minutes
 
 ## Overview
 
 In this exercise, you will begin building a comprehensive HR Agent using Microsoft Copilot Studio that extends Microsoft 365 Copilot Chat capabilities. Microsoft Copilot Studio provides a powerful low-code platform for creating intelligent agents that can handle complex conversations, connect to enterprise data sources, and integrate with Microsoft 365 Copilot.
 
-In Part 1, you will create a SharePoint site to store HR policy documents, upload the documents, and create the foundational HR agent with SharePoint knowledge sources.
+In Part 1, you will create the foundational HR agent, connect it to SharePoint knowledge sources, configure conversation topics, and build an automated leave application workflow with smart approval logic.
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Create a SharePoint site for HR policies
-- Task 2: Upload HR policy documents to SharePoint
-- Task 3: Access Microsoft Copilot Studio and create an HR Agent
+- Task 1: Upload HR policy documents to SharePoint
+- Task 2: Access Microsoft Copilot Studio and create an HR Agent
+- Task 3: Configure agent topics and conversations
+- Task 4: Build leave application flow with auto-approval and Teams integration
 
 ### Task 1: Create a SharePoint Site
 
-In this task, you will create a SharePoint site to store HR policy documents that will be used as a knowledge base for the HR agent.
+In this task, you will create a SharePoint site to store law firm documents including case files, client information, and billing data.
 
 1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
 
@@ -74,26 +75,7 @@ In this task, you will download the HR policy documents and upload them to Share
 
 1. Once downloaded, extract the **Day2-datasets.zip** file to a location of your choice (e.g., Desktop or Downloads folder).
 
-1. Open **File Explorer** and navigate to the extracted folder. Inside the **policy** folder, you will find the following HR policy documents:
-
-   | Document | Description |
-   |----------|-------------|
-   | Anti-Harassment-Policy.pdf | Discrimination prevention, reporting |
-   | Code-of-Conduct.pdf | Ethics, values, conflicts of interest |
-   | Employee-Benefits-Guide.pdf | Medical, dental, 401k, wellness programs |
-   | Health-and-Safety-Policy.pdf | Emergency procedures, hazard reporting |
-   | Holiday-Calendar-2025.pdf | Official holidays and floating holidays |
-   | IT-Security-Policy.pdf | Passwords, devices, data handling |
-   | Leave-Policy.pdf | Annual, sick, personal, parental leave entitlements |
-   | Onboarding-Guide.pdf | First day through 90-day milestones |
-   | Performance-Review-Policy.pdf | Ratings, goals, merit increases |
-   | Remote-Work-Policy.pdf | Hybrid/remote work guidelines |
-   | Training-and-Development-Policy.pdf | Tuition, certifications, mentoring |
-   | Travel-and-Expense-Policy.pdf | Booking, per diem, reimbursement |
-
-   >**Note:** These 12 PDF files contain comprehensive Contoso HR policy information.
-
-1. Open a new browser tab and navigate to your SharePoint site:
+1. Navigate to your SharePoint site.
 
 1. In the SharePoint site, select **Documents (1)**, click **Upload (2)**, and then choose **Folder (3)** to create a new folder.``
 
@@ -101,11 +83,11 @@ In this task, you will download the HR policy documents and upload them to Share
 
 1. Browse to the location where you extracted the Day2-datasets, navigate to the **policy** folder, select all the policy PDF documents, and click **Open**.
 
-   ![](../media/ex6-select-policies.png)
+   ![](../media/d2-d2-cor-g2.png)
 
 1. Wait for all files to upload successfully. You should see all 12 policy documents in the folder.
 
-   ![](../media/ex6-policies-uploaded.png)
+   ![](../media/d2-d2-cor-g3.png)
 
    >**Note:** These policy documents contain comprehensive Contoso HR information that the agent will use to answer employee questions accurately.
 
@@ -180,12 +162,17 @@ In this task, you will navigate to Microsoft Copilot Studio, create a new HR Age
 
 In this exercise, you created the foundation of an HR Agent using Microsoft Copilot Studio. You learned how to:
 
-- Create a SharePoint site to store HR policy documents
 - Upload HR policy documents to SharePoint as a knowledge base
 - Access and navigate Microsoft Copilot Studio
 - Create a new agent and configure its basic settings
 - Add SharePoint as a knowledge source for grounded responses
+- Configure four types of conversation topics:
+  - Manual topic creation with conversation flow (Escalation to HR)
+  - AI-generated topics using Copilot (General HR Help and Leave and Time Off)
+- Build agent flows with conditional logic for smart approvals
+- Integrate email notifications for manager approval workflows
+- Implement auto-approval rules for requests of 2 days or less
 
-In the next exercise, you will configure agent topics, build leave application flows with smart approval logic, and publish the agent to Microsoft 365 Copilot.
+In the next exercise, you will enhance the agent's instructions, configure actions, test its capabilities, and publish it to Microsoft 365 Copilot.
 
 ### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

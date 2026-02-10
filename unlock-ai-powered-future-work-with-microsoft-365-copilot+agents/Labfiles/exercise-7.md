@@ -1,27 +1,25 @@
 # Exercise 7: Build an HR Agent with Microsoft Copilot Studio - Part 2
 
-## Estimated Duration: 90 Minutes
+## Estimated Duration: 30 Minutes
 
 ## Overview
 
-In this exercise, you will complete the HR Agent you started building in Exercise 6. You will configure agent topics and conversations, build leave application flows with smart approval logic, enhance agent instructions, and publish the agent to Microsoft 365 Copilot.
+In this exercise, you will complete the HR Agent you started building in Exercise 6. You will enhance the agent's instructions to properly reference policy documents, configure actions and integrations, thoroughly test the agent's capabilities, and publish it to Microsoft 365 Copilot.
 
 ## Prerequisites
 
 - Completed Exercise 6: Build an HR Agent with Microsoft Copilot Studio - Part 1
-- HR Agent created in Copilot Studio with SharePoint knowledge configured
+- HR Agent created in Copilot Studio with topics configured
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
 - Task 1: Configure agent topics and conversations
-- Task 2: Build leave application flow with auto-approval and email integration
-- Task 3: Enhance agent instructions with policy references
-- Task 4: Configure agent actions and integrations
-- Task 5: Test and publish the agent to Microsoft 365 Copilot
+- Task 2: Build leave application flow with auto-approval and Teams integration
+- Task 3: Test and publish the agent to Microsoft 365 Copilot
 
-### Task 1: Configure Agent Topics and Conversations
+## Task 1: Configure Agent Topics and Conversations
 
 In this task, you will configure topics that define how the agent handles different types of conversations. You will create an escalation topic and use the **Add from description with Copilot** feature to quickly generate topic flows.
 
@@ -222,7 +220,7 @@ In this task, you will configure topics that define how the agent handles differ
 
 1. Click **Save** to save the topic.
 
-### Task 2: Build Leave Application Flow with Smart Approval
+#### Task 2: Build Leave Application Flow with Smart Approval
 
 In this topic, you will create an automated leave application flow that automatically approves requests for 2 days or less, and routes longer requests to a manager via email for approval.
 
@@ -616,23 +614,17 @@ In this task, you will update the agent instructions to ensure it properly refer
 
 1. Click **Save** to save the updated instructions.
 
-### Task 4: Configure Agent Actions and Integrations
+### Task 2: Configure Agent Actions and Integrations
 
 In this task, you will configure actions that the agent can perform.
 
-1. In the agent editor, click on **Actions** in the left navigation.
-
-1. Click **+ Add an action**.
-
-1. Browse the available action types:
-
-   - **Prebuilt connectors** - Connect to external services
-   - **Agent flows** - Trigger automated workflows
-   - **Custom connectors** - Connect to custom APIs
-
-1. For this exercise, we will create a simple escalation flow. Select **Flows** > **Create a new flow**.
+1. Select **Flows (1)** > **Create a new flow (2)**.
 
    ![](../media/ex2-travel-g4.png)
+
+1. Under **AI capabilities**, select **When an agent calls the flow** as the trigger mechanism to enable agent-initiated workflows.
+
+   ![](../media/ex2-travel-g5.png)
 
 1. If the flow editor opens, create a simple flow:
 
@@ -666,13 +658,11 @@ In this task, you will configure actions that the agent can perform.
 
    ![](../media/ex2-travel-g56.png)
 
-### Task 5: Test and Publish the Agent to Microsoft 365 Copilot
+### Task 3: Test and Publish the Agent to Microsoft 365 Copilot
 
 In this task, you will test the agent and prepare it for publishing.
 
 1. Click the **Test** button in the bottom left corner to open the test panel.
-
-   ![](../media/ex2-travel-g59.png)
 
 1. Test the agent with various queries:
 
@@ -733,11 +723,9 @@ In this task, you will test the agent and prepare it for publishing.
 
 In this exercise, you completed building the HR Agent using Microsoft Copilot Studio. You learned how to:
 
-- Configure agent topics including Escalation to HR, General HR Help, and Leave and Time Off
-- Build agent flows with smart approval logic for leave requests
-- Integrate Teams notifications for auto-approved requests and email for manager approvals
-- Enhance agent instructions with specific policy references
-- Configure agent actions and integrations
+- Enhance agent instructions with specific policy references for accurate responses
+- Explore actions and integrations with agent flows
+- Configure system topics like the greeting message
 - Test the agent with various scenarios to validate functionality
 - Publish the agent to Microsoft 365 Copilot for end-user access
 

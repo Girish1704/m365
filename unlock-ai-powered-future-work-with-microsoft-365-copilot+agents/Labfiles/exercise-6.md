@@ -1,25 +1,24 @@
 # Exercise 6: Build an HR Agent with Microsoft Copilot Studio - Part 1
 
-## Estimated Duration: 90 Minutes
+## Estimated Duration: 45 Minutes
 
 ## Overview
 
 In this exercise, you will begin building a comprehensive HR Agent using Microsoft Copilot Studio that extends Microsoft 365 Copilot Chat capabilities. Microsoft Copilot Studio provides a powerful low-code platform for creating intelligent agents that can handle complex conversations, connect to enterprise data sources, and integrate with Microsoft 365 Copilot.
 
-In Part 1, you will create the foundational HR agent, connect it to SharePoint knowledge sources, configure conversation topics, and build an automated leave application workflow with smart approval logic.
+In Part 1, you will create a SharePoint site to store HR policy documents, upload the documents, and create the foundational HR agent with SharePoint knowledge sources.
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
-- Task 1: Upload HR policy documents to SharePoint
-- Task 2: Access Microsoft Copilot Studio and create an HR Agent
-- Task 3: Configure agent topics and conversations
-- Task 4: Build leave application flow with auto-approval and Teams integration
+- Task 1: Create a SharePoint site for HR policies
+- Task 2: Upload HR policy documents to SharePoint
+- Task 3: Access Microsoft Copilot Studio and create an HR Agent
 
 ### Task 1: Create a SharePoint Site
 
-In this task, you will create a SharePoint site to store law firm documents including case files, client information, and billing data.
+In this task, you will create a SharePoint site to store HR policy documents that will be used as a knowledge base for the HR agent.
 
 1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
 
@@ -181,17 +180,12 @@ In this task, you will navigate to Microsoft Copilot Studio, create a new HR Age
 
 In this exercise, you created the foundation of an HR Agent using Microsoft Copilot Studio. You learned how to:
 
+- Create a SharePoint site to store HR policy documents
 - Upload HR policy documents to SharePoint as a knowledge base
 - Access and navigate Microsoft Copilot Studio
 - Create a new agent and configure its basic settings
 - Add SharePoint as a knowledge source for grounded responses
-- Configure four types of conversation topics:
-  - Manual topic creation with conversation flow (Escalation to HR)
-  - AI-generated topics using Copilot (General HR Help and Leave and Time Off)
-- Build agent flows with conditional logic for smart approvals
-- Integrate email notifications for manager approval workflows
-- Implement auto-approval rules for requests of 2 days or less
 
-In the next exercise, you will enhance the agent's instructions, configure actions, test its capabilities, and publish it to Microsoft 365 Copilot.
+In the next exercise, you will configure agent topics, build leave application flows with smart approval logic, and publish the agent to Microsoft 365 Copilot.
 
 ### You have successfully completed this exercise. Click on Next to proceed to the next exercise.

@@ -1,25 +1,27 @@
 # Exercise 7: Build an HR Agent with Microsoft Copilot Studio - Part 2
 
-## Estimated Duration: 30 Minutes
+## Estimated Duration: 90 Minutes
 
 ## Overview
 
-In this exercise, you will complete the HR Agent you started building in Exercise 6. You will enhance the agent's instructions to properly reference policy documents, configure actions and integrations, thoroughly test the agent's capabilities, and publish it to Microsoft 365 Copilot.
+In this exercise, you will complete the HR Agent you started building in Exercise 6. You will configure agent topics and conversations, build leave application flows with smart approval logic, enhance agent instructions, and publish the agent to Microsoft 365 Copilot.
 
 ## Prerequisites
 
 - Completed Exercise 6: Build an HR Agent with Microsoft Copilot Studio - Part 1
-- HR Agent created in Copilot Studio with topics configured
+- HR Agent created in Copilot Studio with SharePoint knowledge configured
 
 ## Exercise Objectives
 
 In this exercise, you will complete the following tasks:
 
 - Task 1: Configure agent topics and conversations
-- Task 2: Build leave application flow with auto-approval and Teams integration
-- Task 3: Test and publish the agent to Microsoft 365 Copilot
+- Task 2: Build leave application flow with auto-approval and email integration
+- Task 3: Enhance agent instructions with policy references
+- Task 4: Configure agent greeting message
+- Task 5: Test and publish the agent to Microsoft 365 Copilot
 
-## Task 1: Configure Agent Topics and Conversations
+### Task 1: Configure Agent Topics and Conversations
 
 In this task, you will configure topics that define how the agent handles different types of conversations. You will create an escalation topic and use the **Add from description with Copilot** feature to quickly generate topic flows.
 
@@ -614,33 +616,17 @@ In this task, you will update the agent instructions to ensure it properly refer
 
 1. Click **Save** to save the updated instructions.
 
-### Task 2: Configure Agent Actions and Integrations
+### Task 4: Configure Agent Greeting Message
 
-In this task, you will configure actions that the agent can perform.
+In this task, you will configure the greeting message that the agent displays when users start a conversation.
 
-1. Select **Flows (1)** > **Create a new flow (2)**.
-
-   ![](../media/ex2-travel-g4.png)
-
-1. Under **AI capabilities**, select **When an agent calls the flow** as the trigger mechanism to enable agent-initiated workflows.
-
-   ![](../media/ex2-travel-g5.png)
-
-1. If the flow editor opens, create a simple flow:
-
-   - Trigger: When called from Copilot Studio
-   - Action: Send an email to HR
-
-   >**Note:** For this lab, you can skip creating the actual flow. The important concept is understanding how actions extend agent capabilities.
-
-1. Return to Copilot Studio and configure the greeting message:
-
-   - From the **menu**, select **Topics** to access the topics list.
+1. From the **menu**, select **Topics** to access the topics list.
 
    ![](../media/ex2-travel-g75.png)
 
-   - Click on **System** > **Greeting**
-   - Customize the greeting:
+1. Click on **System** > **Greeting** to customize the welcome message.
+
+1. Update the greeting message:
 
    ```
    Welcome to the HR Assistant! I can help you with:
@@ -658,7 +644,7 @@ In this task, you will configure actions that the agent can perform.
 
    ![](../media/ex2-travel-g56.png)
 
-### Task 3: Test and Publish the Agent to Microsoft 365 Copilot
+### Task 5: Test and Publish the Agent to Microsoft 365 Copilot
 
 In this task, you will test the agent and prepare it for publishing.
 

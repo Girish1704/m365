@@ -142,15 +142,17 @@ In this task, you will navigate to Microsoft Copilot Studio, create a new HR Age
 1. Enter the agent instructions in the **Instructions (1)** box, then click **Save (2)** to apply the changes.
 
    ```
-   HR assistant that helps employees with:
+   You are an HR Assistant for Contoso Corporation. Help employees with:
    - Company policies and procedures
-   - Leave management (vacation, sick leave, parental leave)
+   - Leave management and applications (collect Employee ID, Name, Days, Reason)
    - Benefits information (health insurance, retirement, wellness)
    - Onboarding information for new employees
    - Performance review processes
    - General HR FAQs
    
-   The agent should be professional, empathetic, and helpful. It should escalate complex issues to human HR representatives.
+   For leave requests, always collect: Employee ID, Employee Name, Number of Days, and Reason.
+   Leave requests of 2 days or less are auto-approved; longer requests require manager approval.
+   Be professional, empathetic, and helpful. Escalate complex issues to human HR representatives.
    ```
 
    ![](../media/m36-copg-ex6-c-g6.png)
@@ -349,21 +351,16 @@ In this task, you will configure topics that define how the agent handles differ
    **Topic Description:**
    ```
    Create a topic that helps users with leave and time off questions.
-   Start by greeting the user and asking what kind of leave they need help with.
-   Let the user choose or explain their leave type.
+   Start by greeting the user and asking what they need help with regarding leave.
    Support questions related to:
-   - Annual or vacation leave
-   - Sick leave
-   - Personal leave
+   - Leave policies and entitlements
+   - Leave balance inquiries
+   - How to apply for leave
    - General leave information
-   Provide clear information based on the selected leave type.
-   Explain how leave is earned, used, and managed.
+   Provide clear information about leave policies.
    Guide users to the HR portal to check their leave balance.
-   Ask if the user has questions about special leave cases such as:
-   - Medical leave
-   - Parental leave
-   - Emergency leave
-   If needed, recommend contacting HR for special cases.
+   If the user wants to apply for leave, redirect them to the Leave Application topic.
+   For special leave cases (medical, parental, emergency), recommend contacting HR directly.
    End by asking if the user needs further assistance.
    ```
 
@@ -387,62 +384,52 @@ In this task, you will configure topics that define how the agent handles differ
 
 In this topic, you will create an automated leave application flow that automatically approves requests for 2 days or less, and routes longer requests to a manager via Microsoft Teams for approval.
 
-##### Step 1: Create a Teams Channel for Leave Approvals
-
 1. Navigate to **Microsoft Teams** and go to the **Chat (1)** section, click the **New (2)** dropdown, and select **New team (3)** to create a dedicated workspace for leave approvals.
 
-   ![](../../safe-travels/media/ex2-travel-g1.png)
+   ![](../media/ex2-travel-g1.png)
 
 1. Configure your new team with the following details:
-   - **Team name:** Enter `HR Approvals Team`
-   - **First channel:** Type `Leave Approvals`
+   - **Team name:** Enter **HR Approvals Team-<inject key="DeploymentID" enableCopy="false"/>**
+   - **First channel:** Type **Leave Approvals-<inject key="DeploymentID" enableCopy="false"/>**
    - Click **Create** to establish the team structure.
 
-   ![](../../safe-travels/media/ex2-travel-g2.png)
+   ![](../media/ex2-travel-g2.png)
 
 1. In the **Add members to HR Approvals Team** window, select **Skip** to continue without adding members for this demonstration.
 
-   ![](../../safe-travels/media/ex2-travel-g3.png)
+   ![](../media/ex2-travel-g3.png)
 
-##### Step 2: Create the Leave Approval Power Automate Flow
 
-1. Navigate to **Power Automate** by opening a new browser tab and going to:
+1. In Copilot Studio, go to the **Flows (1)** section and click **New agent flow (2)** to create a new automated workflow.
 
-   ```
-   https://make.powerautomate.com
-   ```
-
-1. In Power Automate, go to the **Flows (1)** section and click **New agent flow (2)** to create a new automated workflow.
-
-   ![](../../safe-travels/media/ex2-travel-g4.png)
+   ![](../media/ex2-travel-g4.png)
 
 1. Under **AI capabilities**, select **When an agent calls the flow** as the trigger mechanism to enable agent-initiated workflows.
 
-   ![](../../safe-travels/media/ex2-travel-g5.png)
+   ![](../media/ex2-travel-g5.png)
 
 1. Click **Add an input** under the trigger node to define the data parameters that your agent will pass to the workflow.
 
-   ![](../../safe-travels/media/ex2-travel-g6.png)
+   ![](../media/ex2-travel-g6.png)
 
 1. Choose **Number** as the data type for the first input parameter.
 
-   ![](../../safe-travels/media/ex2-travel-g7.png)
+   ![](../media/ex2-travel-g7.png)
 
 1. Add the following input parameters:
 
    | Input Type | Name |
    |------------|------|
+   | Number | `EmployeeID` |
    | Text | `EmployeeName` |
    | Number | `LeaveDays` |
-   | Text | `LeaveType` |
    | Text | `LeaveReason` |
-   | Text | `StartDate` |
 
-   ![](../../safe-travels/media/ex2-travel-g10.png)
+   ![](../media/ex2-travel-g10.png)
 
 1. Click the **+ (Add)** icon below the trigger to add a new action.
 
-   ![](../../safe-travels/media/ex2-travel-g11.png)
+   ![](../media/ex2-travel-g11.png)
 
 1. Search for **Condition** and select **Condition** from the Control actions.
 
@@ -461,15 +448,15 @@ In this topic, you will create an automated leave application flow that automati
 
 1. Search for **Post message in a chat or channel (1)** and **select (2)** it from the available Microsoft Teams actions.
 
-   ![](../../safe-travels/media/ex2-travel-g12.png)
+   ![](../media/ex2-travel-g12.png)
 
 1. Establish the Microsoft Teams connection by selecting **Sign in** to authenticate and authorize the workflow integration.
 
-   ![](../../safe-travels/media/ex2-travel-g13.png)
+   ![](../media/ex2-travel-g13.png)
 
 1. Choose your **ODL_User (1)** account credentials to authenticate and establish the Microsoft Teams connection.
 
-   ![](../../safe-travels/media/ex2-travel-g14.png)
+   ![](../media/ex2-travel-g14.png)
 
 1. Configure the Teams message for auto-approved requests:
    - **Post as (1):** Flow bot
@@ -480,45 +467,44 @@ In this topic, you will create an automated leave application flow that automati
      ```
      ✅ **LEAVE AUTO-APPROVED**
      
+     **Employee ID:** [EmployeeID]
      **Employee:** [EmployeeName]
-     **Leave Type:** [LeaveType]
      **Duration:** [LeaveDays] day(s)
-     **Start Date:** [StartDate]
      **Reason:** [LeaveReason]
      
      _This request was automatically approved as it is for 2 days or less._
      ```
 
-   ![](../../safe-travels/media/ex2-travel-g15.png)
+   ![](../media/ex2-travel-g15.png)
 
 1. Highlight **[EmployeeName] (1)** in the message box and click the **Dynamic content (2)** icon to insert the variable.
 
-   ![](../../safe-travels/media/ex2-travel-g16.png)
+   ![](../media/ex2-travel-g16.png)
 
 1. From the **Dynamic content** panel, select the appropriate variable under the "When an agent calls the flow" section.
 
-   ![](../../safe-travels/media/ex2-travel-g17.png)
+   ![](../media/ex2-travel-g17.png)
 
    >**Note:** Replace all bracketed values [EmployeeName], [LeaveDays], etc. with Dynamic content from the trigger.
 
 1. Click **Add an action** in the **If yes** branch and search for **Respond to agent (1)** and select **Respond to the agent (2)** under the Skills section.
 
-   ![](../../safe-travels/media/ex2-travel-g20.png)
+   ![](../media/ex2-travel-g20.png)
 
 1. Click **Add an output (1)** under the **Respond to the agent** action to define the return message.
 
-   ![](../../safe-travels/media/ex2-travel-g21.png)
+   ![](../media/ex2-travel-g21.png)
 
 1. Select **Text (1)** as the type of output for the agent response.
 
-   ![](../../safe-travels/media/ex2-travel-g22.png)
+   ![](../media/ex2-travel-g22.png)
 
 1. Add the output:
    - **Name (1):** `ApprovalStatus`
    - **Value (2):** `Your leave request for [LeaveDays] day(s) has been automatically approved! You will receive a confirmation email shortly.`
    - **Description (3):** `Confirmation message for auto-approved leave request`
 
-   ![](../../safe-travels/media/ex2-travel-g23.png)
+   ![](../media/ex2-travel-g23.png)
 
 ##### Step 4: Configure the Teams Approval Branch (If No - More Than 2 Days)
 
@@ -551,10 +537,9 @@ In this topic, you will create an automated leave application flow that automati
            {
                "type": "FactSet",
                "facts": [
+                   {"title": "Employee ID:", "value": "${EmployeeID}"},
                    {"title": "Employee:", "value": "${EmployeeName}"},
-                   {"title": "Leave Type:", "value": "${LeaveType}"},
                    {"title": "Duration:", "value": "${LeaveDays} day(s)"},
-                   {"title": "Start Date:", "value": "${StartDate}"},
                    {"title": "Reason:", "value": "${LeaveReason}"}
                ]
            },
@@ -584,7 +569,7 @@ In this topic, you will create an automated leave application flow that automati
 
    ![](../media/ex6-adaptive-card-config.png)
 
-   >**Note:** Replace ${EmployeeName}, ${LeaveDays}, etc. with Dynamic content from the trigger when configuring.
+   >**Note:** Replace ${EmployeeID}, ${EmployeeName}, ${LeaveDays}, and ${LeaveReason} with Dynamic content from the trigger when configuring.
 
    - **Update message:** `Leave request has been processed.`
    - **Should update card:** Yes
@@ -610,15 +595,15 @@ In this topic, you will create an automated leave application flow that automati
 
 1. Click **Save draft (1)** to save the current flow configuration before publishing.
 
-   ![](../../safe-travels/media/ex2-travel-g24.png)
+   ![](../media/ex2-travel-g24.png)
 
 1. Verify the confirmation message **"We saved your draft flow. You can test and run it after you publish."** appears at the top of the page.
 
-   ![](../../safe-travels/media/ex2-travel-g25.png)
+   ![](../media/ex2-travel-g25.png)
 
 1. Click **Publish** to make the agent flow available for use.
 
-   ![](../../safe-travels/media/ex2-travel-g26.png)
+   ![](../media/ex2-travel-g26.png)
 
 ##### Step 5: Create the Leave Application Topic
 
@@ -626,11 +611,11 @@ In this topic, you will create an automated leave application flow that automati
 
 1. From the **menu**, select **Topics** to create or manage conversation topics for your agent.
 
-   ![](../../safe-travels/media/ex2-travel-g75.png)
+   ![](../media/ex2-travel-g75.png)
 
 1. Click **+ Add a topic (1)**, then select **From blank (2)** to create a new topic.
 
-   ![](../../safe-travels/media/ex2-travel-g31.png)
+   ![](../media/ex2-travel-g31.png)
 
 1. Enter the topic description in the **Describe what the topic does** box:
 
@@ -645,14 +630,14 @@ In this topic, you will create an automated leave application flow that automati
    ```
 
 1. Click **+ (Add)** and select **Ask a question**:
-   - **Question text:** `What type of leave would you like to apply for?`
-   - **Identify:** Select **Multiple choice options**
-   - **Options:** Add the following:
-     - Annual Leave
-     - Sick Leave
-     - Personal Leave
-     - Parental Leave
-   - **Save response as:** `LeaveType`
+   - **Question text:** `What is your Employee ID?`
+   - **Identify:** Select **Number**
+   - **Save response as:** `EmployeeID`
+
+1. Click **+ (Add)** and add another **Ask a question**:
+   - **Question text:** `What is your full name?`
+   - **Identify:** Select **Person name**
+   - **Save response as:** `EmployeeName`
 
 1. Click **+ (Add)** and add another **Ask a question**:
    - **Question text:** `How many days of leave do you need?`
@@ -660,19 +645,9 @@ In this topic, you will create an automated leave application flow that automati
    - **Save response as:** `LeaveDays`
 
 1. Click **+ (Add)** and add another **Ask a question**:
-   - **Question text:** `What is the start date for your leave? (e.g., 2025-03-15)`
-   - **Identify:** Select **Date and time**
-   - **Save response as:** `StartDate`
-
-1. Click **+ (Add)** and add another **Ask a question**:
    - **Question text:** `Please provide a brief reason for your leave request.`
    - **Identify:** Select **User's entire response**
    - **Save response as:** `LeaveReason`
-
-1. Click **+ (Add)** and add another **Ask a question**:
-   - **Question text:** `What is your full name?`
-   - **Identify:** Select **Person name**
-   - **Save response as:** `EmployeeName`
 
 1. Click **+ (Add)** and select **Send a message**. Enter:
 
@@ -680,47 +655,45 @@ In this topic, you will create an automated leave application flow that automati
    Thanks! Let me process your leave request:
    
    📋 **Leave Summary**
+   - Employee ID: {x} EmployeeID
    - Employee: {x} EmployeeName
-   - Type: {x} LeaveType
    - Duration: {x} LeaveDays day(s)
-   - Start Date: {x} StartDate
    - Reason: {x} LeaveReason
    ```
 
    >**Note:** Use the variable picker {x} to insert the actual variables.
 
-1. Click **+ (Add)** and select **Add a tool** to connect the Power Automate flow.
+1. Click **+ (Add)** and select **Add a tool** to connect the agent flow.
 
 1. Add the Leave Application Approval Flow tool as follows:
    - **Add a tool (1):** From the options menu, select **Add a tool**.
    - **Leave Application Approval Flow (2):** In the list of tools, choose **Leave Application Approval Flow** to link it with the topic.
 
-   ![](../../safe-travels/media/cor-g-g18.png)
+   ![](../media/cor-g-g18.png)
 
-1. Map the flow inputs to the topic variables. In the **Power Automate inputs (2)** section, click the variable picker **(1)** and select the appropriate variable for each field:
+1. Map the flow inputs to the topic variables. In the **Flow inputs (2)** section, click the variable picker **(1)** and select the appropriate variable for each field:
+   - **EmployeeID:** Select `EmployeeID`
    - **EmployeeName:** Select `EmployeeName`
    - **LeaveDays:** Select `LeaveDays`
-   - **LeaveType:** Select `LeaveType`
    - **LeaveReason:** Select `LeaveReason`
-   - **StartDate:** Select `StartDate`
 
-   ![](../../safe-travels/media/cor2-gs-g8.png)
+   ![](../media/cor2-gs-g8.png)
 
 1. Once all variables are mapped correctly, verify the configuration.
 
-   ![](../../safe-travels/media/cor-g-g19.png)
+   ![](../media/cor-g-g19.png)
 
 1. After mapping the outputs, click the **plus (+)** icon below the **Action** node to add the next step.
 
-   ![](../../safe-travels/media/cor-g-g20.png)
+   ![](../media/cor-g-g20.png)
 
 1. From the action menu, select **Send a message** to display a confirmation message to the user.
 
-   ![](../../safe-travels/media/cor-g-g21.png)
+   ![](../media/cor-g-g21.png)
 
 1. In the **Message** box, click on the **variable picker (1)** and select **ApprovalStatus (2)** from the list to insert it into the message.
 
-   ![](../../safe-travels/media/ex2-travel-g55.png)
+   ![](../media/ex2-travel-g55.png)
 
 1. Click **+ (Add)** and select **Send a message** for a closing message:
 
@@ -732,55 +705,53 @@ In this topic, you will create an automated leave application flow that automati
 
 1. Click on the **Save** button to save the topic configuration.
 
-   ![](../../safe-travels/media/ex2-travel-g56.png)
+   ![](../media/ex2-travel-g56.png)
 
 ##### Step 6: Test the Leave Application Flow
 
 1. Navigate to the **Overview (1)** tab and click **Publish (2)** to make the agent updates live.
 
-   ![](../../safe-travels/media/ex2-travel-g57.png)
+   ![](../media/ex2-travel-g57.png)
 
 1. In the **Publish this agent** dialog box, click **Publish** to confirm and deploy the agent.
 
-   ![](../../safe-travels/media/ex2-travel-g58.png)
+   ![](../media/ex2-travel-g58.png)
 
 1. Once the agent is successfully published, click **Test** to verify and interact with your HR Agent.
 
-   ![](../../safe-travels/media/ex2-travel-g59.png)
+   ![](../media/ex2-travel-g59.png)
 
 1. **Test 1 - Short Leave (Auto-Approval):**
 
    In the **Test your agent** panel, type **I want to apply for leave (1)** and click the **Send (2)** icon to initiate the leave application flow.
 
-   ![](../../safe-travels/media/cor-g-g23.png)
+   ![](../media/cor-g-g23.png)
 
    When prompted, provide:
-   - **Leave Type:** Annual Leave
-   - **Days:** 2
-   - **Start Date:** 2025-03-20
-   - **Reason:** Personal appointment
+   - **Employee ID:** 1001
    - **Name:** John Smith
+   - **Days:** 2
+   - **Reason:** Personal appointment
 
-   ![](../../safe-travels/media/ex2-travel-g61.png)
+   ![](../media/ex2-travel-g61.png)
 
    **Expected Result:** The leave should be automatically approved since it's 2 days or less.
 
-   ![](../../safe-travels/media/ex2-travel-g64.png)
+   ![](../media/ex2-travel-g64.png)
 
 1. **Test 2 - Long Leave (Manager Approval Required):**
 
    Type: `I need to request time off`
 
    When prompted, provide:
-   - **Leave Type:** Annual Leave
-   - **Days:** 5
-   - **Start Date:** 2025-04-01
-   - **Reason:** Family vacation
+   - **Employee ID:** 1002
    - **Name:** Jane Doe
+   - **Days:** 5
+   - **Reason:** Family vacation
 
 1. When prompted for Microsoft Teams connection access, click **Allow** to authorize the integration and enable the flow to post leave requests in Teams.
 
-   ![](../../safe-travels/media/ex2-travel-g63.png)
+   ![](../media/ex2-travel-g63.png)
 
    **Expected Result:** The request should be sent to the Teams channel for manager approval.
 
@@ -792,7 +763,7 @@ In this topic, you will create an automated leave application flow that automati
    - **Channel (3):** Open **Leave Approvals**.
    - **Message (4):** Confirm the approval card appears.
 
-   ![](../../safe-travels/media/ex2-travel-g65.png)
+   ![](../media/ex2-travel-g65.png)
 
 1. Click **Approve** or **Reject** on the adaptive card to complete the approval process.
 
@@ -810,7 +781,7 @@ In this exercise, you created the foundation of an HR Agent using Microsoft Copi
   - Manual topic creation with conversation flow (Escalation to HR)
   - AI-generated topics using Copilot (General HR Help and Leave and Time Off)
   - Automated leave application with smart approval logic (Leave Application)
-- Build Power Automate flows with conditional logic for smart approvals
+- Build agent flows with conditional logic for smart approvals
 - Integrate Microsoft Teams for manager approval workflows
 - Implement auto-approval rules for requests of 2 days or less
 

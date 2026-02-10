@@ -66,14 +66,14 @@ In this task, you will configure actions that the agent can perform.
 1. Browse the available action types:
 
    - **Prebuilt connectors** - Connect to external services
-   - **Power Automate flows** - Trigger automated workflows
+   - **Agent flows** - Trigger automated workflows
    - **Custom connectors** - Connect to custom APIs
 
-1. For this exercise, we will create a simple escalation flow. Select **Power Automate** > **Create a new flow**.
+1. For this exercise, we will create a simple escalation flow. Select **Flows** > **Create a new flow**.
 
-   ![](../../safe-travels/media/ex2-travel-g4.png)
+   ![](../media/ex2-travel-g4.png)
 
-1. If Power Automate opens, create a simple flow:
+1. If the flow editor opens, create a simple flow:
 
    - Trigger: When called from Copilot Studio
    - Action: Send an email to HR
@@ -84,7 +84,7 @@ In this task, you will configure actions that the agent can perform.
 
    - From the **menu**, select **Topics** to access the topics list.
 
-   ![](../../safe-travels/media/ex2-travel-g75.png)
+   ![](../media/ex2-travel-g75.png)
 
    - Click on **System** > **Greeting**
    - Customize the greeting:
@@ -103,7 +103,7 @@ In this task, you will configure actions that the agent can perform.
 
 1. Click on the **Save** button to save the topic configuration.
 
-   ![](../../safe-travels/media/ex2-travel-g56.png)
+   ![](../media/ex2-travel-g56.png)
 
 ### Task 3: Test and Publish the Agent to Microsoft 365 Copilot
 
@@ -111,7 +111,7 @@ In this task, you will test the agent and prepare it for publishing.
 
 1. Click the **Test** button in the bottom left corner to open the test panel.
 
-   ![](../../safe-travels/media/ex2-travel-g59.png)
+   ![](../media/ex2-travel-g59.png)
 
 1. Test the agent with various queries:
 
@@ -119,7 +119,7 @@ In this task, you will test the agent and prepare it for publishing.
 
    In the **Test your agent** panel, type **Hello (1)** and click the **Send (2)** icon.
 
-   ![](../../safe-travels/media/cor-g-g23.png)
+   ![](../media/cor-g-g23.png)
 
    **Expected Output:** The agent should respond with a welcome greeting.
 
@@ -152,11 +152,11 @@ In this task, you will test the agent and prepare it for publishing.
 
 1. Once testing is complete, navigate to the **Overview (1)** tab and click **Publish (2)** to make the agent live.
 
-   ![](../../safe-travels/media/ex2-travel-g57.png)
+   ![](../media/ex2-travel-g57.png)
 
 1. In the **Publish this agent** dialog box, click **Publish** to confirm and deploy the agent.
 
-   ![](../../safe-travels/media/ex2-travel-g58.png)
+   ![](../media/ex2-travel-g58.png)
 
 1. Wait for the publishing process to complete.
 
@@ -173,7 +173,7 @@ In this task, you will test the agent and prepare it for publishing.
 In this exercise, you completed building the HR Agent using Microsoft Copilot Studio. You learned how to:
 
 - Enhance agent instructions with specific policy references for accurate responses
-- Explore actions and integrations with Power Automate
+- Explore actions and integrations with agent flows
 - Configure system topics like the greeting message
 - Test the agent with various scenarios to validate functionality
 - Publish the agent to Microsoft 365 Copilot for end-user access

@@ -1,6 +1,6 @@
 # Exercise 7: Build an HR Agent with Microsoft Copilot Studio - Part 2
 
-## Estimated Duration: 90 Minutes
+## Estimated Duration: 120 Minutes
 
 ## Overview
 
@@ -165,7 +165,6 @@ In this task, you will configure topics that define how the agent handles differ
    - Question node to collect the HR query
    - Condition branches for benefits, policies, onboarding, and performance reviews
    - Clarification flow for unrecognized queries
-   - Escalation option
    - Closing message
 
 1. Review the generated flow.
@@ -213,7 +212,6 @@ In this task, you will configure topics that define how the agent handles differ
 
 1. Review the generated flow which should include:
    - Welcome message for leave applications
-   - Question nodes to collect Employee ID, Name, Days, and Reason
    - Leave summary message with collected information
    - Action node calling the Leave-Flow
    - Approval status message
@@ -245,7 +243,6 @@ In this topic, you will create an automated leave application flow that automati
 1. In the **Add members to HR Approvals Team** window, select **Skip** to continue without adding members for this demonstration.
 
    ![](../media/ex2-travel-g3.png)
-
 
 1. In Copilot Studio, go to the **Flows (1)** section and click **New agent flow (2)** to create a new automated workflow.
 
@@ -349,7 +346,7 @@ In this topic, you will create an automated leave application flow that automati
      _This request was automatically approved as it is for 2 days or less._
      ```
 
-   ![](../media/d2-d2-cor-g26.png)
+      ![](../media/d2-d2-cor-g26.png)
 
 1. Highlight **[EmployeeID] (1)** in the message box and click the **Dynamic content (2)** icon to insert the variable.
 
@@ -392,7 +389,7 @@ In this topic, you will create an automated leave application flow that automati
    - **Name (1):** `ApprovalStatus`
    - **Value (2):** `Your leave request for  has been automatically approved!
 
-   ![](../media/d2-d2-cor-g36.png)
+      ![](../media/d2-d2-cor-g36.png)
 
 1. In the **False** branch, select the **+** icon to add an action.
 
@@ -593,22 +590,29 @@ In this task, you will create an escalation flow that sends an email notificatio
 
    ![](../media/ex2-travel-g6.png)
 
-1. Select **Text** as the data type for the first input parameter.
+1. In the **When an agent calls the flow** trigger, select **Text** to define the type of user input.
 
-1. Rename the input to **ContactEmail**.
+   ![](../media/d2-coor-gs-g11.png)
 
-1. Select **Add an input** and add the remaining input parameters:
+1. In the **When an agent calls the flow** trigger, rename the input to **ContactEmail (1)**, and then select **Add an input (2)** to add another parameter.
 
-   | Input Type | Name |
-   |------------|------|
-   | Text | `EmployeeName` |
-   | Text | `IssueSummary` |
+   ![](../media/d2-coor-gs-g12.png)
 
-   ![](../media/ex7-escalation-inputs.png)
+1. In the **When an agent calls the flow** trigger, select **Text** to define the type of user input.
 
-1. Select the **+** icon to add the next step in the flow.
+   ![](../media/d2-coor-gs-g13.png)
 
-   ![](../media/d2-d2-cor-g16.png)
+1. Rename the input to **EmployeeName** and then select **Add an input (2)** to add another parameter.
+
+   ![](../media/d2-coor-gs-g14.png)
+
+1. In the **When an agent calls the flow** trigger, select **Text** to define the type of user input.
+
+   ![](../media/d2-coor-gs-g15.png)
+
+1. Rename the input to **IssueSummary** and select the **+** icon to add the next step in the flow.
+
+   ![](../media/d2-coor-gs-g16.png)
 
 1. In the **Add an action** pane, search for **Send an Email (V2) (1)**, and then select **Send an email (V2) (2)** under Office 365 Outlook.
 
@@ -617,6 +621,7 @@ In this task, you will create an escalation flow that sends an email notificatio
 1. If prompted, select **Sign in** to create the Office 365 Outlook connection.
 
 1. Configure the email for HR escalation:
+
    - **To:** Enter your email address: **<inject key="AzureAdUserEmail"></inject>**
    - **Subject:** `HR Escalation Request`
    - **Body:** Enter the following:
@@ -631,74 +636,95 @@ In this task, you will create an escalation flow that sends an email notificatio
       Please review and respond to the employee accordingly.
       ```
 
-   ![](../media/ex7-escalation-email.png)
+      ![](../media/d2-coor-gs-g23.png)
+
+      ![](../media/d2-coor-gs-g24.png)
 
 1. In the **Body** box, select **[EmployeeName]**, and use the **Dynamic content** picker to insert the **EmployeeName** variable.
 
+   ![](../media/d2-coor-gs-g25.png)
+
+   ![](../media/d2-coor-gs-g26.png)
+
 1. Repeat the same process for **[ContactEmail]** and **[IssueSummary]** placeholders.
 
-   ![](../media/ex7-escalation-dynamic.png)
+   ![](../media/d2-coor-gs-g29.png)
 
 1. Click **Add an action** after the email action.
 
-   ![](../media/d2-d2-cor-g45.png)
+   ![](../media/d2-coor-gs-g30.png)
 
 1. Search for **Respond to agent (1)** and select **Respond to the agent (2)**.
 
-   ![](../media/d2-d2-cor-g46.png)
+   ![](../media/d2-coor-gs-g31.png)
 
 1. In the **Respond to the agent** action, select **Add an output**.
 
-   ![](../media/d2-d2-cor-g47.png)
+   ![](../media/d2-coor-gs-g32.png)
 
 1. Select **Text** as the output type.
 
-   ![](../media/d2-d2-cor-g48.png)
+   ![](../media/d2-coor-gs-g33.png)
 
 1. Add the output:
    - **Name:** `EscalationStatus`
    - **Value:** `Your request has been escalated to our HR team. They will contact you at the email address provided.`
 
-   ![](../media/ex7-escalation-response.png)
+      ![](../media/d2-coor-gs-g34.png)
 
 1. Click **Save draft** to save the flow configuration.
 
-   ![](../media/d2-d2-cor-g50.png)
+   ![](../media/d2-coor-gs-g35.png)
 
 1. Click **Publish** to make the flow available.
 
-   ![](../media/d2-d2-cor-g51.png)
+   ![](../media/d2-coor-gs-g36.png)
 
 1. Select **Overview (1)**, and then click **Edit (2)** to update the flow details.
 
-   ![](../media/d2-d2-cor-g52.png)
+   ![](../media/d2-coor-gs-g37.png)
+
+   ![](../media/d2-coor-gs-g38.png)
 
 1. In the **Details** pane, enter **Escalation-Flow** in the **Flow name (1)** field, and then select **Save (2)**.
 
-   ![](../media/ex7-escalation-rename.png)
+   ![](../media/d2-coor-gs-g39.png)
 
 1. Return to **Copilot Studio** and navigate to your **HR Assistant** agent.
 
 1. Select **Topics (1)**, and then choose **Escalation to HR (2)** to open the topic.
 
+   ![](../media/d2-coor-gs-g40.png)
+
 1. Locate the confirmation message node at the end of the topic. Click the **+ (Add)** icon before the confirmation message.
+
+   ![](../media/d2-coor-gs-g41.png)
 
 1. Select **Add a tool (1)**, switch to **Basic tools (2)**, and then choose **Escalation-Flow (3)** to add the flow to the topic.
 
-   ![](../media/ex7-escalation-tool.png)
+   ![](../media/d2-coor-gs-g42.png)
 
-1. Map the flow inputs to the topic variables:
-   - **ContactEmail:** Select `ContactEmail`
-   - **EmployeeName:** Select `EmployeeName`
-   - **IssueSummary:** Select `IssueSummary`
+1. For the **EmployeeName (String) (1)** input, select the **EmployeeName (2)** variable from the **Custom** list to map the value.
 
-   ![](../media/ex7-escalation-mapping.png)
+   ![](../media/d2-coor-gs-g43.png)
 
-1. After the action node, add a **Send a message** node that displays the **EscalationStatus** variable.
+1. For the **IssueSummary (String) (1)** input, select the **IssueSummary (2)** variable from the **Custom** list to map the value.``
+
+   ![](../media/d2-coor-gs-g44.png)
+
+1. For the **ContactEmail (String) (1)** input, select the **ContactEmail (2)** variable from the **Custom** list to map the valu
+
+   ![](../media/d2-coor-gs-g45.png)
+
+1. Ensure the flow input to the topic variables are mapped:
+
+   - **ContactEmail:** `ContactEmail`
+   - **EmployeeName:** `EmployeeName`
+   - **IssueSummary:** `IssueSummary`
 
 1. Click **Save** to save the topic.
 
-   ![](../media/ex2-travel-g56.png)
+   ![](../media/d2-coor-gs-g46.png)
 
 ### Task 4: Enhance Agent Instructions with Policy References
 
@@ -738,74 +764,93 @@ In this task, you will update the agent instructions to ensure it properly refer
 
 1. Click **Save** to save the updated instructions.
 
-### Task 5: Configure Agent Greeting Message
-
-In this task, you will configure the greeting message that the agent displays when users start a conversation.
-
-1. From the **menu**, select **Topics** to access the topics list.S
-
-1. Click on **System** > **Greeting** to customize the welcome message.
-
-1. Update the greeting message:
-
-   ```
-   Welcome to the HR Assistant! I can help you with:
-
-   - Leave policies and requests
-   - Benefits information
-   - Onboarding procedures
-   - HR policies and guidelines
-   - General HR questions
-
-   How can I assist you today?
-   ```
-
-1. Click on the **Save** button to save the topic configuration.
-
-   ![](../media/ex2-travel-g56.png)
-
-### Task 6: Test and Publish the Agent to Microsoft 365 Copilot
+### Task 5: Test and Publish the Agent to Microsoft 365 Copilot
 
 In this task, you will test the agent and prepare it for publishing.
 
 1. Click the **Test** button in the bottom left corner to open the test panel.
 
-1. Test the agent with various queries:
+1. Type the following:
 
-   **Test 1 - Greeting:**
-
-   In the **Test your agent** panel, type **Hello (1)** and click the **Send (2)** icon.
-
-   ![](../media/cor-g-g23.png)
-
-   **Expected Output:** The agent should respond with a welcome greeting.
-
-1. **Test 2 - Leave Request:**
-
-   **Prompt:**
    ```
-   How do I request vacation time?
+   I need help with HR
    ```
 
-   **Expected Output:** The agent should provide information about leave policies and how to request time off.
+   The agent responds: "Hello! Welcome to the HR assistant.
 
-1. **Test 3 - Benefits:**
+1. Type the following to inquire about benefits:
 
-   **Prompt:**
+   ```
+   On health insurance
+   ```
+
+   The agent will ask if your question is related to: Benefits, Company policies or rules, Onboarding or new hire process, or Performance reviews or appraisals.
+
+   ![](../media/d2-coor-gs-g58.png)
+
+1. Select **Benefits** from the options. The agent responds with basic benefits information and guides you to the HR portal.
+
+   ![](../media/d2-coor-gs-g55.png)
+
+1. When asked if you need more help, select **Yes**. Then type:
+
    ```
    What health insurance options are available?
    ```
 
-   **Expected Output:** The agent should reference the Employee Benefits Guide and provide health insurance information.
+   The agent should reference the Employee Benefits Guide and provide detailed health insurance information including the three PPO plan options (Basic, Standard, and Premium) with their costs, deductibles, and coverage details.
 
-1. **Test 4 - Knowledge-based question:**
+   ![](../media/d2-coor-gs-g59.png)
 
-   **Prompt:**
+1. Type the following to test knowledge-based questions:
+
    ```
    How many sick days can I take without a medical certificate?
    ```
 
-   **Expected Output:** The agent should reference the Leave Policy document and provide accurate information.
+   The agent should reference the Leave Policy document and provide accurate information about sick leave requirements.
+
+      ![](../media/d2-coor-gs-g60.png)
+
+1. Type the following to test the escalation flow:
+
+   ```
+   escalate to HR
+   ```
+
+   The agent responds: "Thank you for reaching out. I understand that your concern is important and may require personal attention." followed by "We are here to help. Your request will be handled confidentially and with care."
+
+1. When prompted "Could you please briefly describe your issue or concern?", type:
+
+   ```
+   I am facing an issue with the leave balance
+   ```
+
+1. When prompted "May I have your name", type:
+
+   ```
+   Jon
+   ```
+
+1. When prompted "Please provide a contact email so HR can reach out to you.", type:
+
+   ```
+   Jon@contoso.com
+   ```
+
+1. When prompted for Office 365 Outlook connection access, click **Allow** to authorize the integration and enable the flow to send escalation emails.
+
+   ![](../media/d2-coor-gs-g52.png)
+
+1. The agent confirms: "Thank you for providing the details. I will now send this information to our HR team."
+
+1. Navigate to **Outlook** to verify the escalation email was received with the employee details and issue summary.
+
+   ```
+   https://outlook.office365.com/mail/
+   ```
+
+   ![](../media/d2-coor-gs-g53.png)
 
 1. Once testing is complete, navigate to the **Overview (1)** tab and click **Publish (2)** to make the agent live.
 
@@ -813,17 +858,7 @@ In this task, you will test the agent and prepare it for publishing.
 
 1. In the **Publish this agent** dialog box, click **Publish** to confirm and deploy the agent.
 
-   ![](../media/ex2-travel-g58.png)
-
-1. Wait for the publishing process to complete.
-
-   >**Note:** The agent may take a few minutes to appear in Microsoft 365 Copilot after publishing.
-
-1. Once published, you can access the agent from Microsoft 365 Copilot Chat:
-
-   - Go to `https://www.microsoft365.com`
-   - Click on **Copilot**
-   - Look for your HR Assistant agent in the agents panel
+   ![](../media/d2-coor-gs-g48.png)
 
 ## Summary
 

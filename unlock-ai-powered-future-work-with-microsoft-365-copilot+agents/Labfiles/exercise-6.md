@@ -1,6 +1,6 @@
 # Exercise 6: Build an HR Agent with Microsoft Copilot Studio - Part 1
 
-## Estimated Duration: 90 Minutes
+## Estimated Duration: 60 Minutes
 
 ## Overview
 
@@ -21,11 +21,13 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will create a SharePoint site to store law firm documents including case files, client information, and billing data.
 
-1. On the Microsoft 365 home page, click on the **Copilot** icon from the left navigation panel.
+1. Open a new browser tab and navigate to the **Microsoft 365** portal:
 
-   ![](../media/m365-cop-ex1-g2.png)
+   ```
+   https://m365.cloud.microsoft/chat
+   ```
 
-1. In the left navigation pane, select **Apps (1)**, and then choose **SharePoint (2)** to open SharePoint.```
+1. In the left navigation pane, select **Apps (1)**, and then choose **SharePoint (2)** to open SharePoint.
 
    ![](../media/m365-cop-ex2-g5.png)
 
@@ -53,6 +55,8 @@ In this task, you will create a SharePoint site to store law firm documents incl
 
    ![](../media/d2-d2-cor-g4.png)
 
+   > **Note:** If you receive an error stating that the site name is already in use, modify the last few digits with unique numbers and try again.
+
 1. On the **Set language and other options** page, confirm **Private – only members can access this site (1)** under Privacy settings, and then select **Create site (2)**.
 
    ![](../media/m365-cop-ex2-g11.png)
@@ -70,18 +74,32 @@ In this task, you will download the HR policy documents and upload them to Share
 1. First, download the HR policy documents. Open a new browser tab and navigate to:
 
    ```
-   https://github.com/CloudLabsAI-Azure/unlock-ai-powered-future-work-with-microsoft-365/archive/refs/heads/Day2-datasets.zip
+   https://github.com/CloudLabsAI-Azure/Safe-Travels-Agent/archive/refs/heads/Day2-datasets.zip
    ```
 
-1. Once downloaded, extract the **Day2-datasets.zip** file to a location of your choice (e.g., Desktop or Downloads folder).
+1. In the **Downloads** pane, select **Safe-Travel-Agent-Day2-datasets.zip** to open the file.
 
-1. Navigate to your SharePoint site.
+   ![](../media/nd-d2-cor-g-9.png)
+
+1. In **Downloads (1)**, right-click **Safe-Travel-Agent-Day2-datasets (2)**, and then select **Extract All (3)**.
+
+   ![](../media/nd-d2-cor-g-10.png)
+
+1. In the **Extract Compressed (Zipped) Folders** window, keep the default destination, and then choose **Extract**.
+
+   ![](../media/nd-d2-cor-g-11.png)
+
+1. In the **Downloads** pane, select **Safe-Travel-Agent-Day2-datasets.zip** to open the file.
+
+   ![](../media/nd-d2-cor-g-9.png)
 
 1. In the SharePoint site, select **Documents (1)**, click **Upload (2)**, and then choose **Folder (3)** to create a new folder.``
 
    ![](../media/d2-d2-cor-g5.png)
 
 1. Browse to the location where you extracted the Day2-datasets, navigate to the **policy** folder, select all the policy PDF documents, and click **Open**.
+
+   ![](../media/nd-d2-cor-g-15.png)
 
    ![](../media/d2-d2-cor-g2.png)
 
@@ -90,6 +108,12 @@ In this task, you will download the HR policy documents and upload them to Share
    ![](../media/d2-d2-cor-g3.png)
 
    >**Note:** These policy documents contain comprehensive Contoso HR information that the agent will use to answer employee questions accurately.
+
+1. Copy the site URL from the browser address bar in the following format: `https://<tenant>.sharepoint.com/sites/HRPolicies-<inject key="DeploymentID" enableCopy="false"/>`.
+
+   ![](../media/nd-d2-cor-g-16.png)
+
+   > **Note:** This URL will be used later as a knowledge source while configuring the agent. Copy and save it in Notepad for easy access.
 
 ### Task 3: Access Microsoft Copilot Studio and Create an HR Agent
 
@@ -147,6 +171,8 @@ In this task, you will navigate to Microsoft Copilot Studio, create a new HR Age
 1. Enter the SharePoint site URL in the **URL field (1)**, then click **Add (2)** to connect the source.
 
    ![](../media/m36-copg-ex6-c-g10.png)
+
+   > **Note:** Use the SharePoint site URL that you copied earlier and saved in Notepad.  
 
 1. Click **Add to agent** to attach the SharePoint knowledge source.
 

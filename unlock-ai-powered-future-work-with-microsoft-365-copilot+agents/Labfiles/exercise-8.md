@@ -1,6 +1,6 @@
 # Exercise 8: Build a Poetic Declarative Agent Using Microsoft 365 Agents Toolkit
 
-## Estimated Duration: 90 Minutes
+## Estimated Duration: 60 Minutes
 
 ## Overview
 
@@ -76,7 +76,9 @@ In this task, you will create a new declarative agent project using the toolkit.
 
    ![](../media/m36-copg-ex7-d-g6.png)
 
-1. Select **Default folder C:\Codespace** to use the default project location.
+1. Select **Default folder** to use the default project location.
+
+   ![](../media/nd-d2-cor-g-13.png)
 
 1. Enter **PoeticAssistant** as the application name, then press **Enter** to confirm.
 
@@ -85,6 +87,8 @@ In this task, you will create a new declarative agent project using the toolkit.
 1. Wait for the project scaffolding to complete. VS Code will open the new project in a new window.
 
 1. If a prompt appears regarding the trustworthiness of the source, click on **Yes, I trust the authors**.
+
+   ![](../media/m36-copg-ex7-d-g0.png)
 
 1. Explore the project structure:
 
@@ -130,6 +134,11 @@ In this task, you will create a new declarative agent project using the toolkit.
 
    ![](../media/m36-copg-ex7-d-g25.png)
 
+1. When the browser opens for authentication, sign in with your lab credentials:
+
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
+
 1. Click **No, this app only** to continue signing in without registering the device.
 
    ![](../media/m36-copg-ex7-d-g26.png)
@@ -138,11 +147,11 @@ In this task, you will create a new declarative agent project using the toolkit.
 
 In this task, you will configure the declarative agent manifest to define the Poetic Assistant.
 
-1. Expand **appPackage (1)**, then open **manifest.json (2)** to edit the file.
+1. In the **Project (1)**, expand **appPackage (2)**, then open **manifest.json (3)** to edit the file.
 
-   ![](../media/m36-copg-ex7-d-g13.png)
+   ![](../media/nd-d2-cor-g-14.png)
 
-1. Update the manifest with the following information:
+1. Replace the manifest with the following script:
 
    ```json
    {
@@ -186,6 +195,8 @@ In this task, you will configure the declarative agent manifest to define the Po
    ```
 
    ![](../media/m36-copg-ex7-d-g14.png)
+
+   > **Note:** This manifest.json file defines the Microsoft 365 app metadata, branding, permissions, and registers the declarative agent with Copilot. It connects the Teams app package to the declarativeAgent.json file so Microsoft 365 recognizes and installs the Poetic Assistant.
 
 1. Save the file (`Ctrl+S`).
 
@@ -233,6 +244,8 @@ In this task, you will configure the declarative agent's personality and capabil
 
    ![](../media/m36-copg-ex7-d-g17.png)
 
+   > **Note:** This declarativeAgent.json file defines the agent’s behavior, personality, expertise, and conversation starters. The instructions section acts as the system prompt that controls how the Poetic Assistant responds to users inside Microsoft 365 Copilot.
+
 1. Save the file (`Ctrl+S`).
 
    >**Note:** The `instructions` field defines the agent's personality, expertise, and behavior. This is similar to a detailed system prompt that shapes how the agent responds.
@@ -246,13 +259,6 @@ In this task, you will configure the declarative agent's personality and capabil
 1. Click **Move to Recycle Bin** to confirm deleting the file.
 
    ![](../media/m36-copg-ex7-d-g19.png)
-
-1. Optionally, update the agent icons in the `appPackage` folder:
-
-   - `color.png` - 192x192 pixel color icon
-   - `outline.png` - 32x32 pixel outline icon
-
-   For this exercise, you can keep the default icons.
 
 ### Task 5: Provision and Test the Declarative Agent
 
